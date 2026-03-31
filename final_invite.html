@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Invite your squad to Gotta Scan Them All. Enter free prize draws for cash, luxury items, and dream vacations. Win luxury items with no purchase.">
+    <meta name="keywords" content="Free cash draws, Luxury prize giveaways, Win money online, Free sweepstakes, Cash contests, Enter free prize draws cash, Win luxury items no purchase, Online sweepstakes for cash prizes, Free entry prize draws luxury, Cash and prize giveaways, How to win free cash instantly online, Best free prize draws for luxury cars, Free sweepstakes to win real money no entry fee, Daily free draws for high-value prizes, Legit free contests to win designer bags, Enter to win cash and holiday prizes for free, Where to find free online draws for electronics, No purchase necessary sweepstakes luxury goods, Free cash giveaway sites that actually pay out, Monthly free draws for luxury watches and jewellery">
+    <title>Invite Your Squad | Gotta Scan Them All</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; }
+        .glass-header { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 61, 0, 0.2); }
+        .gradient-text { background: linear-gradient(90deg, #FF3D00, #FFB300); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .squad-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; }
+        .squad-card:hover { border-color: #FF3D00; transform: translateY(-2px); }
+        .progress-glow { box-shadow: 0 0 15px rgba(255, 61, 0, 0.4); }
+        .leaderboard-row:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
+        @keyframes celebrate { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .animate-celebrate { animation: celebrate 2s infinite ease-in-out; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- TASK 1: STICKY MODERN HEADER -->
+    <header class="glass-header sticky top-0 z-50 w-full transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" id="Home" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-[#FF3D00] rounded-lg flex items-center justify-center">
+                            <i data-lucide="camera" class="text-white w-6 h-6"></i>
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tighter text-white">SCAN<span class="text-[#FF3D00]">THEM</span>ALL</span>
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-sm font-medium text-white hover:text-[#FF3D00] transition-colors">Home</a>
+                    <a href="GTSA_FInal_Welcome_Page_(About_US).html" id="AboutUs" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">About us</a>
+                    <a href="prize.html" id="Prizes" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">Prizes</a>
+                    <a href="position.html" id="MyPosition" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">My Position</a>
+                </nav>
+
+                                <!-- Auth & Ads Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Scripted logic: Changes to "Sign Out" if user session exists (mockup) -->
+                    <a href="registration_with_video.html" id="auth-btn" class="text-sm font-semibold text-white px-4 py-2 rounded-full border border-zinc-700 hover:bg-zinc-800 transition-all">Register or Sign-In</a>
+                    <a href="log_in_page_advertising_placeholder.html" class="btn-primary text-sm font-semibold text-white px-6 py-2 rounded-full shadow-lg">Advertise with Us</a>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <div class="md:hidden">
+                    <button class="text-zinc-400 hover:text-white">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- TASK 3: PROJECT TITLE - INVITE YOUR SQUAD -->
+    <main class="relative">
+        <!-- Hero Section -->
+        <section class="pt-20 pb-12 px-4 relative overflow-hidden">
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <div class="inline-flex items-center space-x-2 bg-orange-500/10 border border-orange-500/20 px-4 py-1.5 rounded-full mb-6">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-[#FF3D00]"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest text-orange-500">Global Referral Ecosystem</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
+                    Refer Your Friends and Family – Unlock Up to <span class="gradient-text">150 Bonus Entries</span> Once You Hit 100 Scans!
+                </h1>
+                <p class="text-lg text-zinc-400 mb-8 leading-relaxed">
+                    Share the $75,000 luxury dream with friends – that stunning $50,000 sticker prize car, dream vacation getaways like Maldives beachfront escapes, exclusive fashion pieces, and gleaming gold & silver treasures!
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#refer-form" class="w-full sm:w-auto px-8 py-4 bg-[#FF3D00] text-white font-bold rounded-full shadow-[0_20px_40px_rgba(255,61,0,0.3)] hover:scale-105 transition-transform flex items-center justify-center">
+                        Invite Your Squad Now <i data-lucide="users" class="ml-2 w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- DASHBOARD SECTION (Post-Login Mockup) -->
+        <section class="py-12 px-4">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Progress Meter -->
+                <div class="lg:col-span-2 squad-card rounded-[2rem] p-8">
+                    <div class="flex justify-between items-end mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold">Your Squad Progress</h3>
+                            <p class="text-zinc-500 text-sm">Earn 12 bonus entries per successful referral</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-4xl font-black text-[#FF3D00]">15</span>
+                            <span class="text-zinc-500 font-bold">/ 25 Max</span>
+                        </div>
+                    </div>
+                    <div class="w-full h-4 bg-zinc-800 rounded-full overflow-hidden mb-4">
+                        <div class="h-full bg-gradient-to-r from-orange-600 to-orange-400 progress-glow" style="width: 60%"></div>
+                    </div>
+                    <p class="text-xs text-zinc-500 flex items-center">
+                        <i data-lucide="info" class="w-3 h-3 mr-1 text-orange-500"></i>
+                        Just 2 more invites until your next badge! Hit 100 personal scans to unlock these bonuses instantly.
+                    </p>
+
+                    <!-- Profile Badges -->
+                    <div class="grid grid-cols-4 gap-4 mt-8">
+                        <div class="flex flex-col items-center p-3 rounded-xl bg-white/5 border border-[#FF3D00]/30">
+                            <i data-lucide="shield-check" class="w-8 h-8 text-orange-300 mb-2"></i>
+                            <span class="text-[10px] font-bold uppercase text-center">Rising Recruit</span>
+                        </div>
+                        <div class="flex flex-col items-center p-3 rounded-xl bg-white/5 border border-[#FF3D00]/30">
+                            <i data-lucide="users" class="w-8 h-8 text-orange-400 mb-2"></i>
+                            <span class="text-[10px] font-bold uppercase text-center">Squad Builder</span>
+                        </div>
+                        <div class="flex flex-col items-center p-3 rounded-xl bg-zinc-800/50 opacity-40 grayscale">
+                            <i data-lucide="award" class="w-8 h-8 mb-2"></i>
+                            <span class="text-[10px] font-bold uppercase text-center">Referral Pro</span>
+                        </div>
+                        <div class="flex flex-col items-center p-3 rounded-xl bg-zinc-800/50 opacity-40 grayscale">
+                            <i data-lucide="trophy" class="w-8 h-8 mb-2"></i>
+                            <span class="text-[10px] font-bold uppercase text-center">Champion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Rank Stats -->
+                <div class="squad-card rounded-[2rem] p-8 flex flex-col justify-center items-center text-center">
+                    <div class="w-20 h-20 rounded-full bg-orange-500/20 flex items-center justify-center mb-4">
+                        <i data-lucide="globe" class="w-10 h-10 text-[#FF3D00]"></i>
+                    </div>
+                    <h4 class="text-zinc-400 font-bold uppercase tracking-widest text-xs">Global Ranking</h4>
+                    <p class="text-5xl font-black my-2">#57</p>
+                    <p class="text-zinc-500 text-sm">Top 1% of referrers worldwide</p>
+                    <button class="mt-6 text-[#FF3D00] text-sm font-bold flex items-center hover:underline">
+                        View Country Leaderboard <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 2: NEWSLETTER IN BODY & REFERRAL FORM -->
+        <section id="refer-form" class="py-20 bg-zinc-900/50">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Invite a Mate</h2>
+                    <p class="text-zinc-400">Your friend's details are used only for one caring introduction from you – nothing else, ever.</p>
+                </div>
+                
+                <form class="squad-card p-8 md:p-12 rounded-[2.5rem] space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-500 uppercase mb-2">Friend's First Name</label>
+                            <input type="text" placeholder="John" class="w-full bg-black/40 border border-zinc-800 rounded-xl px-4 py-3 focus:border-[#FF3D00] outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-500 uppercase mb-2">Friend's Last Name</label>
+                            <input type="text" placeholder="Doe" class="w-full bg-black/40 border border-zinc-800 rounded-xl px-4 py-3 focus:border-[#FF3D00] outline-none transition-all">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-zinc-500 uppercase mb-2">Friend's Email Address</label>
+                            <input type="email" placeholder="john@example.com" class="w-full bg-black/40 border border-zinc-800 rounded-xl px-4 py-3 focus:border-[#FF3D00] outline-none transition-all">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-[#FF3D00] text-white font-black rounded-xl hover:shadow-[0_0_25px_rgba(255,61,0,0.5)] transition-all">
+                        Refer a Mate with Care – Bonuses Unlock at 100 Scans ❤️
+                    </button>
+                    <div class="flex items-center justify-center space-x-6 pt-4 border-t border-zinc-800">
+                        <i data-lucide="facebook" class="w-6 h-6 text-zinc-500 cursor-pointer hover:text-white"></i>
+                        <i data-lucide="message-circle" class="w-6 h-6 text-zinc-500 cursor-pointer hover:text-white"></i>
+                        <i data-lucide="twitter" class="w-6 h-6 text-zinc-500 cursor-pointer hover:text-white"></i>
+                        <i data-lucide="share-2" class="w-6 h-6 text-zinc-500 cursor-pointer hover:text-white"></i>
+                    </div>
+                </form>
+
+                <!-- Newsletter Form in Body -->
+                <div class="mt-20 squad-card p-8 rounded-[2.5rem] bg-gradient-to-br from-zinc-800 to-black border-zinc-700">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-2">Stay Updated</h3>
+                            <p class="text-zinc-400 text-sm">Get the latest sweepstake results and new prize announcements delivered to your inbox.</p>
+                        </div>
+                        <div class="flex-1 w-full">
+                            <div class="flex gap-2">
+                                <input type="email" placeholder="Enter your email" class="flex-1 bg-black/50 border border-zinc-700 rounded-full px-6 py-3 outline-none focus:border-[#FF3D00]">
+                                <button class="bg-white text-black font-bold px-6 py-3 rounded-full hover:bg-[#FF3D00] hover:text-white transition-all">Join</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Leaderboard -->
+        <section class="py-20 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex justify-between items-center mb-10">
+                    <h2 class="text-3xl font-black uppercase tracking-tighter italic">Global Leaderboard</h2>
+                    <div class="flex bg-zinc-900 rounded-lg p-1">
+                        <button class="px-4 py-1 text-xs font-bold bg-[#FF3D00] rounded">Weekly</button>
+                        <button class="px-4 py-1 text-xs font-bold text-zinc-500">All-Time</button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto rounded-2xl border border-zinc-800">
+                    <table class="w-full text-left">
+                        <thead class="bg-zinc-900/50 text-xs font-bold uppercase text-zinc-500 tracking-widest">
+                            <tr>
+                                <th class="px-6 py-4">Rank</th>
+                                <th class="px-6 py-4">Referrer</th>
+                                <th class="px-6 py-4">Referrals</th>
+                                <th class="px-6 py-4">Bonus Entries</th>
+                                <th class="px-6 py-4 text-right">Country</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="leaderboard-row border-b border-zinc-800/50">
+                                <td class="px-6 py-4 font-black text-[#FF3D00]">01</td>
+                                <td class="px-6 py-4 font-semibold">M. Thompson</td>
+                                <td class="px-6 py-4">152</td>
+                                <td class="px-6 py-4 text-orange-400 font-bold">1,824</td>
+                                <td class="px-6 py-4 text-right">🇦🇺 AUS</td>
+                            </tr>
+                            <tr class="leaderboard-row border-b border-zinc-800/50">
+                                <td class="px-6 py-4 font-black text-zinc-400">02</td>
+                                <td class="px-6 py-4 font-semibold">S. Rodriguez</td>
+                                <td class="px-6 py-4">148</td>
+                                <td class="px-6 py-4 text-orange-400 font-bold">1,776</td>
+                                <td class="px-6 py-4 text-right">🇪🇸 ESP</td>
+                            </tr>
+                            <tr class="leaderboard-row border-b border-zinc-800/50">
+                                <td class="px-6 py-4 font-black text-orange-800">03</td>
+                                <td class="px-6 py-4 font-semibold">A. Chen</td>
+                                <td class="px-6 py-4">135</td>
+                                <td class="px-6 py-4 text-orange-400 font-bold">1,620</td>
+                                <td class="px-6 py-4 text-right">🇨🇦 CAN</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- TASK 2 & 4: REPLICATED FOOTER WITH SEO OPTIMIZATION -->
+    <footer class="bg-black border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand Column -->
+                <div class="col-span-2 md:col-span-1">
+                    <div class="text-2xl font-black mb-4">GOTTA SCAN<br><span class="text-[#FF3D00]">THEM ALL</span></div>
+                    <p class="text-sm text-gray-500 mb-6">Support our partners and win big with our global sweepstakes. Legit free contests to win real money with no entry fee.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=61588463875468" class="text-gray-500 hover:text-[#FF3D00] transition-all"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="https://www.instagram.com/scanthemall" class="text-gray-500 hover:text-[#FF3D00] transition-all"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="https://www.youtube.com/@GottaScanThemAll" class="text-gray-500 hover:text-[#FF3D00] transition-all"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+                        <a href="https://x.com/gotascanthemall" class="text-gray-500 hover:text-[#FF3D00] transition-all"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Category: About US -->
+                <div>
+                    <h4 id="FooterAbout" class="text-white font-bold mb-6 uppercase text-sm tracking-widest">About US</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="mission.html" id="Mission" class="hover:text-[#FF3D00] transition-colors">Our mission</a></li>
+                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" id="WhyScan" class="hover:text-[#FF3D00] transition-colors">Why scan them all</a></li>
+                        <li><a href="https://rule7media.com/franchise" id="Franchise" class="hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
+                    </ul>
+                </div>
+
+                <!-- Category: Policy -->
+                <div>
+                    <h4 id="FooterPolicy" class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Policy</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="GTSA Final Terms No Advertising.html" id="Terms" class="hover:text-[#FF3D00] transition-colors">Terms of use</a></li>
+                        <li><a href="privacy.html" id="Privacy" class="hover:text-[#FF3D00] transition-colors">Privacy Policy</a></li>
+                        <li><a href="index.html#faq" id="FAQs" class="hover:text-[#FF3D00] transition-colors">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Category: Support -->
+                <div>
+                    <h4 id="FooterSupport" class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Support</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="blog.html" id="Blog" class="hover:text-[#FF3D00] transition-colors">Blog</a></li>
+                        <li><a href="Final_contact_page.html" id="Contact" class="hover:text-[#FF3D00] transition-colors">Contact us</a></li>
+                        <li><a href="log_in_page_advertising_placeholder.html" id="AdvertiseFooter" class="hover:text-[#FF3D00] transition-colors font-bold text-white">Advertise With Us</a></li>
+                        <li><a href="https://rule7media.com/affiliate" id="Affiliate" class="hover:text-[#FF3D00] transition-colors">Affiliate Program</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/5 text-[10px] text-gray-600 uppercase tracking-widest">
+                <p>© 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED. SECURE | VERIFIED | FAIR PLAY</p>
+                    <div class="w-full md:w-auto flex justify-between items-center opacity-20 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Visa_Inc._logo_%282005%E2%80%932014%29.svg" alt="Visa" class="h-4">
+                        <img src="https://www.shutterstock.com/image-vector/paypal-multinational-financial-technology-payment-260nw-2276341185.jpg" alt="PayPal" class="h-4">
+                    </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mock state for Task 1 Button
+        let isLoggedIn = false;
+        const authBtn = document.getElementById('authBtn');
+        authBtn.addEventListener('click', () => {
+            isLoggedIn = !isLoggedIn;
+            authBtn.textContent = isLoggedIn ? "Sign Out" : "Register or Sign-In";
+            if(isLoggedIn) {
+                authBtn.classList.add('border-orange-500', 'text-orange-500');
+            } else {
+                authBtn.classList.remove('border-orange-500', 'text-orange-500');
+            }
+        });
+
+        lucide.createIcons();
+    </script>
+    <script src="js/ads.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/responsive.js" defer></script>
+    <script>
+        if (typeof initAds === 'function') {
+            initAds();
+        }
+    </script>
+</body>
+</html>

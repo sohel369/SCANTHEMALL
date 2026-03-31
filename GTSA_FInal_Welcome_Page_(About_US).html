@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Win free cash draws and luxury prize giveaways with Gotta Scan Them All™. Enter free prize draws for cash, luxury cars, and designer bags. Best online sweepstakes for real money with no purchase necessary.">
+    <meta name="keywords"
+        content="Free cash draws, Luxury prize giveaways, Win money online, Free sweepstakes, Cash contests, Enter free prize draws cash, Win luxury items no purchase, Online sweepstakes for cash prizes, Free entry prize draws luxury, Cash and prize giveaways, How to win free cash instantly online, Best free prize draws for luxury cars, Free sweepstakes to win real money no entry fee, Daily free draws for high-value prizes, Legit free contests to win designer bags, Enter to win cash and holiday prizes for free, Where to find free online draws for electronics, No purchase necessary sweepstakes luxury goods, Free cash giveaway sites that actually pay out, Monthly free draws for luxury watches and jewellery">
+    <title>Gotta Scan Them All™ | Win Luxury Prize Giveaways & Free Cash Draws</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
+            color-scheme: dark;
+        }
+
+        select option {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .premium-gradient {
+            background: linear-gradient(135deg, #FF3D00 0%, #FF8F00 100%);
+        }
+
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .form-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            padding: 0.875rem 1.25rem;
+            border-radius: 0.75rem;
+            width: 100%;
+            font-size: 0.875rem;
+        }
+
+        .form-input:focus {
+            border-color: #FF3D00;
+            background: rgba(255, 255, 255, 0.07);
+            outline: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF3D00 0%, #FF8F00 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(255, 61, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+    <!-- Top Banner Ad -->
+    <div class="w-full bg-black py-2 border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="ad-placeholder h-[90px] w-full max-w-[728px] mx-auto text-[10px]">
+                Leaderboard Advertisement
+            </div>
+        </div>
+    </div>
+
+
+    <!-- TASK 1: MODERN STICKY HEADER -->
+    <header class="glass-nav sticky top-0 z-[100] w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" id="Home" class="flex items-center space-x-2 group">
+                        <div
+                            class="w-10 h-10 premium-gradient rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform">
+                            <i data-lucide="camera" class="text-white w-6 h-6"></i>
+                        </div>
+                        <span class="text-xl font-black tracking-tighter uppercase">SCAN<span
+                                class="text-[#FF3D00]">THEM</span>ALL</span>
+                    </a>
+                </div>
+
+                <!-- Nav Links -->
+                <nav class="hidden lg:flex space-x-8">
+                    <a href="index.html"
+                        class="text-xs font-bold uppercase tracking-widest text-white hover:text-[#FF3D00] transition-colors">Home</a>
+                    <a href="GTSA_FInal_Welcome_Page_(About_US).html"
+                        class="text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-[#FF3D00] transition-colors">About
+                        Us</a>
+                    <a href="prize.html"
+                        class="text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-[#FF3D00] transition-colors">Prizes</a>
+                    <a href="position.html"
+                        class="text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-[#FF3D00] transition-colors">My
+                        Position</a>
+                </nav>
+
+                <!-- Action Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="log_in_page_advertising_placeholder.html"
+                        class="text-[10px] font-black uppercase tracking-widest text-zinc-400 hover:text-white transition-all border border-white/10 px-4 py-2 rounded-lg">Advertise
+                        with Us</a>
+                    <!-- Logic: Changes to Sign Out when session active -->
+                    <a href="registration_with_video.html" id="auth-btn"
+                        class="premium-gradient text-[10px] font-black uppercase tracking-widest text-white px-5 py-2.5 rounded-lg shadow-xl hover:scale-105 transition-all">Register
+                        or Sign-In</a>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <button class="lg:hidden text-white"><i data-lucide="menu"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- TASK 3: PRIMARY MESSAGE & HERO -->
+    <main class="relative">
+        <section class="max-w-7xl mx-auto px-6 pt-20 pb-12">
+            <div class="text-center mb-16">
+                <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tighter uppercase">Welcome to <span
+                        class="text-[#FF3D00]">Gotta Scan Them All ™</span></h1>
+                <div class="max-w-4xl mx-auto space-y-6 text-zinc-400 leading-relaxed text-lg">
+                    <p>Your comprehensive platform for tracking your participation in our prize draws, designed to
+                        enhance your chances of winning your dream car. Each upload you submit grants you an entry into
+                        the free prize draw associated with your area or region.</p>
+                    <div class="flex flex-wrap justify-center gap-4 my-8">
+                        <div class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl"><span
+                                class="block text-2xl font-black text-[#FF3D00]">5 EXTRA</span><span
+                                class="text-[10px] uppercase font-bold">32 Uploads</span></div>
+                        <div class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl"><span
+                                class="block text-2xl font-black text-[#FF3D00]">10 EXTRA</span><span
+                                class="text-[10px] uppercase font-bold">48 Uploads</span></div>
+                        <div class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl"><span
+                                class="block text-2xl font-black text-[#FF3D00]">20 EXTRA</span><span
+                                class="text-[10px] uppercase font-bold">96 Uploads</span></div>
+                    </div>
+                    <p class="text-sm border-l-2 border-[#FF3D00] pl-6 text-left italic">Uploading an identical image to
+                        multiple platforms is considered separate submissions, allowing you to reach milestones more
+                        efficiently. Your total number of uploads can be monitored via the personal calculator located
+                        at the bottom of the left-hand menu.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-zinc-300 text-sm leading-relaxed">
+                <div class="space-y-4 bg-white/5 p-8 rounded-3xl">
+                    <h3 class="text-[#FF3D00] font-black uppercase tracking-widest text-xs">Integrity & Safety</h3>
+                    <p>Our marketing partners provide the valuable prizes available on this platform. To maintain the
+                        integrity of the promotion, all images uploaded to your social media accounts must clearly
+                        depict you and correspond with your profile picture, alongside stationary vehicles. In the case
+                        of moving billboards a picture capturing the advertisement and unique surrounding background
+                        suffices, as your personal safety is paramount at all times.</p>
+                </div>
+                <div class="space-y-4 bg-white/5 p-8 rounded-3xl border border-[#FF3D00]/20">
+                    <h3 class="text-[#FF3D00] font-black uppercase tracking-widest text-xs">Rules of Participation</h3>
+                    <p>While multiple uploads of the same image to different platforms are permitted and encouraged,
+                        uploading the same image multiple times to a single platform will result in account cancellation
+                        and forfeiture of any draw entries. Should you win a prize, your winning entry will undergo
+                        verification to ensure all uploads remain current and have not been altered by artificial means
+                        such as photo editing software.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center max-w-3xl mx-auto">
+                <p class="text-zinc-500 text-xs uppercase tracking-widest leading-loose">
+                    Messages displayed on your personal page are sent by our partners in the "Gotta Scan Them All"™
+                    promotion. Stay attentive for additional partner marketing in your area from our partners in these
+                    messages to increase your opportunities for submission and enhance your chances of winning.
+                </p>
+            </div>
+        </section>
+
+        <!-- TASK 5: SOCIAL MULTIPLIER EFFECT -->
+        <section class="mb-24 pt-20">
+            <div class="text-center mb-16 px-4">
+                <h2 class="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tighter leading-none">THE SOCIAL
+                    MULTIPLIER EFFECT</h2>
+                <p class="text-[#FF3D00] font-black tracking-[0.3em] uppercase text-xs max-w-3xl mx-auto leading-loose">
+                    Boost your odds by replicating your uploads across platforms. <br class="hidden md:block"> Select an
+                    icon below to sync another feed and multiply your entries.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 mobile-grid-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 max-w-6xl mx-auto px-6">
+                <!-- 14 Unique Icons -->
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#1877F2]">
+                    </div>
+                    <i data-lucide="facebook"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-white transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-white uppercase">facebook</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]">
+                    </div>
+                    <i data-lucide="instagram"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-white transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-white uppercase">instagram</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-black">
+                    </div>
+                    <i data-lucide="twitter"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-white transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-white uppercase">x</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#FF0000]">
+                    </div>
+                    <i data-lucide="youtube"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-white transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-white uppercase">youtube</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#000000]">
+                    </div>
+                    <i data-lucide="music"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-white transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-white uppercase">tiktok</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#FFFC00]">
+                    </div>
+                    <i data-lucide="ghost"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-black transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-black uppercase">snapchat</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#E60023]">
+                    </div>
+                    <i data-lucide="pin"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-white transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-white uppercase">pinterest</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#FF4500]">
+                    </div>
+                    <i data-lucide="message-square"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-white transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-white uppercase">reddit</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#5865F2]">
+                    </div>
+                    <i data-lucide="hash"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-white transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-white uppercase">discord</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#07C160]">
+                    </div>
+                    <i data-lucide="message-circle"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-white transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-white uppercase">wechat</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#E6162D]">
+                    </div>
+                    <i data-lucide="share-2"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-white transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-white uppercase">weibo</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#FF4E00]">
+                    </div>
+                    <i data-lucide="video"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-white transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-white uppercase">kuaishou</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/5 hover:-translate-y-4">
+                    <div
+                        class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-black">
+                    </div>
+                    <i data-lucide="music-2"
+                        class="relative z-10 w-10 h-10 text-gray-500 group-hover:text-white transition-colors duration-500"></i>
+                    <span
+                        class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-gray-600 group-hover:text-white uppercase">douyin</span>
+                </a>
+                <a href="instagram_upload_page.html"
+                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] premium-gradient hover:-translate-y-4 shadow-xl">
+                    <i data-lucide="qr-code" class="relative z-10 w-10 h-10 text-white"></i>
+                    <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white uppercase">Scan
+                        Them All ™</span>
+                </a>
+            </div>
+
+
+
+            <!-- TASK 5: FORMS FOR CASH DRAW & REFERRALS -->
+            <div class="max-w-7xl mx-auto px-6 mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <!-- Register Cash Draw Form -->
+                <section class="bg-zinc-900/50 p-8 md:p-10 rounded-[2.5rem] border border-zinc-800">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl font-black mb-2 uppercase">Register Free for $1000 Cash Draw</h2>
+                        <p class="text-zinc-500 text-sm">Winners will be notified by Email or SMS Message</p>
+                    </div>
+                    <form id="cashdraw-form" action="#" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input type="text" name="FirstName" placeholder="First Name" class="form-input" required>
+                        <input type="text" name="LastName" placeholder="Last Name" class="form-input" required>
+                        <input type="email" name="Email" placeholder="Email" class="form-input col-span-full" required>
+
+                        <select id="country" name="Country" class="form-input" required>
+                            <option value="">Select Country</option>
+                            <option value="AUS">Australia</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="USA">USA</option>
+                            <option value="CAN">Canada</option>
+                            <!-- Other countries from instructions -->
+                        </select>
+
+                        <select id="state" name="State" class="form-input" required>
+                            <option value="">State or Region</option>
+                        </select>
+
+                        <div class="flex flex-row gap-2 col-span-full md:col-span-1">
+                            <input type="text" id="country-code" name="CountryCode" placeholder="+61"
+                                class="form-input w-20 text-center" readonly>
+                            <input type="tel" name="Phone" placeholder="Phone Number" class="form-input flex-1"
+                                required>
+                        </div>
+
+                        <select id="area-code" name="AreaCode" class="form-input" required>
+                            <option value="">Area Code</option>
+                        </select>
+
+                        <input type="hidden" name="Database" value="Cash Draws">
+                        <input type="hidden" name="DateOfEntry" value="2024-05-20">
+
+                        <button type="submit"
+                            class="btn-primary col-span-full py-4 rounded-xl font-bold uppercase tracking-widest shadow-2xl">Enter
+                            Cash Draw</button>
+                    </form>
+                </section>
+
+                <!-- Message to Community Section -->
+                <section
+                    class="p-8 md:p-10 rounded-[2.5rem] bg-zinc-900/30 border border-zinc-800/50 relative overflow-hidden h-full flex flex-col justify-center">
+                    <div class="absolute -top-10 -right-10 opacity-[0.03]">
+                        <i data-lucide="shield-check" class="w-64 h-64"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <h2 class="text-2xl font-black mb-6 text-[#FF3D00] uppercase tracking-tighter">A Message to Our
+                            Community</h2>
+                        <p class="text-zinc-400 leading-relaxed text-base italic font-medium">
+                            “Your participation in uploading images not only gives you a chance to earn valuable
+                            sweepstake entries, but it also demonstrates your support for our advertising partners who
+                            make these prizes possible. By engaging with and reciprocally supporting our advertisers,
+                            you help ensure that sweepstakes continue to grow—offering more frequent and increasingly
+                            valuable prizes in smaller, more localised areas. As our partnership network strengthens,
+                            Country Sweepstakes can evolve into State and even Postal Code Sweepstakes, bringing
+                            exciting rewards closer to home for all participants across your territory.”
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+
+    <section class="mb-24 pt-20">
+        <div class="text-center mb-16 px-4">
+            <h2 class="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tighter leading-none">INVITE YOUR SQUAD
+            </h2>
+            <p class="text-[#FF3D00] font-black tracking-[0.3em] uppercase text-xs max-w-3xl mx-auto leading-loose">
+                Refer Your Friends and Family – Unlock Up to 150 Bonus Entries After 100 Scans!. <br
+                    class="hidden md:block"> <a href="registration_with_video.html"
+                    class="text-xs font-bold uppercase tracking-widest text-white hover:text-[#FF3D00] transition-colors">For
+                    every friend who joins you earn 12 bonus entries </a>
+            </p>
+        </div>
+
+        <!-- TASK 2: REPLICATED FOOTER -->
+        <footer class="bg-black border-t border-white/5 pt-20 pb-12">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                    <!-- Brand -->
+                    <div class="col-span-1">
+                        <a href="index.html" class="text-2xl font-black mb-6 block uppercase tracking-tighter">GOTTA
+                            SCAN<br><span class="text-[#FF3D00]">THEM ALL</span></a>
+                        <div class="flex space-x-4">
+                            <a href="https://www.facebook.com/profile.php?id=61588463875468"
+                                class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors"><i
+                                    data-lucide="facebook" class="w-4 h-4 text-white"></i></a>
+                            <a href="https://www.instagram.com/scanthemall"
+                                class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors"><i
+                                    data-lucide="instagram" class="w-4 h-4 text-white"></i></a>
+                            <a href="https://www.youtube.com/@GottaScanThemAll"
+                                class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors"><i
+                                    data-lucide="youtube" class="w-4 h-4 text-white"></i></a>
+                            <a href="https://x.com/gotascanthemall"
+                                class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors"><i
+                                    data-lucide="twitter" class="w-4 h-4 text-white"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Category 1: About US -->
+                    <div>
+                        <h4 class="text-white font-black mb-6 uppercase text-xs tracking-widest" id="footer-about">About
+                            US</h4>
+                        <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-500">
+                            <li><a href="mission.html" class="footer-link">Our mission</a></li>
+                            <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link">Why scan them
+                                    all</a></li>
+                            <li><a href="log_in_page_advertising_placeholder.html" class="footer-link">Franchise
+                                    Opportunities</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Category 2: Policy -->
+                    <div>
+                        <h4 class="text-white font-black mb-6 uppercase text-xs tracking-widest" id="footer-policy">
+                            Policy</h4>
+                        <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-500">
+                            <li><a href="GTSA Final Terms No Advertising.html"
+                                    class="hover:text-white transition-colors">Terms of use</a></li>
+                            <li><a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                            </li>
+                            <li><a href="index.html#faq" class="hover:text-white transition-colors">FAQs</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Category 3: Support -->
+                    <div>
+                        <h4 class="text-white font-black mb-6 uppercase text-xs tracking-widest" id="footer-support">
+                            Support</h4>
+                        <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-500">
+                            <li><a href="blog.html" class="footer-link">Blog</a></li>
+                            <li><a href="Final_contact_page.html" class="footer-link">Contact us</a></li>
+                            <li><a href="log_in_page_advertising_placeholder.html" class="footer-link">Advertise With
+                                    Us</a></li>
+                            <li><a href="log_in_page_advertising_placeholder.html" class="footer-link">Affiliate
+                                    Program</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Footer Bottom -->
+                <div
+                    class="flex flex-col md:flex-row items-center justify-between pt-10 border-t border-white/5 text-[10px] text-zinc-600 font-black uppercase tracking-[0.3em]">
+                    <p>© 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED.</p>
+                    <div class="w-full md:w-auto flex justify-between items-center opacity-20 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Visa_Inc._logo_%282005%E2%80%932014%29.svg"
+                            alt="Visa" class="h-4">
+                        <img src="https://www.shutterstock.com/image-vector/paypal-multinational-financial-technology-payment-260nw-2276341185.jpg"
+                            alt="PayPal" class="h-4">
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/ads.js"></script>
+        <script src="js/api.js"></script>
+        <script src="js/app.js"></script>
+        <script>
+            lucide.createIcons();
+
+            // Auth Button Simulation Logic
+            const authBtn = document.getElementById('auth-btn');
+            let isLoggedIn = false; // Set to true to test "Sign Out"
+            if (isLoggedIn) {
+                authBtn.textContent = 'Sign Out';
+                authBtn.href = '#logout';
+            }
+
+            // --- NEW: Location Selection Logic ---
+            const countrySelect = document.getElementById('country');
+            const stateSelect = document.getElementById('state');
+            const countryCodeInput = document.getElementById('country-code');
+            const areaCodeSelect = document.getElementById('area-code');
+
+            const locationData = {
+                "AUS": {
+                    code: "+61",
+                    states: ["New South Wales", "Victoria", "Queensland", "Western Australia", "South Australia", "Tasmania", "Northern Territory", "ACT"],
+                    areas: ["02", "03", "07", "08"]
+                },
+                "UK": {
+                    code: "+44",
+                    states: ["England", "Scotland", "Wales", "Northern Ireland"],
+                    areas: ["020", "0121", "0131", "0141", "0151", "0161"]
+                },
+                "USA": {
+                    code: "+1",
+                    states: ["New York", "California", "Texas", "Florida", "Illinois", "Pennsylvania", "Ohio", "Georgia"],
+                    areas: ["212", "310", "415", "646", "312", "305"]
+                },
+                "CAN": {
+                    code: "+1",
+                    states: ["Ontario", "Quebec", "British Columbia", "Alberta", "Manitoba", "Saskatchewan"],
+                    areas: ["416", "604", "514", "403"]
+                }
+            };
+
+            countrySelect.addEventListener('change', function () {
+                const country = this.value;
+
+                // Reset Selects
+                stateSelect.innerHTML = '<option value="">State or Region</option>';
+                areaCodeSelect.innerHTML = '<option value="">Area Code</option>';
+                countryCodeInput.value = '';
+
+                if (locationData[country]) {
+                    const data = locationData[country];
+
+                    // Populate States
+                    data.states.forEach(state => {
+                        const opt = document.createElement('option');
+                        opt.value = state;
+                        opt.textContent = state;
+                        stateSelect.appendChild(opt);
+                    });
+
+                    // Populate Area Codes
+                    data.areas.forEach(area => {
+                        const opt = document.createElement('option');
+                        opt.value = area;
+                        opt.textContent = area;
+                        areaCodeSelect.appendChild(opt);
+                    });
+
+                    // Set Country Code
+                    countryCodeInput.value = data.code;
+                }
+            });
+
+            // --- NEW: Form Submission Handler ---
+            const cashdrawForm = document.getElementById('cashdraw-form');
+            if (cashdrawForm) {
+                cashdrawForm.addEventListener('submit', function (e) {
+                    // Prevent default mailto: to use simulated API submission
+                    e.preventDefault();
+
+                    const formData = new FormData(this);
+                    const data = Object.fromEntries(formData.entries());
+
+                    // Use API if available
+                    if (typeof registerUser === 'function') {
+                        registerUser(data);
+                    } else {
+                        console.log("Simulating Submission:", data);
+                        alert("Thank you " + data.FirstName + "! Your entry for the $1000 Cash Draw has been submitted successfully.\n\nWinners will be notified via Email.");
+                    }
+
+                    // Clear form
+                    this.reset();
+                    stateSelect.innerHTML = '<option value="">State or Region</option>';
+                });
+            }
+        </script>
+        <script src="js/ads.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/responsive.js" defer></script>
+        <script>
+            if (typeof initAds === 'function') {
+                initAds();
+            }
+        </script>
+</body>
+
+</html>
