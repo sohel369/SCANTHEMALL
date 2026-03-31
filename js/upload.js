@@ -22,7 +22,7 @@ function initUpload() {
                 card.classList.add('ring-2', 'ring-[#FF3D00]', 'scale-105', 'bg-[#FF3D00]/10');
                 selectedCategoryIndex = parseInt(card.getAttribute('data-index'));
                 console.log("Selected Category Index:", selectedCategoryIndex);
-                
+
                 // Scroll to upload zone for better UX
                 const uploadZone = document.querySelector('.upload-zone');
                 if (uploadZone) uploadZone.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -64,7 +64,7 @@ function showPreview(file) {
 function finalizeUpload() {
     const modal = document.getElementById('upload-preview-modal');
     const confirmBtn = document.getElementById('confirm-finalize-btn');
-    
+
     if (!confirmBtn) return;
     confirmBtn.innerText = "Uploading...";
     confirmBtn.disabled = true;
@@ -74,7 +74,7 @@ function finalizeUpload() {
         if (typeof updateBingo === 'function') {
             updateBingo(selectedCategoryIndex); // This triggers Step 2 (Detect) and Step 3 (Reward)
         }
-        
+
         // Update global counter
         let count = parseInt(localStorage.getItem("total_uploads") || "0");
         localStorage.setItem("total_uploads", count + 1);
