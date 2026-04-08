@@ -94,15 +94,47 @@
         }
 
         .ad-placeholder {
-            background: repeating-linear-gradient(45deg, #1a1a1a, #1a1a1a 10px, #222 10px, #222 20px);
-            border: 1px dashed #444;
+            background: repeating-linear-gradient(45deg, #111111, #111111 10px, #181818 10px, #181818 20px);
+            border: 1px dashed rgba(255, 61, 0, 0.25);
+            border-radius: 8px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #666;
-            font-weight: bold;
+            gap: 6px;
+            color: #555;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
+            font-size: 9px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-placeholder::before {
+            content: 'AD';
+            position: absolute;
+            top: 6px;
+            right: 8px;
+            font-size: 7px;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            color: rgba(255, 61, 0, 0.4);
+            background: rgba(255, 61, 0, 0.08);
+            padding: 2px 5px;
+            border-radius: 3px;
+            border: 1px solid rgba(255, 61, 0, 0.2);
+        }
+
+        .ad-skyscraper {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            color: #444;
+            font-weight: 700;
+            text-transform: uppercase;
         }
     </style>
     <style>
@@ -5229,193 +5261,225 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT AREA -->
-    <div class="max-w-7xl mx-auto px-4 py-12">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <!-- MAIN CONTENT AREA WITH SKYSCRAPER ADS -->
+    <div class="w-full flex items-start gap-0">
 
-            <!-- Sidebar: Language & Archive -->
-            <aside class="lg:col-span-3 space-y-10 order-2 lg:order-1">
+        <!-- Task 4: Left Skyscraper -->
+        <aside class="hidden xl:flex flex-col items-center flex-shrink-0 w-[180px] px-3 py-12 min-h-[700px]">
+            <div class="ad-placeholder w-[160px] h-[600px] sticky top-[140px]">
+                <span class="ad-skyscraper">Advertisement</span>
+            </div>
+        </aside>
 
-                <!-- Language Switcher -->
-                <div>
-                    <h3
-                        class="text-sm font-black uppercase tracking-widest mb-6 border-b border-[#FF3D00] pb-2 inline-block">
-                        Select Language</h3>
-                    <div class="space-y-2">
-                        <button onclick="switchLanguage('en')"
-                            class="sidebar-link w-full text-left p-3 rounded-r-lg text-zinc-400 flex items-center justify-between group">
-                            <span class="flex items-center"><img src="https://flagcdn.com/us.svg"
-                                    class="flag-icon mr-3"> English</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true"
-                                class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100">
-                                <path d="m9 18 6-6-6-6"></path>
-                            </svg>
-                        </button>
-                        <button onclick="switchLanguage('es')"
-                            class="sidebar-link w-full text-left p-3 rounded-r-lg text-zinc-400 flex items-center justify-between group">
-                            <span class="flex items-center"><img src="https://flagcdn.com/mx.svg"
-                                    class="flag-icon mr-3"> Español</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true"
-                                class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100">
-                                <path d="m9 18 6-6-6-6"></path>
-                            </svg>
-                        </button>
-                        <button onclick="switchLanguage('zh')"
-                            class="sidebar-link w-full text-left p-3 rounded-r-lg text-zinc-400 flex items-center justify-between group">
-                            <span class="flex items-center"><img src="https://flagcdn.com/cn.svg"
-                                    class="flag-icon mr-3"> 中文 (Chinese)</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true"
-                                class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100">
-                                <path d="m9 18 6-6-6-6"></path>
-                            </svg>
-                        </button>
-                        <button onclick="switchLanguage('pt')"
-                            class="sidebar-link w-full text-left p-3 rounded-r-lg text-zinc-400 flex items-center justify-between group">
-                            <span class="flex items-center"><img src="https://flagcdn.com/br.svg"
-                                    class="flag-icon mr-3"> Português</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true"
-                                class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100">
-                                <path d="m9 18 6-6-6-6"></path>
-                            </svg>
-                        </button>
+        <div class="flex-1 min-w-0 max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+                <!-- Sidebar: Language & Archive -->
+                <aside class="lg:col-span-3 space-y-10 order-2 lg:order-1">
+
+                    <!-- Language Switcher -->
+                    <div>
+                        <h3
+                            class="text-sm font-black uppercase tracking-widest mb-6 border-b border-[#FF3D00] pb-2 inline-block">
+                            Select Language</h3>
+                        <div class="space-y-2">
+                            <button onclick="switchLanguage('en')"
+                                class="sidebar-link w-full text-left p-3 rounded-r-lg text-zinc-400 flex items-center justify-between group">
+                                <span class="flex items-center"><img src="https://flagcdn.com/us.svg"
+                                        class="flag-icon mr-3"> English</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true"
+                                    class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100">
+                                    <path d="m9 18 6-6-6-6"></path>
+                                </svg>
+                            </button>
+                            <button onclick="switchLanguage('es')"
+                                class="sidebar-link w-full text-left p-3 rounded-r-lg text-zinc-400 flex items-center justify-between group">
+                                <span class="flex items-center"><img src="https://flagcdn.com/mx.svg"
+                                        class="flag-icon mr-3"> Español</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true"
+                                    class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100">
+                                    <path d="m9 18 6-6-6-6"></path>
+                                </svg>
+                            </button>
+                            <button onclick="switchLanguage('zh')"
+                                class="sidebar-link w-full text-left p-3 rounded-r-lg text-zinc-400 flex items-center justify-between group">
+                                <span class="flex items-center"><img src="https://flagcdn.com/cn.svg"
+                                        class="flag-icon mr-3"> 中文 (Chinese)</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true"
+                                    class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100">
+                                    <path d="m9 18 6-6-6-6"></path>
+                                </svg>
+                            </button>
+                            <button onclick="switchLanguage('pt')"
+                                class="sidebar-link w-full text-left p-3 rounded-r-lg text-zinc-400 flex items-center justify-between group">
+                                <span class="flex items-center"><img src="https://flagcdn.com/br.svg"
+                                        class="flag-icon mr-3"> Português</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true"
+                                    class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100">
+                                    <path d="m9 18 6-6-6-6"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Monthly Archive -->
-                <div>
-                    <h3
-                        class="text-sm font-black uppercase tracking-widest mb-6 border-b border-zinc-700 pb-2 inline-block">
-                        Monthly Archive</h3>
-                    <div class="grid grid-cols-1 gap-1">
-                        <a href="#" class="sidebar-link text-sm text-zinc-500 p-2 block sb-element-selected">February
-                            2026</a>
-                        <a href="#" class="sidebar-link text-sm text-zinc-500 p-2 block">January 2026</a>
-                        <a href="#" class="sidebar-link text-sm text-zinc-500 p-2 block">December 2025</a>
-                        <a href="#" class="sidebar-link text-sm text-zinc-500 p-2 block">November 2025</a>
+                    <!-- Monthly Archive -->
+                    <div>
+                        <h3
+                            class="text-sm font-black uppercase tracking-widest mb-6 border-b border-zinc-700 pb-2 inline-block">
+                            Monthly Archive</h3>
+                        <div class="grid grid-cols-1 gap-1">
+                            <a href="#"
+                                class="sidebar-link text-sm text-zinc-500 p-2 block sb-element-selected">February
+                                2026</a>
+                            <a href="#" class="sidebar-link text-sm text-zinc-500 p-2 block">January 2026</a>
+                            <a href="#" class="sidebar-link text-sm text-zinc-500 p-2 block">December 2025</a>
+                            <a href="#" class="sidebar-link text-sm text-zinc-500 p-2 block">November 2025</a>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Industry Updates CTA -->
-                <div class="premium-gradient p-6 rounded-2xl shadow-lg">
-                    <h4 class="font-bold text-white mb-2">Never miss an update</h4>
-                    <p class="text-xs text-white/80 mb-4">Get the latest sweepstakes news and partner spotlights
-                        delivered to your inbox.</p>
-                    <a href="https://rule7media.com/ancillarylanding"
-                        class="block text-center bg-white text-[#FF3D00] py-2 rounded-full font-bold text-sm hover:bg-zinc-100 transition-colors">Subscribe
-                        Now</a>
-                </div>
-            </aside>
+                    <!-- Industry Updates CTA -->
+                    <div class="premium-gradient p-6 rounded-2xl shadow-lg">
+                        <h4 class="font-bold text-white mb-2">Never miss an update</h4>
+                        <p class="text-xs text-white/80 mb-4">Get the latest sweepstakes news and partner spotlights
+                            delivered to your inbox.</p>
+                        <form onsubmit="handleSubscribe(event, 'sidebar')" class="flex flex-col gap-3 w-full">
+                            <input type="email" id="sidebar-email" placeholder="Email address" required
+                                class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-[#FF3D00] transition-colors">
+                            <button type="submit"
+                                class="w-full text-center bg-white text-[#FF3D00] py-3 rounded-lg font-bold text-sm hover:bg-zinc-100 transition-colors shadow-md">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </aside>
 
-            <!-- Blog Feed -->
-            <main class="lg:col-span-9 order-1 lg:order-2">
-                <header class="mb-12">
-                    <h2 id="main-headline"
-                        class="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter italic">Latest <span
-                            class="text-[#FF3D00]">Insights</span></h2>
-                    <p id="sub-headline" class="text-zinc-500 text-lg">Global updates, partner spotlights, and
-                        sweepstakes strategy.</p>
-                </header>
 
-                <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Article Card 1 -->
-                    <article class="blog-card rounded-3xl overflow-hidden flex flex-col">
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
-                                alt="Technology Trends"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                            <!-- Country Flags for Language Group -->
-                            <div
-                                class="absolute bottom-4 left-4 flex space-x-1 bg-black/60 backdrop-blur-md p-2 rounded-lg">
-                                <img src="https://flagcdn.com/us.svg" class="flag-icon" title="USA">
-                                <img src="https://flagcdn.com/gb.svg" class="flag-icon" title="UK">
-                                <img src="https://flagcdn.com/au.svg" class="flag-icon" title="Australia">
-                                <img src="https://flagcdn.com/ca.svg" class="flag-icon" title="Canada">
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex items-center justify-between mb-4">
-                                <span
-                                    class="text-[10px] font-black bg-[#FF3D00]/10 text-[#FF3D00] px-3 py-1 rounded-full uppercase tracking-widest">Industry
-                                    News</span>
-                                <span class="text-xs text-zinc-500">Feb 12, 2025</span>
-                            </div>
-                            <h3
-                                class="article-title text-xl font-bold mb-3 leading-tight hover:text-[#FF3D00] transition-colors">
-                                How Local Partnerships Are Revolutionizing Digital Sweepstakes</h3>
-                            <p class="article-excerpt text-zinc-400 text-sm line-clamp-3 mb-6">
-                                The landscape of digital advertising is shifting towards localized community engagement.
-                                By supporting small businesses through scan-based systems, users are unlocking a new
-                                tier of rewards...
-                            </p>
-                            <div class="mt-auto pt-6 border-t border-white/5 flex justify-between items-center">
-                                <button onclick="expandArticle(1)"
-                                    class="text-[#FF3D00] font-bold text-sm flex items-center group">
-                                    Read Full Article <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right"
-                                        aria-hidden="true"
-                                        class="lucide lucide-arrow-right w-4 h-4 ml-2 transition-transform group-hover:translate-x-1">
-                                        <path d="M5 12h14"></path>
-                                        <path d="m12 5 7 7-7 7"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </article>
+                <!-- Blog Feed -->
+                <main class="lg:col-span-9 order-1 lg:order-2">
+                    <header class="mb-12">
+                        <h2 id="main-headline"
+                            class="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter italic">Latest <span
+                                class="text-[#FF3D00]">Insights</span></h2>
+                        <p id="sub-headline" class="text-zinc-500 text-lg">Global updates, partner spotlights, and
+                            sweepstakes strategy.</p>
+                    </header>
 
-                    <!-- Article Card 2 -->
-                    <article class="blog-card rounded-3xl overflow-hidden flex flex-col">
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Retail Success"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                            <div
-                                class="absolute bottom-4 left-4 flex space-x-1 bg-black/60 backdrop-blur-md p-2 rounded-lg">
-                                <img src="https://flagcdn.com/us.svg" class="flag-icon">
-                                <img src="https://flagcdn.com/ca.svg" class="flag-icon">
+                    <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Article Card 1 -->
+                        <article class="blog-card rounded-3xl overflow-hidden flex flex-col">
+                            <div class="relative h-56 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
+                                    alt="Technology Trends"
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                                <!-- Country Flags for Language Group -->
+                                <div
+                                    class="absolute bottom-4 left-4 flex space-x-1 bg-black/60 backdrop-blur-md p-2 rounded-lg">
+                                    <img src="https://flagcdn.com/us.svg" class="flag-icon" title="USA">
+                                    <img src="https://flagcdn.com/gb.svg" class="flag-icon" title="UK">
+                                    <img src="https://flagcdn.com/au.svg" class="flag-icon" title="Australia">
+                                    <img src="https://flagcdn.com/ca.svg" class="flag-icon" title="Canada">
+                                </div>
                             </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex items-center justify-between mb-4">
-                                <span
-                                    class="text-[10px] font-black bg-[#FF3D00]/10 text-[#FF3D00] px-3 py-1 rounded-full uppercase tracking-widest">Partner
-                                    Spotlight</span>
-                                <span class="text-xs text-zinc-500">Feb 08, 2025</span>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span
+                                        class="text-[10px] font-black bg-[#FF3D00]/10 text-[#FF3D00] px-3 py-1 rounded-full uppercase tracking-widest">Industry
+                                        News</span>
+                                    <span class="text-xs text-zinc-500">Feb 12, 2025</span>
+                                </div>
+                                <h3
+                                    class="article-title text-xl font-bold mb-3 leading-tight hover:text-[#FF3D00] transition-colors">
+                                    How Local Partnerships Are Revolutionizing Digital Sweepstakes</h3>
+                                <p class="article-excerpt text-zinc-400 text-sm line-clamp-3 mb-6">
+                                    The landscape of digital advertising is shifting towards localized community
+                                    engagement.
+                                    By supporting small businesses through scan-based systems, users are unlocking a new
+                                    tier of rewards...
+                                </p>
+                                <div class="mt-auto pt-6 border-t border-white/5 flex justify-between items-center">
+                                    <button onclick="expandArticle(1)"
+                                        class="text-[#FF3D00] font-bold text-sm flex items-center group">
+                                        Read Full Article <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right"
+                                            aria-hidden="true"
+                                            class="lucide lucide-arrow-right w-4 h-4 ml-2 transition-transform group-hover:translate-x-1">
+                                            <path d="M5 12h14"></path>
+                                            <path d="m12 5 7 7-7 7"></path>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
-                            <h3
-                                class="article-title text-xl font-bold mb-3 leading-tight hover:text-[#FF3D00] transition-colors">
-                                Maximizing Your Entry Points Through Social Media Feeds</h3>
-                            <p class="article-excerpt text-zinc-400 text-sm line-clamp-3 mb-6">
-                                Understanding the multiplier effect of social media uploads. Learn how replicating your
-                                portrait screenshots across multiple platforms can triple your winning probability...
-                            </p>
-                            <div class="mt-auto pt-6 border-t border-white/5 flex justify-between items-center">
-                                <button onclick="expandArticle(2)"
-                                    class="text-[#FF3D00] font-bold text-sm flex items-center group">
-                                    Read Full Article <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right"
-                                        aria-hidden="true"
-                                        class="lucide lucide-arrow-right w-4 h-4 ml-2 transition-transform group-hover:translate-x-1">
-                                        <path d="M5 12h14"></path>
-                                        <path d="m12 5 7 7-7 7"></path>
-                                    </svg>
-                                </button>
+                        </article>
+
+                        <!-- Article Card 2 -->
+                        <article class="blog-card rounded-3xl overflow-hidden flex flex-col">
+                            <div class="relative h-56 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="Retail Success"
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                                <div
+                                    class="absolute bottom-4 left-4 flex space-x-1 bg-black/60 backdrop-blur-md p-2 rounded-lg">
+                                    <img src="https://flagcdn.com/us.svg" class="flag-icon">
+                                    <img src="https://flagcdn.com/ca.svg" class="flag-icon">
+                                </div>
                             </div>
-                        </div>
-                    </article>
-                </div>
-            </main>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span
+                                        class="text-[10px] font-black bg-[#FF3D00]/10 text-[#FF3D00] px-3 py-1 rounded-full uppercase tracking-widest">Partner
+                                        Spotlight</span>
+                                    <span class="text-xs text-zinc-500">Feb 08, 2025</span>
+                                </div>
+                                <h3
+                                    class="article-title text-xl font-bold mb-3 leading-tight hover:text-[#FF3D00] transition-colors">
+                                    Maximizing Your Entry Points Through Social Media Feeds</h3>
+                                <p class="article-excerpt text-zinc-400 text-sm line-clamp-3 mb-6">
+                                    Understanding the multiplier effect of social media uploads. Learn how replicating
+                                    your
+                                    portrait screenshots across multiple platforms can triple your winning
+                                    probability...
+                                </p>
+                                <div class="mt-auto pt-6 border-t border-white/5 flex justify-between items-center">
+                                    <button onclick="expandArticle(2)"
+                                        class="text-[#FF3D00] font-bold text-sm flex items-center group">
+                                        Read Full Article <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right"
+                                            aria-hidden="true"
+                                            class="lucide lucide-arrow-right w-4 h-4 ml-2 transition-transform group-hover:translate-x-1">
+                                            <path d="M5 12h14"></path>
+                                            <path d="m12 5 7 7-7 7"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </main>
+            </div>
+
         </div>
+
+        <!-- Task 4: Right Skyscraper -->
+        <aside class="hidden xl:flex flex-col items-center flex-shrink-0 w-[180px] px-3 py-12 min-h-[700px]">
+            <div class="ad-placeholder w-[160px] h-[600px] sticky top-[140px]">
+                <span class="ad-skyscraper">Advertisement</span>
+            </div>
+        </aside>
+
     </div>
+
+
+    <!-- end skyscraper flex wrapper -->
 
     <!-- Article Detail Modal / In-line Expansion Template -->
     <div id="article-modal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-xl overflow-y-auto">
@@ -5430,9 +5494,13 @@
             </button>
 
             <div class="article-expanded space-y-8">
-                <a href="https://rule7media.com/ancillarylanding"
-                    class="btn-primary block w-full text-center py-4 rounded-xl font-black uppercase tracking-widest shadow-2xl">Subscribe
-                    to Industry Updates</a>
+                <form onsubmit="handleSubscribe(event, 'modal-top')"
+                    class="w-full flex bg-white/5 border border-white/20 rounded-xl focus-within:border-[#FF3D00] transition-colors overflow-hidden">
+                    <input type="email" id="modal-top-email" placeholder="Enter your email address" required
+                        class="flex-1 w-full min-w-0 bg-transparent px-6 py-4 text-white focus:outline-none placeholder-zinc-500">
+                    <button type="submit"
+                        class="btn-primary px-6 py-4 md:px-8 font-black uppercase tracking-widest shadow-2xl whitespace-nowrap flex-shrink-0 text-sm md:text-base">Subscribe</button>
+                </form>
 
                 <img id="modal-img" src="" class="w-full h-[400px] object-cover rounded-[2rem]">
 
@@ -5446,12 +5514,29 @@
                     <!-- Article Content Populate Here -->
                 </div>
 
-                <a href="https://rule7media.com/ancillarylanding"
-                    class="btn-primary block w-full text-center py-4 rounded-xl font-black uppercase tracking-widest shadow-2xl mt-12">Subscribe
-                    to Industry Updates</a>
+                <form onsubmit="handleSubscribe(event, 'modal-bottom')"
+                    class="w-full flex bg-white/5 border border-white/20 rounded-xl focus-within:border-[#FF3D00] transition-colors overflow-hidden mt-12">
+                    <input type="email" id="modal-bottom-email" placeholder="Enter your email address" required
+                        class="flex-1 w-full min-w-0 bg-transparent px-6 py-4 text-white focus:outline-none placeholder-zinc-500">
+                    <button type="submit"
+                        class="btn-primary px-6 py-4 md:px-8 font-black uppercase tracking-widest shadow-2xl whitespace-nowrap flex-shrink-0 text-sm md:text-base">Subscribe</button>
+                </form>
             </div>
         </div>
+        <!-- Task 4: Right Skyscraper -->
+        <aside class="hidden xl:flex flex-col items-center flex-shrink-0 w-[180px] px-3 py-12 min-h-[700px]">
+            <div class="ad-placeholder w-[160px] h-[600px] sticky top-[140px]">
+                <span class="ad-skyscraper">Advertisement</span>
+            </div>
+        </aside>
+
     </div>
+    <div class="border-t border-white/5 pt-10 pb-2">
+        <p class="text-center text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-700 mb-3">Advertisement
+        </p>
+        <div class="ad-placeholder h-[90px] w-full max-w-[728px] mx-auto rounded-lg">Leaderboard (Footer)</div>
+    </div>
+
 
     <!-- Footer (RETAINED INTACT) -->
     <footer class="bg-black border-t border-white/5 pt-16 pb-8">
@@ -5481,16 +5566,20 @@
                         <li><a href="privacy.html" class="hover:text-[#FF3D00] transition-colors">Privacy Policy</a>
                         </li>
                         <li><a href="index.html#faq" class="hover:text-[#FF3D00] transition-colors">FAQs</a></li>
-                        <li><a href="GTSA Final Sweepstake Rules.html" class="hover:text-[#FF3D00] transition-colors">Sweepstake Rules</a></li>
+                        <li><a href="GTSA Final Sweepstake Rules.html"
+                                class="hover:text-[#FF3D00] transition-colors">Sweepstake Rules</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Support</h4>
                     <ul class="space-y-4 text-sm text-gray-500">
                         <li><a href="blog.html" class="hover:text-[#FF3D00] transition-colors">Blog</a></li>
-                        <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite Friends</a></li>
-                        <li><a href="instagram_upload_page.html" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
-                        <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
+                        <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite
+                                Friends</a></li>
+                        <li><a href="instagram_upload_page.html"
+                                class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
+                        <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social
+                                Blast</a></li>
                         <li><a href="Final_contact_page.html" class="hover:text-[#FF3D00] transition-colors">Contact
                                 us</a></li>
                         <li><a href="log_in_page_advertising_placeholder.html"
@@ -5500,6 +5589,10 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Footer Leaderboard Ad -->
+
+
             <div
                 class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/5 text-[10px] text-gray-600 uppercase tracking-widest">
                 <p>© 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED.</p>
@@ -5514,7 +5607,46 @@
         </div>
     </footer>
 
+    <!-- Global Toast Notification -->
+    <div id="toast-popup"
+        class="fixed bottom-10 right-10 translate-y-20 opacity-0 z-[200] bg-[#FF3D00] text-white px-6 py-4 rounded-xl shadow-2xl font-bold flex items-center gap-3 transition-all duration-300 pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-check-circle">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+        </svg>
+        Thanks for join us
+    </div>
+
     <script>
+        // HANDLE SUBSCRIBE & DB MOCK
+        function handleSubscribe(e, formId) {
+            e.preventDefault();
+            const emailInput = document.getElementById(`${formId}-email`).value;
+
+            // Simulating API Call to save to database
+            console.log(`[Database Server]: Adding new subscriber email -> ${emailInput}`);
+
+            // Store in LocalStorage to simulate persistent database save
+            let subscribers = JSON.parse(localStorage.getItem('gtsa_db_subscribers') || '[]');
+            if (!subscribers.includes(emailInput)) {
+                subscribers.push(emailInput);
+                localStorage.setItem('gtsa_db_subscribers', JSON.stringify(subscribers));
+            }
+
+            // Global Auto Popup (Toast)
+            const toast = document.getElementById('toast-popup');
+            toast.classList.remove('translate-y-20', 'opacity-0');
+
+            e.target.reset();
+
+            // Hide after 2 seconds
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2000);
+        }
+
         // MOCK DATA FOR TRANSLATION & LOGIC
         const translations = {
             en: {

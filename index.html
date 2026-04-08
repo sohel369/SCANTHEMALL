@@ -8,9 +8,19 @@
   <meta name="keywords"
     content="Free cash draws, Luxury prize giveaways, Win money online, Free sweepstakes, Cash contests, Enter free prize draws cash, Win luxury items no purchase, Online sweepstakes for cash prizes, Free entry prize draws luxury, Cash and prize giveaways, How to win free cash instantly online, Best free prize draws for luxury cars, Free sweepstakes to win real money no entry fee, Daily free draws for high-value prizes, Legit free contests to win designer bags, Enter to win cash and holiday prizes for free, Where to find free online draws for electronics, No purchase necessary sweepstakes luxury goods, Free cash giveaway sites that actually pay out, Monthly free draws for luxury watches and jewellery">
   <title>Gotta Scan Them All | Win Luxury Prizes Up to $75,000</title>
+  <script src="js/geo-rules.js" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer=""></script>
+  <style id="anti-flicker">
+    .auth-login,
+    .auth-signup,
+    #login-btn,
+    #signup-btn {
+      opacity: 0;
+      visibility: hidden;
+    }
+  </style>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
@@ -90,14 +100,14 @@
 
     .car-track {
       display: flex;
-      width: calc(250px * 14);
-      animation: scroll 40s linear infinite;
+      width: calc(250px * 40);
+      animation: scroll 10s linear infinite;
     }
 
     .car-track-reverse {
       display: flex;
-      width: calc(250px * 14);
-      animation: scroll-reverse 40s linear infinite;
+      width: calc(250px * 40);
+      animation: scroll-reverse 10s linear infinite;
     }
 
     @keyframes scroll {
@@ -14213,14 +14223,10 @@
       /* Optional: adds more visual weight */
     }
 
-    * {
-      cursor: pointer !important;
-    }
-
-    *:hover {
-      outline: 1px dashed #6366F1 !important;
-      /* Indigo-500 for hover */
-      outline-offset: 1px !important;
+    /* Removed builder-specific outlines that interfere with clicks */
+    body {
+      min-height: 100vh;
+      margin: 0;
     }
 
     /* Ensure body takes up full height for selection to work properly */
@@ -14240,65 +14246,110 @@
 <body class="antialiased">
 
   <!-- HEADER -->
-  <header class="glass-header sticky top-0 z-[100] w-full transition-all"
-    style="padding: 0.5rem 0px; background: rgba(10, 10, 12, 0.95);">
+  <header class="glass-header sticky top-0 z-50 w-full transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
         <div class="flex-shrink-0 flex items-center">
           <a href="index.html" id="Home" class="flex items-center space-x-2">
-            <div
-              class="w-10 h-10 bg-gradient-to-br from-[#bc13fe] to-[#00f2ff] rounded-lg flex items-center justify-center p-0.5">
-              <div class="bg-black w-full h-full rounded-md flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  data-lucide="scan-line" aria-hidden="true" class="lucide lucide-scan-line text-[#00f2ff] w-6 h-6">
-                  <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
-                  <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
-                  <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
-                  <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
-                  <path d="M7 12h10"></path>
-                </svg>
-              </div>
+            <div class="w-10 h-10 bg-[#FF3D00] rounded-lg flex items-center justify-center">
+              <i data-lucide="camera" class="text-white w-6 h-6"></i>
             </div>
-            <span class="text-xl font-black tracking-tighter text-white uppercase italic">Scan<span
-                class="text-[#bc13fe]">Them</span>All</span>
+            <span class="text-xl font-extrabold tracking-tighter text-white uppercase">SCAN<span
+                class="text-[#FF3D00]">THEM</span>ALL</span>
           </a>
         </div>
 
         <nav class="hidden md:flex space-x-8">
-          <a href="index.html"
-            class="text-xs font-bold uppercase tracking-widest text-white hover:text-[#00f2ff] transition-colors">Home</a>
+          <a href="index.html" class="text-sm font-medium text-white hover:text-[#FF3D00] transition-colors">Home</a>
           <a href="GTSA_FInal_Welcome_Page_(About_US).html" id="AboutUs"
-            class="text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-[#bc13fe] transition-colors">About</a>
+            class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">About us</a>
           <a href="prize.html" id="Prizes"
-            class="text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-[#bc13fe] transition-colors text-white">Prizes</a>
+            class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">Prizes</a>
           <a href="position.html" id="MyPosition"
-            class="text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-[#bc13fe] transition-colors">My
-            Position</a>
+            class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">My Position</a>
         </nav>
 
-        <!-- Auth & Ads Buttons -->
-        <div class="hidden md:flex items-center space-x-4">
-          <!-- Scripted logic: Changes to "Sign Out" if user session exists (mockup) -->
-          <a href="registration_with_video.html" id="auth-btn"
-            class="text-sm font-semibold text-white px-4 py-2 rounded-full border border-zinc-700 hover:bg-zinc-800 transition-all">Register
-            or Sign-In</a>
-          <a href="log_in_page_advertising_placeholder.html"
-            class="btn-primary text-sm font-semibold text-white px-6 py-2 rounded-full shadow-lg">Advertise with Us</a>
+        <div class="hidden md:flex items-center space-x-6">
+          <!-- Auth Buttons -->
+          <div class="flex items-center space-x-4">
+            <a href="registration_with_video.html" id="auth-btn"
+              class="auth-login auth-signup text-sm font-semibold text-white px-4 py-2 rounded-full border border-zinc-700 hover:bg-zinc-800 transition-all">Register
+              or Sign-In</a>
+            <a href="log_in_page_advertising_placeholder.html"
+              class="bg-[#FF3D00] text-sm font-semibold text-white px-6 py-2 rounded-full shadow-lg hover:bg-orange-600 transition-all">Advertise
+              with Us</a>
+          </div>
+
+          <!-- User Profile Section -->
+          <div class="user-profile hidden relative group py-4 items-center">
+            <button class="flex items-center space-x-3 focus:outline-none">
+              <div class="text-right hidden lg:block">
+                <p class="text-xs font-bold text-white uppercase tracking-widest user-name tracking-tighter">Alex Thompson</p>
+                <p class="text-[10px] text-[#FF3D00] font-black uppercase">Pro Member</p>
+              </div>
+              <div class="w-10 h-10 rounded-full border-2 border-[#FF3D00] p-0.5 overflow-hidden">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="Avatar"
+                  class="w-full h-full rounded-full bg-zinc-800">
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500"></i>
+            </button>
+
+            <!-- Dropdown -->
+            <div
+              class="absolute right-0 top-full mt-1 w-48 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl profile-dropdown py-2 z-[60] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              <a href="registration_with_video.html"
+                class="flex items-center px-4 py-3 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors">
+                <i data-lucide="user" class="w-4 h-4 mr-3"></i> My Profile
+              </a>
+              <a href="registration_with_video.html"
+                class="flex items-center px-4 py-3 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors">
+                <i data-lucide="settings" class="w-4 h-4 mr-3"></i> Account Settings
+              </a>
+              <div class="border-t border-zinc-800 my-1"></div>
+              <a href="#"
+                class="auth-logout flex items-center px-4 py-3 text-sm text-red-500 hover:bg-red-500/10 transition-colors">
+                <i data-lucide="log-out" class="w-4 h-4 mr-3"></i> Log Out
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- Mobile Toggle -->
         <div class="md:hidden">
-          <button class="text-zinc-400 hover:text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu"
-              aria-hidden="true" class="lucide lucide-menu w-8 h-8">
-              <path d="M4 5h16"></path>
-              <path d="M4 12h16"></path>
-              <path d="M4 19h16"></path>
-            </svg>
+          <button id="mobile-menu-btn" class="text-zinc-400 hover:text-white p-2">
+            <i data-lucide="menu" class="w-8 h-8"></i>
           </button>
         </div>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU OVERLAY (Visibility managed by responsive.js) -->
+    <div id="mobile-menu" class="fixed inset-0 z-[110] bg-black/95 backdrop-blur-2xl md:hidden">
+      <div class="flex flex-col h-full p-8">
+        <div class="flex justify-between items-center mb-12">
+          <div class="flex items-center space-x-2">
+            <div class="w-10 h-10 bg-[#FF3D00] rounded-lg flex items-center justify-center">
+              <i data-lucide="camera" class="text-white w-6 h-6"></i>
+            </div>
+            <span class="text-2xl font-black tracking-tighter text-white uppercase">SCAN<span
+                class="text-[#FF3D00]">THEM</span>ALL</span>
+          </div>
+          <button id="mobile-menu-close" class="text-white p-2">
+            <i data-lucide="x" class="w-8 h-8"></i>
+          </button>
+        </div>
+        <nav class="flex flex-col space-y-6">
+          <a href="index.html" class="text-2xl font-black uppercase text-white hover:text-[#FF3D00]">Home</a>
+          <a href="GTSA_FInal_Welcome_Page_(About_US).html"
+            class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">About</a>
+          <a href="prize.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Prizes</a>
+          <a href="position.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">My Position</a>
+          <hr class="border-white/10 my-4">
+          <a href="registration_with_video.html"
+            class="auth-signup text-2xl font-black uppercase text-white border border-white/20 p-4 rounded-2xl text-center">Register or Sign-In</a>
+          <a href="log_in_page_advertising_placeholder.html"
+            class="bg-[#FF3D00] text-black text-center py-4 rounded-2xl font-black uppercase mt-4">Advertise with Us</a>
+        </nav>
       </div>
     </div>
   </header>
@@ -14371,7 +14422,9 @@
       <!-- Row 1 -->
       <div class="relative flex overflow-x-hidden mb-8">
         <div class="car-track">
-          <!-- Repeat items -->
+          <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
           <img
             src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
             class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
@@ -14391,7 +14444,44 @@
             src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
             class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
           <img
-            src="https://plus.unsplash.com/premium_photo-1737677106508-91f7f4e1468e?q=80&w=467&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D            "
+            src="https://images.unsplash.com/photo-1603577372314-d13061262d3a?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <!-- Second set for seamless loop -->
+          <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1603577372314-d13061262d3a?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
             class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
         </div>
       </div>
@@ -14412,13 +14502,59 @@
             src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
             class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
           <img
+            src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1603577372314-d13061262d3a?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <!-- Second set for seamless loop -->
+          <img
+            src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1603577372314-d13061262d3a?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
+            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
+          <img
             src="https://images.unsplash.com/photo-1599912027806-cfec9f5944b6?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
             class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
           <img
             src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&amp;fit=crop&amp;q=60&amp;w=400"
-            class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
-          <img
-            src="https://images.unsplash.com/photo-1620891549027-942fdc95d3f5?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             class="h-40 w-[250px] object-cover border-r border-black" alt="luxury car">
         </div>
       </div>
@@ -14447,50 +14583,32 @@
             </div>
           </div>
         </div>
-        <div class="mt-8 flex justify-center gap-4">
-          <a href="https://www.facebook.com/profile.php?id=61588463875468"
-            class="p-3 bg-zinc-900 rounded-xl hover:text-[#bc13fe] transition-all hover:scale-110"><svg
-              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              data-lucide="facebook" aria-hidden="true" class="lucide lucide-facebook">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-            </svg></a>
-          <a href="https://www.instagram.com/scanthemall"
-            class="p-3 bg-zinc-900 rounded-xl hover:text-[#bc13fe] transition-all hover:scale-110"><svg
-              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              data-lucide="instagram" aria-hidden="true" class="lucide lucide-instagram">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-            </svg></a>
-          <a href="https://x.com/gotascanthemall"
-            class="p-3 bg-zinc-900 rounded-xl hover:text-[#bc13fe] transition-all hover:scale-110"><svg
-              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              data-lucide="twitter" aria-hidden="true" class="lucide lucide-twitter">
-              <path
-                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
-              </path>
-            </svg></a>
-          <a href="https://tiktok.com/@gotascanthemall"
-            class="p-3 bg-zinc-900 rounded-xl hover:text-[#bc13fe] transition-all hover:scale-110"><svg
-              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              data-lucide="music-2" aria-hidden="true" class="lucide lucide-music-2">
-              <circle cx="8" cy="18" r="4"></circle>
-              <path d="M12 18V2l7 4"></path>
-            </svg></a>
-          <a href="https://www.youtube.com/@GottaScanThemAll"
-            class="p-3 bg-zinc-900 rounded-xl hover:text-[#bc13fe] transition-all hover:scale-110"><svg
-              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              data-lucide="youtube" aria-hidden="true" class="lucide lucide-youtube">
-              <path
-                d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17">
-              </path>
-              <path d="m10 15 5-3-5-3z"></path>
-            </svg></a>
+        <div class="mt-16 p-8 md:p-12 bg-gradient-to-br from-[#bc13fe]/20 via-black to-[#00f2ff]/20 rounded-[3rem] border border-white/10 relative overflow-hidden group">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#bc13fe]/5 to-[#00f2ff]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+          <div class="relative z-10">
+            <h3 class="text-2xl md:text-3xl font-black uppercase mb-4 italic tracking-tighter">Spread the <span class="text-[#bc13fe]">Viral</span> Hype</h3>
+            <p class="text-zinc-400 mb-8 max-w-2xl mx-auto text-lg">Don't just scan alone! Invite your squad to the ultimate luxury hunt. Every successful referral doubles your excitement and adds <span class="text-white font-bold">10 BONUS ENTRIES</span> to your name.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+              <a href="final_invite.html" class="btn-glow-purple px-12 py-4 rounded-2xl text-white font-black uppercase tracking-widest hover:scale-110 transition-all flex items-center gap-3">
+                Access Referral Hub
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+              
+              <div class="flex items-center gap-4">
+                <span class="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500">Quick Share:</span>
+                <div class="flex gap-3">
+                  <a href="#" class="p-3 bg-zinc-900 rounded-xl hover:text-[#bc13fe] transition-all hover:scale-110 border border-white/5"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                  <a href="#" class="p-3 bg-zinc-900 rounded-xl hover:text-[#bc13fe] transition-all hover:scale-110 border border-white/5"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a>
+                  <a href="#" class="p-3 bg-zinc-900 rounded-xl hover:text-white transition-all hover:scale-110 border border-white/5">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -14501,50 +14619,59 @@
         <div class="flex flex-col lg:flex-row gap-12">
           <div class="flex-1">
             <h2 class="text-4xl font-black mb-8 italic uppercase">Top Leaders This Week</h2>
-            <div class="space-y-4">
+            <div class="space-y-4 h-full flex flex-col">
               <!-- Category 1 -->
               <div
-                class="leaderboard-card p-6 rounded-2xl flex items-center justify-between group hover:border-[#bc13fe]/50 transition-all">
+                class="leaderboard-card p-6 rounded-2xl flex items-center justify-between group hover:border-[#bc13fe]/50 transition-all flex-1">
                 <div class="flex items-center gap-6">
-                  <span class="text-3xl font-black text-zinc-700 italic">01</span>
+                  <div class="text-4xl font-black text-white/10 italic group-hover:text-[#bc13fe]/20 transition-colors">01</div>
                   <div>
-                    <h4 class="font-black uppercase tracking-widest text-[#bc13fe]">Luxury Vehicle</h4>
-                    <p class="text-zinc-400 text-sm">@j_robertson92</p>
+                    <h4 class="font-black uppercase tracking-widest text-[#bc13fe] text-sm">Luxury Vehicle</h4>
+                    <p class="text-zinc-400 text-xs">@j_robertson92</p>
                   </div>
                 </div>
                 <div class="text-right">
-                  <div class="text-white font-bold">$50,000 Value</div>
-                  <div class="text-[10px] uppercase text-zinc-500">Leading 2h ago</div>
+                  <div class="text-white font-black text-lg">$50,000 <span class="text-[10px] text-zinc-500 font-medium uppercase tracking-widest ml-1">Value</span></div>
+                  <div class="flex items-center justify-end gap-2 text-[9px] uppercase text-zinc-500 font-bold tracking-widest">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                    Leading 2h ago
+                  </div>
                 </div>
               </div>
               <!-- Category 2 -->
               <div
-                class="leaderboard-card p-6 rounded-2xl flex items-center justify-between group hover:border-[#00f2ff]/50 transition-all">
+                class="leaderboard-card p-6 rounded-2xl flex items-center justify-between group hover:border-[#00f2ff]/50 transition-all flex-1">
                 <div class="flex items-center gap-6">
-                  <span class="text-3xl font-black text-zinc-700 italic">02</span>
+                  <div class="text-4xl font-black text-white/10 italic group-hover:text-[#00f2ff]/20 transition-colors">02</div>
                   <div>
-                    <h4 class="font-black uppercase tracking-widest text-[#00f2ff]">Dream Vacation</h4>
-                    <p class="text-zinc-400 text-sm">@sophia_luxury</p>
+                    <h4 class="font-black uppercase tracking-widest text-[#00f2ff] text-sm">Dream Vacation</h4>
+                    <p class="text-zinc-400 text-xs">@sophia_luxury</p>
                   </div>
                 </div>
                 <div class="text-right">
-                  <div class="text-white font-bold">$12,000 Value</div>
-                  <div class="text-[10px] uppercase text-zinc-500">Leading 5h ago</div>
+                  <div class="text-white font-black text-lg">$12,000 <span class="text-[10px] text-zinc-500 font-medium uppercase tracking-widest ml-1">Value</span></div>
+                  <div class="flex items-center justify-end gap-2 text-[9px] uppercase text-zinc-500 font-bold tracking-widest">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                    Leading 5h ago
+                  </div>
                 </div>
               </div>
               <!-- Category 3 -->
               <div
-                class="leaderboard-card p-6 rounded-2xl flex items-center justify-between group hover:border-yellow-500/50 transition-all">
+                class="leaderboard-card p-6 rounded-2xl flex items-center justify-between group hover:border-yellow-500/50 transition-all flex-1">
                 <div class="flex items-center gap-6">
-                  <span class="text-3xl font-black text-zinc-700 italic">03</span>
+                  <div class="text-4xl font-black text-white/10 italic group-hover:text-yellow-500/20 transition-colors">03</div>
                   <div>
-                    <h4 class="font-black uppercase tracking-widest text-yellow-500">High-End Fashion</h4>
-                    <p class="text-zinc-400 text-sm">@marco_trends</p>
+                    <h4 class="font-black uppercase tracking-widest text-yellow-500 text-sm">High-End Fashion</h4>
+                    <p class="text-zinc-400 text-xs">@marco_trends</p>
                   </div>
                 </div>
                 <div class="text-right">
-                  <div class="text-white font-bold">$4,500 Value</div>
-                  <div class="text-[10px] uppercase text-zinc-500">Leading 12h ago</div>
+                  <div class="text-white font-black text-lg">$4,500 <span class="text-[10px] text-zinc-500 font-medium uppercase tracking-widest ml-1">Value</span></div>
+                  <div class="flex items-center justify-end gap-2 text-[9px] uppercase text-zinc-500 font-bold tracking-widest">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                    Leading 12h ago
+                  </div>
                 </div>
               </div>
             </div>
@@ -14553,29 +14680,39 @@
           <div class="lg:w-[400px] space-y-8">
             <!-- REFER A FRIEND -->
             <div
-              class="bg-gradient-to-br from-[#bc13fe] to-[#7a00ff] p-8 rounded-3xl shadow-2xl relative overflow-hidden">
-              <div class="absolute top-0 right-0 p-4 opacity-20">
+              class="bg-gradient-to-br from-[#bc13fe] to-[#7a00ff] p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden group h-full flex flex-col justify-center">
+              <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-150 transition-transform duration-700">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  data-lucide="gift" aria-hidden="true" class="lucide lucide-gift w-20 h-20 text-white">
+                  data-lucide="gift" aria-hidden="true" class="lucide lucide-gift w-32 h-32 text-white">
                   <path d="M12 7v14"></path>
                   <path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"></path>
                   <path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5"></path>
                   <rect x="3" y="7" width="18" height="4" rx="1"></rect>
                 </svg>
               </div>
-              <h3 class="text-2xl font-black text-white uppercase italic mb-2 leading-none">Refer &amp; Win</h3>
-              <p class="text-white/80 text-sm mb-6 uppercase tracking-wider font-bold">Earn 10 Bonus Entries</p>
-              <form action="#" class="space-y-4">
-                <input type="text" placeholder="Friend's Name"
-                  class="w-full bg-black/20 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/50 text-sm focus:outline-none focus:border-white">
-                <input type="email" placeholder="Friend's Email"
-                  class="w-full bg-black/20 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/50 text-sm focus:outline-none focus:border-white">
-                <button type="submit"
-                  class="w-full bg-white text-[#bc13fe] font-black uppercase py-4 rounded-xl hover:bg-black hover:text-white transition-all shadow-xl">
-                  Send &amp; Earn Entries
-                </button>
-              </form>
+              <div class="relative z-10">
+                <div class="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-[10px] font-black uppercase tracking-[0.2em] mb-4">Limited Offer</div>
+                <h3 class="text-3xl font-black text-white uppercase italic mb-3 leading-tight tracking-tighter">Refer <br>&amp; Win</h3>
+                <p class="text-white/80 text-sm mb-8 uppercase tracking-widest font-bold">Earn <span class="bg-white text-[#bc13fe] px-2 rounded">10 Bonus</span> Entries</p>
+                
+                <div class="space-y-6">
+                  <div class="p-4 bg-black/20 rounded-2xl border border-white/10 backdrop-blur-sm">
+                    <p class="text-[11px] text-white/70 uppercase font-black mb-3">Your Journey Starts Here</p>
+                    <a href="final_invite.html"
+                      class="w-full bg-white text-[#bc13fe] font-black uppercase py-4 rounded-xl hover:bg-black hover:text-white transition-all shadow-xl text-center block text-sm">
+                      Get My Referral Link
+                    </a>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="flex -space-x-2">
+                       <div class="w-6 h-6 rounded-full bg-blue-500 border-2 border-[#bc13fe] flex items-center justify-center text-[8px] font-bold">JD</div>
+                       <div class="w-6 h-6 rounded-full bg-green-500 border-2 border-[#bc13fe] flex items-center justify-center text-[8px] font-bold">AS</div>
+                    </div>
+                    <p class="text-[9px] text-white/40 uppercase font-bold tracking-widest leading-tight">Action automatically synced <br>to email &amp; database</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -14591,75 +14728,102 @@
         <p class="text-zinc-400 max-w-2xl mx-auto mb-12 text-lg">Scan one advertiser from each sector in your area and
           watch your entry tickets double like magic. 2x the tickets = 2x the chance for luxury!</p>
 
-        <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           <div class="p-8 bg-black/50 border border-white/5 rounded-3xl">
             <div class="w-12 h-12 bg-[#bc13fe]/20 rounded-xl flex items-center justify-center mx-auto mb-6">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                data-lucide="map-pin" aria-hidden="true" class="lucide lucide-map-pin text-[#bc13fe]">
-                <path
-                  d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0">
-                </path>
-                <circle cx="12" cy="10" r="3"></circle>
+                data-lucide="globe" aria-hidden="true" class="lucide lucide-globe text-[#bc13fe]">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                <path d="M2 12h20"></path>
               </svg>
             </div>
-            <h4 class="font-bold mb-4">Select Country</h4>
-            <select class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-3 text-zinc-400 text-sm">
-              <option>United States</option>
-              <option>United Kingdom</option>
-              <option>Canada</option>
-            </select>
+            <h4 class="font-bold mb-4">Location</h4>
+            <div class="space-y-3">
+              <select class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-3 text-zinc-400 text-sm">
+                <option>United States</option>
+                <option>United Kingdom</option>
+                <option>Canada</option>
+                <option>Australia</option>
+              </select>
+              <input type="text" placeholder="State / Region"
+                class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-3 text-zinc-400 text-sm">
+            </div>
           </div>
+
           <div class="p-8 bg-black/50 border border-white/5 rounded-3xl">
             <div class="w-12 h-12 bg-[#00f2ff]/20 rounded-xl flex items-center justify-center mx-auto mb-6">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                data-lucide="target" aria-hidden="true" class="lucide lucide-target text-[#00f2ff]">
-                <circle cx="12" cy="12" r="10"></circle>
-                <circle cx="12" cy="12" r="6"></circle>
-                <circle cx="12" cy="12" r="2"></circle>
+                data-lucide="map-pin" aria-hidden="true" class="lucide lucide-map-pin text-[#00f2ff]">
+                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                <circle cx="12" cy="10" r="3"></circle>
               </svg>
             </div>
-            <h4 class="font-bold mb-4">Enter Zip Code</h4>
+            <h4 class="font-bold mb-4">Post Code</h4>
             <input type="text" placeholder="e.g. 90210"
               class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-3 text-zinc-400 text-sm">
           </div>
+
           <div class="p-8 bg-black/50 border border-white/5 rounded-3xl">
             <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center mx-auto mb-6">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                data-lucide="search" aria-hidden="true" class="lucide lucide-search text-yellow-500">
-                <path d="m21 21-4.34-4.34"></path>
-                <circle cx="11" cy="11" r="8"></circle>
+                data-lucide="layers" aria-hidden="true" class="lucide lucide-layers text-yellow-500">
+                <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.1 6.3a2 2 0 0 0 0 3.38l8.07 4.12a2 2 0 0 0 1.66 0l8.07-4.12a2 2 0 0 0 0-3.38z"></path>
+                <path d="m2.1 14.74 8.07 4.13a2 2 0 0 0 1.66 0l8.07-4.13"></path>
+                <path d="m2.1 19.16 8.07 4.13a2 2 0 0 0 1.66 0l8.07-4.13"></path>
               </svg>
             </div>
-            <h4 class="font-bold mb-4">Find Advertisers</h4>
+            <h4 class="font-bold mb-4">Advertiser Sector</h4>
+            <select class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-3 text-zinc-400 text-sm">
+              <option>All Sectors</option>
+              <option>Automotive</option>
+              <option>Fashion &amp; Retail</option>
+              <option>Real Estate</option>
+              <option>Food &amp; Beverage</option>
+              <option>Technology</option>
+              <option>Health &amp; Wellness</option>
+              <option>Travel &amp; Tourism</option>
+              <option>Entertainment</option>
+              <option>Finance</option>
+              <option>Education</option>
+              <option>Professional Services</option>
+              <option>Home &amp; Garden</option>
+              <option>Sports &amp; Fitness</option>
+              <option>Beauty &amp; Personal Care</option>
+              <option>Non-Profit</option>
+              <option>Government</option>
+              <option>Industrial &amp; Manufacturing</option>
+              <option>Pets</option>
+              <option>Music &amp; Arts</option>
+              <option>Luxury Goods</option>
+              <option>Logistics</option>
+              <option>Sustainability</option>
+              <option>Media</option>
+              <option>Gaming</option>
+            </select>
+          </div>
+
+          <div class="p-8 bg-black/50 border border-white/5 rounded-3xl flex flex-col justify-between">
+            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                data-lucide="search" aria-hidden="true" class="lucide lucide-search text-white">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+            </div>
+            <h4 class="font-bold mb-4">Start Scanning</h4>
             <button
-              class="w-full bg-white text-black font-black uppercase py-3 rounded-lg hover:bg-[#bc13fe] hover:text-white transition-all">Search
+              class="w-full bg-white text-black font-black uppercase py-4 rounded-xl hover:bg-[#bc13fe] hover:text-white transition-all shadow-lg">Search
               Now</button>
           </div>
         </div>
 
-        <div class="pt-16 border-t border-white/5">
-          <p class="text-[10px] uppercase font-bold tracking-[0.5em] text-[#bc13fe] mb-8">Our Official Luxury Partners
-          </p>
-          <div class="flex flex-wrap justify-center gap-12 items-center">
-            <img
-              src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              class="h-12 opacity-90 hover:opacity-100 transition-all hover:scale-110" alt="Mercedes">
-            <img
-              src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              class="h-12 opacity-90 hover:opacity-100 transition-all hover:scale-110" alt="BMW">
-            <img
-              src="https://images.unsplash.com/photo-1610880846497-7257b23f6138?q=80&w=421&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              class="h-12 opacity-90 hover:opacity-100 transition-all hover:scale-110" alt="Audi">
-            <img
-              src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              class="h-12 opacity-90 hover:opacity-100 transition-all hover:scale-110" alt="Porsche">
-            <img
-              src="https://plus.unsplash.com/premium_photo-1736592234354-9b9b5807d801?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              class="h-12 opacity-90 hover:opacity-100 transition-all hover:scale-110" alt="Tesla">
-          </div>
+        <!-- Luxury Partners Section Hidden for now -->
+        <div class="pt-16 border-t border-white/5 hidden">
         </div>
       </div>
     </section>
@@ -14731,12 +14895,24 @@
                 <div>
                   <div class="font-bold">David Chen</div>
                   <div class="text-xs text-zinc-500 uppercase">Top 10 Contender </div>
-                  <div class="text-xs text-zinc-500 lowercase"> (Quotes,Leaderboards and user Figures for illustrative
-                    purposes only)</div>
+                  <div class="text-[7px] text-zinc-500/40 lowercase leading-tight mt-1">
+                    (Quotes,Leaderboards and user Figures for illustrative purposes only)
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🌍 GLOBAL COMPLIANCE & GEO-TARGETED RULES -->
+    <section class="max-w-7xl mx-auto px-6 mb-24">
+      <div id="rules-container">
+        <!-- Dynamically filled by js/geo-rules.js with country-specific legal text -->
+        <div class="animate-pulse flex flex-col items-center">
+          <div class="h-4 bg-zinc-800 rounded w-1/4 mb-4"></div>
+          <div class="h-20 bg-zinc-800 rounded w-full"></div>
         </div>
       </div>
     </section>
@@ -14787,14 +14963,11 @@
                 </path>
               </svg>
             </a>
-            <a href="https://x.com/gotascanthemall" class="text-zinc-500 hover:text-white transition-all"><svg
-                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                data-lucide="twitter" aria-hidden="true" class="lucide lucide-twitter w-5 h-5">
-                <path
-                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
-                </path>
-              </svg></a>
+            <a href="https://x.com/gotascanthemall" class="text-zinc-500 hover:text-white transition-all">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" class="w-5 h-5">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -14805,7 +14978,8 @@
             <li><a href="mission.html" id="Mission" class="hover:text-[#FF3D00] transition-colors">Our mission</a></li>
             <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" id="WhyScan"
                 class="hover:text-[#FF3D00] transition-colors">Why scan them all</a></li>
-            <li><a href="calculator.html" id="PrizeCalculator" class="hover:text-[#FF3D00] transition-colors">Prize Calculator</a></li>
+            <li><a href="calculator.html" id="PrizeCalculator" class="hover:text-[#FF3D00] transition-colors">Prize
+                Calculator</a></li>
             <li><a href="log_in_page_advertising_placeholder.html" id="Franchise"
                 class="hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
           </ul>
@@ -14822,7 +14996,8 @@
             </li>
             <li><a href="fapFooter.html" id="FAQs" class="hover:text-[#FF3D00] transition-colors">FAQs</a>
             </li>
-            <li><a href="GTSA Final Sweepstake Rules.html" id="SweepstakeRules" class="hover:text-[#FF3D00] transition-colors">Sweepstake Rules</a></li>
+            <li><a href="GTSA Final Sweepstake Rules.html" id="SweepstakeRules"
+                class="hover:text-[#FF3D00] transition-colors">Sweepstake Rules</a></li>
           </ul>
         </div>
 
@@ -14832,14 +15007,17 @@
           <ul class="space-y-4 text-xs font-bold text-zinc-500 uppercase tracking-widest">
             <li><a href="blog.html" id="Blog" class="hover:text-[#FF3D00] transition-colors">Blog</a>
             </li>
-            <li><a href="final_invite.html" id="InviteFriends" class="hover:text-[#FF3D00] transition-colors">Invite Friends</a></li>
-            <li><a href="instagram_upload_page.html" id="InstagramUpload" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
-            <li><a href="invite_blast_social.html" id="SocialBlast" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
+            <li><a href="final_invite.html" id="InviteFriends" class="hover:text-[#FF3D00] transition-colors">Invite
+                Friends</a></li>
+            <li><a href="instagram_upload_page.html" id="InstagramUpload"
+                class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
+            <li><a href="invite_blast_social.html" id="SocialBlast"
+                class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
             <li><a href="Final_contact_page.html" id="Contact" class="hover:text-[#FF3D00] transition-colors">Contact
                 us</a></li>
             <li><a href="log_in_page_advertising_placeholder.html" id="AdvertiseFooter"
                 class="hover:text-[#FF3D00] transition-colors">Affiliate Program</a></li>
-            <li><a href="log_in_page_advertising_placeholder.html" id="AdvertiseFooter"
+            <li><a href="log_in_page_advertising_placeholder.html" id="AdvertiseFooterAction"
                 class="hover:text-[#FF3D00] transition-colors font-bold text-white bg-[#FF3D00]/10 px-2 py-1 rounded inline-block">Advertise
                 With Us</a></li>
           </ul>
@@ -14885,6 +15063,20 @@
   <script src="js/ads.js"></script>
   <script src="js/app.js"></script>
   <script src="js/responsive.js" defer></script>
+  <script type="module" src="js/auth-header.js"></script>
+  <!-- 
+  <script type="module">
+    import { auth } from "./js/firebase-init.js";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        console.log("GTSA: No user session found. Redirecting to Entry Gate...");
+        window.location.href = "registration_with_video.html";
+      }
+    });
+  </script>
+  -->
   <script>
     lucide.createIcons();
   </script>

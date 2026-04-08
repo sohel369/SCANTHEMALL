@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Luxury Fashion Prize | Scan Them All</title>
+    <script src="../js/geo-rules.js" defer></script>
+    <meta name="description" id="page-desc" content="Win first-class designer fashion - free holiday prize draw with Scan Them All">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,900;1,900&display=swap" rel="stylesheet">
+
+    <!-- Anti-flicker -->
+    <style id="anti-flicker">
+        .auth-login, .auth-signup, #login-btn, #signup-btn { opacity: 0 !important; visibility: hidden !important; }
+    </style>
+
+    <style>
+        :root {
+            --accent: #FF3D00;
+            --accent-rgb: 255,61,0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #050505;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ── LOADING SKELETON ── */
+        .skeleton { animation: skeleton-pulse 1.5s ease-in-out infinite; }
+        @keyframes skeleton-pulse {
+            0%, 100% { opacity: 0.4; }
+            50%       { opacity: 0.9; }
+        }
+        .skeleton-block {
+            background: rgba(255,255,255,0.06);
+            border-radius: 0.75rem;
+        }
+        #prize-loading { position: fixed; inset: 0; z-index: 9999; background: #050505; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; transition: opacity 0.6s; }
+        #prize-loading.fade-out { opacity: 0; pointer-events: none; }
+
+        /* ── HERO ── */
+        .prize-hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+        .prize-hero__bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.35);
+            transform: scale(1.05);
+            transition: transform 8s ease;
+        }
+        .prize-hero:hover .prize-hero__bg { transform: scale(1.0); }
+        .prize-hero__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.4) 50%, transparent 100%);
+        }
+        .prize-hero__content {
+            position: relative;
+            z-index: 2;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* ── ACCENT SYSTEM ── */
+        .accent-text  { color: var(--accent); }
+        .accent-border { border-color: var(--accent); }
+        .accent-bg    { background: var(--accent); }
+        .accent-glow  { box-shadow: 0 0 60px rgba(var(--accent-rgb), 0.3); }
+
+        /* ── GLASS CARD ── */
+        .glass {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .glass:hover {
+            border-color: var(--accent);
+            background: rgba(var(--accent-rgb),0.05);
+            transform: translateY(-4px);
+        }
+
+        /* ── PROVIDER BADGE ── */
+        .provider-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 9999px;
+            padding: 0.5rem 1.25rem;
+        }
+        .provider-logo {
+            height: 36px;
+            max-width: 120px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        /* ── GALLERY ── */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+        }
+
+        /* ── FEATURES GRID ── */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        @media (min-width: 640px) { .features-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .feature-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1rem;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            border-color: var(--accent);
+            background: rgba(var(--accent-rgb),0.06);
+        }
+
+        /* ── GEO BADGE ── */
+        .geo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #71717a;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 9999px;
+            padding: 0.3rem 0.75rem;
+        }
+        .geo-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: ping 1.5s infinite; }
+        @keyframes ping {
+            0%,100% { transform: scale(1); opacity:1; }
+            50%      { transform: scale(1.5); opacity:0.5; }
+        }
+
+        /* ── CTA BUTTON ── */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 900;
+            font-size: 0.875rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(var(--accent-rgb),0.4);
+        }
+        .cta-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+        .cta-btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: transparent;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .cta-btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* ── PARTNER OFFER SECTION ── */
+        .partner-section {
+            background: linear-gradient(135deg, rgba(var(--accent-rgb),0.08) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(var(--accent-rgb),0.2);
+            border-radius: 2rem;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .partner-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(var(--accent-rgb),0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ── STICKY HEADER ── */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5,5,5,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,61,0,0.2);
+        }
+
+        /* ── PRIZE BREADCRUMB ── */
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: #71717a; margin-bottom: 1rem; }
+        .breadcrumb a { color: #71717a; text-decoration: none; }
+        .breadcrumb a:hover { color: var(--accent); }
+
+        /* ── PROGRESS BAR ── */
+        .prize-progress {
+            height: 4px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 9999px;
+            overflow: hidden;
+            margin-top: 0.75rem;
+        }
+        .prize-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #FFB300);
+            border-radius: 9999px;
+            animation: progress-load 1.5s ease-out forwards;
+            width: 0%;
+        }
+        @keyframes progress-load { to { width: var(--progress-target, 68%); } }
+
+        /* ── PRIZE NAV PILLS ── */
+        .prize-nav { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .prize-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #71717a;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 9999px;
+            padding: 0.4rem 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .prize-pill:hover, .prize-pill.active {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: rgba(var(--accent-rgb),0.08);
+        }
+
+        /* ── AD PLACEHOLDERS ── */
+        .ad-placeholder {
+            background: repeating-linear-gradient(45deg, #111, #111 10px, #1a1a1a 10px, #1a1a1a 20px);
+            border: 1px dashed #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.625rem;
+            border-radius: 0.75rem;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+            .prize-hero__content { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Loading Screen -->
+    <div id="prize-loading">
+        <div style="display:flex;gap:0.4rem;align-items:center;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#FF3D00;animation:dot-bounce 0.8s ease infinite alternate;"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:#FF3D00;animation:dot-bounce 0.8s ease infinite alternate 0.15s;"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:#FF3D00;animation:dot-bounce 0.8s ease infinite alternate 0.3s;"></div>
+        </div>
+        <p style="font-size:0.75rem;color:#71717a;letter-spacing:0.15em;text-transform:uppercase;">Loading geo-targeted prize data…</p>
+        <style>@keyframes dot-bounce{to{transform:translateY(-6px);}}</style>
+    </div>
+
+    <!-- Top Banner Ad -->
+    <div class="w-full bg-black py-2 border-b border-white" style="border-color:rgba(255,255,255,0.05)">
+        <div style="max-width:1280px;margin:0 auto;padding:0 1rem;text-align:center;">
+            <div class="ad-placeholder" style="height:90px;max-width:728px;margin:0 auto;">Leaderboard Advertisement</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;height:5rem;">
+                <!-- Logo -->
+                <a href="../index.html" id="Home" style="display:flex;align-items:center;gap:0.6rem;text-decoration:none;">
+                    <div style="width:2.5rem;height:2.5rem;background:linear-gradient(135deg,#FF3D00,#FFB300);border-radius:0.5rem;display:flex;align-items:center;justify-content:center;">
+                        <i data-lucide="camera" style="color:white;width:1.25rem;height:1.25rem;"></i>
+                    </div>
+                    <span style="font-size:1.25rem;font-weight:900;letter-spacing:-0.03em;color:#fff;">SCAN<span style="color:#FF3D00;">THEM</span>ALL</span>
+                </a>
+
+                <!-- Nav -->
+                <nav style="display:none;" class="desktop-nav" id="main-nav">
+                    <a href="../index.html" style="font-size:0.875rem;font-weight:600;color:#fff;text-decoration:none;transition:color 0.2s;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#fff'">Home</a>
+                    <a href="../GTSA_FInal_Welcome_Page_(About_US).html" style="font-size:0.875rem;font-weight:600;color:#71717a;text-decoration:none;margin-left:2rem;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#71717a'">About</a>
+                    <a href="../prize.html" style="font-size:0.875rem;font-weight:600;color:#FF3D00;text-decoration:none;margin-left:2rem;">Prizes</a>
+                    <a href="../position.html" style="font-size:0.875rem;font-weight:600;color:#71717a;text-decoration:none;margin-left:2rem;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#71717a'">My Position</a>
+                </nav>
+
+                <!-- Auth -->
+                <div style="display:flex;align-items:center;gap:1rem;">
+                    <a href="../log_in_page_advertising_placeholder.html" id="login-btn" class="auth-login" style="font-size:0.875rem;font-weight:600;color:#71717a;text-decoration:none;">Login</a>
+                    <a href="../registration_with_video.html" id="signup-btn" class="auth-signup" style="font-size:0.875rem;font-weight:700;color:#fff;padding:0.5rem 1.5rem;border-radius:9999px;border:1px solid #FF3D00;background:rgba(255,61,0,0.1);text-decoration:none;">Sign Up</a>
+                    <!-- Prize Admin Link -->
+                    <a href="prize-admin.html" style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#71717a;text-decoration:none;border:1px solid rgba(255,255,255,0.1);padding:0.4rem 0.9rem;border-radius:9999px;" onmouseenter="this.style.borderColor='#FF3D00';this.style.color='#FF3D00'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#71717a'" title="Prize Provider Admin">
+                        <i data-lucide="settings" style="display:inline;width:0.75rem;height:0.75rem;margin-right:0.3rem;"></i>Admin
+                    </a>
+                    <!-- Mobile Toggle -->
+                    <button id="mobile-menu-toggle" style="background:none;border:none;color:#fff;cursor:pointer;display:block;" class="mobile-only-btn">
+                        <i data-lucide="menu" style="width:1.75rem;height:1.75rem;"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" style="display:none;position:fixed;inset:0;z-index:110;background:rgba(0,0,0,0.97);backdrop-filter:blur(20px);padding:2rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3rem;">
+                <span style="font-size:1.5rem;font-weight:900;color:#fff;">SCAN<span style="color:#FF3D00;">THEM</span>ALL</span>
+                <button id="mobile-menu-close" style="background:none;border:none;color:#fff;cursor:pointer;"><i data-lucide="x" style="width:2rem;height:2rem;"></i></button>
+            </div>
+            <nav style="display:flex;flex-direction:column;gap:1.5rem;">
+                <a href="../index.html" style="font-size:1.5rem;font-weight:900;text-transform:uppercase;color:#fff;text-decoration:none;">Home</a>
+                <a href="../prize.html" style="font-size:1.5rem;font-weight:900;text-transform:uppercase;color:#FF3D00;text-decoration:none;">Prizes</a>
+                <a href="../position.html" style="font-size:1.5rem;font-weight:900;text-transform:uppercase;color:#71717a;text-decoration:none;">My Position</a>
+                <hr style="border-color:rgba(255,255,255,0.1);">
+                <a href="../registration_with_video.html" class="auth-signup" style="font-size:1.25rem;font-weight:700;color:#FF3D00;text-decoration:none;">Sign Up</a>
+                <a href="prize-admin.html" style="font-size:1rem;font-weight:700;color:#71717a;text-decoration:none;">Prize Provider Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Prize Category Navigation -->
+    <div style="background:rgba(5,5,5,0.95);border-bottom:1px solid rgba(255,255,255,0.05);padding:0.75rem 0;overflow-x:auto;">
+        <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem;">
+            <div class="prize-nav">
+                <a href="elitecar.html"       id="pill-elitecar"       class="prize-pill">🚗 Elite Car</a>
+                <a href="ultimateescape.html"  id="pill-ultimateescape"  class="prize-pill">✈️ Ultimate Escape</a>
+                <a href="luxuryfashion.html"   id="pill-luxuryfashion"   class="prize-pill">👜 Luxury Fashion</a>
+                <a href="goldentreasure.html"  id="pill-goldentreasure"  class="prize-pill">🥇 Golden Treasure</a>
+                <a href="healthglow.html"      id="pill-healthglow"      class="prize-pill">💚 Health Glow</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- MAIN CONTENT — dynamically populated                   -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="prize-hero" id="prize-hero">
+            <div class="prize-hero__bg" id="prize-hero-bg"></div>
+            <div class="prize-hero__overlay"></div>
+            <div class="prize-hero__content">
+                <div class="breadcrumb">
+                    <a href="../prize.html">Prizes</a>
+                    <i data-lucide="chevron-right" style="width:0.75rem;height:0.75rem;"></i>
+                    <span id="breadcrumb-label" style="color:#fff;">Loading…</span>
+                </div>
+
+                <!-- Geo Badge -->
+                <div style="margin-bottom:1.25rem;">
+                    <span class="geo-badge">
+                        <span class="geo-dot"></span>
+                        <span id="geo-label">Detecting your region…</span>
+                    </span>
+                </div>
+
+                <!-- Provider Badge -->
+                <div id="provider-badge-wrap" style="margin-bottom:1.5rem;display:none;">
+                    <div class="provider-badge">
+                        <img id="provider-logo" class="provider-logo" src="" alt="Provider Logo" onerror="this.style.display='none'">
+                        <span id="provider-name" style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#a1a1aa;">Presented by</span>
+                    </div>
+                </div>
+
+                <h1 id="prize-hero-title" style="font-size:clamp(2.5rem,8vw,5.5rem);font-weight:900;line-height:1;letter-spacing:-0.03em;margin-bottom:1.25rem;color:#fff;">
+                    Loading Prize…
+                </h1>
+                <p id="prize-hero-subtitle" style="font-size:1.125rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.6;margin-bottom:2rem;">
+                    Please wait while we load your regional prize data.
+                </p>
+
+                <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;">
+                    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:1rem;padding:1rem 1.5rem;">
+                        <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#71717a;margin-bottom:0.25rem;">Est. Prize Value</div>
+                        <div id="prize-value" style="font-size:1.75rem;font-weight:900;color:#fff;">—</div>
+                    </div>
+                    <div>
+                        <div class="prize-progress">
+                            <div class="prize-progress-fill" style="--progress-target:68%;"></div>
+                        </div>
+                        <p style="font-size:0.7rem;color:#71717a;margin-top:0.4rem;letter-spacing:0.08em;text-transform:uppercase;">68% of entries claimed this draw</p>
+                    </div>
+                </div>
+
+                <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+                    <a href="#" id="main-cta" class="cta-btn">
+                        Enter to Win <i data-lucide="arrow-right" style="width:1rem;height:1rem;"></i>
+                    </a>
+                    <a href="../calculator.html" class="cta-btn-outline">
+                        <i data-lucide="calculator" style="width:1rem;height:1rem;"></i> Calculate My Entries
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES SECTION -->
+        <section style="max-width:1280px;margin:0 auto;padding:5rem 1.5rem 0;">
+            <div id="features-grid" class="features-grid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- AD RECTANGLE -->
+        <div style="max-width:1280px;margin:3rem auto 0;padding:0 1.5rem;">
+            <div class="ad-placeholder" style="height:90px;max-width:728px;margin:0 auto;">Content Rectangle Advertisement</div>
+        </div>
+
+        <!-- GALLERY -->
+        <section style="max-width:1280px;margin:4rem auto 0;padding:0 1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.07);">
+                <h2 style="font-size:1.875rem;font-weight:900;text-transform:uppercase;letter-spacing:-0.03em;">Prize Gallery</h2>
+                <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#FF3D00;">PROVIDER IMAGES</div>
+            </div>
+            <div id="gallery-grid" class="gallery-grid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- OFFER / PARTNER SECTION -->
+        <section style="max-width:1280px;margin:4rem auto 0;padding:0 1.5rem;">
+            <div class="partner-section" id="partner-section">
+                <div style="max-width:640px;position:relative;z-index:1;">
+                    <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;" id="partner-eyebrow">PRIZE OFFER</div>
+                    <h2 id="offer-headline" style="font-size:clamp(1.75rem,4vw,3rem);font-weight:900;line-height:1.1;margin-bottom:1.25rem;">Win Your Prize Today</h2>
+                    <p id="offer-body" style="font-size:1.0625rem;color:#a1a1aa;line-height:1.7;margin-bottom:2rem;">Enter using your accumulated scan entries and take home this incredible prize.</p>
+
+                    <!-- Partner offer (shown if admin set one) -->
+                    <div id="partner-offer-block" style="display:none;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:1rem;padding:1.5rem;margin-bottom:2rem;">
+                        <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#71717a;margin-bottom:0.5rem;">SPONSORED PROMOTION</div>
+                        <div id="partner-offer-content" style="color:#fff;font-size:0.9375rem;line-height:1.6;"></div>
+                    </div>
+
+                    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+                        <a href="#" id="offer-cta" class="cta-btn">Start Entering <i data-lucide="chevron-right" style="width:1rem;height:1rem;"></i></a>
+                        <a href="../prize.html" class="cta-btn-outline">View All Prizes</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALCULATOR CTA -->
+        <section style="max-width:1280px;margin:4rem auto 0;padding:0 1.5rem;">
+            <div style="background:linear-gradient(180deg,rgba(255,61,0,0.06) 0%,rgba(5,5,5,1) 100%);border:1px solid rgba(255,61,0,0.2);border-radius:2rem;padding:3rem;text-align:center;">
+                <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#FF3D00;margin-bottom:1rem;">MAXIMISE YOUR ENTRIES</div>
+                <h2 style="font-size:clamp(1.5rem,3vw,2.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-0.03em;margin-bottom:1rem;">Use Our Entry Calculator</h2>
+                <p style="color:#71717a;max-width:480px;margin:0 auto 2rem;font-size:0.9375rem;line-height:1.6;">See exactly how many draw tickets you accumulate based on your uploads across all social platforms.</p>
+                <a href="../calculator.html" class="cta-btn" style="display:inline-flex;">
+                    <i data-lucide="calculator" style="width:1rem;height:1rem;"></i> Open Calculator
+                </a>
+            </div>
+        </section>
+
+        <!-- AD FOOTER RECTANGLE -->
+        <div style="max-width:1280px;margin:4rem auto 0;padding:0 1.5rem;">
+            <div class="ad-placeholder" style="height:250px;max-width:970px;margin:0 auto;">Large Rectangle Advertisement</div>
+        </div>
+
+    </main>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer style="background:#000;border-top:1px solid rgba(255,255,255,0.05);padding:4rem 0 2rem;margin-top:5rem;">
+        <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem;">
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:3rem;margin-bottom:4rem;">
+                <div>
+                    <div style="font-size:1.5rem;font-weight:900;text-transform:uppercase;margin-bottom:1rem;">GOTTA SCAN<br><span style="color:#FF3D00;">THEM ALL</span></div>
+                    <p style="font-size:0.875rem;color:#6b7280;">The world's first multi-category scan-based sweepstakes platform.</p>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;">
+                    <div>
+                        <h4 style="color:#fff;font-weight:700;font-size:0.875rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">Prizes</h4>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;">
+                            <li><a href="elitecar.html"       style="font-size:0.875rem;color:#6b7280;text-decoration:none;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#6b7280'">Elite Car</a></li>
+                            <li><a href="ultimateescape.html"  style="font-size:0.875rem;color:#6b7280;text-decoration:none;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#6b7280'">Ultimate Escape</a></li>
+                            <li><a href="luxuryfashion.html"   style="font-size:0.875rem;color:#6b7280;text-decoration:none;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#6b7280'">Luxury Fashion</a></li>
+                            <li><a href="goldentreasure.html"  style="font-size:0.875rem;color:#6b7280;text-decoration:none;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#6b7280'">Golden Treasure</a></li>
+                            <li><a href="healthglow.html"      style="font-size:0.875rem;color:#6b7280;text-decoration:none;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#6b7280'">Health Glow</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color:#fff;font-weight:700;font-size:0.875rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">Platform</h4>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;">
+                            <li><a href="../index.html"       style="font-size:0.875rem;color:#6b7280;text-decoration:none;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#6b7280'">Home</a></li>
+                            <li><a href="../calculator.html"  style="font-size:0.875rem;color:#6b7280;text-decoration:none;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#6b7280'">Entry Calculator</a></li>
+                            <li><a href="../prize.html"       style="font-size:0.875rem;color:#6b7280;text-decoration:none;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#6b7280'">All Prizes</a></li>
+                            <li><a href="prize-admin.html"    style="font-size:0.875rem;color:#6b7280;text-decoration:none;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#6b7280'">Provider Admin</a></li>
+                            <li><a href="../Final_contact_page.html" style="font-size:0.875rem;color:#6b7280;text-decoration:none;" onmouseenter="this.style.color='#FF3D00'" onmouseleave="this.style.color='#6b7280'">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.05);font-size:0.625rem;color:#4b5563;letter-spacing:0.1em;text-transform:uppercase;flex-wrap:wrap;gap:1rem;">
+                <p>© 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED.</p>
+                <a href="../GTSA Final Sweepstake Rules.html" style="color:#4b5563;text-decoration:none;">Sweepstake Rules</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Desktop nav CSS -->
+    <style>
+        @media (min-width: 768px) {
+            .desktop-nav { display: flex !important; align-items: center; }
+            .mobile-only-btn { display: none !important; }
+        }
+    </style>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- PRIZE PAGE ENGINE — dynamically loads geo-targeted data -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <script type="module">
+        // ── CONFIG: Set PRIZE_SLUG in the individual page ──────
+        // e.g. window.PRIZE_SLUG = 'luxuryfashion';
+        const PRIZE_SLUG = 'luxuryfashion';
+
+        // ── LUCIDE ICONS ────────────────────────────────────────
+        lucide.createIcons();
+
+        // ── MARK ACTIVE PILL ───────────────────────────────────
+        const activePill = document.getElementById(`pill-${PRIZE_SLUG}`);
+        if (activePill) activePill.classList.add('active');
+
+        // ── MOBILE MENU ─────────────────────────────────────────
+        const toggle = document.getElementById('mobile-menu-toggle');
+        const mclose = document.getElementById('mobile-menu-close');
+        const mmenu  = document.getElementById('mobile-menu');
+        if (toggle) toggle.onclick = () => mmenu.style.display = 'block';
+        if (mclose) mclose.onclick = () => mmenu.style.display = 'none';
+
+        // ── FIREBASE IMPORTS ────────────────────────────────────
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBb4q5dU4ccoRtK_c98chs1BMXoqcC222g",
+            authDomain: "scanthemall-c1475.firebaseapp.com",
+            databaseURL: "https://scanthemall-c1475-default-rtdb.firebaseio.com",
+            projectId: "scanthemall-c1475",
+            storageBucket: "scanthemall-c1475.appspot.com",
+            messagingSenderId: "1040707976422",
+            appId: "1:1040707976422:web:883018fc54b7ac5c8f8f27"
+        };
+        const firebase = initializeApp(firebaseConfig);
+        const db = getDatabase(firebase);
+
+        // ── DEFAULT DATA (server-side fallback) ─────────────────
+        const DEFAULTS = {
+            elitecar: {
+                providerName:    "Scan Them All Global",
+                providerLogo:    "",
+                heroImage:       "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80",
+                heroTagline:     "Win an Elite Performance Vehicle",
+                prizeSubtitle:   "The ultimate four-wheeled symbol of prestige — fully bespoke for the global winner.",
+                prizeValue:      "$75,000+",
+                accentColor:     "#FF3D00",
+                galleryImages:   [
+                    "https://images.unsplash.com/photo-1573950940509-d924ee3fd345?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80"
+                ],
+                features: [
+                    { icon: "car",      label: "Model",      value: "Sport Edition" },
+                    { icon: "zap",      label: "0-100 km/h", value: "Under 4 Sec" },
+                    { icon: "globe",    label: "Delivery",   value: "Worldwide" },
+                    { icon: "shield",   label: "Warranty",   value: "5 Year Cover" }
+                ],
+                offerHeadline:   "Become an Elite Car Winner",
+                offerBody:       "Upload your screenshots, accumulate entries, and win the vehicle of your dreams.",
+                ctaText:         "Enter to Win",
+                ctaLink:         "../index.html",
+                partnerOffer:    null
+            },
+            ultimateescape: {
+                providerName:    "Scan Them All Global",
+                providerLogo:    "",
+                heroImage:       "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=1600&q=80",
+                heroTagline:     "Win the Ultimate Escape",
+                prizeSubtitle:   "All-inclusive first-class travel to the Maldives, Bora Bora, or the Swiss Alps — for two.",
+                prizeValue:      "$30,000+",
+                accentColor:     "#0EA5E9",
+                galleryImages:   [
+                    "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80"
+                ],
+                features: [
+                    { icon: "plane",    label: "Class",       value: "First Class" },
+                    { icon: "hotel",    label: "Stay",        value: "5-Star Resort" },
+                    { icon: "users",    label: "For",         value: "Two People" },
+                    { icon: "calendar", label: "Duration",    value: "7–14 Nights" }
+                ],
+                offerHeadline:   "Your Dream Holiday Awaits",
+                offerBody:       "First class flights, 5-star accommodation, exclusive experiences — all covered.",
+                ctaText:         "Claim Your Escape",
+                ctaLink:         "../index.html",
+                partnerOffer:    null
+            },
+            luxuryfashion: {
+                providerName:    "Scan Them All Global",
+                providerLogo:    "",
+                heroImage:       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80",
+                heroTagline:     "Win Luxury Fashion & Timepieces",
+                prizeSubtitle:   "Designer handbags, Swiss watches and couture accessories from the world's most exclusive brands.",
+                prizeValue:      "$15,000+",
+                accentColor:     "#D4A017",
+                galleryImages:   [
+                    "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1585123334904-845d60e97b29?auto=format&fit=crop&w=800&q=80"
+                ],
+                features: [
+                    { icon: "watch",         label: "Timepiece",  value: "Swiss Luxury" },
+                    { icon: "shopping-bag",  label: "Handbag",    value: "Designer Label" },
+                    { icon: "star",          label: "Tier",       value: "Premium" },
+                    { icon: "gift",          label: "Delivery",   value: "Insured Global" }
+                ],
+                offerHeadline:   "Wear the Prize",
+                offerBody:       "Swiss timepieces to haute couture handbags — every item hand-selected for global prestige.",
+                ctaText:         "Win Fashion Now",
+                ctaLink:         "../index.html",
+                partnerOffer:    null
+            },
+            goldentreasure: {
+                providerName:    "Scan Them All Global",
+                providerLogo:    "",
+                heroImage:       "https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=1600&q=80",
+                heroTagline:     "Win Physical Gold & Silver",
+                prizeSubtitle:   "Investment-grade bullion bars and coins — delivered to your door or secure vault, globally.",
+                prizeValue:      "$20,000+",
+                accentColor:     "#F59E0B",
+                galleryImages:   [
+                    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1624365169198-38255b22cad8?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=800&q=80"
+                ],
+                features: [
+                    { icon: "layers",        label: "Purity",   value: "999.9 Fine Gold" },
+                    { icon: "shield",        label: "Certified", value: "Assay Guaranteed" },
+                    { icon: "lock",          label: "Delivery",  value: "Vault or Courier" },
+                    { icon: "trending-up",   label: "Asset",     value: "Investment Grade" }
+                ],
+                offerHeadline:   "Real Wealth. Real Prizes.",
+                offerBody:       "Win tangible, investment-grade precious metals that hold and grow in value over time.",
+                ctaText:         "Claim Your Gold",
+                ctaLink:         "../index.html",
+                partnerOffer:    null
+            },
+            healthglow: {
+                providerName:    "Scan Them All Global",
+                providerLogo:    "",
+                heroImage:       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1600&q=80",
+                heroTagline:     "Win a Health & Wellness Package",
+                prizeSubtitle:   "Premium wellness retreats, spa packages, elite fitness equipment and health supplements.",
+                prizeValue:      "$10,000+",
+                accentColor:     "#22C55E",
+                galleryImages:   [
+                    "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80"
+                ],
+                features: [
+                    { icon: "heart",    label: "Wellness",    value: "Spa & Retreat" },
+                    { icon: "activity", label: "Fitness",     value: "Elite Equipment" },
+                    { icon: "sun",      label: "Supplements", value: "Premium Brands" },
+                    { icon: "smile",    label: "Experience",  value: "Transformative" }
+                ],
+                offerHeadline:   "Invest in Your Best Self",
+                offerBody:       "A complete wellness transformation package curated by leading global health brands.",
+                ctaText:         "Start Your Glow Journey",
+                ctaLink:         "../index.html",
+                partnerOffer:    null
+            }
+        };
+
+        // ── GEO DETECT ──────────────────────────────────────────
+        async function detectGeo() {
+            try {
+                const r = await fetch('https://ipapi.co/json/');
+                const d = await r.json();
+                return {
+                    country: (d.country || 'GLOBAL').toUpperCase(),
+                    region:  (d.region  || '').toUpperCase(),
+                    city:    (d.city    || '').toUpperCase(),
+                    display: d.city ? `${d.city}, ${d.country}` : (d.country || 'Global')
+                };
+            } catch {
+                return { country: 'GLOBAL', region: '', city: '', display: 'Global' };
+            }
+        }
+
+        // ── LOAD FIREBASE DATA ───────────────────────────────────
+        async function loadFirebaseData(slug, geo) {
+            const keys = [
+                `prizes/${slug}/${geo.country}_${geo.region}_${geo.city}`,
+                `prizes/${slug}/${geo.country}_${geo.region}`,
+                `prizes/${slug}/${geo.country}`,
+                `prizes/${slug}/GLOBAL`
+            ].filter(k => !k.includes('__'));
+
+            for (const key of keys) {
+                try {
+                    const snap = await get(ref(db, key));
+                    if (snap.exists()) return snap.val();
+                } catch {}
+            }
+            return null;
+        }
+
+        // ── RENDER ───────────────────────────────────────────────
+        function applyData(data) {
+            // Accent
+            document.documentElement.style.setProperty('--accent', data.accentColor || '#FF3D00');
+            const rgb = hexToRgb(data.accentColor || '#FF3D00');
+            document.documentElement.style.setProperty('--accent-rgb', `${rgb.r},${rgb.g},${rgb.b}`);
+
+            // Hero
+            document.getElementById('prize-hero-bg').style.backgroundImage = `url('${data.heroImage}')`;
+            document.getElementById('prize-hero-title').textContent = data.heroTagline;
+            document.getElementById('prize-hero-subtitle').textContent = data.prizeSubtitle;
+            document.getElementById('prize-value').textContent = data.prizeValue;
+            document.getElementById('breadcrumb-label').textContent = data.heroTagline;
+
+            // Page meta
+            document.getElementById('page-title').textContent = `${data.heroTagline} | Scan Them All`;
+            document.getElementById('page-desc').content = data.prizeSubtitle;
+
+            // CTA
+            const mainCta = document.getElementById('main-cta');
+            mainCta.textContent = data.ctaText || 'Enter to Win';
+            mainCta.href = data.ctaLink || '../index.html';
+            mainCta.innerHTML = `${data.ctaText || 'Enter to Win'} <i data-lucide="arrow-right" style="width:1rem;height:1rem;display:inline;"></i>`;
+
+            const offerCta = document.getElementById('offer-cta');
+            offerCta.textContent = 'Start Entering';
+            offerCta.href = data.ctaLink || '../index.html';
+
+            // Provider badge
+            if (data.providerName && data.providerName !== 'Scan Them All Global') {
+                document.getElementById('provider-badge-wrap').style.display = 'block';
+                document.getElementById('provider-name').textContent = `Presented by ${data.providerName}`;
+                if (data.providerLogo) document.getElementById('provider-logo').src = data.providerLogo;
+            }
+
+            // Features
+            const fg = document.getElementById('features-grid');
+            fg.innerHTML = (data.features || []).map(f => `
+                <div class="feature-card">
+                    <div style="width:2.5rem;height:2.5rem;background:rgba(var(--accent-rgb),0.1);border-radius:0.75rem;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;">
+                        <i data-lucide="${f.icon}" style="width:1.25rem;height:1.25rem;color:var(--accent);"></i>
+                    </div>
+                    <div style="font-size:0.625rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#71717a;margin-bottom:0.25rem;">${f.label}</div>
+                    <div style="font-size:1rem;font-weight:700;color:#fff;">${f.value}</div>
+                </div>
+            `).join('');
+
+            // Gallery
+            const gg = document.getElementById('gallery-grid');
+            gg.innerHTML = (data.galleryImages || []).map(src => `
+                <div class="gallery-item">
+                    <img src="${src}" alt="Prize Image" loading="lazy">
+                </div>
+            `).join('');
+
+            // Offer section
+            document.getElementById('offer-headline').textContent = data.offerHeadline || 'Win This Prize';
+            document.getElementById('offer-body').textContent = data.offerBody || '';
+
+            if (data.partnerOffer) {
+                document.getElementById('partner-offer-block').style.display = 'block';
+                document.getElementById('partner-offer-content').innerHTML = data.partnerOffer;
+                document.getElementById('partner-eyebrow').textContent = `${data.providerName || 'SPONSOR'} OFFER`;
+            }
+
+            // Provider admin info in offer section
+            if (data.providerName && data.providerName !== 'Scan Them All Global') {
+                document.getElementById('partner-eyebrow').textContent = `Presented by ${data.providerName}`;
+            }
+
+            // Re-create icons
+            lucide.createIcons();
+        }
+
+        function hexToRgb(hex) {
+            const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return r ? { r: parseInt(r[1],16), g: parseInt(r[2],16), b: parseInt(r[3],16) } : {r:255,g:61,b:0};
+        }
+
+        // ── MAIN ─────────────────────────────────────────────────
+        (async () => {
+            const loader = document.getElementById('prize-loading');
+            try {
+                const geo = await detectGeo();
+                const geoLabel = document.getElementById('geo-label');
+                if (geoLabel) geoLabel.textContent = `Showing prizes for: ${geo.display}`;
+
+                const firebaseData = await loadFirebaseData(PRIZE_SLUG, geo);
+                const data = firebaseData
+                    ? { ...DEFAULTS[PRIZE_SLUG], ...firebaseData }
+                    : DEFAULTS[PRIZE_SLUG];
+
+                if (data) {
+                    applyData(data);
+                } else {
+                    console.warn("No data for slug:", PRIZE_SLUG);
+                }
+            } catch (err) {
+                console.error("Initialization failed:", err);
+            } finally {
+                // Always dismiss loading screen
+                if (loader) {
+                    loader.classList.add('fade-out');
+                    setTimeout(() => loader.remove(), 700);
+                }
+            }
+        })();
+
+        // Auth header script
+        // (same pattern as rest of site)
+    </script>
+    <script src="../js/auth-header.js" type="module"></script>
+
+</body>
+</html>
+
+

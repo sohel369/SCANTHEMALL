@@ -1,0 +1,16 @@
+{
+  "cash_draw_registrations": [
+    {
+      "firstName": "Sohel",
+      "lastName": "Rana",
+      "email": "sohel0130844@gmail.com",
+      "country": "United Kingdom",
+      "state": "london",
+      "phone": "+611308446369",
+      "areaCode": "40000",
+      "timestamp": "2026-04-08T21:13:43.668Z",
+      "source": "position_page_registration",
+      "id": 1
+    }
+  ]
+}
