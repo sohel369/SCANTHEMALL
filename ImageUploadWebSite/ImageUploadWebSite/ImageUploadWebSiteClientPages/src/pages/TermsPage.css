@@ -1,0 +1,160 @@
+.terms-page {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4.36vw;
+  padding-bottom: 7.27vw;
+}
+
+/* Hero Section */
+.terms-hero {
+  width: 100vw;
+  padding-bottom: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.terms-badge {
+  position: relative;
+  width: 37.025vw;
+  height: 6.56vw;
+  display: flex;
+  justify-content: center;
+  padding-right: 1.28vw;
+}
+
+.terms-badge > .svg1 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 34.21vw;
+}
+
+.terms-badge > .svg2 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 36.05vw;
+}
+
+.terms-badge > span {
+  position: relative;
+  z-index: 1;
+  font-size: 3.36vw;
+  color: #ffffff;
+  text-align: center;
+  line-height: normal;
+}
+
+/* Content Section */
+.terms-content {
+  width: 100vw;
+  padding-left: 4.15vw;
+  padding-right: 3.85vw;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.414vw;
+  color: #000;
+  gap: 1.47vw;
+  line-height: normal;
+}
+
+.section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.47vw;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 1.47vw;
+}
+
+.section-subtitle {
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  
+}
+
+/* Loading and Error States */
+.loading-message,
+.error-message {
+  text-align: center;
+  padding: 3rem 2rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.error-message {
+  color: #D91A2A;
+  background-color: #fff3f3;
+  border: 1px solid #ffcccc;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+/* Dynamic Content Styling */
+.dynamic-content {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.414vw;
+  color: #000;
+  gap: 1.47vw;
+  line-height: normal;
+}
+
+.dynamic-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem;
+  color: #1C2526;
+}
+
+.dynamic-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1.5rem 0 1rem;
+  color: #D91A2A;
+}
+
+.dynamic-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+  color: #D4A017;
+}
+
+.dynamic-content p {
+  margin: 1rem 0;
+}
+
+.dynamic-content ul,
+.dynamic-content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.dynamic-content li {
+  margin: 0.5rem 0;
+}
+
+.dynamic-content a {
+  color: #D91A2A;
+  text-decoration: underline;
+}
+
+.dynamic-content a:hover {
+  color: #D4A017;
+}
+
+.dynamic-content strong {
+  font-weight: 600;
+  color: #1C2526;
+}
+
+.dynamic-content em {
+  font-style: italic;
+}

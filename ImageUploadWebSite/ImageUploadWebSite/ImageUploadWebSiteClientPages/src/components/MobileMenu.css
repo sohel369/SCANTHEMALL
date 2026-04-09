@@ -1,0 +1,362 @@
+/* Mobile Menu Backdrop */
+.mobile-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(28, 37, 38, 0.7);
+  z-index: 9998;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85%;
+  max-width: 400px;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 9999;
+  overflow-y: auto;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  animation: slideInRight 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Close Button */
+.mobile-menu-close {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  color: #000000;
+  transition: opacity 0.2s ease;
+}
+
+.mobile-menu-close:hover {
+  opacity: 0.7;
+}
+
+/* Logo Section */
+.mobile-menu-logo-section {
+  padding: 20px 20px 10px 20px;
+  margin-top: 60px;
+}
+
+.mobile-menu-logo-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.3;
+}
+
+.mobile-menu-logo-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.mobile-menu-dotted-line {
+  flex: 1;
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    #9B59B6 0px,
+    #9B59B6 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  opacity: 0.3;
+}
+
+/* Promotional Graphic */
+.mobile-menu-promo {
+  padding-left: 20px;
+  padding-top: 80px;
+}
+
+.mobile-header-logo {
+    width: 30.8vw;
+}
+
+.mobile-menu-promo-content {
+  position: relative;
+  background: linear-gradient(135deg, #1a3a5a 0%, #2c5282 50%, #1a3a5a 100%);
+  border-radius: 12px;
+  padding: 25px 20px 30px 20px;
+  min-height: 220px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cars in Promo */
+.mobile-menu-promo-cars {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  z-index: 1;
+  padding: 0 15px;
+}
+
+.promo-car {
+  width: 45px;
+  height: 28px;
+  background-color: #ffffff;
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  opacity: 0.95;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.promo-car::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 6px;
+  width: 18px;
+  height: 10px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.promo-car::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 6px;
+  width: 18px;
+  height: 10px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.promo-car-1 {
+  transform: translateX(-5px) scale(0.85);
+}
+
+.promo-car-2 {
+  transform: scale(1);
+  z-index: 2;
+}
+
+.promo-car-3 {
+  transform: translateX(5px) scale(0.85);
+}
+
+/* Large S in Promo */
+.mobile-menu-promo-s {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 140px;
+  font-weight: 900;
+  color: #4ade80;
+  opacity: 0.85;
+  z-index: 1;
+  font-family: 'Arial Black', Arial, sans-serif;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  line-height: 1;
+}
+
+/* QR Codes in Promo */
+.mobile-menu-promo-qrcodes {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+}
+
+.promo-qr {
+  width: 28px;
+  height: 28px;
+  background-color: #ffffff;
+  border: 2px solid #4ade80;
+  position: relative;
+  opacity: 0.95;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.promo-qr::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 5px;
+  height: 5px;
+  background-color: #1a3a5a;
+}
+
+.promo-qr::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #1a3a5a;
+}
+
+.promo-qr-1 {
+  transform: rotate(-8deg) translateX(-2px);
+}
+
+.promo-qr-2 {
+  transform: rotate(6deg);
+}
+
+.promo-qr-3 {
+  transform: rotate(-4deg) translateX(2px);
+}
+
+/* Promo Text */
+.mobile-menu-promo-text {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+.mobile-menu-promo-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu-promo-subtitle {
+  font-size: 13px;
+  color: #ffffff;
+  margin: 0;
+  opacity: 0.95;
+  font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Menu Divider */
+.mobile-menu-divider {
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 0 20px;
+}
+
+/* Menu Navigation */
+.mobile-menu-nav {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.mobile-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu-item {
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu-link {
+  display: block;
+  padding: 18px 20px;
+  color: #000000;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.mobile-menu-item.active .mobile-menu-link {
+  background-color: #f5f5f5;
+  font-weight: 500;
+  color: #1C2526;
+}
+
+.mobile-menu-link:hover {
+  background-color: #f9f9f9;
+}
+
+.mobile-menu-item.active .mobile-menu-link:hover {
+  background-color: #eeeeee;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .mobile-menu-overlay {
+    width: 90%;
+  }
+
+  .mobile-menu-promo-content {
+    padding: 25px 15px;
+    min-height: 180px;
+  }
+
+  .mobile-menu-promo-s {
+    font-size: 100px;
+  }
+
+  .promo-car {
+    width: 40px;
+    height: 24px;
+  }
+
+  .mobile-menu-promo-title {
+    font-size: 20px;
+  }
+}
+
+/* Prevent body scroll when menu is open */
+body.mobile-menu-open {
+  overflow: hidden;
+}
+

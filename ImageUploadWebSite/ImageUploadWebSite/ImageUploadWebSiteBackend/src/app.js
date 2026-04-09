@@ -1,0 +1,136 @@
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import adminRoutes from './routes/admin.routes.js';
+import adminExtraRoutes from './routes/adminExtra.routes.js';
+import publicBillboardRoutes from './routes/billboard.routes.js';
+import authRoutes from './routes/auth.routes.js';
+import uploadRoutes from './routes/upload.routes.js';
+import drawRoutes from './routes/draw.routes.js';
+import userRoutes from './routes/user.routes.js';
+import advertiserRoutes from './routes/advertiser.routes.js';
+import adsRoutes from './routes/ads.routes.js';
+import adPlacementsRoutes from './routes/ad-placements.routes.js';
+import emailRoutes from './routes/email.routes.js';
+import pagesRoutes from './routes/pages.routes.js';
+import auditRoutes from './routes/audit.routes.js';
+import stripeRoutes from './routes/stripe.routes.js';
+import bonusRoutes from './routes/bonus.routes.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config();
+const app = express();
+
+app.set('trust proxy', 1);
+
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'http://localhost:5175',
+  process.env.FRONTEND_URL,
+  process.env.ADMIN_PANEL_URL,
+  process.env.ADVERTISER_PANEL_URL,
+].filter(Boolean);
+// CORS configuration - allow all frontend origins
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+
+app.use((req, res, next) => {
+  console.log("REQUEST:", req.method, req.url);
+  next();
+});
+
+// Serve uploaded files (user uploads and advertiser media)
+const uploadsPath = process.env.UPLOADS_DIR || 'src/uploads';
+const absoluteUploadsPath = path.resolve(__dirname, '..', uploadsPath);
+
+console.log(`📁 Serving static files from: ${absoluteUploadsPath}`);
+
+// Ensure directories exist
+if (!fs.existsSync(absoluteUploadsPath)) {
+  console.log('⚠️  Uploads directory does not exist, creating...');
+  fs.mkdirSync(absoluteUploadsPath, { recursive: true });
+}
+if (!fs.existsSync(path.join(absoluteUploadsPath, 'profiles'))) {
+  console.log('⚠️  Profiles directory does not exist, creating...');
+  fs.mkdirSync(path.join(absoluteUploadsPath, 'profiles'), { recursive: true });
+}
+
+app.use('/uploads', express.static(absoluteUploadsPath));
+
+// Health check endpoint for uploads
+app.get('/health/uploads', (req, res) => {
+  try {
+    const exists = fs.existsSync(absoluteUploadsPath);
+    const profilesPath = path.join(absoluteUploadsPath, 'profiles');
+    const profilesExists = fs.existsSync(profilesPath);
+    
+    let fileCount = 0;
+    let profileCount = 0;
+    
+    if (exists) {
+      const files = fs.readdirSync(absoluteUploadsPath);
+      fileCount = files.filter(f => {
+        const stat = fs.statSync(path.join(absoluteUploadsPath, f));
+        return stat.isFile();
+      }).length;
+    }
+    
+    if (profilesExists) {
+      profileCount = fs.readdirSync(profilesPath).length;
+    }
+    
+    res.json({
+      status: exists ? 'ok' : 'error',
+      uploadsDir: uploadsPath,
+      absolutePath: absoluteUploadsPath,
+      uploadsExists: exists,
+      profilesExists: profilesExists,
+      fileCount: fileCount,
+      profileCount: profileCount,
+      message: exists ? 'Uploads directory is accessible' : 'Uploads directory not found'
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      error: error.message
+    });
+  }
+});
+
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/uploads', uploadRoutes);
+app.use('/api/draws', drawRoutes);
+app.use('/api/bonus', bonusRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/admin', adminExtraRoutes);
+app.use('/api/billboards', publicBillboardRoutes);
+app.use('/api/advertiser', advertiserRoutes);
+app.use('/api/ads', adsRoutes);
+app.use('/api/ad-placements', adPlacementsRoutes);
+app.use('/api/email', emailRoutes);
+app.use('/api/pages', pagesRoutes);
+app.use('/api/audit', auditRoutes);
+app.use('/api/stripe', stripeRoutes);
+
+export default app;

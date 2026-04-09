@@ -1,0 +1,357 @@
+.analysis-main {
+    margin-left: 17.46vw;
+    margin-top: -5.9vw;
+    margin-bottom: 20.07vw;
+    width: 65.7vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.analysis-intro {
+    display: flex;
+    gap: 2.56vw;
+}
+
+.analysis-intro>img {
+    width: 26.924vw;
+}
+
+.analysis-intro-content {
+    position: relative;
+    margin-top: 5.83vw;
+    width: 31.55vw;
+    height: 17.307vw;
+    padding-left: 2vw;
+    padding-top: 1.7vw;
+}
+
+.analysis-intro-content>.svg1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.analysis-intro-content>.svg2 {
+    position: absolute;
+    right: -1.06vw;
+    top: -1.51vw;
+    width: 35.77vw;
+}
+
+.analysis-intro-content>.svg3 {
+    position: absolute;
+    right: -1.89vw;
+    top: -0.17vw;
+    width: 15.91vw;
+}
+
+.analysis-intro-content>.svg4 {
+    position: absolute;
+    left: 0;
+    bottom: -1.34vw;
+    width: 34.49vw;
+}
+
+.analysis-intro-content>.svg5 {
+    position: absolute;
+    left: -1.01vw;
+    bottom: -0.07vw;
+    width: 14.77vw;
+}
+
+.analysis-intro-content>div {
+    position: relative;
+    color: #FFF;
+    font-size: 2.185vw;
+    line-height: 2.54vw;
+}
+
+.analysis-intro-content>div>span {
+    position: relative;
+}
+
+.analysis-intro-content>div>span>svg {
+    position: absolute;
+    left: 0;
+    bottom: 0.4vw;
+    width: 103%;
+}
+
+.analysis-intro-content>div>span>span {
+    position: relative;
+}
+
+.analysis-chart-card {
+    margin-top: 2.86vw;
+    margin-bottom: 4.93vw;
+    width: 62.37vw;
+    height: 25.1vw;
+    position: relative;
+}
+
+.analysis-chart-card>.svg1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.analysis-chart-card>.svg2 {
+    position: absolute;
+    right: 0;
+    top: -1.53vw;
+    width: 63.72vw;
+}
+
+.analysis-chart-card>.svg3 {
+    position: absolute;
+    right: -1.36vw;
+    top: 0.51vw;
+    width: 28.336vw;
+}
+
+.analysis-chart-card>.svg4 {
+    position: absolute;
+    left: 0;
+    bottom: -2.3vw;
+    width: 63.72vw;
+}
+
+.analysis-chart-card>.svg5 {
+    position: absolute;
+    left: -1.48vw;
+    bottom: -0.2vw;
+    width: 28.336vw;
+}
+
+.analysis-progress-bars {
+    margin-top: 5.28vw;
+    margin-left: 3.7vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.914vw;
+    position: relative;
+}
+
+.analysis-progress-bar {
+    position: relative;
+    width: 54.96vw;
+    height: 2.41vw;
+}
+
+.analysis-progress-bar>.svg1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 45.89vw;
+}
+
+.analysis-progress-bar>.svg2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 45.89vw;
+}
+
+.analysis-progress-bar>.category-name {
+    width: 10.2vw;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    color: #595959;
+    font-size: 1.135vw;
+    line-height: normal;
+}
+
+.analysis-progress-bar>.progress-div {
+    position: absolute;
+    left: 9.73vw;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    height: 100%;
+    color: #595959;
+    font-size: 1.27vw;
+    line-height: normal;
+}
+
+.analysis-progress-bar>.progress-div>.progress-svg-div {
+    height: 1.495vw;
+    border-radius: 1.495vw;
+    background: var(--color);
+    width: calc(var(--progress) * 0.405vw);
+}
+
+.analysis-chart-explanation {
+    text-align: center;
+    font-size: 2.185vw;
+    line-height: 2.54vw;
+    margin-top: 5.6vw;
+    margin-bottom: 3vw;
+    width: 59.07vw;
+}
+
+.analysis-images {
+    margin-bottom: 4.78vw;
+}
+
+@media (max-width: 768px) {
+    .analysis-page > .upload-photo-section {
+        margin-top: 7.01vw;
+        margin-bottom: 0;
+        margin-left: 0;
+        gap: 1.33vw;
+        width: unset;
+    }
+
+    .analysis-main {
+        margin-left: 0vw;
+        margin-top: 0vw;
+        margin-bottom: 11.3vw;
+        width: 100vw;
+    }
+
+    .analysis-intro {
+        display: flex;
+        gap: 3.48vw;
+    }
+
+    .analysis-intro>img {
+        width: 37.78vw;
+    }
+
+    .analysis-intro-content {
+        position: relative;
+        margin-top: 8.88vw;
+        width: 40.27vw;
+        height: 22.09vw;
+        padding-left: 2.6vw;
+        padding-top: 2.6vw;
+    }
+
+    .analysis-intro-content>.svg2 {
+        right: -1.35vw;
+        top: -1.93vw;
+        width: 45.65vw;
+    }
+
+    .analysis-intro-content>.svg3 {
+        right: -1.89vw;
+        top: -2.41vw;
+        width: 20.3vw;
+    }
+
+    .analysis-intro-content>.svg4 {
+        left: 0;
+        bottom: -1.71vw;
+        width: 44.02vw;
+    }
+
+    .analysis-intro-content>.svg5 {
+        position: absolute;
+        left: -1.29vw;
+        bottom: -0.09vw;
+        width: 18.857vw;
+    }
+
+    .analysis-intro-content>div {
+        font-size: 2.79vw;
+        line-height: 3.24vw;
+    }
+
+    .analysis-intro-content>div>span>svg {
+        position: absolute;
+        left: 0;
+        bottom: 0.4vw;
+        width: 103%;
+    }
+
+    .analysis-chart-card {
+        margin-top: 4.01vw;
+        margin-bottom: 10.5vw;
+        width: 81.97vw;
+        height: 32.98vw;
+    }
+
+    .analysis-chart-card>.svg2 {
+        top: -2.07vw;
+        width: 83.75vw;
+    }
+
+    .analysis-chart-card>.svg3 {
+        right: -1.86vw;
+        top: 0.66vw;
+        width: 37.24vw;
+    }
+
+    .analysis-chart-card>.svg4 {
+        bottom: -2.82vw;
+        width: 83.75vw;
+    }
+
+    .analysis-chart-card>.svg5 {
+        left: -1.86vw;
+        bottom: -0.09vw;
+        width: 37.24vw;
+    }
+
+    .analysis-progress-bars {
+        margin-top: 6.89vw;
+        margin-left: 4.87vw;
+        gap: 1.2vw;
+    }
+
+    .analysis-progress-bar {
+        position: relative;
+        width: 72.24vw;
+        height: 3.17vw;
+    }
+
+    .analysis-progress-bar>.svg1 {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 60.32vw;
+    }
+
+    .analysis-progress-bar>.svg2 {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 60.32vw;
+    }
+
+    .analysis-progress-bar>.category-name {
+        width: 13.2vw;
+        font-size: 1.49vw;
+    }
+
+    .analysis-progress-bar>.progress-div {
+        left: 12.52vw;
+        font-size: 1.67vw;
+    }
+
+    .analysis-progress-bar>.progress-div>.progress-svg-div {
+        height: 1.965vw;
+        border-radius: 1.965vw;
+        width: calc(var(--progress) * 0.533vw);
+    }
+
+    .analysis-chart-explanation {
+        font-size: 3.05vw;
+        line-height: 3.54vw;
+        margin-top: 10.5vw;
+        margin-bottom: 9.72vw;
+        width: 82.5vw;
+    }
+
+    .analysis-images {
+        margin-bottom: 10.59vw;
+    }
+}

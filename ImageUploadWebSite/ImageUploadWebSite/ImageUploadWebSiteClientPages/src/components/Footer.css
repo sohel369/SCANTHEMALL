@@ -1,0 +1,389 @@
+footer {
+  width: 100vw;
+  height: 39.14vw;
+  background: #1C2526;
+  position: relative;
+  padding-top: 8.03vw;
+}
+
+footer>svg {
+  position: absolute;
+}
+
+footer>.svg1 {
+  left: 0;
+  top: -2.05vw;
+}
+
+footer>.svg2 {
+  right: 0;
+  top: 1.54vw;
+  width: 41.21vw;
+}
+
+footer>.svg3 {
+  left: 0;
+  bottom: 3.72vw;
+}
+
+footer>.svg4 {
+  left: 0;
+  bottom: 2.37vw;
+}
+
+footer>.footer-meta1 {
+  position: absolute;
+  z-index: 1;
+  left: 2vw;
+  bottom: 3.79vw;
+  display: flex;
+  align-items: center;
+  font-size: 1.58vw;
+  gap: 0.5vw;
+  color: #ffffff;
+  font-weight: 300;
+  line-height: normal;
+}
+
+footer>.footer-meta1>svg {
+  width: 1.33vw;
+}
+
+footer>.footer-meta2 {
+  position: absolute;
+  z-index: 1;
+  right: 1vw;
+  bottom: 3.52vw;
+  display: flex;
+  align-items: flex-end;
+}
+
+footer>.footer-meta2>.payment-image {
+  width: 15.61vw;
+  height: 2.79vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0.17vw;
+  gap: 0.64vw;
+}
+
+footer>.footer-meta2>.payment-image>svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+footer>.footer-meta2>.payment-image>.paypal-image {
+  position: relative;
+  z-index: 1;
+  width: 6.9vw;
+}
+
+footer>.footer-meta2>.payment-image>.visa-image {
+  position: relative;
+  z-index: 1;
+  width: 3.58vw;
+}
+
+footer>.footer-meta2>.chat-panel {
+  width: 11.76vw;
+  height: 2.22vw;
+  position: relative;
+  text-align: center;
+  color: #d91a2a;
+  font-size: 1.58vw;
+}
+
+footer>.footer-meta2>.chat-panel>svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+footer>.footer-meta2>.chat-panel>span {
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter {
+  padding-left: 22.21vw;
+  display: flex;
+  align-items: center;
+}
+
+.newsletter>span {
+  color: #ffffff;
+  font-size: 1.73vw;
+  font-weight: 300;
+  line-height: normal;
+  margin-right: 0.85vw;
+}
+
+.newsletter-form {
+  display: flex;
+}
+
+.newsletter-form>.email-input {
+  position: relative;
+  width: 36.49vw;
+  height: 3.48vw;
+  padding-left: 2.42vw;
+  display: flex;
+  align-items: center;
+}
+
+.newsletter-form>.email-input>svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.newsletter-form>.email-input>input {
+  position: relative;
+  z-index: 1;
+  width: 32vw;
+  height: 1.93vw;
+  font-size: 1.53vw;
+  line-height: normal;
+  border: none;
+  outline: none;
+}
+
+.newsletter-form>.email-input>input::placeholder {
+  color: rgba(28, 37, 38, 0.43);
+  font-size: 1.53vw;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.subscribe-button {
+  width: 13.94vw;
+  height: 3.48vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 2.1vw;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: -0.5vw;
+}
+
+.subscribe-button>svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.subscribe-button>span {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-links {
+  padding-left: 7.95vw;
+  padding-top: 4.6vw;
+  padding-right: 11.91vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-columns {
+  display: flex;
+  gap: 10vw;
+  color: #ffffff;
+}
+
+.footer-column>h4 {
+  margin: 0;
+  margin-bottom: 1.68vw;
+  font-size: 1.58vw;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.footer-column>ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.43vw;
+}
+
+.footer-column>ul>li {
+  display: flex;
+  align-items: center;
+  gap: 1.14vw;
+  font-size: 1.57vw;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.footer-column>ul>li>svg {
+  width: 0.57vw;
+}
+
+.social-column {
+  padding-top: 6.18vw;
+}
+
+.social-links {
+  display: flex;
+  gap: 0.68vw;
+}
+
+.social-link>img {
+  width: 2.91vw;
+}
+
+.social-link:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  footer {
+    height: 103.61vw;
+    background: #1C2526;
+    padding-top: 16.11vw;
+  }
+
+  footer>svg {
+    position: absolute;
+  }
+
+  footer>.svg1 {
+    left: -28.61vw;
+    top: -2.22vw;
+    width: 151.94vw;
+  }
+
+  footer>.svg2 {
+    right: -23.33vw;
+    top: 3.22vw;
+    width: 62.61vw;
+  }
+
+  footer>.svg3 {
+    display: none;
+  }
+
+  footer>.svg4 {
+    display: none;
+  }
+
+  footer>.footer-meta1 {
+    position: absolute;
+    z-index: 1;
+    left: 25vw;
+    bottom: 26.11vw;
+    font-size: 2.94vw;
+    gap: 0.95vw;
+  }
+
+  footer>.footer-meta1>svg {
+    width: 2.48vw;
+  }
+
+  footer>.footer-meta2 {
+    right: 12.67vw;
+    bottom: 11.56vw;
+  }
+
+  footer>.footer-meta2>.payment-image {
+    width: 37.89vw;
+    height: 6.77vw;
+    padding-left: 0.5vw;
+    gap: 1.56vw;
+  }
+
+  footer>.footer-meta2>.payment-image>.paypal-image {
+    width: 16.75vw;
+  }
+
+  footer>.footer-meta2>.payment-image>.visa-image {
+    width: 8.69vw;
+  }
+
+  footer>.footer-meta2>.chat-panel {
+    width: 35.55vw;
+    height: 6.71vw;
+    font-size: 4.77vw;
+  }
+
+  .newsletter {
+    padding-left: 6.11vw;
+  }
+
+  .newsletter>span {
+    font-size: 2.61vw;
+    margin-right: 1.28vw;
+  }
+
+  .newsletter-form>.email-input {
+    width: 54.9vw;
+    height: 5.23vw;
+    padding-left: 3.64vw;
+  }
+
+  .newsletter-form>.email-input>input {
+    z-index: 1;
+    width: 48vw;
+    height: 3.93vw;
+    font-size: 2.31vw;
+  }
+
+  .newsletter-form>.email-input>input::placeholder {
+    font-size: 2.31vw;
+  }
+
+  .subscribe-button {
+    width: 20.97vw;
+    height: 5.23vw;
+    font-size: 3.16vw;
+    margin-left: -0.3vw;
+  }
+
+  .footer-links {
+    padding-left: unset;
+    padding-top: 11.16vw;
+    padding-right: unset;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .footer-column>h4 {
+    margin: 0;
+    margin-bottom: 3.11vw;
+    font-size: 2.88vw;
+  }
+
+  .footer-column>ul {
+    gap: 0.79vw;
+  }
+
+  .footer-column>ul>li {
+    gap: 1.74vw;
+    font-size: 2.88vw;
+  }
+
+  .footer-column>ul>li>svg {
+    width: 1.04vw;
+  }
+
+  .social-column {
+    padding-top: 8.03vw;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1.86vw;
+  }
+
+  .social-link>img {
+    width: 7.93vw;
+  }
+}

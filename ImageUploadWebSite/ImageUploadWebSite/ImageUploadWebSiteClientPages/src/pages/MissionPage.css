@@ -1,0 +1,160 @@
+.mission-page {
+  padding-top: 3vw;
+  padding-bottom: 21.2vw;
+}
+
+.site-title {
+  color: #000;
+  font-size: 3vw;
+  line-height: normal;
+  margin-bottom: 3.93vw;
+  text-align: center;
+}
+
+.mission-title-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.mission-title {
+  width: 46.52vw;
+  height: 7.19vw;
+  position: relative;
+  text-align: center;
+}
+
+.mission-title>.svg1 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 42.99vw;
+}
+
+.mission-title>.svg2 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 45.3vw;
+}
+
+.mission-title>span {
+  position: relative;
+  color: #FFF;
+  font-size: 3.69vw;
+  line-height: normal;
+}
+
+.mission-content {
+  position: relative;
+  margin-top: -3.375vw;
+  width: 100vw;
+  height: 66.41vw;
+  padding-top: 7.99vw;
+  padding-left: 4.7vw;
+  padding-right: 4.7vw;
+}
+
+.mission-content>.mobile-svg1 {
+  display: none;
+}
+
+.mission-content>.svg1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.mission-content>.svg2 {
+  position: absolute;
+  left: 0;
+  top: -1.86vw;
+  width: 24.68vw;
+}
+
+.mission-content>.svg3 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 24.68vw;
+}
+
+.mission-content>.svg4 {
+  position: absolute;
+  left: 0;
+  bottom: -2.34vw;
+  width: 100%;
+}
+
+.mission-content>.svg5 {
+  position: absolute;
+  left: 0;
+  bottom: 0.71vw;
+  width: 41.2vw;
+}
+
+.mission-text-container {
+  position: relative;
+  color: #FFF;
+  font-size: 1.76vw;
+  line-height: normal;
+}
+
+@media (max-width: 768px) {
+  .mission-page {
+    padding-top: 7.5vw;
+    padding-bottom: 12.22vw;
+  }
+
+  .site-title {
+    font-size: 3.74vw;
+    margin-bottom: 3.41vw;
+  }
+
+  .mission-title {
+    display: flex;
+    justify-content: center;
+  }
+
+  .mission-title>span {
+    position: relative;
+    color: #FFF;
+    font-size: 3.96vw;
+    line-height: normal;
+  }
+
+  .mission-content {
+    margin-top: -3.49vw;
+    height: 113.61vw;
+    padding-top: 8.84vw;
+  }
+
+  .mission-content>.svg1 {
+    display: none;
+  }
+
+  .mission-content>.mobile-svg1 {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .mission-content>.svg2 {
+    top: -1.53vw;
+  }
+
+  .mission-content>.svg4 {
+    bottom: -1.15vw;
+  }
+
+  .mission-content>.svg5 {
+    bottom: 1.9vw;
+  }
+
+  .mission-text-container {
+    font-size: 2.62vw;
+  }
+}

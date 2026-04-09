@@ -1,0 +1,131 @@
+.privacy-page {
+    padding-top: 4.36vw;
+    padding-left: 5.37vw;
+    padding-right: 3.92vw;
+    padding-bottom: 6.3vw;
+}
+
+.privacy-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1vw;
+    padding-left: 0.5vw;
+}
+
+.privacy-badge {
+    position: relative;
+    width: 33.22vw;
+    height: 6.56vw;
+    display: flex;
+    justify-content: center;
+    padding-right: 1.1vw;
+}
+
+.privacy-badge>.svg1 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30.7vw;
+}
+
+.privacy-badge>.svg2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 32.35vw;
+}
+
+.privacy-badge>span {
+    position: relative;
+    z-index: 1;
+    font-size: 3.36vw;
+    color: #ffffff;
+    text-align: center;
+    line-height: normal;
+}
+
+.privacy-content {
+    color: #000;
+    font-size: 1.41vw;
+    line-height: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 1.47vw;
+}
+/* Loa
+ding and Error States */
+.loading-message,
+.error-message {
+  text-align: center;
+  padding: 3rem 2rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.error-message {
+  color: #D91A2A;
+  background-color: #fff3f3;
+  border: 1px solid #ffcccc;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+/* Dynamic Content Styling */
+.dynamic-content {
+  line-height: 1.8;
+}
+
+.dynamic-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem;
+  color: #1C2526;
+}
+
+.dynamic-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1.5rem 0 1rem;
+  color: #D91A2A;
+}
+
+.dynamic-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+  color: #D4A017;
+}
+
+.dynamic-content p {
+  margin: 1rem 0;
+}
+
+.dynamic-content ul,
+.dynamic-content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.dynamic-content li {
+  margin: 0.5rem 0;
+}
+
+.dynamic-content a {
+  color: #D91A2A;
+  text-decoration: underline;
+}
+
+.dynamic-content a:hover {
+  color: #D4A017;
+}
+
+.dynamic-content strong {
+  font-weight: 600;
+  color: #1C2526;
+}
+
+.dynamic-content em {
+  font-style: italic;
+}

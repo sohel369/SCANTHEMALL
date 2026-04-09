@@ -1,0 +1,547 @@
+.login-page {
+  min-height: 100vh;
+  position: relative;
+}
+
+.login-container {
+  padding-top: 1vw;
+}
+
+/* Geometric Background */
+.geometric-background {
+  position: relative;
+  width: 100vw;
+  height: 62.96vw;
+  padding-top: 10.4vw;
+  padding-left: 13.89vw;
+}
+
+.geometric-background>svg {
+  position: absolute;
+}
+
+.geometric-background>.svg1 {
+  left: 0;
+  top: 0;
+  width: 100vw;
+}
+
+.geometric-background>.svg2 {
+  left: 0;
+  top: -1.57vw;
+  width: 83.61vw;
+}
+
+.geometric-background>.svg3 {
+  left: 0;
+  top: 1.5vw;
+  width: 41.14vw;
+}
+
+.geometric-background>.svg4 {
+  left: 0;
+  bottom: -2.92vw;
+  width: 83.57vw;
+}
+
+.geometric-background>.svg5 {
+  left: 0;
+  bottom: -2.24vw;
+  width: 33.8vw;
+}
+
+.geometric-background>.mobile-svg1 {
+  display: none;
+}
+
+.geometric-background>.mobile-svg2 {
+  display: none;
+}
+
+.geometric-background>.mobile-svg3 {
+  display: none;
+}
+
+.geometric-background>.mobile-svg4 {
+  display: none;
+}
+
+.geometric-background>.mobile-svg5 {
+  display: none;
+}
+
+/* Form Section */
+.login-form-panel {
+  width: 64.9vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form-header {
+  position: relative;
+  width: 32.28vw;
+  height: 4.46vw;
+  padding-left: 0.5vw;
+  text-align: center;
+}
+
+.login-form-header>.svg1 {
+  position: absolute;
+  right: -1.6vw;
+  bottom: -0.99vw;
+  width: 100%;
+}
+
+.login-form-header>.svg2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.login-form-title {
+  position: relative;
+  z-index: 1;
+  color: #FFF;
+  font-size: 3.32vw;
+  line-height: normal;
+}
+
+.login-form {
+  position: relative;
+  width: 63.11vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form-fields {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.88vw;
+  margin-top: 6.16vw;
+}
+
+.login-page .form-field {
+  display: flex;
+  flex-direction: column;
+  width: 35vw;
+}
+
+.login-page .form-field>label {
+  font-size: 1.5vw;
+  font-weight: 400;
+  line-height: normal;
+  color: #EDEDED;
+  margin-bottom: 0.6vw;
+}
+
+.login-page .form-field>div {
+  height: 3.51vw;
+  padding-left: 1.3vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: white;
+}
+
+.login-page .form-field>div>svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.login-page .form-field>div>input {
+  position: relative;
+  z-index: 1;
+  font-size: 1.5vw;
+  width: 100%;
+  height: 1.93vw;
+  font-weight: 300;
+  line-height: normal;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.login-page .form-field>div>input::placeholder {
+  color: #B9BABA;
+  font-size: 1.5vw;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.error-message {
+  color: #D91A2A;
+  padding: 10px;
+  margin-top: 2vw;
+  margin-bottom: 15px;
+  background-color: #ffe6e6;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 1.2vw;
+}
+
+.login-actions {
+  margin-top: 4vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2vw;
+}
+
+.login-submit-button {
+  position: relative;
+  width: 28.07vw;
+  height: 3.13vw;
+  padding-right: 0.37vw;
+  text-align: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.login-submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-submit-button>svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.login-submit-button>span {
+  position: relative;
+  color: #fff;
+  font-size: 2.249vw;
+  line-height: normal;
+}
+
+.register-link {
+  color: #EDEDED;
+  font-size: 1.3vw;
+  margin-left: 0.5vw;
+}
+
+.register-link a {
+  color: #D91A2A;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+.login-info-banner {
+  margin-top: 23.39vw;
+  margin-left: 26.45vw;
+}
+
+.login-info-banner-title {
+  width: 37.05vw;
+  height: 2.27vw;
+  position: relative;
+  padding-left: 0.975vw;
+}
+
+.login-info-banner-title>svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.login-info-banner-title>span {
+  position: relative;
+  color: #FFF;
+  font-size: 1.793vw;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.login-info-banner-content {
+  margin-left: 0.98vw;
+  margin-top: 1.45vw;
+  width: 38.4vw;
+  color: #1C2526;
+  font-size: 1.02vw;
+  font-weight: lighter;
+  line-height: normal;
+}
+
+.promo-section {
+  margin-left: 22.9vw;
+  margin-top: 9.26vw;
+  margin-bottom: 10vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vw;
+}
+
+.promo-image-section {
+  position: relative;
+  width: 50vw;
+  height: 27.41vw;
+}
+
+.promo-image-section>img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.promo-image-section>.svg1 {
+  position: absolute;
+  right: 0;
+  top: -1.925vw;
+  width: 100%;
+}
+
+.promo-image-section>.svg2 {
+  position: absolute;
+  top: -0.68vw;
+  right: 0;
+  width: 20.6vw;
+}
+
+.promo-image-section>.svg3 {
+  position: absolute;
+  left: 0;
+  bottom: -1.14vw;
+  width: 100%;
+}
+
+.promo-image-section>.svg4 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 20.6vw;
+}
+
+.promo-text {
+  margin-top: 2.29vw;
+  width: 41.39vw;
+  color: #1C2526;
+  line-height: normal;
+  font-size: 1.45vw;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    padding-top: 7.5vw;
+  }
+
+  /* Geometric Background */
+  .geometric-background {
+    position: relative;
+    width: 100vw;
+    height: 149.79vw;
+    padding-top: 14.13vw;
+    padding-left: 12.71vw;
+  }
+
+  .geometric-background>.svg1 {
+    display: none;
+  }
+
+  .geometric-background>.svg2 {
+    display: none;
+  }
+
+  .geometric-background>.svg3 {
+    display: none;
+  }
+
+  .geometric-background>.svg4 {
+    display: none;
+  }
+
+  .geometric-background>.svg5 {
+    display: none;
+  }
+
+  .geometric-background>.mobile-svg1 {
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100vw;
+  }
+
+  .geometric-background>.mobile-svg2 {
+    display: block;
+    width: 91.53vw;
+    left: -2.78vw;
+    top: -0.8vw;
+  }
+
+  .geometric-background>.mobile-svg3 {
+    display: block;
+    width: 45.83vw;
+    left: -2.78vw;
+    top: 3.33vw;
+  }
+
+  .geometric-background>.mobile-svg4 {
+    display: block;
+    width: 101.77vw;
+    right: -11.49vw;
+    bottom: -3.92vw;
+  }
+
+  .geometric-background>.mobile-svg5 {
+    display: block;
+    width: 48.89vw;
+    left: -0.83vw;
+    bottom: -2.13vw;
+  }
+
+  .login-form-panel {
+    width: 74.73vw;
+  }
+
+  .login-form-header {
+    width: 46.365vw;
+    height: 6.4vw;
+    padding-left: 0.76vw;
+  }
+
+  .login-form-header>.svg1 {
+    right: -1.28vw;
+    bottom: -0.81vw;
+  }
+
+  .login-form-title {
+    font-size: 4.765vw;
+  }
+
+  .login-form {
+    width: 100%;
+  }
+
+  .login-form-fields {
+    gap: 8.59vw;
+    margin-top: 6.94vw;
+  }
+
+  .login-page .form-field {
+    width: 100%;
+  }
+
+  .login-page .form-field>label {
+    font-size: 2.78vw;
+    margin-bottom: 1.24vw;
+  }
+
+  .login-page .form-field>div {
+    height: 6.526vw;
+    padding-left: 2.49vw;
+  }
+
+  .login-page .form-field>div>input {
+    font-size: 2.78vw;
+    height: 3.93vw;
+  }
+
+  .login-page .form-field>div>input::placeholder {
+    font-size: 2.78vw;
+  }
+
+  .error-message {
+    margin-top: 3vw;
+    font-size: 2.5vw;
+  }
+
+  .login-actions {
+    margin-top: 6vw;
+    gap: 3vw;
+  }
+
+  .login-submit-button {
+    width: 61.92vw;
+    height: 6.91vw;
+    padding-right: 0.775vw;
+  }
+
+  .login-submit-button>span {
+    font-size: 4.96vw;
+  }
+
+  .register-link {
+    font-size: 2.8vw;
+    margin-left: 1vw;
+  }
+
+  .login-info-banner {
+    margin-top: 9.67vw;
+    margin-left: 5.68vw;
+  }
+
+  .login-info-banner-title {
+    width: 86.6vw;
+    height: 5.3vw;
+    padding-left: 2.28vw;
+    display: flex;
+  }
+
+  .login-info-banner-title>span {
+    font-size: 4.19vw;
+  }
+
+  .login-info-banner-content {
+    margin-left: 2.29vw;
+    margin-top: 3.46vw;
+    width: 86.2vw;
+    font-size: 2.38vw;
+  }
+
+  .promo-section {
+    margin-left: 0;
+    margin-top: 6.36vw;
+    margin-bottom: 6.97vw;
+    width: 100vw;
+  }
+
+  .promo-image-section {
+    width: 111.1vw;
+    height: 60.91vw;
+    margin-left: -6.01vw;
+  }
+
+  .promo-image-section>.svg1 {
+    right: 0;
+    top: -4.28vw;
+  }
+
+  .promo-image-section>.svg2 {
+    top: -1.52vw;
+    right: 0;
+    width: 45.77vw;
+  }
+
+  .promo-image-section>.svg3 {
+    left: 0;
+    bottom: -2.53vw;
+  }
+
+  .promo-image-section>.svg4 {
+    left: 0;
+    bottom: 0.1vw;
+    width: 45.77vw;
+  }
+
+  .promo-text {
+    margin-top: 8.125vw;
+    width: 75vw;
+    font-size: 3.88vw;
+  }
+}

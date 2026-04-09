@@ -1,0 +1,265 @@
+.milestone-celebration-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.milestone-celebration-modal {
+  background: white;
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  animation: slideUp 0.5s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.celebration-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #999;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.celebration-close:hover {
+  background: #F0F0F0;
+  color: #333;
+}
+
+.celebration-content {
+  text-align: center;
+}
+
+.celebration-icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.celebration-content h2 {
+  font-size: 2rem;
+  color: #1C2526;
+  margin-bottom: 30px;
+}
+
+.celebration-details {
+  margin-bottom: 30px;
+}
+
+.milestone-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #D91A2A 0%, #A01419 100%);
+  color: white;
+  padding: 20px 40px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(217, 26, 42, 0.3);
+}
+
+.badge-count {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.badge-label {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  margin-top: 5px;
+}
+
+.celebration-message {
+  margin-top: 20px;
+}
+
+.milestone-description {
+  font-size: 1.1rem;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.bonus-award {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(212, 160, 23, 0.1) 0%, rgba(212, 160, 23, 0.05) 100%);
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 2px solid rgba(212, 160, 23, 0.3);
+}
+
+.award-icon {
+  font-size: 2rem;
+}
+
+.award-text {
+  font-size: 1rem;
+  color: #333;
+}
+
+.award-text strong {
+  color: #D4A017;
+  font-weight: 700;
+}
+
+.celebration-button {
+  background: linear-gradient(135deg, #D91A2A 0%, #A01419 100%);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(217, 26, 42, 0.3);
+}
+
+.celebration-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(217, 26, 42, 0.4);
+}
+
+.celebration-button:active {
+  transform: translateY(0);
+}
+
+/* Confetti Animation */
+.confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  opacity: 0;
+  animation: confettiFall 3s linear infinite;
+}
+
+@keyframes confettiFall {
+  0% {
+    top: -10px;
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+    transform: rotate(720deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .milestone-celebration-modal {
+    padding: 30px 20px;
+  }
+
+  .celebration-icon {
+    font-size: 4rem;
+  }
+
+  .celebration-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .milestone-badge {
+    padding: 15px 30px;
+  }
+
+  .badge-count {
+    font-size: 2.5rem;
+  }
+
+  .award-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .milestone-celebration-modal {
+    width: 95%;
+    padding: 25px 15px;
+  }
+
+  .celebration-icon {
+    font-size: 3rem;
+  }
+
+  .celebration-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .milestone-badge {
+    padding: 12px 25px;
+  }
+
+  .badge-count {
+    font-size: 2rem;
+  }
+
+  .bonus-award {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .celebration-button {
+    width: 100%;
+  }
+}

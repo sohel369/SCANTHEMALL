@@ -1,0 +1,629 @@
+.signup-page {
+  min-height: 100vh;
+  position: relative;
+}
+
+.signup-container {
+  padding-top: 1vw;
+}
+
+/* Geometric Background */
+.geometric-background {
+  position: relative;
+  width: 100vw;
+  height: 62.96vw;
+  padding-top: 10.4vw;
+  padding-left: 13.89vw;
+}
+
+.geometric-background>svg {
+  position: absolute;
+}
+
+.geometric-background>.svg1 {
+  left: 0;
+  top: 0;
+  width: 100vw;
+}
+
+.geometric-background>.svg2 {
+  left: 0;
+  top: -1.57vw;
+  width: 83.61vw;
+}
+
+.geometric-background>.svg3 {
+  left: 0;
+  top: 1.5vw;
+  width: 41.14vw;
+}
+
+.geometric-background>.svg4 {
+  left: 0;
+  bottom: -2.92vw;
+  width: 83.57vw;
+}
+
+.geometric-background>.svg5 {
+  left: 0;
+  bottom: -2.24vw;
+  width: 33.8vw;
+}
+
+.geometric-background>.mobile-svg1 {
+  display: none;
+}
+
+.geometric-background>.mobile-svg2 {
+  display: none;
+}
+
+.geometric-background>.mobile-svg3 {
+  display: none;
+}
+
+.geometric-background>.mobile-svg4 {
+  display: none;
+}
+
+.geometric-background>.mobile-svg5 {
+  display: none;
+}
+
+/* Form Section */
+.signup-form-panel {
+  width: 64.9vw;
+}
+
+.signup-form-header-panel {
+  padding-left: 19.47vw;
+}
+
+.signup-form-header {
+  position: relative;
+  width: 32.28vw;
+  height: 4.46vw;
+  padding-left: 0.5vw;
+  text-align: center;
+}
+
+.signup-form-header>.svg1 {
+  position: absolute;
+  right: -1.6vw;
+  bottom: -0.99vw;
+  width: 100%;
+}
+
+.signup-form-header>.svg2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.signup-form-title {
+  position: relative;
+  z-index: 1;
+  color: #FFF;
+  font-size: 3.32vw;
+  line-height: normal;
+}
+
+.signup-form {
+  position: relative;
+  width: 63.11vw;
+}
+
+.signup-form-grid1 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 6.16vw;
+  column-gap: 3.73vw;
+  row-gap: 2.88vw;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field>label {
+  font-size: 1.5vw;
+  font-weight: 400;
+  line-height: normal;
+  color: #EDEDED;
+  margin-bottom: 0.6vw;
+}
+
+.form-field>div {
+  height: 3.51vw;
+  padding-left: 1.3vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-field>div>svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.form-field>div>input {
+  position: relative;
+  z-index: 1;
+  font-size: 1.5vw;
+  width: 16vw;
+  height: 1.93vw;
+  font-weight: 300;
+  line-height: normal;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.form-field>div>input::placeholder {
+  color: #B9BABA;
+  font-size: 1.5vw;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.signup-form-grid2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 4.76vw;
+  column-gap: 3.98vw;
+}
+
+.signup-form-grid2>.dropdown-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.signup-form-grid2>.dropdown-field>label {
+  font-size: 1.38vw;
+  font-weight: 400;
+  line-height: normal;
+  color: #EDEDED;
+  margin-bottom: 0.6vw;
+}
+
+.custom-select select {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #D91A2A;
+  color: white;
+  padding: 0.57vw 2.86vw 0.82vw 1.21vw;
+  border: none;
+  font-size: 1.38vw;
+  line-height: normal;
+  cursor: pointer;
+  width: 100%;
+  height: 3.22vw;
+}
+
+.custom-select {
+  position: relative;
+}
+
+.custom-select>svg {
+  position: absolute;
+  right: 0;
+  bottom: -0.72vw;
+  width: 11.73vw;
+}
+
+.custom-select::after {
+  content: "▼";
+  position: absolute;
+  top: 50%;
+  right: 0.86vw;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: white;
+}
+
+.custom-select select option {
+  background: white;
+  color: black;
+}
+
+.state-select select {
+  font-size: 0.91vw;
+}
+
+.terms-label {
+  margin-top: 6.42vw;
+  font-size: 1.72vw;
+  color: #E0E0E0;
+}
+
+.terms-label>input {
+  width: 1.38vw;
+  height: 1.38vw;
+  accent-color: #404B4C;
+  border: 0.66vw solid #D3D3D3;
+  margin-right: 1.5vw;
+}
+
+.notification-banner {
+  margin-top: 23.39vw;
+  margin-left: 26.45vw;
+}
+
+.notification-banner-title {
+  width: 37.05vw;
+  height: 2.27vw;
+  position: relative;
+  padding-left: 0.975vw;
+}
+
+.notification-banner-title>svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.notification-banner-title>span {
+  position: relative;
+  color: #FFF;
+  font-size: 1.793vw;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.notification-banner-content {
+  margin-left: 0.98vw;
+  margin-top: 1.45vw;
+  width: 38.4vw;
+  color: #1C2526;
+  font-size: 1.02vw;
+  font-weight: lighter;
+  line-height: normal;
+}
+
+.promo-section {
+  margin-left: 22.9vw;
+  margin-top: 9.26vw;
+  margin-bottom: 58.17vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vw;
+}
+
+.register-submit-button {
+  position: relative;
+  width: 28.07vw;
+  height: 3.13vw;
+  padding-right: 0.37vw;
+  text-align: center;
+  margin-bottom: 4.33vw;
+}
+
+.register-submit-button>svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.register-submit-button>span {
+  position: relative;
+  color: #fff;
+  font-size: 2.249vw;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.promo-image-section {
+  position: relative;
+  width: 50vw;
+  height: 27.41vw;
+}
+
+.promo-image-section>img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.promo-image-section>.svg1 {
+  position: absolute;
+  right: 0;
+  top: -1.925vw;
+  width: 100%;
+}
+
+.promo-image-section>.svg2 {
+  position: absolute;
+  top: -0.68vw;
+  right: 0;
+  width: 20.6vw;
+}
+
+.promo-image-section>.svg3 {
+  position: absolute;
+  left: 0;
+  bottom: -1.14vw;
+  width: 100%;
+}
+
+.promo-image-section>.svg4 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 20.6vw;
+}
+
+.promo-text {
+  margin-top: 2.29vw;
+  width: 41.39vw;
+  color: #1C2526;
+  line-height: normal;
+  font-size: 1.45vw;
+  text-align: center;
+}
+
+.register-advertising-panel {
+  position: absolute;
+  top: 48vw;
+  left: 64.64vw;
+}
+
+@media (max-width: 768px) {
+  .signup-container {
+    padding-top: 7.5vw;
+  }
+
+  /* Geometric Background */
+  .geometric-background {
+    position: relative;
+    width: 100vw;
+    height: 149.79vw;
+    padding-top: 14.13vw;
+    padding-left: 12.71vw;
+  }
+
+  .geometric-background>.svg1 {
+    display: none;
+  }
+
+  .geometric-background>.svg2 {
+    display: none;
+  }
+
+  .geometric-background>.svg3 {
+    display: none;
+  }
+
+  .geometric-background>.svg4 {
+    display: none;
+  }
+
+  .geometric-background>.svg5 {
+    display: none;
+  }
+
+  .geometric-background>.mobile-svg1 {
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100vw;
+  }
+
+  .geometric-background>.mobile-svg2 {
+    display: block;
+    width: 91.53vw;
+    left: -2.78vw;
+    top: -0.8vw;
+  }
+
+  .geometric-background>.mobile-svg3 {
+    display: block;
+    width: 45.83vw;
+    left: -2.78vw;
+    top: 3.33vw;
+  }
+
+  .geometric-background>.mobile-svg4 {
+    display: block;
+    width: 101.77vw;
+    right: -11.49vw;
+    bottom: -3.92vw;
+  }
+
+  .geometric-background>.mobile-svg5 {
+    display: block;
+    width: 48.89vw;
+    left: -0.83vw;
+    bottom: -2.13vw;
+  }
+
+  .signup-form-panel {
+    width: 74.73vw;
+  }
+
+  .signup-form-header-panel {
+    padding-left: 13.38vw;
+  }
+
+  .signup-form-header {
+    width: 46.365vw;
+    height: 6.4vw;
+    padding-left: 0.76vw;
+  }
+
+  .signup-form-header>.svg1 {
+    right: -1.28vw;
+    bottom: -0.81vw;
+  }
+
+  .signup-form-title {
+    font-size: 4.765vw;
+  }
+
+  .signup-form {
+    width: 100%;
+  }
+
+  .signup-form-grid1 {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 6.94vw;
+    column-gap: 9.16vw;
+    row-gap: 8.59vw;
+  }
+
+  .form-field>label {
+    font-size: 2.78vw;
+    margin-bottom: 1.24vw;
+  }
+
+  .form-field>div {
+    height: 6.526vw;
+    padding-left: 2.49vw;
+  }
+
+  .form-field>div>input {
+    font-size: 2.78vw;
+    width: 26vw;
+    height: 3.93vw;
+  }
+
+  .form-field>div>input::placeholder {
+    font-size: 2.78vw;
+  }
+
+  .signup-form-grid2 {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 7.41vw;
+    column-gap: 12.08vw;
+    row-gap: 9.64vw;
+  }
+
+  .signup-form-grid2>.dropdown-field>label {
+    font-size: 3.37vw;
+    margin-bottom: 1.66vw;
+  }
+
+  .custom-select select {
+    padding: 1.49vw 5.56vw 2.19vw 3vw;
+    font-size: 3.22vw;
+    height: 7.85vw;
+  }
+
+  .custom-select>svg {
+    right: 0.7vw;
+    bottom: -2.6vw;
+    width: 28.58vw;
+  }
+
+  .custom-select::after {
+    top: 50%;
+    right: 2.53vw;
+  }
+
+  .state-select select {
+    font-size: 2.2vw;
+  }
+
+  .terms-label {
+    margin-top: 8.83vw;
+    font-size: 2.66vw;
+  }
+
+  .terms-label>input {
+    width: 2.32vw;
+    height: 2.32vw;
+    border: 0.14vw solid #D3D3D3;
+    margin-right: 1.81vw;
+  }
+
+  .notification-banner {
+    margin-top: 9.67vw;
+    margin-left: 5.68vw;
+  }
+
+  .notification-banner-title {
+    width: 86.6vw;
+    height: 5.3vw;
+    padding-left: 2.28vw;
+    display: flex;
+  }
+
+  .notification-banner-title>span {
+    font-size: 4.19vw;
+  }
+
+  .notification-banner-content {
+    margin-left: 2.29vw;
+    margin-top: 3.46vw;
+    width: 86.2vw;
+    font-size: 2.38vw;
+  }
+
+  .promo-section {
+    margin-left: 0;
+    margin-top: 6.36vw;
+    margin-bottom: 6.97vw;
+    width: 100vw;
+  }
+
+  .register-submit-button {
+    width: 61.92vw;
+    height: 6.91vw;
+    padding-right: 0.775vw;
+    margin-bottom: 8.75vw;
+  }
+
+  .register-submit-button>span {
+    font-size: 4.96vw;
+  }
+
+  .promo-image-section {
+    width: 111.1vw;
+    height: 60.91vw;
+    margin-left: -6.01vw;
+  }
+
+  .promo-image-section>.svg1 {
+    right: 0;
+    top: -4.28vw;
+  }
+
+  .promo-image-section>.svg2 {
+    top: -1.52vw;
+    right: 0;
+    width: 45.77vw;
+  }
+
+  .promo-image-section>.svg3 {
+    left: 0;
+    bottom: -2.53vw;
+  }
+
+  .promo-image-section>.svg4 {
+    left: 0;
+    bottom: 0.1vw;
+    width: 45.77vw;
+  }
+
+  .promo-text {
+    margin-top: 8.125vw;
+    width: 75vw;
+    font-size: 3.88vw;
+  }
+
+  .register-advertising-panel {
+    position: absolute;
+    top: 48vw;
+    left: 64.64vw;
+  }
+}

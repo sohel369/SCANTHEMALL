@@ -1,0 +1,184 @@
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-banner {
+  margin-top: 6.06vw;
+  width: 27.71vw;
+  height: 6.56vw;
+  position: relative;
+  text-align: center;
+}
+
+.contact-banner>.svg1 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 25.61vw;
+}
+
+.contact-banner>.svg2 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 26.985vw;
+}
+
+.contact-banner>div {
+  position: relative;
+  color: #FFF;
+  font-size: 3.36vw;
+  line-height: normal;
+}
+
+.top-offices-container {
+  position: relative;
+  margin-top: 6.37vw;
+  width: 85.54vw;
+  height: 44.09vw;
+  padding-left: 2.9vw;
+  padding-top: 5vw;
+  padding-right: 4vw;
+}
+
+.top-offices-container>.svg1 {
+  position: absolute;
+  left: -0.335vw;
+  top: -1.07vw;
+  width: 82.74vw;
+}
+
+.top-offices-container>.svg2 {
+  position: absolute;
+  right: 0.7vw;
+  top: 3.34vw;
+  width: 15vw;
+}
+
+.top-offices-container>.svg3 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.top-offices-container>.svg4 {
+  position: absolute;
+  right: 0.04vw;
+  bottom: 1.57vw;
+  width: 78.03vw;
+}
+
+.office-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 1.82vw;
+  line-height: 1.97vw;
+  color: #FFF;
+  row-gap: 4.14vw;
+}
+
+.office-country {
+  color: #D4A017;
+}
+
+.office-email {
+  text-decoration-line: underline;
+}
+
+.top-offices-container>.office-grid>svg {
+  height: 10.95vw;
+  position: absolute;
+}
+
+.top-offices-container>.office-grid>.svg1 {
+  left: 22vw;
+  top: 0.64vw;
+}
+
+.top-offices-container>.office-grid>.svg2 {
+  left: 49.5vw;
+  top: 0.64vw;
+}
+
+.top-offices-container>.office-grid>.svg3 {
+  left: 22vw;
+  top: 16.79vw;
+}
+
+.top-offices-container>.office-grid>.svg4 {
+  left: 49.5vw;
+  top: 16.79vw;
+}
+
+.bottom-offices-container {
+  position: relative;
+  margin-top: -0.32vw;
+  margin-bottom: 10.69vw;
+  width: 85.54vw;
+  height: 44.09vw;
+  padding-left: 8.07vw;
+  padding-top: 9.21vw;
+}
+
+.bottom-offices-container>.svg1 {
+  position: absolute;
+  left: 0.32vw;
+  top: 1.6vw;
+  width: 77.99vw;
+}
+
+.bottom-offices-container>.svg2 {
+  position: absolute;
+  left: 0.7vw;
+  top: 6.61vw;
+  width: 15vw;
+}
+
+.bottom-offices-container>.svg3 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.bottom-offices-container>.svg4 {
+  position: absolute;
+  right: -0.335vw;
+  bottom: -1.08vw;
+  width: 82.74vw;
+}
+
+.bottom-offices-container>.office-grid {
+  align-items: center;
+}
+
+.bottom-offices-container>.office-grid>svg {
+  position: absolute;
+  height: 10.95vw;
+}
+
+.bottom-offices-container>.office-grid>.svg1 {
+  left: 23.5vw;
+  top: 2.286vw;
+}
+
+.bottom-offices-container>.office-grid>.svg2 {
+  left: 48vw;
+  top: 2.286vw;
+}
+
+.bottom-offices-container>.office-grid>.svg3 {
+  left: 40.1vw;
+  top: 1.72vw;
+}
+
+.bottom-offices-container > .last-offices-line {
+  display: flex;
+  justify-content: center;
+  gap: 7.21vw;
+  margin-top: 2vw;
+}

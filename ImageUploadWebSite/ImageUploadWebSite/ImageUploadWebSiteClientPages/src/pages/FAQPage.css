@@ -1,0 +1,139 @@
+.faq-page {
+  padding-top: 4.36vw;
+  padding-left: 5.31vw;
+  padding-right: 5.67vw;
+  padding-bottom: 7.25vw;
+  color: #000;
+  line-height: normal;
+}
+
+/* Hero Section */
+.faq-hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 4.41vw;
+}
+
+.faq-badge {
+  position: relative;
+  width: 21.315vw;
+  height: 6.56vw;
+  text-align: center;
+}
+
+.faq-badge > .svg1 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 19.7vw;
+}
+
+.faq-badge > .svg2 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20.76vw;
+}
+
+.faq-badge > span {
+  position: relative;
+  z-index: 1;
+  font-size: 3.36vw;
+  color: #ffffff;
+}
+
+/* Content Section */
+.faq-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vw;
+  margin-bottom: 4.85vw;
+}
+
+.faq-intro-title {
+  font-size: 2.62vw;
+}
+
+.faq-intro-content {
+  font-size: 1.92vw;
+}
+
+.faq-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3.83vw;
+}
+
+.faq-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2.3vw;
+}
+
+.section-heading {
+  background-color: #D91A2A;
+  color: #E0E0E0;
+  font-size: 2.5vw;
+  padding: 0 0.57vw;
+  width: fit-content;
+}
+
+.faq-item {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2.5vw;
+}
+
+.question {
+  font-size: 1.83vw;
+  position: relative;
+  margin-bottom: 1vw;
+}
+
+.question::before {
+  content: '';
+  position: absolute;
+  left: -2.5vw;
+  top: 0.69vw;
+  width: 0.74vw;
+  height: 0.74vw;
+  border-radius: 50%;
+  border: 0.14vw solid #D91A2A;
+  background-color: transparent;
+}
+
+.answer {
+  font-size: 1.55vw;
+  margin-left: 3.4vw;
+  position: relative;
+}
+
+.answer::before {
+  content: '';
+  position: absolute;
+  left: -1.5vw;
+  top: 0.59vw;
+  width: 0.64vw;
+  height: 0.64vw;
+  border-radius: 50%;
+  border: 0.14vw solid #D91A2A;
+  background-color: transparent;
+}
+
+.statement {
+  font-size: 1.83vw;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  
+}
+
+@media (max-width: 768px) {
+  
+}
+
+@media (max-width: 480px) {
+  
+}

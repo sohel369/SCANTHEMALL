@@ -1,0 +1,303 @@
+.milestone-progress {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.milestone-progress.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+}
+
+.milestone-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #E0E0E0;
+  border-top-color: #D91A2A;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.milestone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.milestone-header h3 {
+  font-size: 1.5rem;
+  color: #1C2526;
+  margin: 0;
+}
+
+.bonus-entries-badge {
+  background: linear-gradient(135deg, #D4A017 0%, #B8890F 100%);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.next-milestone {
+  background: linear-gradient(135deg, rgba(217, 26, 42, 0.05) 0%, rgba(217, 26, 42, 0.02) 100%);
+  border: 2px solid rgba(217, 26, 42, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.milestone-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.milestone-target {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.current-count {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #D91A2A;
+}
+
+.separator {
+  font-size: 1.5rem;
+  color: #999;
+}
+
+.target-count {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #666;
+}
+
+.uploads-label {
+  font-size: 1rem;
+  color: #666;
+  margin-left: 5px;
+}
+
+.milestone-reward {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reward-icon {
+  font-size: 1.5rem;
+}
+
+.reward-text {
+  font-weight: 700;
+  color: #D4A017;
+  font-size: 1rem;
+}
+
+.progress-bar-container {
+  margin-bottom: 15px;
+}
+
+.progress-bar {
+  height: 30px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D91A2A 0%, #F44336 100%);
+  border-radius: 15px;
+  transition: width 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  min-width: 50px;
+}
+
+.progress-text {
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.uploads-remaining {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.milestone-description {
+  text-align: center;
+  color: #D91A2A;
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.all-milestones-complete {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(212, 160, 23, 0.1) 0%, rgba(212, 160, 23, 0.05) 100%);
+  border: 2px solid rgba(212, 160, 23, 0.3);
+  border-radius: 12px;
+}
+
+.trophy-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.all-milestones-complete h4 {
+  font-size: 1.5rem;
+  color: #1C2526;
+  margin-bottom: 10px;
+}
+
+.all-milestones-complete p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.completed-milestones {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #E0E0E0;
+}
+
+.completed-milestones h4 {
+  font-size: 1.1rem;
+  color: #1C2526;
+  margin-bottom: 15px;
+}
+
+.milestone-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.milestone-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #F9F9F9;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+}
+
+.milestone-item.completed {
+  border-color: #4CAF50;
+  background: rgba(76, 175, 80, 0.05);
+}
+
+.milestone-check {
+  width: 30px;
+  height: 30px;
+  background: #4CAF50;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.milestone-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.milestone-count {
+  font-weight: 600;
+  color: #1C2526;
+  font-size: 0.9rem;
+}
+
+.milestone-bonus {
+  color: #4CAF50;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .milestone-progress {
+    padding: 20px;
+  }
+
+  .milestone-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .bonus-entries-badge {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+
+  .milestone-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .current-count,
+  .target-count {
+    font-size: 1.5rem;
+  }
+
+  .milestone-reward {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .milestone-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .milestone-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bonus-entries-badge {
+    width: 100%;
+    text-align: center;
+  }
+
+  .trophy-icon {
+    font-size: 3rem;
+  }
+}

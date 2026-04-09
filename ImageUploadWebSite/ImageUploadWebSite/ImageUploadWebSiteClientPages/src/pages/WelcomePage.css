@@ -1,0 +1,164 @@
+.welcome-page {
+  display: flex;
+  gap: 2.815vw;
+}
+
+.welcome-title {
+  margin-top: 16.71vw;
+  color: #000;
+  font-size: 1.52vw;
+  line-height: 2.28vw;
+}
+
+.welcome-intro {
+  color: #000;
+  font-size: 1.52vw;
+  line-height: 2.28vw;
+  margin-bottom: 2.5vw;
+  width: 39.3vw;
+}
+
+.entry-counts {
+  color: #000;
+  font-size: 1.52vw;
+  line-height: 2vw;
+  margin-bottom: 3.36vw;
+  font-weight: 600;
+  width: 18.57vw;
+}
+
+.welcome-content1 {
+  margin-bottom: 2.07vw;
+  width: 51vw;
+  font-size: 1.52vw;
+  line-height: 2.28vw;
+}
+
+.welcome-content2 {
+  margin-bottom: 2.78vw;
+  width: 51vw;
+  font-size: 1.52vw;
+  line-height: 2.28vw;
+}
+
+.draw-entry-intro {
+  margin-top: 3.07vw;
+  margin-left: -1.5vw;
+  width: 52.236vw;
+  height: 4.01vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.draw-entry-intro>.svg1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.draw-entry-intro>.svg2 {
+  position: absolute;
+  left: 1.9vw;
+  bottom: -1.64vw;
+  width: 48.155vw;
+}
+
+.draw-entry-intro>span {
+  position: relative;
+  color: #E0E0E0;
+  font-size: 2.25vw;
+  line-height: normal;
+}
+
+@media (max-width: 768px) {
+  .welcome-page {
+    margin-bottom: 69.25vw;
+  }
+
+  .welcome-page>.sidebar {
+    position: absolute;
+    width: 100vw;
+    z-index: 1;
+  }
+
+  .welcome-page>.sidebar>.upload-photo-section {
+    margin-bottom: 144.14vw;
+  }
+
+  .welcome-title {
+    margin-top: 11.31vw;
+    margin-left: 40.1vw;
+    width: 57.22vw;
+    font-size: 5.7vw;
+    line-height: 7.62vw;
+  }
+
+  .welcome-intro {
+    margin-top: 8.14vw;
+    font-size: 2.54vw;
+    line-height: 3.81vw;
+    margin-bottom: 3.61vw;
+    margin-left: 8.06vw;
+    width: 87.2vw;
+  }
+
+  .entry-counts {
+    font-size: 2.54vw;
+    line-height: 3.36vw;
+    margin-bottom: 3.61vw;
+    margin-left: 8.06vw;
+    width: 31.2vw;
+  }
+
+  .welcome-content1 {
+    margin-bottom: 3.61vw;
+    margin-left: 8.06vw;
+    width: 83.06vw;
+    font-size: 2.54vw;
+    line-height: 3.81vw;
+  }
+
+  .welcome-content2 {
+    margin-bottom: 126.45vw;
+    margin-left: 8.06vw;
+    width: 83.89vw;
+    font-size: 2.54vw;
+    line-height: 3.81vw;
+  }
+
+  .draw-entry-intro {
+    margin-top: 9.875vw;
+    margin-left: 7.58vw;
+    width: 82.156vw;
+    height: 6.31vw;
+  }
+
+  .draw-entry-intro>.svg2 {
+    left: 3.21vw;
+    bottom: -2.585vw;
+    width: 75.738vw;
+  }
+
+  .draw-entry-intro>span {
+    font-size: 3.54vw;
+  }
+}
+
+.entries-rank {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #D4A017;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .entries-rank {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+}
