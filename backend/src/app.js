@@ -137,20 +137,50 @@ app.use('/api/audit', auditRoutes);
 app.use('/api/stripe', stripeRoutes);
 app.use('/api/newsletter', newsletterRoutes);
 
-// Welcome route
-app.get('/', (req, res) => {
-  res.json({
-    status: 'online',
-    message: 'GTSA Backend API is running',
-    version: '1.0.0',
-    endpoints: {
-      auth: '/api/auth',
-      user: '/api/user',
-      uploads: '/api/uploads',
-      admin: '/api/admin',
-      health: '/health/uploads'
-    }
+// Serve static frontend and panels
+const frontendPath = path.resolve(__dirname, '..', '..', 'frontend');
+const adminPath = path.resolve(__dirname, '..', '..', 'admin-panel', 'dist');
+const advertiserPath = path.resolve(__dirname, '..', '..', 'advertiser-panel', 'dist');
+
+console.log('Static paths check:');
+console.log(`- Frontend: ${frontendPath} (Exists: ${fs.existsSync(frontendPath)})`);
+console.log(`- Admin: ${adminPath} (Exists: ${fs.existsSync(adminPath)})`);
+console.log(`- Advertiser: ${advertiserPath} (Exists: ${fs.existsSync(advertiserPath)})`);
+
+// Admin Panel
+if (fs.existsSync(adminPath)) {
+  app.use('/admin', express.static(adminPath));
+  app.get('/admin/*', (req, res) => {
+    res.sendFile(path.join(adminPath, 'index.html'));
   });
+}
+
+// Advertiser Panel
+if (fs.existsSync(advertiserPath)) {
+  app.use('/advertiser', express.static(advertiserPath));
+  app.get('/advertiser/*', (req, res) => {
+    res.sendFile(path.join(advertiserPath, 'index.html'));
+  });
+}
+
+// Frontend
+if (fs.existsSync(frontendPath)) {
+  app.use(express.static(frontendPath));
+  // Optional: Handle other routes for frontend if needed
+}
+
+// Fallback for API 404
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ error: 'API endpoint not found' });
+});
+
+// Root route fallback
+app.get('/', (req, res) => {
+  if (fs.existsSync(path.join(frontendPath, 'index.html'))) {
+    res.sendFile(path.join(frontendPath, 'index.html'));
+  } else {
+    res.json({ status: 'online', message: 'GTSA Backend API is running' });
+  }
 });
 
 export default app;

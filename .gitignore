@@ -1,0 +1,11 @@
+node_modules
+.env
+*.log
+dist
+build
+.DS_Store
+backend/node_modules
+admin-panel/node_modules
+advertiser-panel/node_modules
+admin-panel/dist
+advertiser-panel/dist
