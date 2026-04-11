@@ -119,6 +119,9 @@ app.get('/health/uploads', (req, res) => {
   }
 });
 
+app.get('/health', (req, res) => res.status(200).send('OK'));
+app.get('/api/health', (req, res) => res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() }));
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
