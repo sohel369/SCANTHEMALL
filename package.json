@@ -1,19 +1,15 @@
 {
-  "name": "gtsa-monorepo",
+  "name": "gtsa-frontend",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "backend",
-    "admin-panel",
-    "advertiser-panel"
-  ],
   "engines": {
     "node": ">=20.0.0"
   },
   "scripts": {
-    "build:admin": "npm run build -w admin-panel",
-    "build:advertiser": "npm run build -w advertiser-panel",
-    "build": "npm run build:admin && npm run build:advertiser",
-    "start": "npm start -w image-draw-backend"
+    "start": "npx serve frontend -l ${PORT:-3000} --no-clipboard",
+    "build": "echo 'Static frontend - no build needed'"
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
   }
 }

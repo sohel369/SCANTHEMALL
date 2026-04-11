@@ -1,6 +1,9 @@
-export const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
-    ? 'http://127.0.0.1:4000/api' 
-    : window.location.origin + '/api';
+// For local dev: uses localhost:4000
+// For production (Railway): uses BACKEND_URL injected via window.__BACKEND_URL__ or hardcoded Railway URL
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+export const API_BASE_URL = isLocal
+    ? 'http://127.0.0.1:4000/api'
+    : (window.__BACKEND_URL__ || 'https://talented-forgiveness-production.up.railway.app') + '/api';
 
 export const NodeAPI = {
     async register(data) {
