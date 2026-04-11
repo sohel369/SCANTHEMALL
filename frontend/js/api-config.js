@@ -3,7 +3,7 @@
 const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 export const API_BASE_URL = isLocal
     ? 'http://127.0.0.1:4000/api'
-    : (window.__BACKEND_URL__ || 'https://talented-forgiveness-production.up.railway.app') + '/api';
+    : (window.__BACKEND_URL__ || 'https://scanthemall-production.up.railway.app') + '/api';
 
 export const NodeAPI = {
     async register(data) {
