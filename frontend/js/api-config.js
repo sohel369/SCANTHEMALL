@@ -81,8 +81,13 @@ export const NodeAPI = {
     },
 
     getUser() {
-        const user = localStorage.getItem('GTSA_SESSION_USER') || localStorage.getItem('user');
-        return user ? JSON.parse(user) : null;
+        try {
+            const user = localStorage.getItem('GTSA_SESSION_USER') || localStorage.getItem('user');
+            return user ? JSON.parse(user) : null;
+        } catch (e) {
+            console.error("NodeAPI: Error parsing user from localStorage", e);
+            return null;
+        }
     },
 
     setUser(user) {
