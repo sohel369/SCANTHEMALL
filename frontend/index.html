@@ -12,13 +12,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer=""></script>
-  <style id="anti-flicker">
-    .auth-login,
-    .auth-signup,
-    #login-btn,
-    #signup-btn {
-      opacity: 0;
-      visibility: hidden;
+  <style>
+    .auth-login, .auth-signup, #login-btn, #signup-btn, #auth-btn, .user-profile {
+        transition: opacity 0.3s ease, visibility 0.3s ease;
     }
   </style>
   <style>
@@ -14281,7 +14277,7 @@
           </div>
 
           <!-- User Profile Section -->
-          <div class="user-profile hidden relative group py-4 items-center">
+          <div class="user-profile relative group py-4 items-center" style="display: none;">
             <button class="flex items-center space-x-3 focus:outline-none">
               <div class="text-right hidden lg:block">
                 <p class="text-xs font-bold text-white uppercase tracking-widest user-name tracking-tighter">...</p>

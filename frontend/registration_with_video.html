@@ -332,6 +332,17 @@
                         Confirm your registration
                     </button>
                 </div>
+
+                <div class="md:col-span-2 mt-4 text-center">
+                    <p class="text-zinc-500 text-sm mb-3">Already have an account?</p>
+                    <a href="log_in_page_advertising_placeholder.html"
+                        class="inline-flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold text-sm uppercase tracking-wider border border-zinc-700 text-white hover:border-[#FF3D00] hover:text-[#FF3D00] transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>
+                        </svg>
+                        Login to your account
+                    </a>
+                </div>
             </form>
 
             <!-- Important Notice -->
@@ -503,14 +514,6 @@
     <script type="module">
         import { NodeAPI } from "./js/api-config.js";
 
-        if (NodeAPI.isAuthenticated()) {
-            console.log("GTSA: Active session found. Redirecting to Home...");
-            window.location.href = "index.html";
-        }
-    </script>
-    <script type="module">
-        import { NodeAPI } from "./js/api-config.js";
-
         // Check if registrationForm exists and add listener
         const regForm = document.getElementById('registrationForm');
         if (regForm) {
@@ -650,7 +653,6 @@
             }
         });
     </script>
-    <script type="module" src="js/auth-header.js"></script>
     <script type="module" src="js/auth-header.js"></script>
 </body>
 

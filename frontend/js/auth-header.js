@@ -1,16 +1,8 @@
 import { NodeAPI } from "./api-config.js";
 
-// Anti-Flicker Style: Hide buttons immediately if not already hidden by HTML
-const style = document.createElement('style');
-style.id = 'auth-header-style';
-style.innerHTML = `
-    .auth-login, .auth-signup, #login-btn, #signup-btn, #auth-btn, .user-profile { 
-        opacity: 0; 
-        visibility: hidden; 
-        transition: opacity 0.3s ease; 
-    }
-`;
-document.head.appendChild(style);
+// Clean up any existing anti-flicker style immediately
+const antiFlicker = document.getElementById('anti-flicker');
+if (antiFlicker) antiFlicker.remove();
 
 document.addEventListener("DOMContentLoaded", () => {
     const checkAuthState = () => {
@@ -21,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const loginButtons = document.querySelectorAll('.auth-login, #login-btn');
             const signupButtons = document.querySelectorAll('.auth-signup, #signup-btn, #auth-btn');
-            let profileSections = document.querySelectorAll('.user-profile');
+            const profileSections = document.querySelectorAll('.user-profile');
 
             if (isAuthenticated && user) {
                 // User is logged in: Hide auth buttons
@@ -38,12 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     const avatarTag = s.querySelector('.user-avatar');
                     const roleTag = s.querySelector('.user-role');
 
-                    // Fetch data from database fields (handle various response formats)
                     const firstName = user.firstName || (user.profile && user.profile.first_name) || user.username || (user.email ? user.email.split('@')[0] : 'User');
                     const lastName = user.lastName || (user.profile && user.profile.last_name) || '';
 
                     if (nameTag) {
-                        nameTag.innerText = `${firstName} ${lastName}`.toUpperCase();
+                        nameTag.innerText = `${firstName} ${lastName}`.trim().toUpperCase();
                         nameTag.style.fontWeight = '900';
                     }
 
@@ -61,13 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (dropdown && !dropdown.querySelector('.dashboard-link')) {
                         if (user.role === 'admin') {
                             const adminLink = document.createElement('a');
-                            adminLink.href = '/admin'; // Changed from localhost:5173
+                            adminLink.href = '/admin';
                             adminLink.className = 'dashboard-link flex items-center px-4 py-3 text-sm text-[#FF3D00] font-bold hover:bg-zinc-800 transition-colors';
                             adminLink.innerHTML = '<i data-lucide="layout-dashboard" class="w-4 h-4 mr-3"></i> ADMIN PANEL';
                             dropdown.prepend(adminLink);
                         } else if (user.role === 'advertiser') {
                             const advLink = document.createElement('a');
-                            advLink.href = '/advertiser'; // Changed from localhost:5174
+                            advLink.href = '/advertiser';
                             advLink.className = 'dashboard-link flex items-center px-4 py-3 text-sm text-[#FF3D00] font-bold hover:bg-zinc-800 transition-colors';
                             advLink.innerHTML = '<i data-lucide="layout-dashboard" class="w-4 h-4 mr-3"></i> ADVERTISER PANEL';
                             dropdown.prepend(advLink);
@@ -76,31 +67,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
-                // Update all "Advertise With Us" links to the Advertiser Panel
-                document.querySelectorAll('a').forEach(a => {
-                    const text = a.innerText.toLowerCase();
-                    if (text.includes('advertise with us')) {
-                        a.href = '/advertiser'; // Changed from localhost:5174
-                    }
-                });
-
                 // Handle Logout
-                const logoutButtons = document.querySelectorAll('.auth-logout');
-                logoutButtons.forEach(btn => {
+                document.querySelectorAll('.auth-logout').forEach(btn => {
                     btn.onclick = (e) => {
                         e.preventDefault();
                         NodeAPI.removeToken();
                         window.location.reload();
                     };
                 });
+
             } else {
-                // User is NOT logged in: Show original buttons
+                // User is NOT logged in: Show login/signup buttons
                 loginButtons.forEach(btn => {
                     btn.style.display = 'inline-block';
+                    btn.style.opacity = '1';
+                    btn.style.visibility = 'visible';
                 });
 
                 signupButtons.forEach(btn => {
                     btn.style.display = 'inline-block';
+                    btn.style.opacity = '1';
+                    btn.style.visibility = 'visible';
                 });
 
                 profileSections.forEach(s => {
@@ -108,34 +95,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
 
-            // Final visibility sync
-            [...loginButtons, ...signupButtons, ...profileSections].forEach(btn => {
-                if (btn.style.display !== 'none' && !btn.classList.contains('hidden')) {
-                    btn.style.opacity = '1';
-                    btn.style.visibility = 'visible';
-                }
-            });
         } catch (error) {
             console.error("Auth Header Error:", error);
-            // On error, try to show the buttons anyway so the user isn't stuck
             document.querySelectorAll('.auth-login, .auth-signup, #login-btn, #signup-btn, #auth-btn').forEach(btn => {
                 btn.style.opacity = '1';
                 btn.style.visibility = 'visible';
                 btn.style.display = 'inline-block';
             });
         } finally {
-            // ALWAYS Cleanup styles to prevent permanent invisible buttons
             const injectedStyle = document.getElementById('auth-header-style');
             if (injectedStyle) injectedStyle.remove();
-            const antiFlicker = document.getElementById('anti-flicker');
-            if (antiFlicker) antiFlicker.remove();
+            const af = document.getElementById('anti-flicker');
+            if (af) af.remove();
         }
     };
 
     checkAuthState();
 });
-    };
-
-    checkAuthState();
-});
-
