@@ -19,6 +19,7 @@ import pagesRoutes from './routes/pages.routes.js';
 import auditRoutes from './routes/audit.routes.js';
 import stripeRoutes from './routes/stripe.routes.js';
 import bonusRoutes from './routes/bonus.routes.js';
+import newsletterRoutes from './routes/newsletter.routes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,6 +34,8 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
   'http://localhost:5175',
+  'http://localhost:5500',
+  'http://127.0.0.1:5500',
   process.env.FRONTEND_URL,
   process.env.ADMIN_PANEL_URL,
   process.env.ADVERTISER_PANEL_URL,
@@ -132,5 +135,6 @@ app.use('/api/email', emailRoutes);
 app.use('/api/pages', pagesRoutes);
 app.use('/api/audit', auditRoutes);
 app.use('/api/stripe', stripeRoutes);
+app.use('/api/newsletter', newsletterRoutes);
 
 export default app;

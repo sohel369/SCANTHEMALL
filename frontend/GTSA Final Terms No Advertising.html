@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions | Gotta Scan Them All</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #FF3D00, #FFB300);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-header {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 61, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: #FF3D00;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #e63700;
+            transform: scale(1.02);
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+        }
+
+        .legal-section {
+            border-left: 2px solid #FF3D00;
+            padding-left: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .ad-placeholder {
+            background: repeating-linear-gradient(45deg, #1a1a1a, #1a1a1a 10px, #222 10px, #222 20px);
+            border: 1px dashed #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .page-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        @media (min-width: 1440px) {
+            .page-container {
+                grid-template-columns: 160px 1fr 160px;
+            }
+        }
+        
+        /* SEO Keyword Cloud Hidden from view but present for bots */
+        .seo-meta { display: none; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- SEO KEYWORDS -->
+    <div class="seo-meta">
+        Free cash draws, Luxury prize giveaways, Win money online, Free sweepstakes, Cash contests, 
+        Enter free prize draws cash, Win luxury items no purchase, Online sweepstakes for cash prizes, 
+        Free entry prize draws luxury, Cash and prize giveaways, How to win free cash instantly online, 
+        Best free prize draws for luxury cars, Free sweepstakes to win real money no entry fee, 
+        Daily free draws for high-value prizes, Legit free contests to win designer bags, 
+        Enter to win cash and holiday prizes for free, Where to find free online draws for electronics, 
+        No purchase necessary sweepstakes luxury goods, Free cash giveaway sites that actually pay out, 
+        Monthly free draws for luxury watches and jewellery
+    </div>
+
+
+    <!-- Standardized Header -->
+    <header class="glass-header sticky top-0 z-50 w-full transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" id="Home" class="flex items-center space-x-3" style="cursor: pointer;">
+                        <div class="w-10 h-10 bg-[#FF3D00] rounded-lg flex items-center justify-center">
+                            <i data-lucide="camera" class="text-white w-6 h-6"></i>
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tighter text-white uppercase">SCAN<span class="text-[#FF3D00]">THEM</span>ALL</span>
+                    </a>
+                </div>
+
+                <nav class="hidden lg:flex space-x-8">
+                    <a href="index.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">Home</a>
+                    <a href="GTSA_FInal_Welcome_Page_(About_US).html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">About us</a>
+                    <a href="prize.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">Prizes</a>
+                    <a href="position.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">My Position</a>
+                </nav>
+
+                <div class="hidden md:flex items-center space-x-6">
+                    <div id="auth-buttons" class="flex items-center space-x-4">
+                        <a href="registration_with_video.html" id="auth-btn" class="auth-login auth-signup text-sm font-semibold text-white px-4 py-2 rounded-full border border-zinc-700 hover:bg-zinc-800 transition-all">Register or Sign-In</a>
+                        <a href="log_in_page_advertising_placeholder.html" class="bg-[#FF3D00] text-sm font-semibold text-white px-6 py-2 rounded-full shadow-lg hover:bg-orange-600 transition-all">Advertise with Us</a>
+                    </div>
+
+                    <div class="user-profile hidden relative group py-4 items-center">
+                        <button class="flex items-center space-x-3 focus:outline-none">
+                            <div class="text-right hidden lg:block">
+                                <p class="text-xs font-bold text-white uppercase tracking-widest user-name tracking-tighter">...</p>
+                                <p class="text-[10px] text-[#FF3D00] font-black uppercase user-role">...</p>
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-[#FF3D00] p-0.5 overflow-hidden">
+                                <img src="" alt="Avatar" class="user-avatar w-full h-full rounded-full bg-zinc-800">
+                            </div>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500"></i>
+                        </button>
+                        <div class="absolute right-0 top-full mt-1 w-48 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl profile-dropdown py-2 z-[60] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                            <a href="registration_with_video.html" class="flex items-center px-4 py-3 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors">
+                                <i data-lucide="user" class="w-4 h-4 mr-3"></i> My Profile
+                            </a>
+                            <a href="registration_with_video.html" class="flex items-center px-4 py-3 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors">
+                                <i data-lucide="settings" class="w-4 h-4 mr-3"></i> Account Settings
+                            </a>
+                            <div class="border-t border-zinc-800 my-1"></div>
+                            <a href="#" class="auth-logout flex items-center px-4 py-3 text-sm text-red-500 hover:bg-red-500/10 transition-colors">
+                                <i data-lucide="log-out" class="w-4 h-4 mr-3"></i> Log Out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-zinc-400 hover:text-white p-2">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="fixed inset-0 z-[110] bg-black/95 backdrop-blur-2xl md:hidden hidden">
+            <div class="flex flex-col h-full p-8">
+                <div class="flex justify-between items-center mb-12">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-[#FF3D00] rounded-lg flex items-center justify-center">
+                            <i data-lucide="camera" class="text-white w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black tracking-tighter text-white uppercase">SCAN<span class="text-[#FF3D00]">THEM</span>ALL</span>
+                    </div>
+                    <button id="mobile-menu-close" class="text-white p-2">
+                        <i data-lucide="x" class="w-8 h-8"></i>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-6">
+                    <a href="index.html" class="text-2xl font-black uppercase text-white hover:text-[#FF3D00]">Home</a>
+                    <a href="GTSA_FInal_Welcome_Page_(About_US).html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">About</a>
+                    <a href="prize.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Prizes</a>
+                    <a href="position.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">My Position</a>
+                    <hr class="border-white/10 my-4">
+                    <a href="registration_with_video.html" class="auth-signup text-2xl font-black uppercase text-white border border-white/20 p-4 rounded-2xl text-center">Register or Sign-In</a>
+                    <a href="log_in_page_advertising_placeholder.html" class="bg-[#FF3D00] text-black text-center py-4 rounded-2xl font-black uppercase mt-4">Advertise with Us</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+   
+        <!-- Main Content -->
+        <main class="w-full">
+            <section class="mb-12 text-center">
+                <div class="inline-block px-4 py-1 rounded-full border border-[#FF3D00] text-[#FF3D00] text-xs font-bold uppercase tracking-widest mb-4">
+                    Legal Documentation
+                </div>
+                <h1 class="text-4xl md:text-6xl font-black mb-6">Terms and <span class="gradient-text">Conditions</span></h1>
+                <p class="text-zinc-400 text-sm">Effective on April 30th, 2025</p>
+            </section>
+
+            <div class="content-card">
+                <!-- Mission Statement -->
+                <section class="legal-section">
+                    <h2 class="text-2xl font-bold mb-4 text-[#FF3D00]">Mission Statement</h2>
+                    <h3 class="text-lg font-semibold text-white mb-4">Empowering Advertisers, Vehicle Owners, and Consumers Through Innovative Mobile Advertising</h3>
+                    <div class="space-y-4 text-zinc-400 text-sm leading-relaxed">
+                        <p>Our mission is to redefine outdoor advertising by seamlessly connecting brands, vehicle owners, and communities in a mutually rewarding ecosystem. We transform everyday vehicles into eye-catching, mobile advertising platforms that drive real-world impact for all stakeholders.</p>
+                        <p>For advertisers, we provide unparalleled brand visibility and engagement. For vehicle owners, we open new avenues for participation and profit. For consumers, we create interactive experiences to enter <b>free cash draws</b> and win <b>luxury prize giveaways</b>.</p>
+                    </div>
+                </section>
+
+                <!-- Table of Contents -->
+                <section class="mb-12 p-6 bg-white/5 rounded-xl">
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-4">Table of Contents</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-zinc-300">
+                        <div class="flex items-center space-x-2"><i data-lucide="chevron-right" class="w-4 h-4 text-[#FF3D00]"></i><span>Introduction</span></div>
+                        <div class="flex items-center space-x-2"><i data-lucide="chevron-right" class="w-4 h-4 text-[#FF3D00]"></i><span>Obligations</span></div>
+                        <div class="flex items-center space-x-2"><i data-lucide="chevron-right" class="w-4 h-4 text-[#FF3D00]"></i><span>Rights and Limits</span></div>
+                        <div class="flex items-center space-x-2"><i data-lucide="chevron-right" class="w-4 h-4 text-[#FF3D00]"></i><span>Termination</span></div>
+                        <div class="flex items-center space-x-2"><i data-lucide="chevron-right" class="w-4 h-4 text-[#FF3D00]"></i><span>Governing Law</span></div>
+                        <div class="flex items-center space-x-2"><i data-lucide="chevron-right" class="w-4 h-4 text-[#FF3D00]"></i><span>Rule 7 Media Dos and Don'ts</span></div>
+                    </div>
+                </section>
+
+                <!-- 1.1 Contract -->
+                <section class="legal-section">
+                    <h2 class="text-xl font-bold mb-4">1.1 Contract</h2>
+                    <div class="space-y-4 text-zinc-400 text-sm leading-relaxed">
+                        <p>When you use our Services you agree to all of these terms. Your use of our Services is also subject to our Cookie Policy and our Privacy Policy. By creating a Rule 7 Media account to <b>win money online</b>, you are entering into a legally binding contract.</p>
+                        <div class="bg-black/40 p-4 rounded-lg border border-zinc-800">
+                            <h4 class="font-bold text-white mb-2">Services</h4>
+                            <p>This Contract applies to Scanthemall.com, Rule 7 Media-branded apps, and related communications.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Obligations -->
+                <section class="legal-section">
+                    <h2 class="text-xl font-bold mb-4 text-[#FF3D00]">2. Obligations</h2>
+                    <h3 class="font-semibold text-white mb-2">2.1 Service Eligibility</h3>
+                    <p class="text-zinc-400 text-sm mb-4">You must be the "Minimum Age" (16 years or older) to enter our <b>free sweepstakes</b> and <b>cash contests</b>.</p>
+                    
+                    <h3 class="font-semibold text-white mb-2">2.2 Your Account</h3>
+                    <p class="text-zinc-400 text-sm">You agree to protect your password and not share your account. You are responsible for everything that happens through your account.</p>
+                </section>
+
+                <!-- 3. Rights and Limits -->
+                <section class="legal-section">
+                    <h2 class="text-xl font-bold mb-4">3. Rights and Limits</h2>
+                    <h3 class="font-semibold text-white mb-2">3.1 Your License to Rule 7 Media</h3>
+                    <p class="text-zinc-400 text-sm">You own your content, but grant us a non-exclusive license to use, copy, and display it for the purpose of the <b>online sweepstakes for cash prizes</b>.</p>
+                </section>
+
+                <!-- Dos and Don'ts -->
+                <section class="legal-section">
+                    <h2 class="text-xl font-bold mb-4">8. Rule 7 Media "Dos and Don'ts"</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-green-500 font-bold mb-2">The Dos</h4>
+                            <ul class="text-xs text-zinc-400 space-y-2">
+                                <li>• Comply with all applicable laws.</li>
+                                <li>• Provide accurate identity information.</li>
+                                <li>• Use services in a professional manner.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-red-500 font-bold mb-2">The Don'ts</h4>
+                            <ul class="text-xs text-zinc-400 space-y-2">
+                                <li>• Create a false identity.</li>
+                                <li>• Scrape or copy the services.</li>
+                                <li>• Override security features.</li>
+                                <li>• Disclose confidential information.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Consent -->
+                <section class="legal-section border-none">
+                    <h2 class="text-xl font-bold mb-4 text-[#FF3D00]">9. Consent and Release Terms</h2>
+                    <p class="text-zinc-400 text-sm italic border-l-2 border-zinc-700 pl-4">
+                        "I hereby voluntarily release, forever discharge the organisation... from any and all claims connected with my participation in the 'Gotta Scan them All' promotion."
+                    </p>
+                </section>
+            </div>
+        </main>
+
+
+    <!-- Standardized Footer -->
+    <footer class="bg-black border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="text-2xl font-black mb-4 uppercase tracking-tighter">GOTTA SCAN<br><span class="text-[#FF3D00]">THEM ALL</span></div>
+                    <p class="text-sm text-gray-500">The world's first multi-category scan-based sweepstakes platform.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">About US</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="mission.html" class="hover:text-[#FF3D00] transition-colors">Our Mission</a></li>
+                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="hover:text-[#FF3D00] transition-colors">Why Scan them All ?</a></li>
+                        <li><a href="https://rule7media.com/franchise" class="hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Policy</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="GTSA Final Terms No Advertising.html" class="hover:text-[#FF3D00] transition-colors font-bold text-white">Terms of Use</a></li>
+                        <li><a href="privacy.html" class="hover:text-[#FF3D00] transition-colors">Privacy Policy</a></li>
+                        <li><a href="index.html#faq" class="hover:text-[#FF3D00] transition-colors">FAQs</a></li>
+                        <li><a href="GTSA Final Sweepstake Rules.html" class="hover:text-[#FF3D00] transition-colors">Sweepstake Rules</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Support</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="blog.html" class="hover:text-[#FF3D00] transition-colors">Blog</a></li>
+                        <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite Friends</a></li>
+                        <li><a href="instagram_upload_page.html" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
+                        <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
+                        <li><a href="Final_contact_page.html" class="hover:text-[#FF3D00] transition-colors">Contact us</a></li>
+                        <li><a href="log_in_page_advertising_placeholder.html" class="hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
+                        <li><a href="https://rule7media.com/affiliate" class="hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/5 text-[10px] text-gray-600 uppercase tracking-widest">
+                <p>© 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED.</p>
+                <div class="w-full md:w-auto flex justify-between items-center opacity-20 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Visa_Inc._logo_%282005%E2%80%932014%29.svg" alt="Visa" class="h-4">
+                    <img src="https://www.shutterstock.com/image-vector/paypal-multinational-financial-technology-payment-260nw-2276341185.jpg" alt="PayPal" class="h-4">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/ads.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/responsive.js" defer></script>
+    <script type="module" src="js/auth-header.js"></script>
+    <script>
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+        if (typeof initAds === 'function') {
+            initAds();
+        }
+    </script>
+</body>
+</html>

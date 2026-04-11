@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Gotta Scan Them All - Support our partners and win big with our global sweepstakes.">
+    <title>Gotta Scan Them All | Modern Sweepstakes Platform</title>
+    <!-- SEO Optimization: Third Task -->
+    <meta name="description"
+        content="Enter free prize draws for cash and win luxury items. We offer online sweepstakes for real money with no entry fee. Join our legit free contests to win designer bags, luxury cars, and holiday prizes.">
+    <meta name="keywords"
+        content="Free cash draws, Luxury prize giveaways, Win money online, Free sweepstakes, Cash contests, Enter free prize draws cash, Win luxury items no purchase, Online sweepstakes for cash prizes, Free entry prize draws luxury, Cash and prize giveaways, How to win free cash instantly online, Best free prize draws for luxury cars, Free sweepstakes to win real money no entry fee, Daily free draws for high-value prizes, Legit free contests to win designer bags, Enter to win cash and holiday prizes for free, Where to find free online draws for electronics, No purchase necessary sweepstakes luxury goods, Free cash giveaway sites that actually pay out, Monthly free draws for luxury watches and jewellery">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #FF3D00, #FFB300);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-header {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 61, 0, 0.2);
+        }
+
+        .category-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
+            aspect-ratio: 3 / 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: #FF3D00;
+            background: rgba(255, 61, 0, 0.05);
+            box-shadow: 0 10px 30px -10px rgba(255, 61, 0, 0.3);
+        }
+
+        .ad-placeholder {
+            background: repeating-linear-gradient(45deg, #1a1a1a, #1a1a1a 10px, #222 10px, #222 20px);
+            border: 1px dashed #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .upload-zone {
+            border: 2px dashed #FF3D00;
+            background: rgba(255, 61, 0, 0.02);
+        }
+
+        .btn-primary {
+            background: #FF3D00;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #e63700;
+            transform: scale(1.02);
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 900px; /* Reduced for better laptop fitting */
+            margin: 0 auto;
+        }
+
+        .skyscraper-left, .skyscraper-right {
+            display: none;
+            width: 120px; /* Reduced for better fitting */
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px;
+            height: 600px;
+        }
+
+        @media (min-width: 1200px) {
+            .skyscraper-left, .skyscraper-right {
+                display: block;
+            }
+            .layout-wrapper {
+                display: flex;
+                justify-content: center;
+                gap: 20px; /* Tighter gap */
+                padding: 0 10px;
+            }
+        }
+
+        .premium-gradient {
+            background: linear-gradient(135deg, #FF3D00 0%, #FF8F00 100%);
+        }
+
+        .social-card {
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+
+        .ad-placeholder {
+            background-color: #0f0f0f;
+            background-image: repeating-linear-gradient(45deg, #FF3D001a 0, #FF3D001a 1px, transparent 0, transparent 50%);
+            background-size: 10px 10px;
+            border: 1px solid rgba(255, 61, 0, 0.2);
+            color: rgba(255, 61, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Leaderboard Header -->
+    <div class="w-full bg-black py-2 border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="ad-placeholder h-[90px] w-full max-w-[728px] mx-auto text-xs">
+                Leaderboard Advertisement (Header)
+            </div>
+        </div>
+    </div>
+
+    <!-- Standardized Header -->
+    <header class="glass-header sticky top-0 z-50 w-full transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" id="Home" class="flex items-center space-x-3" style="cursor: pointer;">
+                        <div class="w-10 h-10 bg-[#FF3D00] rounded-lg flex items-center justify-center">
+                            <i data-lucide="camera" class="text-white w-6 h-6"></i>
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tighter text-white uppercase">SCAN<span class="text-[#FF3D00]">THEM</span>ALL</span>
+                    </a>
+                </div>
+
+                <nav class="hidden lg:flex space-x-8">
+                    <a href="index.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">Home</a>
+                    <a href="GTSA_FInal_Welcome_Page_(About_US).html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">About us</a>
+                    <a href="prize.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">Prizes</a>
+                    <a href="position.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">My Position</a>
+                </nav>
+
+                <div class="hidden md:flex items-center space-x-6">
+                    <div id="auth-buttons" class="flex items-center space-x-4">
+                        <a href="registration_with_video.html" id="auth-btn" class="auth-login auth-signup text-sm font-semibold text-white px-4 py-2 rounded-full border border-zinc-700 hover:bg-zinc-800 transition-all">Register or Sign-In</a>
+                        <a href="log_in_page_advertising_placeholder.html" class="bg-[#FF3D00] text-sm font-semibold text-white px-6 py-2 rounded-full shadow-lg hover:bg-orange-600 transition-all">Advertise with Us</a>
+                    </div>
+
+                    <div class="user-profile hidden relative group py-4 items-center">
+                        <button class="flex items-center space-x-3 focus:outline-none">
+                            <div class="text-right hidden lg:block">
+                                <p class="text-xs font-bold text-white uppercase tracking-widest user-name tracking-tighter">...</p>
+                                <p class="text-[10px] text-[#FF3D00] font-black uppercase user-role">...</p>
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-[#FF3D00] p-0.5 overflow-hidden">
+                                <img src="" alt="Avatar" class="user-avatar w-full h-full rounded-full bg-zinc-800">
+                            </div>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500"></i>
+                        </button>
+                        <div class="absolute right-0 top-full mt-1 w-48 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl profile-dropdown py-2 z-[60] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                            <a href="registration_with_video.html" class="flex items-center px-4 py-3 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors">
+                                <i data-lucide="user" class="w-4 h-4 mr-3"></i> My Profile
+                            </a>
+                            <a href="registration_with_video.html" class="flex items-center px-4 py-3 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors">
+                                <i data-lucide="settings" class="w-4 h-4 mr-3"></i> Account Settings
+                            </a>
+                            <div class="border-t border-zinc-800 my-1"></div>
+                            <a href="#" class="auth-logout flex items-center px-4 py-3 text-sm text-red-500 hover:bg-red-500/10 transition-colors">
+                                <i data-lucide="log-out" class="w-4 h-4 mr-3"></i> Log Out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-zinc-400 hover:text-white p-2">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="fixed inset-0 z-[110] bg-black/95 backdrop-blur-2xl md:hidden hidden">
+            <div class="flex flex-col h-full p-8">
+                <div class="flex justify-between items-center mb-12">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-[#FF3D00] rounded-lg flex items-center justify-center">
+                            <i data-lucide="camera" class="text-white w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black tracking-tighter text-white uppercase">SCAN<span class="text-[#FF3D00]">THEM</span>ALL</span>
+                    </div>
+                    <button id="mobile-menu-close" class="text-white p-2">
+                        <i data-lucide="x" class="w-8 h-8"></i>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-6">
+                    <a href="index.html" class="text-2xl font-black uppercase text-white hover:text-[#FF3D00]">Home</a>
+                    <a href="GTSA_FInal_Welcome_Page_(About_US).html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">About</a>
+                    <a href="prize.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Prizes</a>
+                    <a href="position.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">My Position</a>
+                    <hr class="border-white/10 my-4">
+                    <a href="registration_with_video.html" class="auth-signup text-2xl font-black uppercase text-white border border-white/20 p-4 rounded-2xl text-center">Register or Sign-In</a>
+                    <a href="log_in_page_advertising_placeholder.html" class="bg-[#FF3D00] text-black text-center py-4 rounded-2xl font-black uppercase mt-4">Advertise with Us</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <div class="layout-wrapper pt-8 pb-20">
+        <!-- Left Skyscraper -->
+        <aside class="skyscraper-left">
+            <div class="w-full h-full ad-placeholder text-[10px] vertical-text shadow-xl">PROMOTIONAL SPACE LEFT</div>
+        </aside>
+
+        <main class="page-container">
+
+            <!-- Hero -->
+            <section class="relative pt-2 pb-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+                    Support Partners. <br><span class="gradient-text">Win Big Rewards.</span>
+                </h1>
+                <p class="max-w-2xl mx-auto text-zinc-400 text-base mb-2 leading-relaxed px-4">
+                    Join the global sweepstakes movement. Upload your screenshots, support our local advertisers, and
+                    earn your chance to win dream prizes.
+                </p>
+
+                <!-- BINGO PROGRESS SECTION (Moved to top for visibility) -->
+                <div
+                    class="max-w-sm mx-auto my-8 bg-zinc-900/50 border border-[#FF3D00]/20 p-6 rounded-[2.5rem] text-center shadow-2xl">
+                    <h3 class="text-sm font-black mb-2 text-[#FF3D00] uppercase tracking-widest">My Bingo Progress</h3>
+                    <div id="bingo-container"></div>
+                    <p class="text-[8px] text-zinc-500 mt-4 uppercase tracking-[0.2em]">Complete lines to Multiply
+                        Reward Entries!</p>
+                </div>
+            </section>
+
+            <!-- Category Grid Section -->
+            <section class="py-2">
+                <div id="category-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="0">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="receipt" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Accounting
+                            & Tax</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="1">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="car" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Automotive
+                            Services</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="2">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="toy-brick" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Baby
+                            & Toys</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="3">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Beauty
+                            & Cosmetic</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="4">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="users" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Childcare
+                            & Aged Care</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="5">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="shopping-bag" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Department
+                            Stores & Electrical</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="6">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="graduation-cap" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Education
+                            & Tutoring</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="7">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="calendar-heart" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Events
+                            & Wedding</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="8">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="landmark" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Financial
+                            & Insurance</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="9">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="dumbbell" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Fitness
+                            & Personal Training</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="10">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="home" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Home
+                            & Garden</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="11">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="stethoscope" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Health,
+                            Wellness & Medical</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="12">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">IT
+                            & Tech</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="13">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="gavel" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Legal
+                            Services</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="14">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="shirt" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Lifestyle,
+                            Boutique, Apparel</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="15">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="smartphone" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Mobile
+                            Phone & Internet</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="16">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="plane" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Travel</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="17">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="dog" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Pets
+                            & Animals</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="18">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="award" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Professional
+                            Training</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="19">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="radio" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Radio
+                            & TV</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="20">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="building" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Real
+                            Estate</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="21">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="utensils" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Restaurants
+                            Food & Bev</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="22">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="truck" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Logistics
+                            & Storage</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="23">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="hammer" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Trades
+                            & Home Services</span>
+                    </div>
+                    <div class="category-card rounded-2xl p-4 text-center group cursor-pointer" data-index="24">
+                        <div
+                            class="w-10 h-10 mx-auto mb-3 bg-zinc-800 rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
+                            <i data-lucide="flower" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span
+                            class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest leading-tight px-2">Funeral
+                            & Support</span>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-8 max-w-xl mx-auto upload-zone rounded-[3rem] p-10 text-center border-2 border-[#FF3D00] bg-zinc-900/40 backdrop-blur-sm relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#FF3D00]/5 to-transparent pointer-events-none">
+                    </div>
+
+                    <div id="dynamic-icon-container"
+                        class="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-[#FF3D00]/10 border border-[#FF3D00]/20 transition-transform group-hover:scale-110 duration-500">
+                        <svg id="upload-main-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="text-[#FF3D00]">
+                            <path
+                                d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+                            <circle cx="12" cy="13" r="3" />
+                        </svg>
+                    </div>
+
+                    <h2 class="text-3xl font-black mb-2 uppercase tracking-tight">SYNC YOUR "<span id="display-platform"
+                            class="text-[#FF3D00]">INSTAGRAM</span>" FEED</h2>
+                    <p class="text-[#FFB300] font-black text-xs uppercase tracking-[0.3em] mb-8">Vertical Format (9:16)
+                        Only</p>
+
+                    <p class="text-zinc-400 mb-10 text-xs leading-relaxed max-w-sm mx-auto italic">
+                        "Your screenshots are your entries." Ensure all uploads are in <b>Portrait orientation</b> from
+                        your mobile social media app to qualify.
+                    </p>
+
+                    <button data-action="upload"
+                        class="btn-primary w-full px-8 py-5 rounded-2xl font-black text-white shadow-[0_20px_40px_rgba(255,61,0,0.3)] flex items-center justify-center space-x-4 text-sm group-hover:translate-y-[-2px] transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" x2="12" y1="3" y2="15" />
+                        </svg>
+                        <span id="upload-btn-text">UPLOAD INSTAGRAM FEED</span>
+                    </button>
+                    <input type="file" id="image-upload" style="display:none" accept="image/*">
+                </div>
+            </section>
+
+            <!-- SOCIAL MULTIPLIER SECTION -->
+            <div class="mb-24 pt-20">
+                <div class="text-center mb-16 px-4">
+                    <h2
+                        class="text-4xl md:text-7xl font-black mb-6 uppercase tracking-tighter leading-none gradient-text drop-shadow-[0_0_30px_rgba(255,61,0,0.2)]">
+                        THE SOCIAL
+                        MULTIPLIER EFFECT</h2>
+                    <p
+                        class="text-zinc-400 font-bold tracking-[0.2em] uppercase text-[10px] max-w-3xl mx-auto leading-loose bg-zinc-900/50 py-3 px-6 rounded-full inline-block border border-white/5">
+                        Boost your entries by replicating your uploads across platforms. <br class="hidden md:block">
+                        Select a platform below to sync another feed.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 max-w-6xl mx-auto">
+                    <!-- Facebook -->
+                    <a href="instagram_upload_page.html?platform=facebook"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#1877F2]"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white/40 group-hover:text-white transition-colors duration-500"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-white uppercase transition-colors">facebook</span>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="instagram_upload_page.html?platform=instagram"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white/40 group-hover:text-white transition-colors duration-500"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.51"></line></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-white uppercase transition-colors">instagram</span>
+                    </a>
+
+                    <!-- X (Twitter) -->
+                    <a href="instagram_upload_page.html?platform=x"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-black"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white/40 group-hover:text-white transition-colors duration-500"><path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-white uppercase transition-colors">x</span>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="instagram_upload_page.html?platform=youtube"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#FF0000]"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white/40 group-hover:text-white transition-colors duration-500"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-white uppercase transition-colors">youtube</span>
+                    </a>
+
+                    <!-- TikTok -->
+                    <a href="instagram_upload_page.html?platform=tiktok"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#000000]"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white/40 group-hover:text-white transition-colors duration-500"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-white uppercase transition-colors">tiktok</span>
+                    </a>
+
+                    <!-- Snapchat -->
+                    <a href="instagram_upload_page.html?platform=snapchat"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#FFFC00]"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-black/40 group-hover:text-black transition-colors duration-500"><path d="M12 21.29c-1.35 0-2.45-.48-3.04-.98-.63-.53-.88-.95-1-.95-.31 0-.91.31-1.78.31-1.12 0-2.18-.55-2.18-2 0-.31.06-.67.16-1.07.12-.45.24-.95.31-1.39.04-.26-.14-.49-.4-.53a5.57 5.57 0 0 1-1.75-.63c-.56-.3-.98-.82-1.12-1.4-.14-.58.01-1.18.41-1.63.48-.52 1.2-.84 1.9-.96.26-.04.44-.29.4-.55-.07-.44-.19-.94-.31-1.39-.1-.4-.16-.76-.16-1.07 0-1.45 1.06-2 2.18-2 .87 0 1.47.31 1.78.31.12 0 .37-.42 1-.95.59-.5 1.69-.98 3.04-.98s2.45.48 3.04.98c.63.53.88.95 1 .95.31 0 .91-.31 1.78-.31 1.12 0 2.18.55 2.18 2 0 .31-.06.67-.16 1.07-.12.45-.24.95-.31 1.39-.04.26.14.49.4.53.7.12 1.42.44 1.9.96.4.45.55 1.05.41 1.63-.14.58-.56 1.1-1.12 1.4-.54.29-1.15.5-1.75.63-.26.04-.44.27-.4.53.07.44.19.94.31 1.39.1.4.16.76.16 1.07 0 1.45-1.06 2-2.18 2-.87 0-1.47-.31-1.78-.31-.12 0-.37.42-1 .95-.59.5-1.69.98-3.04.98z"></path></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-black uppercase transition-colors">snapchat</span>
+                    </a>
+
+                    <!-- Pinterest -->
+                    <a href="instagram_upload_page.html?platform=pinterest"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#E61919]"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white/40 group-hover:text-white transition-colors duration-500"><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line><circle cx="12" cy="12" r="10"></circle></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-white uppercase transition-colors">pinterest</span>
+                    </a>
+
+                    <!-- Reddit -->
+                    <a href="instagram_upload_page.html?platform=reddit"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#FF4500]"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white/40 group-hover:text-white transition-colors duration-500"><path d="M12 21c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8zm0-16c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8z"></path></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-white uppercase transition-colors">reddit</span>
+                    </a>
+
+                    <!-- Discord -->
+                    <a href="instagram_upload_page.html?platform=discord"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#5865F2]"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white/40 group-hover:text-white transition-colors duration-500"><path d="M12 1h12v12H12V1z"></path><path d="M1 12h12v12H1V12z"></path></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-white uppercase transition-colors">discord</span>
+                    </a>
+
+                    <!-- WeChat -->
+                    <a href="instagram_upload_page.html?platform=wechat"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#07C160]"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white/40 group-hover:text-white transition-colors duration-500"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9l3.8-3.8z"></path></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-white uppercase transition-colors">wechat</span>
+                    </a>
+
+                    <!-- Weibo -->
+                    <a href="instagram_upload_page.html?platform=weibo"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#E6162D]"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white/40 group-hover:text-white transition-colors duration-500"><path d="M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11z"></path></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-white uppercase transition-colors">weibo</span>
+                    </a>
+
+                    <!-- KuaiShou -->
+                    <a href="instagram_upload_page.html?platform=kuaishou"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-[#FF4E00]"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white/40 group-hover:text-white transition-colors duration-500"><path d="M12 2v20"></path><path d="M22 12H2"></path></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-white uppercase transition-colors">kuaishou</span>
+                    </a>
+
+                    <!-- Douyin -->
+                    <a href="instagram_upload_page.html?platform=douyin"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] bg-white/5 border border-white/10 hover:-translate-y-4 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl bg-black"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white/40 group-hover:text-white transition-colors duration-500"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                        <span class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white/20 group-hover:text-white uppercase transition-colors">douyin</span>
+                    </a>
+
+                    <!-- Scan Them All ™ -->
+                    <a href="instagram_upload_page.html?platform=scanthemall"
+                        class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] premium-gradient hover:-translate-y-4 shadow-xl">
+                            <path d="M21 16h-3a2 2 0 0 0-2 2v3" />
+                            <path d="M21 21v.01" />
+                            <path d="M12 7v3a2 2 0 0 1-2 2H7" />
+                            <path d="M3 12h.01" />
+                            <path d="M12 3h.01" />
+                            <path d="M12 16v.01" />
+                            <path d="M16 12h1" />
+                            <path d="M21 12v.01" />
+                            <path d="M12 21v.01" />
+                        </svg>
+                        <span
+                            class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white uppercase text-center">SCAN<br>THEM
+                            ALL ™</span>
+                    </a>
+
+                </div>
+
+
+                <!-- REFINED REFERRAL SECTION (Replacing redundant Join Movement) -->
+                <div class="max-w-4xl mx-auto px-6 mb-24">
+                    <div
+                        class="bg-gradient-to-b from-zinc-900 to-black p-12 rounded-[3rem] border border-white/10 text-center relative overflow-hidden group">
+                        <div
+                            class="absolute top-0 right-0 w-64 h-64 bg-[#FF3D00]/10 blur-[100px] -mr-32 -mt-32 transition-all group-hover:bg-[#FF3D00]/20">
+                        </div>
+
+                        <div class="relative z-10">
+                            <div
+                                class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8">
+                                <i data-lucide="users" class="text-[#FF3D00] w-10 h-10"></i>
+                            </div>
+
+                            <h2 class="text-4xl font-black mb-4 uppercase tracking-tighter">Multiply Your Network</h2>
+                            <p class="text-zinc-400 text-lg mb-10 max-w-xl mx-auto leading-relaxed italic">
+                                "Friends who scan together, win together." Refer your inner circle and unlock bonus
+                                multipliers for every successful upload they complete.
+                            </p>
+
+                            <form action="final_invite.html" method="GET" class="max-w-md mx-auto">
+                                <div class="relative mb-6">
+                                    <input type="email" name="friend_email" placeholder="Enter Friend's Email Address"
+                                        class="w-full bg-black/50 border border-white/10 rounded-2xl px-6 py-5 text-sm focus:border-[#FF3D00] outline-none transition-all shadow-inner">
+                                </div>
+                                <button type="submit"
+                                    class="btn-primary w-full py-5 rounded-2xl font-black uppercase tracking-widest text-sm shadow-2xl flex items-center justify-center gap-3">
+                                    <span>Send High-Octane Invite</span>
+                                    <i data-lucide="send" class="w-5 h-5"></i>
+                                </button>
+                                <p class="mt-6 text-[10px] text-zinc-600 font-bold uppercase tracking-widest">Instant
+                                    entry
+                                    bonus applied upon sign-up</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message to Our Community (Centered) -->
+                <section
+                    class="mb-12 p-8 rounded-3xl bg-neutral-900 border border-neutral-800 relative overflow-hidden max-w-5xl mx-auto">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i data-lucide="shield-check" class="w-32 h-32"></i>
+                    </div>
+                    <div class="text-center">
+                        <h2 class="text-2xl font-bold mb-4 text-[#FF3D00]">A Message to Our Community</h2>
+                        <p class="text-gray-400 leading-relaxed text-sm md:text-base italic">
+                            “Your participation in uploading images not only gives you a chance to earn valuable
+                            sweepstake
+                            entries, but it also demonstrates your support for our advertising partners who make these
+                            prizes possible. By engaging with and reciprocally supporting our advertisers, you help
+                            ensure
+                            that sweepstakes continue to grow—offering more frequent and increasingly valuable prizes in
+                            smaller, more localised areas. As our partnership network strengthens, Country Sweepstakes
+                            can
+                            evolve into State and even Postal Code Sweepstakes, bringing exciting rewards closer to home
+                            for
+                            all participants across your territory.”
+                        </p>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Right Skyscraper -->
+            <aside class="skyscraper-right">
+                <div class="w-full h-full ad-placeholder text-[10px] vertical-text shadow-xl">PROMOTIONAL SPACE RIGHT</div>
+            </aside>
+        </div> <!-- End Layout Wrapper -->
+
+        <footer class="bg-black border-t border-white/5 pt-16 pb-8 relative z-[60]">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
+                        <!-- Brand Column -->
+                        <div class="col-span-2 md:col-span-1">
+                            <div class="text-2xl font-black mb-4">GOTTA SCAN<br><span class="text-[#FF3D00]">THEM
+                                    ALL</span>
+                            </div>
+                            <p class="text-sm text-gray-500">The world's first multi-category scan-based sweepstakes
+                                platform.
+                            </p>
+                        </div>
+
+                        <!-- Category: About US -->
+                        <div>
+                            <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">About US</h4>
+                            <ul class="space-y-4 text-sm text-gray-500">
+                                <li><a href="mission.html" class="hover:text-[#FF3D00] transition-colors">Our
+                                        Mission</a></li>
+                                <li><a href="GTSA_FInal_Welcome_Page_(About_US).html"
+                                        class="hover:text-[#FF3D00] transition-colors">Why
+                                        Scan them All ?</a></li>
+                                <li><a href="https://rule7media.com/franchise"
+                                        class="hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Category: Policy -->
+                        <div>
+                            <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Policy</h4>
+                            <ul class="space-y-4 text-sm text-gray-500">
+                                <li><a href="GTSA Final Terms No Advertising.html"
+                                        class="hover:text-[#FF3D00] transition-colors">Terms
+                                        of Use</a></li>
+                                <li><a href="privacy.html" class="hover:text-[#FF3D00] transition-colors">Privacy
+                                        Policy</a>
+                                </li>
+                                <li><a href="index.html#faq" class="hover:text-[#FF3D00] transition-colors">FAQs</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Category: Support -->
+                        <div>
+                            <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Support</h4>
+                            <ul class="space-y-4 text-sm text-gray-500">
+                                <li><a href="blog.html" class="hover:text-[#FF3D00] transition-colors">Blog</a></li>
+                                <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite
+                                        Friends</a></li>
+                                <li><a href="instagram_upload_page.html"
+                                        class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
+                                <li><a href="invite_blast_social.html"
+                                        class="hover:text-[#FF3D00] transition-colors">Social
+                                        Blast</a></li>
+                                <li><a href="Final_contact_page.html"
+                                        class="hover:text-[#FF3D00] transition-colors">Contact
+                                        us</a></li>
+                                <li><a href="log_in_page_advertising_placeholder.html"
+                                        class="hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
+                                <li><a href="https://rule7media.com/affiliate"
+                                        class="hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/5 text-[10px] text-gray-600 uppercase tracking-widest">
+                        <p>© 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED.</p>
+                        <div
+                            class="flex gap-6 opacity-40 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Visa_Inc._logo_%282005%E2%80%932014%29.svg"
+                                alt="Visa" class="h-4">
+                            <img src="https://www.shutterstock.com/image-vector/paypal-multinational-financial-technology-payment-260nw-2276341185.jpg"
+                                alt="PayPal" class="h-4">
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- LOGIC INTEGRATION (Upload + Bingo Focused) -->
+            <script src="js/ads.js"></script>
+            <script src="js/bingo.js"></script>
+            <script src="js/upload.js"></script>
+            <script src="js/app.js"></script>
+            <script src="js/responsive.js" defer></script>
+            <script type="module" src="js/auth-header.js"></script>
+            <script>
+                // ── DYNAMIC PLATFORM HANDLER ──────────────────────────
+                const ICON_MAP = {
+                    'facebook': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>',
+                    'instagram': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.51"></line></svg>',
+    <script src="js/ads.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/responsive.js" defer></script>
+    <script type="module" src="js/auth-header.js"></script>
+    
+    <script type="module">
+        import { NodeAPI } from "./js/api-config.js";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+
+            const ICON_MAP = {
+                'facebook': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>',
+                'instagram': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.51"></line></svg>',
+                'x': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>',
+                'youtube': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>',
+                'tiktok': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>',
+                'snapchat': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.29c-1.35 0-2.45-.48-3.04-.98-.63-.53-.88-.95-1-.95-.31 0-.91.31-1.78.31-1.12 0-2.18-.55-2.18-2 0-.31.06-.67.16-1.07.12-.45.24-.95.31-1.39.04-.26-.14-.49-.4-.53a5.57 5.57 0 0 1-1.75-.63c-.56-.3-.98-.82-1.12-1.4-.14-.58.01-1.18.41-1.63.48-.52 1.2-.84 1.9-.96.26-.04.44-.29.4-.55-.07-.44-.19-.94-.31-1.39-.1-.4-.16-.76-.16-1.07 0-1.45 1.06-2 2.18-2 .87 0 1.47.31 1.78.31.12 0 .37-.42 1-.95.59-.5 1.69-.98 3.04-.98s2.45.48 3.04.98c.63.53.88.95 1 .95.31 0 .91-.31 1.78-.31 1.12 0 2.18.55 2.18 2 0 .31-.06.67-.16 1.07-.12.45-.24.95-.31 1.39-.04.26.14.49.4.53.7.12 1.42.44 1.9.96.4.45.55 1.05.41 1.63-.14.58-.56 1.1-1.12 1.4-.54.29-1.15.5-1.75.63-.26.04-.44.27-.4.53.07.44.19.94.31 1.39.1.4.16.76.16 1.07 0 1.45-1.06 2-2.18 2-.87 0-1.47-.31-1.78-.31-.12 0-.37.42-1 .95-.59.5-1.69.98-3.04.98z"></path></svg>',
+                'scanthemall': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v.01"/></svg>'
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const platform = (urlParams.get('platform') || 'instagram').toLowerCase();
+            
+            // Update UI with platform info
+            const displayPlatform = document.getElementById('display-platform');
+            const btnText = document.getElementById('upload-btn-text');
+            const iconContainer = document.getElementById('dynamic-icon-container');
+            
+            if (displayPlatform) displayPlatform.innerText = platform.toUpperCase();
+            if (btnText) btnText.innerText = "UPLOAD " + platform.toUpperCase() + " FEED";
+            
+            if (iconContainer && ICON_MAP[platform]) {
+                iconContainer.innerHTML = ICON_MAP[platform];
+                const svg = iconContainer.querySelector('svg');
+                if (svg) {
+                    svg.setAttribute('width', '32');
+                    svg.setAttribute('height', '32');
+                    svg.setAttribute('class', 'text-[#FF3D00]');
+                }
+            }
+
+            // Upload Logic
+            const uploadBtn = document.querySelector('[data-action="upload"]');
+            const fileInput = document.getElementById('image-upload');
+            
+            if (uploadBtn && fileInput) {
+                uploadBtn.addEventListener('click', () => {
+                    if (!NodeAPI.isAuthenticated()) {
+                        alert("Please login first to upload images.");
+                        window.location.href = "registration_with_video.html";
+                        return;
+                    }
+                    fileInput.click();
+                });
+
+                fileInput.addEventListener('change', async (event) => {
+                    const file = event.target.files[0];
+                    if (!file) return;
+
+                    const originalBtnText = btnText ? btnText.innerText : "UPLOAD";
+                    if (btnText) btnText.innerText = "UPLOADING...";
+                    uploadBtn.disabled = true;
+
+                    try {
+                        const selectedCategory = document.querySelector('.category-card.bg-[#FF3D00]\\/10');
+                        const category = selectedCategory ? selectedCategory.querySelector('span').innerText : 'General';
+
+                        const formData = new FormData();
+                        formData.append('image', file);
+                        formData.append('platform', platform);
+                        formData.append('category', category);
+
+                        await NodeAPI.uploadImage(formData);
+                        alert("Success! Your " + platform + " feed has been synced and entries added.");
+                        window.location.href = "position.html";
+                    } catch (error) {
+                        console.error("Upload Error:", error);
+                        alert("Upload failed: " + error.message);
+                    } finally {
+                        if (btnText) btnText.innerText = originalBtnText;
+                        uploadBtn.disabled = false;
+                    }
+                });
+            }
+
+            // Category Selection Logic
+            const categories = document.querySelectorAll('.category-card');
+            categories.forEach(card => {
+                card.addEventListener('click', () => {
+                    categories.forEach(c => c.classList.remove('bg-[#FF3D00]/10', 'border-[#FF3D00]'));
+                    card.classList.add('bg-[#FF3D00]/10', 'border-[#FF3D00]');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
