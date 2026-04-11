@@ -1,14 +1,16 @@
 {
   "name": "gtsa-monorepo",
   "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "admin-panel",
+    "advertiser-panel"
+  ],
   "scripts": {
-    "install:backend": "cd backend && npm install",
-    "install:admin": "cd admin-panel && npm install",
-    "install:advertiser": "cd advertiser-panel && npm install",
-    "install-all": "npm run install:backend && npm run install:admin && npm run install:advertiser",
-    "build:admin": "cd admin-panel && npm run build",
-    "build:advertiser": "cd advertiser-panel && npm run build",
-    "build": "npm run install-all && npm run build:admin && npm run build:advertiser",
-    "start": "cd backend && npm start"
+    "build:admin": "npm run build -w admin-panel",
+    "build:advertiser": "npm run build -w advertiser-panel",
+    "build": "npm run build:admin && npm run build:advertiser",
+    "start": "npm start -w image-draw-backend"
   }
 }
