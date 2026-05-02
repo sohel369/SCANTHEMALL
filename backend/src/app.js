@@ -61,7 +61,7 @@ const corsOptions = {
 // ─── GZIP / BROTLI COMPRESSION (biggest perf win) ───
 app.use(compression({
   level: 6,
-  threshold: 1024,          // only compress responses > 1KB
+  threshold: 1024,
   filter: (req, res) => {
     if (req.headers['x-no-compression']) return false;
     return compression.filter(req, res);
@@ -96,7 +96,11 @@ if (!fs.existsSync(path.join(absoluteUploadsPath, 'profiles'))) {
   fs.mkdirSync(path.join(absoluteUploadsPath, 'profiles'), { recursive: true });
 }
 
-app.use('/uploads', express.static(absoluteUploadsPath, {\r\n  maxAge: '1d',\r\n  etag: true,\r\n  lastModified: true\r\n}));
+app.use('/uploads', express.static(absoluteUploadsPath, {
+  maxAge: '1d',
+  etag: true,
+  lastModified: true
+}));
 
 // Health check endpoint for uploads
 app.get('/health/uploads', (req, res) => {
@@ -188,14 +192,14 @@ if (fs.existsSync(advertiserPath)) {
 // Frontend — serve with cache headers for static assets
 if (fs.existsSync(frontendPath)) {
   app.use(express.static(frontendPath, {
-    maxAge: '1y',                    // cache JS/CSS/images for 1 year
+    maxAge: '1y',
     etag: true,
     lastModified: true,
     immutable: true,
     setHeaders: (res, filePath) => {
       // HTML files: short cache so updates appear quickly
       if (filePath.endsWith('.html')) {
-        res.setHeader('Cache-Control', 'public, max-age=3600');  // 1 hour
+        res.setHeader('Cache-Control', 'public, max-age=3600');
       }
       // Images: long cache
       if (/\.(png|jpg|jpeg|gif|webp|svg|ico)$/i.test(filePath)) {
@@ -220,4 +224,3 @@ app.get('/', (req, res) => {
 });
 
 export default app;
-
