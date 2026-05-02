@@ -6,7 +6,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "start": "npx serve frontend -l ${PORT:-3000} --no-clipboard",
+    "start": "npx serve frontend -l 3000 --no-clipboard",
     "build": "echo 'Static frontend - no build needed'"
   },
   "dependencies": {

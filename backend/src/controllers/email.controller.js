@@ -172,3 +172,45 @@ export const sendTestEmail = async (req, res) => {
   }
 };
 
+/**
+ * Send a referral invitation email
+ */
+export const sendReferralEmail = async (req, res) => {
+  try {
+    const { email: friendEmail } = req.body;
+    const userId = req.user.id;
+
+    if (!friendEmail) {
+      return res.status(400).json({ error: 'Recipient email is required' });
+    }
+
+    // Get inviter's profile info
+    const { rows } = await pool.query(
+      'SELECT first_name, username FROM user_profiles WHERE user_id = $1',
+      [userId]
+    );
+    const inviter = rows[0] || { first_name: 'A friend', username: 'GTSA User' };
+    const inviterName = inviter.first_name || inviter.username;
+
+    // Generate referral link (using username or ID)
+    const referralLink = `${process.env.FRONTEND_URL || 'https://scanthemall.com'}/registration_with_video.html?ref=${inviter.username || userId}`;
+
+    const { generateReferralInvitationEmail } = await import('../utils/emailTemplates.js');
+    const emailHtml = generateReferralInvitationEmail({
+      inviterName,
+      referralLink
+    });
+
+    await sendEmail(
+      friendEmail,
+      `🚀 ${inviterName} invited you to join the quest for luxury!`,
+      emailHtml
+    );
+
+    res.json({ success: true, message: 'Invitation sent successfully!' });
+  } catch (err) {
+    console.error('Error sending referral email:', err);
+    res.status(500).json({ error: 'Failed to send referral email', details: err.message });
+  }
+};
+

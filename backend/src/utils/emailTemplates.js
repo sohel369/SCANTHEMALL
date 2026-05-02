@@ -3,7 +3,30 @@
  */
 
 export const generateWelcomeEmail = (userData) => {
-  const { email, firstName, username } = userData;
+  const { email, firstName, username, category } = userData;
+
+    const getAffiliateContent = (cat) => {
+      let brand = 'Premium Partners';
+      let msg = 'Check out these exclusive deals from our trusted partners.';
+      let link = '#';
+      
+      if(cat === 'Beauty') { brand = 'Sephora'; msg = 'Check out the latest trends at Sephora or Ulta!'; link = '#impact-sephora'; }
+      else if(cat === 'Automotive') { brand = 'Best Buy Auto'; msg = 'Upgrade your ride with Best Buy Auto or Discount Tire!'; link = '#impact-auto'; }
+      else if(cat === 'Tech') { brand = 'Microsoft'; msg = 'Get the latest gear at Best Buy or Microsoft!'; link = '#impact-tech'; }
+      else if(cat === 'Apparel') { brand = 'Nike & Adidas'; msg = 'Upgrade your wardrobe with Nike or Adidas!'; link = '#impact-apparel'; }
+      else if(cat === 'Home') { brand = 'Walmart'; msg = 'Refresh your living space with exclusive deals from Walmart!'; link = '#impact-home'; }
+      
+      return `
+      <div class="highlight-box affiliate-section" style="background-color: #f0f8ff; border: 1px solid #0066cc; margin: 20px 0;">
+        <strong style="color: #0066cc;">🎁 Exclusive Partner Offer!</strong><br>
+        While you wait for the next draw, ${msg}<br>
+        <a href="${link}" style="display: inline-block; margin-top: 15px; background-color: #0066cc; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Shop ${brand} Now →</a>
+      </div>
+      `;
+    };
+    
+    const affiliateHtml = category ? getAffiliateContent(category) : '';
+    
   
   return `
 <!DOCTYPE html>
@@ -186,6 +209,7 @@ export const generateWelcomeEmail = (userData) => {
       </ul>
     </div>
     
+    ${affiliateHtml}
     <div class="highlight-box">
       <strong>📧 Keep an eye on your inbox!</strong><br>
       We'll send you exclusive updates about new sweepstakes, special promotions, and early-bird opportunities in your area.
@@ -637,3 +661,69 @@ export const generateWeeklyPositionEmail = (userData) => {
   `.trim();
 };
 
+
+export const generateReferralInvitationEmail = (referralData) => {
+  const { inviterName, referralLink } = referralData;
+  
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You've been invited to Gotta Scan Them All™</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f4; }
+    .container { background-color: #ffffff; border-radius: 8px; padding: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .header { background: linear-gradient(135deg, #FF3D00 0%, #1C2526 100%); color: white; padding: 30px 20px; border-radius: 8px 8px 0 0; text-align: center; margin: -30px -30px 30px -30px; }
+    .invitation-box { background: #fff5f2; border: 2px dashed #FF3D00; padding: 25px; border-radius: 8px; text-align: center; margin: 30px 0; font-size: 18px; }
+    .prize-list { background-color: #f9f9f9; padding: 25px; border-radius: 8px; margin: 25px 0; border-left: 4px solid #FF3D00; }
+    .call-to-action { background-color: #FF3D00; color: white; padding: 18px 35px; text-align: center; border-radius: 50px; margin: 30px 0; text-decoration: none; display: inline-block; font-weight: bold; font-size: 18px; box-shadow: 0 10px 20px rgba(255, 61, 0, 0.2); }
+    .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 12px; color: #999; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🚀 Your Squad is Waiting!</h1>
+      <p>Gotta Scan Them All™ - The Ultimate Luxury Hunt</p>
+    </div>
+    
+    <div class="invitation-box">
+      <strong>${inviterName || 'A friend'}</strong> has invited you to join the quest for luxury!
+    </div>
+    
+    <p>Hi there,</p>
+    <p>Your friend is competing in the world's first multi-category scan-based sweepstakes, and they want you in their squad!</p>
+    
+    <div class="prize-list">
+      <h3>🏆 What can you win?</h3>
+      <p>Join now for a chance to win from our $75,000+ prize pool:</p>
+      <ul>
+        <li>🏎️ <strong>Luxury Supercars</strong> - Drive your dream</li>
+        <li>💰 <strong>Gold Bullion & Cash</strong> - Hard asset rewards</li>
+        <li>🏝️ <strong>Dream Vacations</strong> - Maldives, Bora Bora & more</li>
+        <li>👜 <strong>Designer Fashion</strong> - Exclusive luxury pieces</li>
+      </ul>
+    </div>
+    
+    <div style="text-align: center; margin: 40px 0;">
+      <p style="font-weight: bold; margin-bottom: 20px;">Ready to start your mission?</p>
+      <a href="${referralLink}" class="call-to-action">
+        JOIN THE SQUAD NOW →
+      </a>
+    </div>
+    
+    <p style="font-size: 14px; color: #666; text-align: center;">
+      Registration is 100% FREE. No purchase necessary to win.
+    </p>
+    
+    <div class="footer">
+      <p>© 2026 Gotta Scan Them All™ | Rule 7 Media Initiative</p>
+      <p>This invitation was sent because a friend wanted to share this opportunity with you.</p>
+    </div>
+  </div>
+</body>
+</html>
+  `.trim();
+};

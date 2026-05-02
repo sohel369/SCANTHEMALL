@@ -17,9 +17,9 @@ function initUpload() {
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 // Remove active from others
-                cards.forEach(c => c.classList.remove('ring-2', 'ring-[#FF3D00]', 'scale-105', 'bg-[#FF3D00]/10'));
+                cards.forEach(c => c.classList.remove('ring-2', 'ring-[#e11d48]', 'scale-105', 'bg-[#e11d48]/10'));
                 // Add to this
-                card.classList.add('ring-2', 'ring-[#FF3D00]', 'scale-105', 'bg-[#FF3D00]/10');
+                card.classList.add('ring-2', 'ring-[#e11d48]', 'scale-105', 'bg-[#e11d48]/10');
                 selectedCategoryIndex = parseInt(card.getAttribute('data-index'));
                 console.log("Selected Category Index:", selectedCategoryIndex);
 
@@ -89,21 +89,25 @@ async function finalizeUpload() {
     try {
         const file = fileInput.files[0];
         const params = new URLSearchParams(window.location.search);
-        const platform = params.get('platform') || 'Instagram';
+        let platform = params.get('platform') || 'scanthemall';
+        if (platform.toLowerCase() === 'stamy') platform = 'scanthemall';
 
         const formData = new FormData();
         formData.append('image', file);
         formData.append('platform', platform);
-        // Add other required fields for the backend if needed (e.g., city, country, wave)
+        // Add other required fields for the backend
         formData.append('tag_count', '0'); 
 
-        console.log("Starting real upload to backend...");
+        console.log(`Starting upload for platform: ${platform}`);
         const result = await api.uploadImage(formData);
         console.log("Upload Success:", result);
 
-        // Optional: Update Bingo if applicable 
-        if (typeof updateBingo === 'function') {
-            updateBingo(selectedCategoryIndex);
+        // Update Billboard Game if a category was selected
+        if (typeof window.updateBillboard === 'function') {
+            console.log(`GTSA Billboard Game: Updating square for category index: ${selectedCategoryIndex}`);
+            window.updateBillboard(selectedCategoryIndex);
+        } else {
+            console.warn("GTSA Billboard Game: updateBillboard function not found!");
         }
 
         // Update local session counter
@@ -113,8 +117,9 @@ async function finalizeUpload() {
         confirmBtn.innerText = "Verified!";
         setTimeout(() => {
             modal.classList.add('hidden');
-            window.location.href = "successful_upload.html";
-        }, 1000);
+            // Redirect with a flag to show success message on the next page
+            window.location.href = "successful_upload.html?platform=" + platform + "&billboardUpdate=true";
+        }, 1500);
 
     } catch (error) {
         console.error("Upload Error:", error);

@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <script src="js/geo-rules.js" defer></script>
+    <script src="js/image-handler.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -120,7 +122,7 @@
                         <a href="registration_with_video.html" id="auth-btn"
                             class="auth-login auth-signup text-sm font-semibold text-white px-4 py-2 rounded-full border border-zinc-700 hover:bg-zinc-800 transition-all">Register
                             or Sign-In</a>
-                        <a href="log_in_page_advertising_placeholder.html"
+                        <a href="/advertiser"
                             class="bg-[#FF3D00] text-sm font-semibold text-white px-6 py-2 rounded-full shadow-lg hover:bg-orange-600 transition-all">Advertise
                             with Us</a>
                     </div>
@@ -196,7 +198,7 @@
                     <a href="registration_with_video.html"
                         class="auth-signup text-2xl font-black uppercase text-white border border-white/20 p-4 rounded-2xl text-center">Register
                         or Sign-In</a>
-                    <a href="log_in_page_advertising_placeholder.html"
+                    <a href="/advertiser"
                         class="bg-[#FF3D00] text-black text-center py-4 rounded-2xl font-black uppercase mt-4">Advertise
                         with Us</a>
                 </nav>
@@ -577,7 +579,7 @@
                 Refer Your Friends and Family – Unlock Up to 150 Bonus Entries After 100 Scans!. <br
                     class="hidden md:block"> <a href="registration_with_video.html"
                     class="text-xs font-bold uppercase tracking-widest text-white hover:text-[#FF3D00] transition-colors">For
-                    every friend who joins you earn 12 bonus entries </a>
+                    every friend who joins you earn 10 bonus entries </a>
             </p>
         </div>
 
@@ -591,7 +593,7 @@
                             SCAN<br><span class="text-[#FF3D00]">THEM ALL</span></a>
                         <div class="flex space-x-4">
                             <a href="https://www.facebook.com/profile.php?id=61588463875468"
-                                class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors">
+                                class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors share-facebook">
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
                                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
@@ -616,7 +618,7 @@
                                 </svg>
                             </a>
                             <a href="https://x.com/gotascanthemall"
-                                class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors">
+                                class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors share-x">
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="text-white">
                                     <path
                                         d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
@@ -634,7 +636,7 @@
                             <li><a href="mission.html" class="footer-link">Our mission</a></li>
                             <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link">Why scan them
                                     all</a></li>
-                            <li><a href="log_in_page_advertising_placeholder.html" class="footer-link">Franchise
+                            <li><a href="/advertiser" class="footer-link">Franchise
                                     Opportunities</a></li>
                         </ul>
                     </div>
@@ -667,9 +669,9 @@
                             <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social
                                     Blast</a></li>
                             <li><a href="Final_contact_page.html" class="footer-link">Contact us</a></li>
-                            <li><a href="log_in_page_advertising_placeholder.html" class="footer-link">Advertise With
+                            <li><a href="/advertiser" class="footer-link">Advertise With
                                     Us</a></li>
-                            <li><a href="log_in_page_advertising_placeholder.html" class="footer-link">Affiliate
+                            <li><a href="/advertiser" class="footer-link">Affiliate
                                     Program</a></li>
                         </ul>
                     </div>
@@ -694,76 +696,17 @@
         <script src="js/app.js"></script>
         <script type="module" src="js/auth-header.js"></script>
         <script>
-            lucide.createIcons();
+        lucide.createIcons();
+        
+        // Mobile Menu Logic
+        const mobileMenuToggle = document.getElementById('mobile-menu-btn');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-            // Dynamic Country-State Logic
-            const countryData = {
-                'AUS': {
-                    code: '+61',
-                    states: ['New South Wales', 'Victoria', 'Queensland', 'Western Australia', 'South Australia', 'Tasmania', 'ACT', 'Northern Territory'],
-                    areas: ['02', '03', '07', '08']
-                },
-                'UK': {
-                    code: '+44',
-                    states: ['England', 'Scotland', 'Wales', 'Northern Ireland', 'London', 'Manchester'],
-                    areas: ['020', '0121', '0113', '0161']
-                },
-                'USA': {
-                    code: '+1',
-                    states: ['California', 'Texas', 'New York', 'Florida', 'Illinois', 'Pennsylvania', 'Ohio', 'Georgia'],
-                    areas: ['212', '310', '415', '602']
-                },
-                'CAN': {
-                    code: '+1',
-                    states: ['Ontario', 'Quebec', 'British Columbia', 'Alberta', 'Manitoba', 'Saskatchewan'],
-                    areas: ['416', '604', '514', '780']
-                }
-            };
-
-            const countrySelect = document.getElementById('country');
-            const stateSelect = document.getElementById('state');
-            const areaSelect = document.getElementById('area-code');
-            const codeInput = document.getElementById('country-code');
-
-            if (countrySelect) {
-                countrySelect.addEventListener('change', function () {
-                    const country = this.value;
-                    const data = countryData[country];
-
-                    // Reset State and Area
-                    stateSelect.innerHTML = '<option value="">State or Region</option>';
-                    areaSelect.innerHTML = '<option value="">Area Code</option>';
-                    codeInput.value = '';
-
-                    if (data) {
-                        codeInput.value = data.code;
-
-                        data.states.forEach(state => {
-                            const opt = document.createElement('option');
-                            opt.value = state;
-                            opt.textContent = state;
-                            stateSelect.appendChild(opt);
-                        });
-
-                        data.areas.forEach(area => {
-                            const opt = document.createElement('option');
-                            opt.value = area;
-                            opt.textContent = '(' + area + ')';
-                            areaSelect.appendChild(opt);
-                        });
-                    }
-                });
-            }
-
-            // Mobile Menu Logic
-            const mobileMenuToggle = document.getElementById('mobile-menu-btn');
-            const mobileMenuClose = document.getElementById('mobile-menu-close');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            if (mobileMenuToggle && mobileMenu) {
-                mobileMenuToggle.onclick = () => mobileMenu.classList.remove('hidden');
-                mobileMenuClose.onclick = () => mobileMenu.classList.add('hidden');
-            }
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.onclick = () => mobileMenu.classList.remove('hidden');
+            mobileMenuClose.onclick = () => mobileMenu.classList.add('hidden');
+        }
         </script>
         <script type="module">
             import { NodeAPI } from "./js/api-config.js";
@@ -823,3 +766,6 @@
 </body>
 
 </html>
+
+
+

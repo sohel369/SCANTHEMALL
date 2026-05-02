@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Win $1,000 Cash | GTSA Global Draw</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0a0c; color: #ffffff; }
+        .glass-card { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(24px); border: 1px solid rgba(225, 29, 72, 0.2); }
+        .input-style { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 14px 18px; width: 100%; transition: all 0.3s ease; color: white; }
+        .input-style:focus { border-color: #e11d48; outline: none; box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.1); }
+        .btn-rose { background: #e11d48; color: white; font-weight: 800; border-radius: 12px; padding: 18px; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.1em; }
+        .btn-rose:hover { background: #c41e3a; transform: translateY(-2px); box-shadow: 0 20px 40px rgba(225, 29, 72, 0.3); }
+        .neon-glow { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.15; pointer-events: none; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 bg-[#0a0a0c] overflow-hidden">
+    
+    <!-- Ambient Glows -->
+    <div class="neon-glow bg-[#e11d48] w-[400px] h-[400px] -top-48 -right-48"></div>
+    <div class="neon-glow bg-[#3b82f6] w-[300px] h-[300px] -bottom-32 -left-32"></div>
+
+    <div id="form-container" class="glass-card max-w-md w-full rounded-[2.5rem] p-10 shadow-2xl relative z-10">
+        
+        <div class="mb-10 text-center">
+            <div class="flex justify-between items-center mb-6">
+                <button id="step-back" class="text-zinc-500 hover:text-white transition-colors invisible">
+                    <i data-lucide="arrow-left" class="w-6 h-6"></i>
+                </button>
+                <div class="w-12 h-1 bg-zinc-800 rounded-full flex overflow-hidden">
+                    <div id="progress-bar" class="w-1/2 bg-[#e11d48] transition-all duration-500"></div>
+                </div>
+                <div class="w-6 h-6"></div> <!-- Spacer -->
+            </div>
+            
+            <h1 class="text-4xl font-black mb-2 uppercase italic tracking-tighter">
+                Win <span class="text-[#e11d48]">$1,000</span> Cash
+            </h1>
+            <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest">Global Rewards Ecosystem</p>
+        </div>
+
+        <form id="cash-draw-form" class="space-y-6">
+            
+            <!-- STEP 1: CONTACT (The Hook) -->
+            <div id="form-step-1" class="space-y-6 animate-in slide-in-from-right duration-500">
+                <div>
+                    <label class="block text-[10px] font-black text-[#e11d48] uppercase tracking-[0.2em] mb-2 px-1">Email Address *</label>
+                    <input type="email" id="entry-email" placeholder="you@example.com" class="input-style" required>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-black text-[#e11d48] uppercase tracking-[0.2em] mb-2 px-1">Mobile Number *</label>
+                    <input type="tel" id="entry-phone" placeholder="(555) 000-0000" class="input-style" required>
+                    <p class="text-[9px] text-zinc-500 mt-2 font-medium uppercase italic">Winners notified instantly via Email & SMS</p>
+                </div>
+            </div>
+
+            <!-- STEP 2: SEGMENTATION (The Value) -->
+            <div id="form-step-2" class="hidden space-y-6 animate-in slide-in-from-right duration-500">
+                <div>
+                    <label class="block text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-2 px-1">Winning Category *</label>
+                    <select id="entry-category" class="input-style appearance-none bg-zinc-900" required>
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="Apparel & Accessories">Apparel & Accessories</option>
+                        <option value="Beauty">Beauty</option>
+                        <option value="Home & Garden">Home & Garden</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Automotive">Automotive</option>
+                        <option value="Travel & Tourism">Travel & Tourism</option>
+                        <option value="Food & Beverage">Food & Beverage</option>
+                        <option value="Finance & Insurance">Finance & Insurance</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-2 px-1">Age Group *</label>
+                        <select id="entry-age" class="input-style appearance-none bg-zinc-900" required>
+                            <option value="" disabled selected>Select Age</option>
+                            <option value="18-24">18 – 24</option>
+                            <option value="25-34">25 – 34</option>
+                            <option value="35-44">35 – 44</option>
+                            <option value="45-54">45 – 54</option>
+                            <option value="55-64">55 – 64</option>
+                            <option value="65+">65+</option>
+                            <option value="under_18">Under 18</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-2 px-1">Gender (Opt)</label>
+                        <select id="entry-gender" class="input-style appearance-none bg-zinc-900">
+                            <option value="" selected>Optional</option>
+                            <option value="Woman">Woman</option>
+                            <option value="Man">Man</option>
+                            <option value="Non-binary">Non-binary</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-2 px-1">Shopping Frequency *</label>
+                    <select id="entry-freq" class="input-style appearance-none bg-zinc-900" required>
+                        <option value="" disabled selected>Select Frequency</option>
+                        <option value="Weekly">Weekly Shopper</option>
+                        <option value="Monthly">Monthly Shopper</option>
+                        <option value="Rarely">Rarely Shop Online</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" id="submit-btn" class="w-full btn-rose shadow-2xl">
+                Continue to Entry
+            </button>
+
+            <p class="text-[9px] text-zinc-600 text-center mt-6 leading-relaxed uppercase tracking-widest font-medium">
+                By entering, you agree to the <a href="#" class="underline hover:text-white">Official Rules</a>. <br>
+                No purchase necessary. Void where prohibited. <br>
+                Your data is shared with verified brand partners.
+            </p>
+        </form>
+    </div>
+
+    <script src="js/lead-gen.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

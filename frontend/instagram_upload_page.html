@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <script src="js/geo-rules.js" defer></script>
+    <script src="js/image-handler.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
@@ -175,7 +177,7 @@
                 <div class="hidden md:flex items-center space-x-6">
                     <div id="auth-buttons" class="flex items-center space-x-4">
                         <a href="registration_with_video.html" id="auth-btn" class="auth-login auth-signup text-sm font-semibold text-white px-4 py-2 rounded-full border border-zinc-700 hover:bg-zinc-800 transition-all">Register or Sign-In</a>
-                        <a href="log_in_page_advertising_placeholder.html" class="bg-[#FF3D00] text-sm font-semibold text-white px-6 py-2 rounded-full shadow-lg hover:bg-orange-600 transition-all">Advertise with Us</a>
+                        <a href="/advertiser" class="bg-[#FF3D00] text-sm font-semibold text-white px-6 py-2 rounded-full shadow-lg hover:bg-orange-600 transition-all">Advertise with Us</a>
                     </div>
 
                     <div class="user-profile hidden relative group py-4 items-center">
@@ -232,7 +234,7 @@
                     <a href="position.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">My Position</a>
                     <hr class="border-white/10 my-4">
                     <a href="registration_with_video.html" class="auth-signup text-2xl font-black uppercase text-white border border-white/20 p-4 rounded-2xl text-center">Register or Sign-In</a>
-                    <a href="log_in_page_advertising_placeholder.html" class="bg-[#FF3D00] text-black text-center py-4 rounded-2xl font-black uppercase mt-4">Advertise with Us</a>
+                    <a href="/advertiser" class="bg-[#FF3D00] text-black text-center py-4 rounded-2xl font-black uppercase mt-4">Advertise with Us</a>
                 </nav>
             </div>
         </div>
@@ -257,10 +259,10 @@
                     earn your chance to win dream prizes.
                 </p>
 
-                <!-- BINGO PROGRESS SECTION (Moved to top for visibility) -->
+                <!-- BILLBOARD GAME PROGRESS SECTION (Moved to top for visibility) -->
                 <div
                     class="max-w-sm mx-auto my-8 bg-zinc-900/50 border border-[#FF3D00]/20 p-6 rounded-[2.5rem] text-center shadow-2xl">
-                    <h3 class="text-sm font-black mb-2 text-[#FF3D00] uppercase tracking-widest">My Bingo Progress</h3>
+                    <h3 class="text-sm font-black mb-2 text-[#FF3D00] uppercase tracking-widest">My Billboard Game Progress</h3>
                     <div id="bingo-container"></div>
                     <p class="text-[8px] text-zinc-500 mt-4 uppercase tracking-[0.2em]">Complete lines to Multiply
                         Reward Entries!</p>
@@ -658,15 +660,8 @@
                     <!-- Scan Them All ™ -->
                     <a href="instagram_upload_page.html?platform=scanthemall"
                         class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] premium-gradient hover:-translate-y-4 shadow-xl">
-                            <path d="M21 16h-3a2 2 0 0 0-2 2v3" />
-                            <path d="M21 21v.01" />
-                            <path d="M12 7v3a2 2 0 0 1-2 2H7" />
-                            <path d="M3 12h.01" />
-                            <path d="M12 3h.01" />
-                            <path d="M12 16v.01" />
-                            <path d="M16 12h1" />
-                            <path d="M21 12v.01" />
-                            <path d="M12 21v.01" />
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 w-8 h-8 text-white">
+                            <rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v.01"/>
                         </svg>
                         <span
                             class="relative z-10 mt-4 text-[9px] font-black tracking-[0.2em] text-white uppercase text-center">SCAN<br>THEM
@@ -803,7 +798,7 @@
                                 <li><a href="Final_contact_page.html"
                                         class="hover:text-[#FF3D00] transition-colors">Contact
                                         us</a></li>
-                                <li><a href="log_in_page_advertising_placeholder.html"
+                                <li><a href="/advertiser"
                                         class="hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
                                 <li><a href="https://rule7media.com/affiliate"
                                         class="hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
@@ -825,115 +820,57 @@
                 </div>
             </footer>
 
-            <!-- LOGIC INTEGRATION (Upload + Bingo Focused) -->
+            <!-- LOGIC INTEGRATION (Consolidated) -->
             <script src="js/ads.js"></script>
             <script src="js/bingo.js"></script>
             <script src="js/upload.js"></script>
             <script src="js/app.js"></script>
             <script src="js/responsive.js" defer></script>
             <script type="module" src="js/auth-header.js"></script>
+            
             <script>
-                // ── DYNAMIC PLATFORM HANDLER ──────────────────────────
-                const ICON_MAP = {
-                    'facebook': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>',
-                    'instagram': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.51"></line></svg>',
-    <script src="js/ads.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/responsive.js" defer></script>
-    <script type="module" src="js/auth-header.js"></script>
-    
-    <script type="module">
-        import { NodeAPI } from "./js/api-config.js";
+                document.addEventListener('DOMContentLoaded', () => {
+                    const ICON_MAP = {
+                        'facebook': '<i data-lucide="facebook"></i>',
+                        'instagram': '<i data-lucide="instagram"></i>',
+                        'x': '<i data-lucide="twitter"></i>',
+                        'youtube': '<i data-lucide="youtube"></i>',
+                        'tiktok': '<i data-lucide="music"></i>',
+                        'snapchat': '<i data-lucide="ghost"></i>',
+                        'pinterest': '<i data-lucide="pin"></i>',
+                        'reddit': '<i data-lucide="message-square"></i>',
+                        'discord': '<i data-lucide="message-circle"></i>',
+                        'wechat': '<i data-lucide="message-square"></i>',
+                        'weibo': '<i data-lucide="share-2"></i>',
+                        'kuaishou': '<i data-lucide="video"></i>',
+                        'douyin': '<i data-lucide="music-2"></i>',
+                        'scanthemall': '<i data-lucide="qr-code"></i>'
+                    };
 
-        document.addEventListener('DOMContentLoaded', () => {
-            if (window.lucide) {
-                window.lucide.createIcons();
-            }
-
-            const ICON_MAP = {
-                'facebook': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>',
-                'instagram': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.51"></line></svg>',
-                'x': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768m2.464-2.464L20 4"></path></svg>',
-                'youtube': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>',
-                'tiktok': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>',
-                'snapchat': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.29c-1.35 0-2.45-.48-3.04-.98-.63-.53-.88-.95-1-.95-.31 0-.91.31-1.78.31-1.12 0-2.18-.55-2.18-2 0-.31.06-.67.16-1.07.12-.45.24-.95.31-1.39.04-.26-.14-.49-.4-.53a5.57 5.57 0 0 1-1.75-.63c-.56-.3-.98-.82-1.12-1.4-.14-.58.01-1.18.41-1.63.48-.52 1.2-.84 1.9-.96.26-.04.44-.29.4-.55-.07-.44-.19-.94-.31-1.39-.1-.4-.16-.76-.16-1.07 0-1.45 1.06-2 2.18-2 .87 0 1.47.31 1.78.31.12 0 .37-.42 1-.95.59-.5 1.69-.98 3.04-.98s2.45.48 3.04.98c.63.53.88.95 1 .95.31 0 .91-.31 1.78-.31 1.12 0 2.18.55 2.18 2 0 .31-.06.67-.16 1.07-.12.45-.24.95-.31 1.39-.04.26.14.49.4.53.7.12 1.42.44 1.9.96.4.45.55 1.05.41 1.63-.14.58-.56 1.1-1.12 1.4-.54.29-1.15.5-1.75.63-.26.04-.44.27-.4.53.07.44.19.94.31 1.39.1.4.16.76.16 1.07 0 1.45-1.06 2-2.18 2-.87 0-1.47-.31-1.78-.31-.12 0-.37.42-1 .95-.59.5-1.69.98-3.04.98z"></path></svg>',
-                'scanthemall': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v.01"/></svg>'
-            };
-
-            const urlParams = new URLSearchParams(window.location.search);
-            const platform = (urlParams.get('platform') || 'instagram').toLowerCase();
-            
-            // Update UI with platform info
-            const displayPlatform = document.getElementById('display-platform');
-            const btnText = document.getElementById('upload-btn-text');
-            const iconContainer = document.getElementById('dynamic-icon-container');
-            
-            if (displayPlatform) displayPlatform.innerText = platform.toUpperCase();
-            if (btnText) btnText.innerText = "UPLOAD " + platform.toUpperCase() + " FEED";
-            
-            if (iconContainer && ICON_MAP[platform]) {
-                iconContainer.innerHTML = ICON_MAP[platform];
-                const svg = iconContainer.querySelector('svg');
-                if (svg) {
-                    svg.setAttribute('width', '32');
-                    svg.setAttribute('height', '32');
-                    svg.setAttribute('class', 'text-[#FF3D00]');
-                }
-            }
-
-            // Upload Logic
-            const uploadBtn = document.querySelector('[data-action="upload"]');
-            const fileInput = document.getElementById('image-upload');
-            
-            if (uploadBtn && fileInput) {
-                uploadBtn.addEventListener('click', () => {
-                    if (!NodeAPI.isAuthenticated()) {
-                        alert("Please login first to upload images.");
-                        window.location.href = "registration_with_video.html";
-                        return;
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const platform = (urlParams.get('platform') || 'instagram').toLowerCase();
+                    
+                    // Update UI with platform info
+                    const displayPlatform = document.getElementById('display-platform');
+                    const btnText = document.getElementById('upload-btn-text');
+                    const iconContainer = document.getElementById('dynamic-icon-container');
+                    
+                    if (displayPlatform) displayPlatform.innerText = platform.toUpperCase();
+                    if (btnText) btnText.innerText = "UPLOAD " + platform.toUpperCase() + " FEED";
+                    
+                    if (iconContainer && ICON_MAP[platform]) {
+                        iconContainer.innerHTML = ICON_MAP[platform];
                     }
-                    fileInput.click();
+                    
+                    // Initialize Lucide icons
+                    if (window.lucide) lucide.createIcons();
+
+                    // Initialize Upload System
+                    if (typeof initUpload === 'function') initUpload();
                 });
-
-                fileInput.addEventListener('change', async (event) => {
-                    const file = event.target.files[0];
-                    if (!file) return;
-
-                    const originalBtnText = btnText ? btnText.innerText : "UPLOAD";
-                    if (btnText) btnText.innerText = "UPLOADING...";
-                    uploadBtn.disabled = true;
-
-                    try {
-                        const selectedCategory = document.querySelector('.category-card.bg-[#FF3D00]\\/10');
-                        const category = selectedCategory ? selectedCategory.querySelector('span').innerText : 'General';
-
-                        const formData = new FormData();
-                        formData.append('image', file);
-                        formData.append('platform', platform);
-                        formData.append('category', category);
-
-                        await NodeAPI.uploadImage(formData);
-                        alert("Success! Your " + platform + " feed has been synced and entries added.");
-                        window.location.href = "position.html";
-                    } catch (error) {
-                        console.error("Upload Error:", error);
-                        alert("Upload failed: " + error.message);
-                    } finally {
-                        if (btnText) btnText.innerText = originalBtnText;
-                        uploadBtn.disabled = false;
-                    }
-                });
-            }
-
-            // Category Selection Logic
-            const categories = document.querySelectorAll('.category-card');
-            categories.forEach(card => {
-                card.addEventListener('click', () => {
-                    categories.forEach(c => c.classList.remove('bg-[#FF3D00]/10', 'border-[#FF3D00]'));
-                    card.classList.add('bg-[#FF3D00]/10', 'border-[#FF3D00]');
-                });
-            });
-        });
-    </script>
+            </script>
 </body>
 </html>
+
+
+

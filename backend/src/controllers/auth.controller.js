@@ -1,3 +1,4 @@
+import { syncHybrid } from '../utils/crmSync.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { pool } from '../config/db.js';
@@ -19,7 +20,9 @@ export const register = async (req, res) => {
     username,
     // Personal info
     dateOfBirth,
+    category,
     gender,
+    shoppingFreq,
     // Contact info
     phoneCountryCode,
     phoneNumber,
@@ -60,8 +63,8 @@ export const register = async (req, res) => {
         user_id, first_name, last_name, username, date_of_birth, gender,
         phone_country_code, phone_number, mobile_number, area_code,
         postal_code, country, state, state_region, city, street,
-        position, company
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)
+        position, company, category
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19)
       ON CONFLICT (user_id) DO UPDATE SET
         first_name = COALESCE(EXCLUDED.first_name, user_profiles.first_name),
         last_name = COALESCE(EXCLUDED.last_name, user_profiles.last_name),
@@ -80,6 +83,7 @@ export const register = async (req, res) => {
         street = COALESCE(EXCLUDED.street, user_profiles.street),
         position = COALESCE(EXCLUDED.position, user_profiles.position),
         company = COALESCE(EXCLUDED.company, user_profiles.company),
+        category = COALESCE(EXCLUDED.category, user_profiles.category),
         updated_at = NOW()`,
       [
         newUser.id,
@@ -100,6 +104,7 @@ export const register = async (req, res) => {
         street || null,
         position || null,
         company || null,
+        category || null,
       ]
     );
 
@@ -120,6 +125,22 @@ export const register = async (req, res) => {
     const userProfile = profileResult.rows[0] || null;
 
     res.json({ message: 'User registered', token, user: { ...newUser, profile: userProfile } });
+
+    // 🌟 AUTOMATIC CRM SYNC (Hybrid: Copper + Coffe.ai)
+    setImmediate(async () => {
+      try {
+        await syncHybrid({
+          email,
+          phone: mobileNumber || phoneNumber || 'Unknown',
+          category: category || 'Cash Draw',
+          ageGroup: dateOfBirth || 'Unknown',
+          shoppingFreq: shoppingFreq || 'Unknown'
+        });
+      } catch(err) {
+        console.error('Hybrid sync error:', err);
+      }
+    });
+
 
     // ✅ SEND EMAIL IN BACKGROUND
     setImmediate(async () => {

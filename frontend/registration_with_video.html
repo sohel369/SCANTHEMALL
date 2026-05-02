@@ -121,13 +121,13 @@
                 <div class="hidden md:flex items-center space-x-6">
                     <!-- Auth Buttons -->
                     <div id="auth-buttons" class="flex items-center space-x-4">
-                        <a href="log_in_page_advertising_placeholder.html" id="login-btn"
+                        <a href="/advertiser" id="login-btn"
                             class="auth-login text-sm font-semibold text-zinc-400 hover:text-white transition-all">Login</a>
                         <a href="registration_with_video.html" id="signup-btn"
                             class="auth-signup text-sm font-semibold text-white px-6 py-2.5 rounded-full border border-orange-500 bg-orange-500/10 hover:bg-orange-500 transition-all">Sign
                             Up</a>
 
-                        <a href="log_in_page_advertising_placeholder.html"
+                        <a href="/advertiser"
                             class="btn-primary text-sm font-semibold text-white px-6 py-2.5 rounded-full shadow-lg">Advertise
                             with Us</a>
                     </div>
@@ -201,7 +201,7 @@
                     <a href="position.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">My
                         Position</a>
                     <hr class="border-white/10 my-4">
-                    <a href="log_in_page_advertising_placeholder.html"
+                    <a href="/advertiser"
                         class="auth-login text-xl font-bold text-zinc-400">Login</a>
                     <a href="registration_with_video.html" class="auth-signup text-xl font-bold text-[#FF3D00]">Sign
                         Up</a>
@@ -262,21 +262,61 @@
                 </div>
 
                 <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Date of Birth</label>
-                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="dob" required
-                        class="form-input w-full px-4 py-3 rounded-xl" placeholder="dd/mm/yyyy"
-                        style="color-scheme: dark;">
+                    <label class="text-sm font-semibold text-zinc-400 ml-1">Age Range *</label>
+                    <select name="age_range" required class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
+                        <option value="" disabled selected class="bg-[#121212] text-white">Select Age Range</option>
+                        <option value="18-26" class="bg-[#121212] text-white">18-26</option>
+                        <option value="27-42" class="bg-[#121212] text-white">27-42</option>
+                        <option value="43-58" class="bg-[#121212] text-white">43-58</option>
+                        <option value="59-77" class="bg-[#121212] text-white">59-77</option>
+                        <option value="78+" class="bg-[#121212] text-white">78+</option>
+                    </select>
                 </div>
 
                 <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Gender</label>
-                    <select name="gender" required
-                        class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
-                        <option value="" disabled selected class="bg-[#121212] text-white">Select Gender</option>
-                        <option value="male" class="bg-[#121212] text-white">Male</option>
-                        <option value="female" class="bg-[#121212] text-white">Female</option>
-                        <option value="other" class="bg-[#121212] text-white">Other</option>
-                        <option value="private" class="bg-[#121212] text-white">Prefer not to say</option>
+                    <label class="text-sm font-semibold text-zinc-400 ml-1">Favorite Shopping Category *</label>
+                    <select name="category" required class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
+                        <option value="" disabled selected class="bg-[#121212] text-white">Select Category</option>
+                        <option value="Beauty" class="bg-[#121212] text-white">Beauty & Cosmetics</option>
+                        <option value="Automotive" class="bg-[#121212] text-white">Automotive</option>
+                        <option value="Tech" class="bg-[#121212] text-white">Tech & Electronics</option>
+                        <option value="Apparel" class="bg-[#121212] text-white">Fashion & Apparel</option>
+                        <option value="Home" class="bg-[#121212] text-white">Home & Garden</option>
+                    </select>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold text-zinc-400 ml-1">Gender Identity <span class="text-gray-500 font-normal">(Optional)</span></label>
+                    <select name="gender" class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
+                        <option value="" class="bg-[#121212] text-white">Select (Optional)</option>
+                        <option value="woman" class="bg-[#121212] text-white">Woman</option>
+                        <option value="man" class="bg-[#121212] text-white">Man</option>
+                        <option value="non_binary" class="bg-[#121212] text-white">Non-binary / Third Gender</option>
+                        <option value="self_describe" class="bg-[#121212] text-white">Prefer to self-describe</option>
+                        <option value="prefer_not" class="bg-[#121212] text-white">Prefer not to say</option>
+                    </select>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold text-zinc-400 ml-1">Shopping Habits *</label>
+                    <select name="shopping_habits" required class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
+                        <option value="" disabled selected class="bg-[#121212] text-white">Select Habits</option>
+                        <option value="Online Enthusiast" class="bg-[#121212] text-white">Online Enthusiast</option>
+                        <option value="In-Store Preferred" class="bg-[#121212] text-white">In-Store Preferred</option>
+                        <option value="Mixed Shopper" class="bg-[#121212] text-white">Mixed Shopper</option>
+                        <option value="Budget Focused" class="bg-[#121212] text-white">Budget Focused</option>
+                        <option value="Luxury Focused" class="bg-[#121212] text-white">Luxury Focused</option>
+                    </select>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold text-zinc-400 ml-1">How often do you shop? *</label>
+                    <select name="shoppingFreq" required class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
+                        <option value="" disabled selected class="bg-[#121212] text-white">Select frequency</option>
+                        <option value="weekly" class="bg-[#121212] text-white">Weekly Shopper</option>
+                        <option value="monthly" class="bg-[#121212] text-white">Monthly Shopper</option>
+                        <option value="rarely" class="bg-[#121212] text-white">Rarely Shop Online</option>
+                        <option value="first_time" class="bg-[#121212] text-white">First Time Online Shopper</option>
                     </select>
                 </div>
 
@@ -335,7 +375,7 @@
 
                 <div class="md:col-span-2 mt-4 text-center">
                     <p class="text-zinc-500 text-sm mb-3">Already have an account?</p>
-                    <a href="log_in_page_advertising_placeholder.html"
+                    <a href="/advertiser"
                         class="inline-flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold text-sm uppercase tracking-wider border border-zinc-700 text-white hover:border-[#FF3D00] hover:text-[#FF3D00] transition-all duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>
@@ -448,7 +488,7 @@
                                 class="hover:text-[#FF3D00] transition-colors">Why scan them all</a></li>
                         <li><a href="calculator.html" class="hover:text-[#FF3D00] transition-colors">Prize
                                 Calculator</a></li>
-                        <li><a href="log_in_page_advertising_placeholder.html"
+                        <li><a href="/advertiser"
                                 class="hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
                     </ul>
                 </div>
@@ -483,9 +523,9 @@
                                 Blast</a></li>
                         <li><a href="Final_contact_page.html" class="hover:text-[#FF3D00] transition-colors">Contact
                                 us</a></li>
-                        <li><a href="log_in_page_advertising_placeholder.html"
+                        <li><a href="/advertiser"
                                 class="hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
-                        <li><a href="log_in_page_advertising_placeholder.html"
+                        <li><a href="/advertiser"
                                 class="hover:text-[#FF3D00] transition-colors">Affiliate Program</a></li>
                     </ul>
                 </div>
@@ -514,6 +554,65 @@
     <script type="module">
         import { NodeAPI } from "./js/api-config.js";
 
+        // Pre-populate form if user is logged in
+        document.addEventListener('DOMContentLoaded', () => {
+            const userStr = localStorage.getItem('GTSA_SESSION_USER');
+            if (userStr) {
+                try {
+                    const user = JSON.parse(userStr);
+                    const profile = user.profile || {};
+                    const form = document.getElementById('registrationForm');
+                    
+                    if (form) {
+                        // Map user/profile data to form fields
+                        const mapping = {
+                            'first_name': profile.first_name || '',
+                            'surname': profile.last_name || '',
+                            'username': user.username || '',
+                            'email': user.email || '',
+                            'phone': profile.mobile_number || '',
+                            'area_code': profile.area_code || '',
+                            'age_range': profile.age_range || '',
+                            'gender': profile.gender || '',
+                            'category': profile.category || '',
+                            'shopping_habits': profile.shopping_habits || '',
+                            'shoppingFreq': profile.shopping_freq || '',
+                            'country': profile.country || '',
+                            'state': profile.state || '',
+                            'city': profile.city || '',
+                            'postal_code': profile.postal_code || ''
+                        };
+
+                        Object.entries(mapping).forEach(([name, value]) => {
+                            const field = form.querySelector(`[name="${name}"]`);
+                            if (field && value) {
+                                field.value = value;
+                                // Trigger change for selects to update UI if needed
+                                if (field.tagName === 'SELECT') {
+                                    field.dispatchEvent(new Event('change'));
+                                }
+                            }
+                        });
+
+                        // Change button text if logged in
+                        const submitBtn = form.querySelector('button[type="submit"]');
+                        if (submitBtn) {
+                            submitBtn.innerText = "Update your profile";
+                        }
+                        
+                        // If it's an update, password shouldn't be required if they don't want to change it
+                        const pwdField = form.querySelector('input[name="password"]');
+                        if (pwdField) {
+                            pwdField.required = false;
+                            pwdField.placeholder = "Leave blank to keep current password";
+                        }
+                    }
+                } catch (e) {
+                    console.error("Error parsing user session:", e);
+                }
+            }
+        });
+
         // Check if registrationForm exists and add listener
         const regForm = document.getElementById('registrationForm');
         if (regForm) {
@@ -535,10 +634,13 @@
                         firstName: data.first_name,
                         lastName: data.surname,
                         username: data.username,
-                        mobileNumber: data.phone, // mapping phone to mobileNumber in the backend
+                        mobileNumber: data.phone,
                         areaCode: data.area_code,
-                        dateOfBirth: data.dob,
+                        ageRange: data.age_range,
                         gender: data.gender,
+                        category: data.category,
+                        shoppingFreq: data.shoppingFreq,
+                        shoppingHabits: data.shopping_habits,
                         country: data.country,
                         state: data.state,
                         city: data.city,
@@ -617,13 +719,31 @@
 
             // Country and State Selection Logic (Fixed & Expanded)
             const countryStateData = {
-                "Bangladesh": ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barishal", "Sylhet", "Rangpur", "Mymensingh"],
                 "Australia": ["New South Wales", "Victoria", "Queensland", "Western Australia", "South Australia", "Tasmania", "ACT", "Northern Territory"],
                 "United States": ["California", "Texas", "Florida", "New York", "Pennsylvania", "Illinois", "Ohio", "Georgia", "Washington"],
                 "Canada": ["Ontario", "Quebec", "Nova Scotia", "New Brunswick", "Manitoba", "British Columbia", "Alberta"],
                 "United Kingdom": ["England", "Scotland", "Wales", "Northern Ireland"],
                 "Germany": ["Bavaria", "Berlin", "Hamburg", "Hesse", "Saxony"],
-                "France": ["Paris", "Lyon", "Marseille", "Bordeaux"]
+                "France": ["Paris", "Lyon", "Marseille", "Bordeaux"],
+                "Spain": ["Madrid", "Catalonia", "Andalusia", "Valencia"],
+                "Italy": ["Lazio", "Lombardy", "Campania", "Sicily"],
+                "Ireland": ["Leinster", "Munster", "Connacht", "Ulster"],
+                "New Zealand": ["Auckland", "Wellington", "Canterbury"],
+                "Brazil": ["Sao Paulo", "Rio de Janeiro", "Minas Gerais"],
+                "Mexico": ["Mexico City", "Jalisco", "Nuevo Leon"],
+                "Turkey": ["Istanbul", "Ankara", "Izmir"],
+                "Sweden": ["Stockholm", "Vastra Gotaland", "Skane"],
+                "Netherlands": ["North Holland", "South Holland", "Utrecht"],
+                "Greece": ["Attica", "Central Macedonia", "Thessaly"],
+                "South Korea": ["Seoul", "Busan", "Incheon"],
+                "Portugal": ["Lisbon", "Porto", "Algarve"],
+                "Austria": ["Vienna", "Salzburg", "Tyrol"],
+                "Finland": ["Uusimaa", "Pirkanmaa", "Southwest Finland"],
+                "Norway": ["Oslo", "Viken", "Vestland"],
+                "Denmark": ["Capital Region", "Central Jutland", "Zealand"],
+                "Poland": ["Masovian", "Lesser Poland", "Lower Silesian"],
+                "Russia": ["Moscow", "Saint Petersburg", "Sverdlovsk"],
+                "Malaysia": ["Selangor", "Johor", "Penang"]
             };
 
             const cSelect = document.getElementById('country');
@@ -657,3 +777,4 @@
 </body>
 
 </html>
+

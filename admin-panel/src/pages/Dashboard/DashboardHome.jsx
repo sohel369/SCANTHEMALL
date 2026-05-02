@@ -95,23 +95,25 @@ function StatCard({ title, value, details }) {
     );
 }
 
+import { Link } from "react-router-dom";
+
 function QuickLinks() {
     const links = [
-        { label: "Add User", href: "/users/add" },
-        { label: "Manage Draws", href: "/draws" },
-        { label: "Manage Ads", href: "/ads" },
+        { label: "View Users", to: "/users" },
+        { label: "Manage Draws", to: "/draws" },
+        { label: "Manage Ads", to: "/ads" },
     ];
 
     return (
         <div className="bg-blue-950 p-4 rounded shadow flex gap-4">
             {links.map(link => (
-                <a
+                <Link
                     key={link.label}
-                    href={link.href}
+                    to={link.to}
                     className="bg-sky-400 text-neutral-50 px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600"
                 >
                     {link.label}
-                </a>
+                </Link>
             ))}
         </div>
     );

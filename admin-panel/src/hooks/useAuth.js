@@ -10,6 +10,13 @@ export function useAuth() {
         if (!token) return null;
         try {
             const payload = JSON.parse(atob(token.split('.')[1]));
+            
+            // Check if token is expired
+            if (payload.exp && Date.now() >= payload.exp * 1000) {
+                localStorage.removeItem("token");
+                return null;
+            }
+
             return { id: payload.id, email: payload.email || payload.id, role: payload.role || "admin" };
         } catch {
             return null;

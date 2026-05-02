@@ -14,7 +14,8 @@ export const verifyToken = (req, res, next) => {
     next();
   } catch (err) {
     console.error(`Token verification failed: ${err.message}`);
-    res.status(401).json({ error: 'Invalid token' });
+    const errorMessage = err.name === 'TokenExpiredError' ? 'Token expired' : 'Invalid token';
+    res.status(401).json({ error: errorMessage });
   }
 };
 
@@ -38,7 +39,8 @@ export const auth = (allowedRoles = []) => {
       next();
     } catch (err) {
       console.error(`Token verification failed (auth): ${err.message}`);
-      res.status(401).json({ error: 'Invalid token' });
+      const errorMessage = err.name === 'TokenExpiredError' ? 'Token expired' : 'Invalid token';
+      res.status(401).json({ error: errorMessage });
     }
   };
 };

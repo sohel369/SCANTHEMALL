@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/geo-rules.js" defer></script>
+    <script src="js/image-handler.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Invite your squad to Gotta Scan Them All. Enter free prize draws for cash, luxury items, and dream vacations. Win luxury items with no purchase.">
@@ -51,7 +53,7 @@
                 <div class="hidden md:flex items-center space-x-6">
                     <div id="auth-buttons" class="flex items-center space-x-4">
                         <a href="registration_with_video.html" id="auth-btn" class="auth-login auth-signup text-sm font-semibold text-white px-4 py-2 rounded-full border border-zinc-700 hover:bg-zinc-800 transition-all">Register or Sign-In</a>
-                        <a href="log_in_page_advertising_placeholder.html" class="bg-[#FF3D00] text-sm font-semibold text-white px-6 py-2 rounded-full shadow-lg hover:bg-orange-600 transition-all">Advertise with Us</a>
+                        <a href="/advertiser" class="bg-[#FF3D00] text-sm font-semibold text-white px-6 py-2 rounded-full shadow-lg hover:bg-orange-600 transition-all">Advertise with Us</a>
                     </div>
 
                     <div class="user-profile hidden relative group py-4 items-center">
@@ -108,13 +110,12 @@
                     <a href="position.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">My Position</a>
                     <hr class="border-white/10 my-4">
                     <a href="registration_with_video.html" class="auth-signup text-2xl font-black uppercase text-white border border-white/20 p-4 rounded-2xl text-center">Register or Sign-In</a>
-                    <a href="log_in_page_advertising_placeholder.html" class="bg-[#FF3D00] text-black text-center py-4 rounded-2xl font-black uppercase mt-4">Advertise with Us</a>
+                    <a href="/advertiser" class="bg-[#FF3D00] text-black text-center py-4 rounded-2xl font-black uppercase mt-4">Advertise with Us</a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- TASK 3: PROJECT TITLE - INVITE YOUR SQUAD -->
     <main class="relative">
         <!-- Hero Section -->
         <section class="pt-20 pb-12 px-4 relative overflow-hidden">
@@ -145,11 +146,11 @@
                     <div class="flex justify-between items-end mb-6">
                         <div>
                             <h3 class="text-2xl font-bold">Your Squad Progress</h3>
-                            <p class="text-zinc-500 text-sm">Earn 12 bonus entries per successful referral</p>
+                            <p class="text-zinc-500 text-sm">Earn 25 bonus entries per successful referral</p>
                         </div>
                         <div class="text-right">
-                            <span class="text-4xl font-black text-[#FF3D00]">15</span>
-                            <span class="text-zinc-500 font-bold">/ 25 Max</span>
+                            <span class="text-4xl font-black text-[#FF3D00]">6</span>
+                            <span class="text-zinc-500 font-bold">/ 6 Max</span>
                         </div>
                     </div>
                     <div class="w-full h-4 bg-zinc-800 rounded-full overflow-hidden mb-4">
@@ -194,7 +195,9 @@
                     </button>
                 </div>
             </div>
-        </section>        <!-- RECRUITMENT & BLAST SECTION -->
+        </section>
+
+        <!-- RECRUITMENT & BLAST SECTION -->
         <section id="refer-form" class="py-20 px-4">
             <div class="max-w-6xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-zinc-900/40 border border-white/5 rounded-[4rem] p-8 md:p-16 backdrop-blur-xl">
@@ -206,15 +209,15 @@
                             <p class="text-zinc-500 font-bold uppercase text-[10px] tracking-widest">Recruit the squad, Multiply the winnings</p>
                         </header>
                         
-                        <form class="space-y-6">
+                        <form id="referral-form" class="space-y-6">
                             <div class="space-y-2">
                                 <label class="text-[10px] font-black text-zinc-500 uppercase tracking-widest px-1">Friend's Email</label>
-                                <input type="email" placeholder="squadmember@email.com" class="squad-input w-full text-sm font-bold">
+                                <input type="email" id="friend-email" required placeholder="squadmember@email.com" class="squad-input w-full text-sm font-bold">
                             </div>
 
                             <div class="space-y-2">
                                 <label class="text-[10px] font-black text-zinc-500 uppercase tracking-widest px-1">Their Country (Optional)</label>
-                                <select class="squad-input w-full text-sm font-bold text-zinc-400 appearance-none bg-black">
+                                <select id="friend-country" class="squad-input w-full text-sm font-bold text-zinc-400 appearance-none bg-black">
                                     <option value="">Select Country</option>
                                     <option value="AU">Australia</option>
                                     <option value="UK">United Kingdom</option>
@@ -229,10 +232,75 @@
                             </button>
 
                             <p class="text-[9px] text-zinc-600 bg-black/40 p-4 rounded-xl border border-white/5 text-center font-bold uppercase tracking-wider">
-                                Emails used only for sweepstake participation and verification. Max 5 entries per user.
+                                Emails used only for sweepstake participation and verification. Max 150 entries per user.
                             </p>
                         </form>
                     </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const refForm = document.getElementById('referral-form');
+                            if (refForm) {
+                                refForm.addEventListener('submit', async (e) => {
+                                    e.preventDefault();
+                                    const email = document.getElementById('friend-email').value;
+                                    const country = document.getElementById('friend-country').value;
+                                    
+                                    const btn = refForm.querySelector('button[type="submit"]');
+                                    const originalText = btn.innerHTML;
+                                    btn.disabled = true;
+                                    btn.innerHTML = '<span>Sending...</span>';
+
+                                    try {
+                                        const API_BASE = window.API_URL || 'https://scanthemall-production.up.railway.app/api';
+                                        const token = localStorage.getItem('token');
+
+                                        if (!token) {
+                                            if (window.showPremiumToast) {
+                                                window.showPremiumToast("Please sign in to invite friends", "error");
+                                            } else {
+                                                alert("Please sign in to invite friends");
+                                            }
+                                            window.location.href = 'registration_with_video.html';
+                                            return;
+                                        }
+
+                                        const response = await fetch(`${API_BASE}/email/send-referral`, {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'Authorization': `Bearer ${token}`
+                                            },
+                                            body: JSON.stringify({ email, country })
+                                        });
+
+                                        const data = await response.json();
+
+                                        if (response.ok) {
+                                            if (window.showPremiumToast) {
+                                                window.showPremiumToast("Invitation sent successfully!", "success");
+                                            } else {
+                                                alert("Invitation sent successfully!");
+                                            }
+                                            refForm.reset();
+                                        } else {
+                                            throw new Error(data.error || 'Failed to send invitation');
+                                        }
+                                    } catch (err) {
+                                        console.error('Referral Error:', err);
+                                        if (window.showPremiumToast) {
+                                            window.showPremiumToast(err.message, "error");
+                                        } else {
+                                            alert(err.message);
+                                        }
+                                    } finally {
+                                        btn.disabled = false;
+                                        btn.innerHTML = originalText;
+                                    }
+                                });
+                            }
+                        });
+                    </script>
 
                     <!-- Form 2: Blast Socials -->
                     <div class="space-y-10">
@@ -241,26 +309,26 @@
                             <p class="text-zinc-500 font-bold uppercase text-[10px] tracking-widest">Each share could move you up the leaderboard!</p>
                         </header>
 
-                        <div class="grid grid-cols-4 gap-4">
+                        <div class="grid grid-cols-4 gap-6">
                             <!-- Facebook -->
-                            <button class="platform-btn group">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-400 group-hover:text-[#1877F2] transition-colors"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                                <span class="text-[8px] font-black uppercase mt-2 opacity-40 group-hover:opacity-100 transition-opacity">FB</span>
+                            <button class="platform-btn group share-facebook flex flex-col items-center justify-center p-6 bg-zinc-900/50 rounded-[2rem] border border-white/5 hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10 transition-all">
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-400 group-hover:text-[#1877F2] transition-colors"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                <span class="text-[10px] font-black uppercase mt-3 text-zinc-500 group-hover:text-white transition-colors">Facebook</span>
                             </button>
                             <!-- X -->
-                            <button class="platform-btn group">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" class="text-zinc-400 group-hover:text-white transition-colors"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                                <span class="text-[8px] font-black uppercase mt-2 opacity-40 group-hover:opacity-100 transition-opacity">X</span>
+                            <button class="platform-btn group share-x flex flex-col items-center justify-center p-6 bg-zinc-900/50 rounded-[2rem] border border-white/5 hover:border-white/50 hover:bg-white/10 transition-all">
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" class="text-zinc-400 group-hover:text-white transition-colors"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                <span class="text-[10px] font-black uppercase mt-3 text-zinc-500 group-hover:text-white transition-colors">Twitter</span>
                             </button>
                             <!-- WhatsApp -->
-                            <button class="platform-btn group">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-400 group-hover:text-[#25D366] transition-colors"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9l3.8-3.8z"></path></svg>
-                                <span class="text-[8px] font-black uppercase mt-2 opacity-40 group-hover:opacity-100 transition-opacity">WA</span>
+                            <button class="platform-btn group share-whatsapp flex flex-col items-center justify-center p-6 bg-zinc-900/50 rounded-[2rem] border border-white/5 hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all">
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-400 group-hover:text-[#25D366] transition-colors"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9l3.8-3.8z"></path></svg>
+                                <span class="text-[10px] font-black uppercase mt-3 text-zinc-500 group-hover:text-white transition-colors">WhatsApp</span>
                             </button>
                             <!-- Instagram -->
-                            <button class="platform-btn group">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-400 group-hover:text-[#E4405F] transition-colors"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.51"></line></svg>
-                                <span class="text-[8px] font-black uppercase mt-2 opacity-40 group-hover:opacity-100 transition-opacity">IG</span>
+                            <button class="platform-btn group share-instagram flex flex-col items-center justify-center p-6 bg-zinc-900/50 rounded-[2rem] border border-white/5 hover:border-[#E4405F]/50 hover:bg-[#E4405F]/10 transition-all">
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-400 group-hover:text-[#E4405F] transition-colors"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.51"></line></svg>
+                                <span class="text-[10px] font-black uppercase mt-3 text-zinc-500 group-hover:text-white transition-colors">Instagram</span>
                             </button>
                         </div>
 
@@ -344,9 +412,6 @@
             </div>
         </section>
     </main>
-  </div>
-        </section>
-    </main>
 
     <!-- Standardized Footer -->
     <footer class="bg-black border-t border-white/5 pt-16 pb-8">
@@ -384,7 +449,7 @@
                         <li><a href="instagram_upload_page.html" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
                         <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
                         <li><a href="Final_contact_page.html" class="hover:text-[#FF3D00] transition-colors">Contact us</a></li>
-                        <li><a href="log_in_page_advertising_placeholder.html" class="hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
+                        <li><a href="/advertiser" class="hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
                         <li><a href="https://rule7media.com/affiliate" class="hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
                     </ul>
                 </div>
@@ -392,15 +457,14 @@
 
             <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/5 text-[10px] text-gray-600 uppercase tracking-widest">
                 <p>© 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED.</p>
-                <div class="w-full md:w-auto flex justify-between items-center opacity-20 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Visa_Inc._logo_%282005%E2%80%932014%29.svg" alt="Visa" class="h-4">
-                    <img src="https://www.shutterstock.com/image-vector/paypal-multinational-financial-technology-payment-260nw-2276341185.jpg" alt="PayPal" class="h-4">
+                <div class="w-full md:w-auto flex justify-between items-center space-x-6 opacity-40 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="h-4 brightness-0 invert">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="h-4 brightness-0 invert">
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- TASK 2 & 4: REPLICATED FOOTER WITH SEO OPTIMIZATION -->
     <script src="js/ads.js"></script>
     <script src="js/app.js"></script>
     <script src="js/responsive.js" defer></script>
@@ -415,9 +479,47 @@
                 copyText.select();
                 copyText.setSelectionRange(0, 99999);
                 navigator.clipboard.writeText(copyText.value);
-                alert("Referral Link Copied: " + copyText.value);
+                if (window.showPremiumToast) {
+                    window.showPremiumToast("Referral Link Copied!", "success");
+                } else {
+                    alert("Referral Link Copied: " + copyText.value);
+                }
             }
         }
+        
+        // Social Sharing Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const shareUrl = encodeURIComponent(window.location.origin);
+            const shareText = encodeURIComponent("Join me on Gotta Scan Them All! Scan billboards and win $75,000 in prizes! 🚀");
+            
+            document.querySelectorAll('.share-facebook').forEach(el => {
+                el.onclick = () => window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank');
+            });
+            
+            document.querySelectorAll('.share-x').forEach(el => {
+                el.onclick = () => window.open(`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`, '_blank');
+            });
+            
+            document.querySelectorAll('.share-whatsapp').forEach(el => {
+                el.onclick = () => window.open(`https://api.whatsapp.com/send?text=${shareText}%20${shareUrl}`, '_blank');
+            });
+
+            document.querySelectorAll('.share-instagram').forEach(el => {
+                el.onclick = () => window.open(`https://www.instagram.com/scanthemall/`, '_blank');
+            });
+
+            // Set the referral link dynamically if possible
+            const refInput = document.getElementById('refLink');
+            if (refInput) {
+                const user = JSON.parse(localStorage.getItem('user') || '{}');
+                if (user && user.id) {
+                    refInput.value = `${window.location.origin}/ref/${user.id}`;
+                } else {
+                    refInput.value = `${window.location.origin}/register`;
+                }
+            }
+        });
+
         if (typeof initAds === 'function') {
             initAds();
         }

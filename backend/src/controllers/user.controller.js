@@ -101,3 +101,40 @@ export const getUserUploads = async (req, res) => {
   }
 };
 
+// Record user visit for Sequential Advertising
+export const recordVisit = async (req, res) => {
+  const userId = req.user.id;
+  const { visitCount, timestamp } = req.body;
+  
+  try {
+    const { rows } = await pool.query(
+      `UPDATE user_profiles 
+       SET visit_count = COALESCE(visit_count, 0) + 1,
+           last_visit = $2,
+           total_visits = COALESCE(total_visits, 0) + 1,
+           updated_at = NOW()
+       WHERE user_id = $1 
+       RETURNING visit_count`,
+      [userId, timestamp || new Date()]
+    );
+    
+    if (rows.length === 0) {
+      // Profile might not exist, insert it
+      await pool.query(
+        `INSERT INTO user_profiles (user_id, visit_count, last_visit, total_visits, updated_at) 
+         VALUES ($1, 1, $2, 1, NOW())`,
+        [userId, timestamp || new Date()]
+      );
+      return res.json({ success: true, visitCount: 1 });
+    }
+    
+    res.json({
+      success: true,
+      visitCount: rows[0].visit_count
+    });
+  } catch (error) {
+    console.error('Visit recording error:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
