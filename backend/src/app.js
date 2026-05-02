@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import compression from 'compression';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -57,14 +58,27 @@ const corsOptions = {
   credentials: true,
 };
 
+// ─── GZIP / BROTLI COMPRESSION (biggest perf win) ───
+app.use(compression({
+  level: 6,
+  threshold: 1024,          // only compress responses > 1KB
+  filter: (req, res) => {
+    if (req.headers['x-no-compression']) return false;
+    return compression.filter(req, res);
+  }
+}));
+
 app.use(cors(corsOptions));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
-app.use((req, res, next) => {
-  console.log("REQUEST:", req.method, req.url);
-  next();
-});
+// Only log in development to reduce I/O overhead in production
+if (process.env.NODE_ENV !== 'production') {
+  app.use((req, res, next) => {
+    console.log("REQUEST:", req.method, req.url);
+    next();
+  });
+}
 
 // Serve uploaded files (user uploads and advertiser media)
 const uploadsPath = process.env.UPLOADS_DIR || 'src/uploads';
@@ -82,7 +96,7 @@ if (!fs.existsSync(path.join(absoluteUploadsPath, 'profiles'))) {
   fs.mkdirSync(path.join(absoluteUploadsPath, 'profiles'), { recursive: true });
 }
 
-app.use('/uploads', express.static(absoluteUploadsPath));
+app.use('/uploads', express.static(absoluteUploadsPath, {\r\n  maxAge: '1d',\r\n  etag: true,\r\n  lastModified: true\r\n}));
 
 // Health check endpoint for uploads
 app.get('/health/uploads', (req, res) => {
@@ -157,7 +171,7 @@ console.log(`- Advertiser: ${advertiserPath} (Exists: ${fs.existsSync(advertiser
 
 // Admin Panel
 if (fs.existsSync(adminPath)) {
-  app.use('/admin', express.static(adminPath));
+  app.use('/admin', express.static(adminPath, { maxAge: '1y', etag: true }));
   app.get('/admin/*', (req, res) => {
     res.sendFile(path.join(adminPath, 'index.html'));
   });
@@ -165,16 +179,30 @@ if (fs.existsSync(adminPath)) {
 
 // Advertiser Panel
 if (fs.existsSync(advertiserPath)) {
-  app.use('/advertiser', express.static(advertiserPath));
+  app.use('/advertiser', express.static(advertiserPath, { maxAge: '1y', etag: true }));
   app.get('/advertiser/*', (req, res) => {
     res.sendFile(path.join(advertiserPath, 'index.html'));
   });
 }
 
-// Frontend
+// Frontend — serve with cache headers for static assets
 if (fs.existsSync(frontendPath)) {
-  app.use(express.static(frontendPath));
-  // Optional: Handle other routes for frontend if needed
+  app.use(express.static(frontendPath, {
+    maxAge: '1y',                    // cache JS/CSS/images for 1 year
+    etag: true,
+    lastModified: true,
+    immutable: true,
+    setHeaders: (res, filePath) => {
+      // HTML files: short cache so updates appear quickly
+      if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'public, max-age=3600');  // 1 hour
+      }
+      // Images: long cache
+      if (/\.(png|jpg|jpeg|gif|webp|svg|ico)$/i.test(filePath)) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      }
+    }
+  }));
 }
 
 // Fallback for API 404

@@ -183,10 +183,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // --- IP-Based Country Detection ---
+        // --- IP-Based Country Detection Optimized for Speed ---
         async function detectLocation() {
             try {
-                const response = await fetch('https://ipapi.co/json/');
+                // Abort request after 2 seconds to prevent site hang
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+                const response = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+                clearTimeout(timeoutId);
+                
                 if (!response.ok) throw new Error('Location detection failed');
                 
                 const data = await response.json();
@@ -210,7 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const mappedValue = countryMap[detectedCountry];
                 
                 if (mappedValue && (locationData[mappedValue] || mappedValue === 'USA' || mappedValue === 'UK')) {
-                    // Check if the value exists in the dropdown (either as full name or short code)
                     let valueToSelect = mappedValue;
                     if (![...countryEl.options].some(opt => opt.value === mappedValue)) {
                         if (mappedValue === 'Australia') valueToSelect = 'AUS';
@@ -222,7 +227,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.log(`GTSA (Global): Detected country: ${detectedCountry} -> ${valueToSelect}`);
                 }
             } catch (error) {
-                console.warn("GTSA (Global): IP Detection failed:", error.message);
+                console.warn("GTSA (Global): IP Detection timed out or failed. Falling back to default.");
+                // Default to Australia if detection fails to keep site responsive
+                if (countryEl.value === "" || countryEl.value === "Select Country") {
+                    countryEl.value = "Australia";
+                    countryEl.dispatchEvent(new Event('change'));
+                }
             }
         }
 
