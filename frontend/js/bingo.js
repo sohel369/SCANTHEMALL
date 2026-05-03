@@ -11,31 +11,35 @@ const CATEGORY_ICONS = [
 ];
 
 const BILLBOARD_QUESTIONS = [
-    { title: "Accounting & Tax", question: "Have you used Accounting or Tax services this year?", options: ["Yes", "No", "Planning to"] },
-    { title: "Automotive Services", question: "Have you serviced your car recently?", options: ["Yes, recently", "No", "Planning soon"] },
-    { title: "Baby & Toys", question: "Have you purchased Baby or Toy products recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Beauty & Cosmetic", question: "Have you purchased Beauty or Cosmetic products in the last 3 months?", options: ["Yes", "No", "Planning to"] },
-    { title: "Childcare & Aged Care", question: "Have you used Childcare or Aged Care services recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Dept Stores & Electrical", question: "Have you shopped at a Department or Electrical store recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Education & Tutoring", question: "Have you used Education or Tutoring services recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Events & Wedding", question: "Have you used Wedding or Event services recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Financial & Insurance", question: "Have you reviewed your Financial or Insurance services recently?", options: ["Yes", "No", "Planning soon"] },
-    { title: "Fitness & Training", question: "Have you used Fitness or Personal Training services recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Home & Garden", question: "Have you purchased Home or Garden items recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Health & Medical", question: "Have you used Health or Medical services recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "IT & Tech", question: "Have you purchased IT or Tech services recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Legal Services", question: "Have you used Legal services recently?", options: ["Yes", "No", "Planning soon"] },
-    { title: "Lifestyle & Apparel", question: "Have you purchased Lifestyle or Apparel items in the last 3 months?", options: ["Yes", "No", "Planning to"] },
-    { title: "Mobile & Internet", question: "Have you reviewed your Mobile or Internet plan recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Travel", question: "Have you purchased Travel services recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Pets & Animals", question: "Have you purchased Pet or Animal products recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Professional Training", question: "Have you used Professional Training services recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Radio & TV", question: "Do you consume Radio or TV advertising regularly?", options: ["Yes", "Sometimes", "Rarely"] },
-    { title: "Real Estate", question: "Have you used Real Estate services recently?", options: ["Yes", "No", "Planning soon"] },
-    { title: "Restaurants & Food", question: "Have you purchased Food or Beverage items recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Logistics & Storage", question: "Have you used Logistics or Storage services recently?", options: ["Yes", "No", "Planning soon"] },
-    { title: "Trades & Home Services", question: "Have you used Trades or Home Services recently?", options: ["Yes", "No", "Planning to"] },
-    { title: "Funeral & Support", question: "Have you used Funeral or Support services recently?", options: ["Yes", "No", "Planning to"] }
+    { title: "Primary Category", question: "Which category do you spend the most on monthly?", options: ["Apparel & Accessories", "Home & Garden", "Food & Beverage", "Electronics", "Health & Wellness", "Automotive", "Travel", "I prefer not to say"] },
+    { title: "Monthly Spend", question: "How much do you typically spend on non-essential items per month?", options: ["<$100", "$100–$300", "$300–$600", "$600+", "I don't track"] },
+    { title: "Purchase Frequency", question: "How often do you make a purchase over $50?", options: ["Daily", "Weekly", "Monthly", "Rarely", "Only during sales"] },
+    { title: "Top Factor", question: "What matters most when you try a new brand?", options: ["Price/Value", "Quality/Durability", "Brand Reputation", "Customer Reviews", "Sustainability/Ethics", "Convenience"] },
+    { title: "Discovery Channel", question: "Where do you usually discover new products?", options: ["Social Media", "Search Engines", "Friend/Family Referral", "Email Newsletters", "In-Store Displays", "Influencer Content"] },
+    
+    { title: "Apparel Habits", question: "What is your favorite style of apparel?", options: ["Luxury", "Streetwear", "Formal", "Athleisure", "Fast Fashion"] },
+    { title: "Beauty Habits", question: "Do you buy skincare products online or in-store?", options: ["Mostly Online", "Mostly In-Store", "Mix of both", "I rarely buy skincare"] },
+    { title: "Home & Garden", question: "Are you planning a home renovation soon?", options: ["Within 6 months", "Within a year", "No plans", "Just finished one"] },
+    { title: "Food & Beverage", question: "How often do you order food delivery?", options: ["Daily", "Weekly", "Monthly", "Rarely"] },
+    { title: "Electronics", question: "Which electronic device do you plan to buy next?", options: ["Smartphone", "Laptop/Tablet", "Smart Home Device", "Gaming Console", "None"] },
+    
+    { title: "Automotive", question: "What is your primary mode of transport?", options: ["Own Vehicle", "Public Transport", "Rideshare", "Bicycle/Walk"] },
+    { title: "Pets", question: "Do you own any pets?", options: ["Dog", "Cat", "Other", "No Pets"] },
+    { title: "FREE SPACE", question: "Collect your free bonus entry!", options: ["Claim Free Space"] },
+    { title: "Health", question: "How often do you visit a health professional?", options: ["Regularly", "When needed", "Rarely", "Never"] },
+    { title: "Travel", question: "What is your dream vacation type?", options: ["Beach/Relax", "Adventure/Active", "City/Culture", "Cruise"] },
+    
+    { title: "Device Pref", question: "Which device do you use most to shop?", options: ["Mobile Phone", "Desktop/Laptop", "Tablet", "Voice Assistant"] },
+    { title: "Email Rate", question: "How often do you open promotional emails?", options: ["Always", "Often", "Sometimes", "Rarely", "Never"] },
+    { title: "Social Habits", question: "Which platform do you use for product research?", options: ["Instagram", "TikTok", "Facebook", "YouTube", "Pinterest", "LinkedIn", "Reddit"] },
+    { title: "Recent Services", question: "Which of these services have you used recently?", options: ["Real Estate", "IT Support", "Wedding/Event Services", "Legal/Tax", "Veterinary", "Childcare/Elder Care", "Trades (Plumbing/Electric)"] },
+    { title: "Frustrations", question: "What is your biggest frustration with online shopping?", options: ["Shipping Costs", "Return Policies", "Product Quality", "Slow Delivery", "Lack of Trust", "Hidden Fees"] },
+    
+    { title: "Financial", question: "Have you used legal/financial services recently?", options: ["Yes, Legal", "Yes, Financial", "Both", "Neither"] },
+    { title: "Education", question: "Are you currently pursuing any education?", options: ["Degree", "Certification", "Short Course", "No"] },
+    { title: "IT Support", question: "Do you use IT support for your work/home?", options: ["Yes, Managed Service", "Yes, On-call", "No, I do it myself", "No"] },
+    { title: "Wedding/Events", question: "Planning an event soon?", options: ["Wedding", "Birthday/Party", "Corporate", "No"] },
+    { title: "Loyalty Habits", question: "Do you have a favorite loyalty program or rewards card?", options: ["Yes, I use them often", "Yes, but rarely", "No, I prefer cash discounts", "No, I don't care"] }
 ];
 
 function initBillboard() {
@@ -286,20 +290,20 @@ window.updateBillboard = function(specificIndex = null) {
         console.log("Billboard Game: Auto-filling square", specificIndex);
         submitBillboardAnswer(specificIndex, "Scanned");
     } else {
-        const path = window.location.pathname;
-        const willRedirect = path.includes("upload") || path.includes("instagram");
-        
-        if (!willRedirect) {
-            let grid = JSON.parse(localStorage.getItem("billboard_grid") || "[]");
-            if (grid.length === 0) grid = Array(25).fill(0);
-            let empty = grid.map((v, i) => v === 0 ? i : null).filter(v => v !== null);
-            if (empty.length > 0) {
-                let rand = empty[Math.floor(Math.random() * empty.length)];
-                console.log("Billboard Game: Opening random question for square", rand);
-                openBillboardQuestion(rand);
-            }
-        } else {
-            console.log("Billboard Game: Skipping random question due to potential redirect.");
+        // Fallback: Pick the first empty square and fill it
+        let grid = JSON.parse(localStorage.getItem("billboard_grid") || "[]");
+        if (grid.length === 0) grid = Array(25).fill(0);
+        let empty = grid.map((v, i) => v === 0 ? i : null).filter(v => v !== null);
+        if (empty.length > 0) {
+            let firstEmpty = empty[0];
+            console.log("Billboard Game: Auto-filling first empty square", firstEmpty);
+            submitBillboardAnswer(firstEmpty, "Scanned");
         }
     }
 }
+// Auto-init if container exists
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('bingo-container')) {
+        initBillboard();
+    }
+});

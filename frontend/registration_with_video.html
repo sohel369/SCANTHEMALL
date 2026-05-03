@@ -657,7 +657,9 @@
                         localStorage.setItem('GTSA_SESSION_USER', JSON.stringify(response.user));
 
                         alert("Registration successful! Welcome to GTSA.");
-                        window.location.href = "index.html";
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const redirectUrl = urlParams.get('redirect');
+                        window.location.href = redirectUrl || "index.html";
                     }
                 } catch (error) {
                     console.error("Signup Error:", error);

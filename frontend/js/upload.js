@@ -3,8 +3,13 @@
  */
 
 let selectedCategoryIndex = null;
+let isUploadInitialized = false;
+let currentSelectedFile = null;
 
 function initUpload() {
+    if (isUploadInitialized) return;
+    isUploadInitialized = true;
+
     const btn = document.querySelector(".upload-zone button, [data-action='upload']");
     const fileInput = document.getElementById('image-upload');
     const categoryGrid = document.getElementById('category-grid');
@@ -40,9 +45,19 @@ function initUpload() {
     fileInput.addEventListener("change", (e) => {
         const file = e.target.files[0];
         if (file && file.type.startsWith('image/')) {
+            currentSelectedFile = file;
             showPreview(file);
+            fileInput.value = ''; // Allow re-selecting same file
         }
     });
+
+    // Capture Target Index from URL (e.g. ?index=5)
+    const urlParams = new URLSearchParams(window.location.search);
+    const indexParam = urlParams.get('index');
+    if (indexParam !== null) {
+        selectedCategoryIndex = parseInt(indexParam);
+        console.log("GTSA: Target Billboard Index set to:", selectedCategoryIndex);
+    }
 
     createPreviewModal();
 }
@@ -64,9 +79,8 @@ function showPreview(file) {
 async function finalizeUpload() {
     const modal = document.getElementById('upload-preview-modal');
     const confirmBtn = document.getElementById('confirm-finalize-btn');
-    const fileInput = document.getElementById('image-upload');
 
-    if (!confirmBtn || !fileInput || !fileInput.files[0]) {
+    if (!confirmBtn || !currentSelectedFile) {
         alert("Please select a file first.");
         return;
     }
@@ -87,7 +101,7 @@ async function finalizeUpload() {
     confirmBtn.disabled = true;
 
     try {
-        const file = fileInput.files[0];
+        const file = currentSelectedFile;
         const params = new URLSearchParams(window.location.search);
         let platform = params.get('platform') || 'scanthemall';
         if (platform.toLowerCase() === 'stamy') platform = 'scanthemall';
@@ -105,6 +119,7 @@ async function finalizeUpload() {
         // Update Billboard Game if a category was selected
         if (typeof window.updateBillboard === 'function') {
             console.log(`GTSA Billboard Game: Updating square for category index: ${selectedCategoryIndex}`);
+            // If selectedCategoryIndex is null, let updateBillboard pick a random empty square or handle it
             window.updateBillboard(selectedCategoryIndex);
         } else {
             console.warn("GTSA Billboard Game: updateBillboard function not found!");
@@ -123,6 +138,13 @@ async function finalizeUpload() {
 
     } catch (error) {
         console.error("Upload Error:", error);
+        
+        if (error.message.includes('Session expired') || error.message.includes('must be logged in')) {
+            alert("Your session has expired. Redirecting to login page...");
+            window.location.href = "log_in_page_advertising_placeholder.html?redirect=instagram_upload_page.html";
+            return;
+        }
+
         alert("Upload Failed: " + error.message);
         confirmBtn.innerText = "Verify & Sync";
         confirmBtn.disabled = false;

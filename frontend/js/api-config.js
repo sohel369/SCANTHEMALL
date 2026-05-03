@@ -49,24 +49,36 @@ export const NodeAPI = {
         const token = this.getToken();
         if (!token) throw new Error('You must be logged in to upload images');
 
-        const response = await fetch(`${API_BASE_URL}/uploads`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            },
-            body: formData
-        });
+        try {
+            const response = await fetch(`${API_BASE_URL}/uploads`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: formData
+            });
 
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.error || 'Upload failed');
+            if (response.status === 401 || response.status === 403) {
+                console.warn("NodeAPI: Session expired or invalid. Clearing token.");
+                this.removeToken();
+                throw new Error('Session expired. Please log in again.');
+            }
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.error || 'Upload failed');
+            }
+            return response.json();
+        } catch (error) {
+            console.error("NodeAPI: Upload error", error);
+            throw error;
         }
-        return response.json();
     },
 
     getToken() {
         // Check for standardized key first, then fallback to common 'token' key
-        const token = localStorage.getItem('GTSA_SESSION_TOKEN') || localStorage.getItem('token');
+        let token = localStorage.getItem('GTSA_SESSION_TOKEN') || localStorage.getItem('token');
+        if (token === 'undefined' || token === 'null') token = null;
         if (!token) console.log("NodeAPI: No token found in localStorage.");
         return token;
     },
