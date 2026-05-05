@@ -38,7 +38,7 @@ function initAds() {
     function startAdRotation(el) {
         const rect = el.getBoundingClientRect();
         let type = "square";
-        
+
         if (rect.height > rect.width * 1.5) {
             type = "skyscraper";
         } else if (rect.width > rect.height * 2) {
@@ -54,7 +54,7 @@ function initAds() {
 
             const img = new Image();
             img.src = nextImgUrl;
-            
+
             // Show shimmer only on first load if empty
             if (!el.querySelector('img')) {
                 el.innerHTML = `
@@ -76,7 +76,7 @@ function initAds() {
                 function updateContent() {
                     el.innerHTML = `
                         <div class="relative w-full h-full group overflow-hidden bg-black border border-white/5 rounded-xl shadow-2xl transition-all duration-700">
-                            <img src="${nextImgUrl}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000" alt="Partner Sponsor" />
+                            <img src="${nextImgUrl}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000" alt="Sponsor" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                             <div class="absolute bottom-1 right-1 px-1.5 py-0.5 bg-black/80 backdrop-blur-md rounded text-[6px] text-zinc-500 uppercase tracking-widest font-black">Sponsored Partner</div>
                         </div>

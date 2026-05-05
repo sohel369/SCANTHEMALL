@@ -84,6 +84,18 @@ function initBillboard() {
     }
 
     renderBillboardGrid();
+
+    // Fetch from backend if logged in
+    if (window.NodeAPI && window.NodeAPI.isAuthenticated()) {
+        window.NodeAPI.getBillboard().then(data => {
+            if (data && data.grid_state && data.grid_state.length === 25) {
+                console.log("Billboard Game: Synced from backend.");
+                localStorage.setItem("billboard_grid", JSON.stringify(data.grid_state));
+                localStorage.setItem("completed_lines", JSON.stringify(data.completed_lines || []));
+                renderBillboardGrid();
+            }
+        }).catch(err => console.error("Billboard Game: Backend fetch failed", err));
+    }
 }
 
 /**
@@ -151,6 +163,14 @@ window.submitBillboardAnswer = function(index, answer) {
     checkAndRewardLines(grid);
     renderBillboardGrid();
     checkFullCard(grid);
+
+    // Sync to backend if logged in
+    if (window.NodeAPI && window.NodeAPI.isAuthenticated()) {
+        const completedLines = JSON.parse(localStorage.getItem("completed_lines") || "[]");
+        window.NodeAPI.updateBillboard(grid, completedLines).catch(err => {
+            console.error("GTSA Billboard: Failed to sync with backend", err);
+        });
+    }
 };
 
 /**

@@ -85,3 +85,54 @@ export const generateEntry = async (req, res) => {
     res.status(500).json({ error: 'Failed to create entry' });
   }
 };
+export const registerForCashDraw = async (req, res) => {
+  const { firstName, lastName, country, state, email } = req.body;
+  const userId = req.user.id;
+
+  try {
+    // 1. Update Profile
+    await pool.query(
+      `INSERT INTO user_profiles (user_id, first_name, last_name, country, state, updated_at)
+       VALUES ($1, $2, $3, $4, $5, NOW())
+       ON CONFLICT (user_id) DO UPDATE SET
+         first_name = EXCLUDED.first_name,
+         last_name = EXCLUDED.last_name,
+         country = EXCLUDED.country,
+         state = EXCLUDED.state,
+         updated_at = NOW()`,
+      [userId, firstName, lastName, country, state]
+    );
+
+    // 2. Find or Create "Cash Draw"
+    let drawId;
+    const drawRes = await pool.query("SELECT id FROM draws WHERE name ILIKE '%Cash Draw%' LIMIT 1");
+    
+    if (drawRes.rows.length > 0) {
+      drawId = drawRes.rows[0].id;
+    } else {
+      // Create a default Cash Draw
+      const newDraw = await pool.query(
+        "INSERT INTO draws (name, description, country, city, wave, status) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id",
+        ['$1,000 Cash Draw', 'Win $1,000 cash prize!', country || 'Global', 'All Cities', 1, 'active']
+      );
+      drawId = newDraw.rows[0].id;
+    }
+
+    // 3. Generate Entry
+    const drawData = await pool.query('SELECT * FROM draws WHERE id=$1', [drawId]);
+    const draw = drawData.rows[0];
+    const next = (draw.next_number || 0) + 1;
+    const drawNumber = formatDrawNumber(draw.country || 'GL', draw.city || 'ALL', draw.wave || 1, next);
+
+    await pool.query('UPDATE draws SET next_number=$1 WHERE id=$2', [next, drawId]);
+    await pool.query(
+      'INSERT INTO entries (user_id, draw_id, entry_number) VALUES ($1, $2, $3)',
+      [userId, drawId, drawNumber]
+    );
+
+    res.json({ success: true, message: 'Successfully registered for Cash Draw', drawNumber });
+  } catch (err) {
+    console.error('Cash Draw Registration Error:', err);
+    res.status(500).json({ error: 'Failed to register for Cash Draw' });
+  }
+};

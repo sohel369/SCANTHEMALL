@@ -138,3 +138,60 @@ export const recordVisit = async (req, res) => {
   }
 };
 
+// Get top users for leaderboard
+export const getLeaderboard = async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      `SELECT up.username, up.profile_photo_url, COUNT(e.id) as entry_count, up.city
+       FROM users u
+       JOIN user_profiles up ON up.user_id = u.id
+       JOIN entries e ON e.user_id = u.id
+       GROUP BY up.user_id, up.username, up.profile_photo_url, up.city
+       ORDER BY entry_count DESC
+       LIMIT 10`
+    );
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch leaderboard' });
+  }
+};
+
+// Get user billboard progress
+export const getUserBillboard = async (req, res) => {
+  const userId = req.user.id;
+  try {
+    const { rows } = await pool.query(
+      'SELECT grid_state, completed_lines FROM user_billboard_progress WHERE user_id=$1',
+      [userId]
+    );
+    if (rows.length === 0) {
+      return res.json({ grid_state: [], completed_lines: [] });
+    }
+    res.json(rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch billboard progress' });
+  }
+};
+
+// Update user billboard progress
+export const updateUserBillboard = async (req, res) => {
+  const userId = req.user.id;
+  const { grid_state, completed_lines } = req.body;
+  try {
+    await pool.query(
+      `INSERT INTO user_billboard_progress (user_id, grid_state, completed_lines, last_updated)
+       VALUES ($1, $2, $3, NOW())
+       ON CONFLICT (user_id) DO UPDATE SET 
+         grid_state = EXCLUDED.grid_state,
+         completed_lines = EXCLUDED.completed_lines,
+         last_updated = NOW()`,
+      [userId, JSON.stringify(grid_state), JSON.stringify(completed_lines)]
+    );
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to update billboard progress' });
+  }
+};

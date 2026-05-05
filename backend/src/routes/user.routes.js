@@ -12,6 +12,9 @@ import {
   getUserPosition,
   getUserUploads,
   recordVisit,
+  getLeaderboard,
+  getUserBillboard,
+  updateUserBillboard,
 } from '../controllers/user.controller.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -39,6 +42,9 @@ router.get('/profile', getProfile);
 router.get('/entries', getUserEntries);
 router.get('/position', getUserPosition);
 router.post('/record-visit', recordVisit);
+router.get('/leaderboard', getLeaderboard);
+router.get('/billboard', getUserBillboard);
+router.post('/billboard', updateUserBillboard);
 
 // Profile photo upload
 router.post('/profile-photo', upload.single('photo'), async (req, res) => {

@@ -114,6 +114,59 @@ export const NodeAPI = {
         const token = this.getToken();
         console.log("NodeAPI: Checking isAuthenticated. Token found:", !!token);
         return !!token;
+    },
+
+    async _fetch(endpoint, options = {}) {
+        const token = this.getToken();
+        const headers = {
+            'Content-Type': 'application/json',
+            ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+            ...options.headers
+        };
+        const response = await fetch(`${API_BASE_URL}${endpoint}`, { ...options, headers });
+        if (response.status === 401 || response.status === 403) {
+            this.removeToken();
+            if (!window.location.pathname.includes('log_in')) {
+                window.location.href = `log_in_page_advertising_placeholder.html?redirect=${encodeURIComponent(window.location.pathname)}`;
+            }
+            throw new Error('Session expired');
+        }
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.error || 'Request failed');
+        }
+        return response.json();
+    },
+
+    async getPosition() {
+        return this._fetch('/user/position');
+    },
+
+    async getLeaderboard() {
+        return this._fetch('/user/leaderboard');
+    },
+
+    async getBillboard() {
+        return this._fetch('/user/billboard');
+    },
+
+    async updateBillboard(grid_state, completed_lines) {
+        return this._fetch('/user/billboard', {
+            method: 'POST',
+            body: JSON.stringify({ grid_state, completed_lines })
+        });
+    },
+
+    async registerCashDraw(data) {
+        return this._fetch('/draws/register', {
+            method: 'POST',
+            body: JSON.stringify(data)
+        });
+    },
+
+    async searchBillboards(params) {
+        const queryParams = new URLSearchParams(params).toString();
+        return this._fetch(`/billboards/search?${queryParams}`);
     }
 };
 

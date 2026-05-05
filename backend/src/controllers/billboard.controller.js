@@ -48,23 +48,23 @@ export const searchBillboards = async (req, res) => {
       query += ` AND b.created_at < NOW() - INTERVAL '90 days'`;
     }
 
-    // Filter by sector (company name for now, could be enhanced with a sectors table)
+    // Filter by sector
     if (sector) {
       paramCount++;
-      query += ` AND LOWER(up.company) LIKE LOWER($${paramCount})`;
+      query += ` AND (LOWER(b.sector) LIKE LOWER($${paramCount}) OR LOWER(up.company) LIKE LOWER($${paramCount}) OR LOWER(up.category) LIKE LOWER($${paramCount}))`;
       params.push(`%${sector}%`);
     }
 
-    // Filter by country/state (from user profiles)
+    // Filter by country/state
     if (country) {
       paramCount++;
-      query += ` AND LOWER(up.country) = LOWER($${paramCount})`;
+      query += ` AND (LOWER(b.country) = LOWER($${paramCount}) OR (b.country IS NULL AND LOWER(up.country) = LOWER($${paramCount})))`;
       params.push(country);
     }
 
     if (state) {
       paramCount++;
-      query += ` AND LOWER(up.state) = LOWER($${paramCount})`;
+      query += ` AND (LOWER(b.state) = LOWER($${paramCount}) OR (b.state IS NULL AND LOWER(up.state) = LOWER($${paramCount})))`;
       params.push(state);
     }
 
