@@ -3,43 +3,52 @@
  */
 
 const CATEGORY_ICONS = [
-    'receipt', 'car', 'toy-brick', 'sparkles', 'users',
-    'shopping-bag', 'graduation-cap', 'calendar-heart', 'landmark', 'dumbbell',
-    'home', 'stethoscope', 'cpu', 'gavel', 'shirt',
-    'smartphone', 'plane', 'dog', 'award', 'radio',
-    'building', 'utensils', 'truck', 'hammer', 'flower'
+    'shopping-bag', 'wallet', 'repeat', 'check-circle', 'search',
+    'heart', 'smartphone', 'mail', 'share-2', 'shirt',
+    'sparkles', 'home', 'star', 'utensils', 'cpu',
+    'car', 'dog', 'stethoscope', 'plane', 'landmark',
+    'graduation-cap', 'building', 'tool', 'party-popper', 'frown'
 ];
 
 const BILLBOARD_QUESTIONS = [
+    // 1. Lifestyle & Spending Power
     { title: "Primary Category", question: "Which category do you spend the most on monthly?", options: ["Apparel & Accessories", "Home & Garden", "Food & Beverage", "Electronics", "Health & Wellness", "Automotive", "Travel", "I prefer not to say"] },
     { title: "Monthly Spend", question: "How much do you typically spend on non-essential items per month?", options: ["<$100", "$100–$300", "$300–$600", "$600+", "I don't track"] },
     { title: "Purchase Frequency", question: "How often do you make a purchase over $50?", options: ["Daily", "Weekly", "Monthly", "Rarely", "Only during sales"] },
-    { title: "Top Factor", question: "What matters most when you try a new brand?", options: ["Price/Value", "Quality/Durability", "Brand Reputation", "Customer Reviews", "Sustainability/Ethics", "Convenience"] },
-    { title: "Discovery Channel", question: "Where do you usually discover new products?", options: ["Social Media", "Search Engines", "Friend/Family Referral", "Email Newsletters", "In-Store Displays", "Influencer Content"] },
     
-    { title: "Apparel Habits", question: "What is your favorite style of apparel?", options: ["Luxury", "Streetwear", "Formal", "Athleisure", "Fast Fashion"] },
+    // 2. Decision Drivers
+    { title: "Top Factor", question: "What matters most when you try a new brand?", options: ["Price/Value", "Quality/Durability", "Brand Reputation", "Customer Reviews", "Sustainability/Ethics", "Convenience"] },
+    { title: "Discovery Channel", question: "Where do you usually discover new products?", options: ["Social Media (Instagram/TikTok)", "Search Engines (Google)", "Friend/Family Referral", "Email Newsletters", "In-Store Displays", "Influencer Content"] },
+    { title: "Loyalty Behavior", question: "Do you have a favorite loyalty program or rewards card?", options: ["Yes, I use them often", "Yes, but rarely", "No, I prefer cash discounts", "No, I don't care"] },
+
+    // 3. Digital Engagement
+    { title: "Device Preference", question: "Which device do you use most to shop?", options: ["Mobile Phone", "Desktop/Laptop", "Tablet", "Voice Assistant"] },
+    { title: "Email Open Rate", question: "How often do you open promotional emails?", options: ["Always", "Often", "Sometimes", "Rarely", "Never"] },
+    { title: "Social Habits", question: "Which platforms do you use for product research?", options: ["Instagram", "TikTok", "Facebook", "YouTube", "Pinterest", "LinkedIn", "Reddit"] },
+
+    // 4. Industry-Specific Micro-Segments (Bingo Challenge)
+    { title: "Apparel Challenge", question: "Select all categories you have purchased from in the last 3 months:", options: ["Apparel", "Beauty", "Home & Garden", "Food & Beverage", "Electronics", "Auto", "Pets", "Health", "Travel", "Legal/Financial", "Education"] },
     { title: "Beauty Habits", question: "Do you buy skincare products online or in-store?", options: ["Mostly Online", "Mostly In-Store", "Mix of both", "I rarely buy skincare"] },
     { title: "Home & Garden", question: "Are you planning a home renovation soon?", options: ["Within 6 months", "Within a year", "No plans", "Just finished one"] },
+
+    { title: "FREE SPACE", question: "Claim your bonus entry for the $75,000 Grand Prize!", options: ["Claim Free Space"] },
+
     { title: "Food & Beverage", question: "How often do you order food delivery?", options: ["Daily", "Weekly", "Monthly", "Rarely"] },
     { title: "Electronics", question: "Which electronic device do you plan to buy next?", options: ["Smartphone", "Laptop/Tablet", "Smart Home Device", "Gaming Console", "None"] },
-    
     { title: "Automotive", question: "What is your primary mode of transport?", options: ["Own Vehicle", "Public Transport", "Rideshare", "Bicycle/Walk"] },
-    { title: "Pets", question: "Do you own any pets?", options: ["Dog", "Cat", "Other", "No Pets"] },
-    { title: "FREE SPACE", question: "Collect your free bonus entry!", options: ["Claim Free Space"] },
-    { title: "Health", question: "How often do you visit a health professional?", options: ["Regularly", "When needed", "Rarely", "Never"] },
-    { title: "Travel", question: "What is your dream vacation type?", options: ["Beach/Relax", "Adventure/Active", "City/Culture", "Cruise"] },
     
-    { title: "Device Pref", question: "Which device do you use most to shop?", options: ["Mobile Phone", "Desktop/Laptop", "Tablet", "Voice Assistant"] },
-    { title: "Email Rate", question: "How often do you open promotional emails?", options: ["Always", "Often", "Sometimes", "Rarely", "Never"] },
-    { title: "Social Habits", question: "Which platform do you use for product research?", options: ["Instagram", "TikTok", "Facebook", "YouTube", "Pinterest", "LinkedIn", "Reddit"] },
-    { title: "Recent Services", question: "Which of these services have you used recently?", options: ["Real Estate", "IT Support", "Wedding/Event Services", "Legal/Tax", "Veterinary", "Childcare/Elder Care", "Trades (Plumbing/Electric)"] },
-    { title: "Frustrations", question: "What is your biggest frustration with online shopping?", options: ["Shipping Costs", "Return Policies", "Product Quality", "Slow Delivery", "Lack of Trust", "Hidden Fees"] },
-    
-    { title: "Financial", question: "Have you used legal/financial services recently?", options: ["Yes, Legal", "Yes, Financial", "Both", "Neither"] },
+    { title: "Pets Challenge", question: "Do you own any pets?", options: ["Dog", "Cat", "Other", "No Pets"] },
+    { title: "Health Challenge", question: "How often do you visit a health professional?", options: ["Regularly", "When needed", "Rarely", "Never"] },
+    { title: "Travel Challenge", question: "What is your dream vacation type?", options: ["Beach/Relax", "Adventure/Active", "City/Culture", "Cruise"] },
+
+    { title: "Legal/Financial", question: "Have you used legal/financial services recently?", options: ["Yes, Legal", "Yes, Financial", "Both", "Neither"] },
     { title: "Education", question: "Are you currently pursuing any education?", options: ["Degree", "Certification", "Short Course", "No"] },
+    
+    // Corners / Diagonal content
+    { title: "Real Estate", question: "Are you looking to buy or rent property soon?", options: ["Buy", "Rent", "Sell", "Not now"] },
     { title: "IT Support", question: "Do you use IT support for your work/home?", options: ["Yes, Managed Service", "Yes, On-call", "No, I do it myself", "No"] },
     { title: "Wedding/Events", question: "Planning an event soon?", options: ["Wedding", "Birthday/Party", "Corporate", "No"] },
-    { title: "Loyalty Habits", question: "Do you have a favorite loyalty program or rewards card?", options: ["Yes, I use them often", "Yes, but rarely", "No, I prefer cash discounts", "No, I don't care"] }
+    { title: "Frustrations", question: "What is your biggest frustration with online shopping?", options: ["Shipping Costs", "Return Policies", "Product Quality", "Slow Delivery", "Lack of Trust", "Hidden Fees"] }
 ];
 
 function initBillboard() {
@@ -65,6 +74,9 @@ function initBillboard() {
     if (!localStorage.getItem("completed_lines")) {
         localStorage.setItem("completed_lines", JSON.stringify([]));
     }
+    if (!localStorage.getItem("shopping_habits")) {
+        localStorage.setItem("shopping_habits", JSON.stringify({}));
+    }
     
     // Check for pending full card reward (for after redirects)
     if (localStorage.getItem("showFullCardReward") === "true") {
@@ -88,10 +100,17 @@ function initBillboard() {
     // Fetch from backend if logged in
     if (window.NodeAPI && window.NodeAPI.isAuthenticated()) {
         window.NodeAPI.getBillboard().then(data => {
-            if (data && data.grid_state && data.grid_state.length === 25) {
-                console.log("Billboard Game: Synced from backend.");
-                localStorage.setItem("billboard_grid", JSON.stringify(data.grid_state));
-                localStorage.setItem("completed_lines", JSON.stringify(data.completed_lines || []));
+            if (data) {
+                if (data.grid_state && data.grid_state.length === 25) {
+                    console.log("Billboard Game: Synced from backend.");
+                    localStorage.setItem("billboard_grid", JSON.stringify(data.grid_state));
+                }
+                if (data.completed_lines) {
+                    localStorage.setItem("completed_lines", JSON.stringify(data.completed_lines));
+                }
+                if (data.shopping_habits) {
+                    localStorage.setItem("shopping_habits", JSON.stringify(data.shopping_habits));
+                }
                 renderBillboardGrid();
             }
         }).catch(err => console.error("Billboard Game: Backend fetch failed", err));
@@ -167,7 +186,14 @@ window.submitBillboardAnswer = function(index, answer) {
     // Sync to backend if logged in
     if (window.NodeAPI && window.NodeAPI.isAuthenticated()) {
         const completedLines = JSON.parse(localStorage.getItem("completed_lines") || "[]");
-        window.NodeAPI.updateBillboard(grid, completedLines).catch(err => {
+        const shoppingHabits = JSON.parse(localStorage.getItem("shopping_habits") || "{}");
+        
+        // Update shopping habits with this answer
+        const questionData = BILLBOARD_QUESTIONS[index];
+        shoppingHabits[questionData.title] = answer;
+        localStorage.setItem("shopping_habits", JSON.stringify(shoppingHabits));
+
+        window.NodeAPI.updateBillboard(grid, completedLines, shoppingHabits).catch(err => {
             console.error("GTSA Billboard: Failed to sync with backend", err);
         });
     }
@@ -284,7 +310,7 @@ window.renderBillboardGrid = function() {
     const cardsCompleted = localStorage.getItem("cardsCompleted") || "0";
     const roundIndicator = cardsCompleted !== "0" ? `<div class="absolute top-0 right-4 bg-[#e11d48] text-white px-3 py-1 rounded-b-lg font-black text-[10px] uppercase tracking-widest shadow-lg z-20">Round ${parseInt(cardsCompleted)+1}</div>` : '';
 
-    container.className = "grid grid-cols-5 gap-2 sm:gap-3 max-w-[400px] mx-auto p-4 sm:p-6 bg-zinc-900/50 border border-white/5 rounded-[2rem] sm:rounded-[3rem] shadow-2xl relative overflow-hidden backdrop-blur-sm min-h-[300px]";
+    container.className = "grid grid-cols-5 gap-3 sm:gap-4 max-w-[450px] mx-auto p-6 sm:p-8 bg-zinc-900/40 border border-white/10 rounded-[3rem] shadow-[0_32px_64px_rgba(0,0,0,0.5)] relative overflow-hidden backdrop-blur-xl min-h-[350px] transition-all duration-700";
     
     container.innerHTML = roundIndicator + grid.map((val, i) => {
         const isHighlighted = highlightedIndices.has(i);

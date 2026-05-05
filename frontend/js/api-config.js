@@ -150,10 +150,10 @@ export const NodeAPI = {
         return this._fetch('/user/billboard');
     },
 
-    async updateBillboard(grid_state, completed_lines) {
+    async updateBillboard(grid_state, completed_lines, shopping_habits) {
         return this._fetch('/user/billboard', {
             method: 'POST',
-            body: JSON.stringify({ grid_state, completed_lines })
+            body: JSON.stringify({ grid_state, completed_lines, shopping_habits })
         });
     },
 

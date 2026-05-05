@@ -1,4 +1,5 @@
 import { pool } from '../config/db.js';
+import { awardBingoRewards } from '../utils/bingoRewards.js';
 
 // Get user profile
 export const getProfile = async (req, res) => {
@@ -162,11 +163,11 @@ export const getUserBillboard = async (req, res) => {
   const userId = req.user.id;
   try {
     const { rows } = await pool.query(
-      'SELECT grid_state, completed_lines FROM user_billboard_progress WHERE user_id=$1',
+      'SELECT grid_state, completed_lines, shopping_habits FROM user_billboard_progress WHERE user_id=$1',
       [userId]
     );
     if (rows.length === 0) {
-      return res.json({ grid_state: [], completed_lines: [] });
+      return res.json({ grid_state: [], completed_lines: [], shopping_habits: {} });
     }
     res.json(rows[0]);
   } catch (err) {
@@ -175,21 +176,50 @@ export const getUserBillboard = async (req, res) => {
   }
 };
 
+
 // Update user billboard progress
 export const updateUserBillboard = async (req, res) => {
   const userId = req.user.id;
-  const { grid_state, completed_lines } = req.body;
+  const { grid_state, completed_lines, shopping_habits } = req.body;
   try {
+    // Get existing progress to check for new lines
+    const existingProgress = await pool.query(
+      'SELECT completed_lines FROM user_billboard_progress WHERE user_id=$1',
+      [userId]
+    );
+    
+    const oldLines = existingProgress.rows.length > 0 ? (existingProgress.rows[0].completed_lines || []) : [];
+    const newLines = completed_lines.filter(line => !oldLines.includes(line));
+    
+    // Check if full card just completed
+    const oldGrid = existingProgress.rows.length > 0 ? (existingProgress.rows[0].grid_state || []) : [];
+    const isNowFull = grid_state.every(val => val === 1);
+    const wasFull = oldGrid.length === 25 && oldGrid.every(val => val === 1);
+    const fullCardJustCompleted = isNowFull && !wasFull;
+
+    // Save progress
     await pool.query(
-      `INSERT INTO user_billboard_progress (user_id, grid_state, completed_lines, last_updated)
-       VALUES ($1, $2, $3, NOW())
+      `INSERT INTO user_billboard_progress (user_id, grid_state, completed_lines, shopping_habits, last_updated)
+       VALUES ($1, $2, $3, $4, NOW())
        ON CONFLICT (user_id) DO UPDATE SET 
          grid_state = EXCLUDED.grid_state,
          completed_lines = EXCLUDED.completed_lines,
+         shopping_habits = EXCLUDED.shopping_habits,
          last_updated = NOW()`,
-      [userId, JSON.stringify(grid_state), JSON.stringify(completed_lines)]
+      [
+        userId, 
+        JSON.stringify(grid_state), 
+        JSON.stringify(completed_lines),
+        JSON.stringify(shopping_habits || {})
+      ]
     );
-    res.json({ success: true });
+
+    // Award rewards if any new lines or full card
+    if (newLines.length > 0 || fullCardJustCompleted) {
+      await awardBingoRewards(userId, newLines, fullCardJustCompleted);
+    }
+
+    res.json({ success: true, newEntries: newLines.length + (fullCardJustCompleted ? 1 : 0) });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Failed to update billboard progress' });
