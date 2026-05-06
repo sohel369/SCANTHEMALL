@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import { pool } from '../config/db.js';
 import { sendEmail } from '../utils/mailer.js';
 import { generateWelcomeEmail, generateAdvertiserWelcomeEmail } from '../utils/emailTemplates.js';
+import crypto from 'crypto';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -265,7 +266,7 @@ export const magicLogin = async (req, res) => {
     // Let's actually send the magic link email if we want!
     let verificationToken = user.verification_token;
     if (!verificationToken) {
-       verificationToken = require('crypto').randomBytes(32).toString("hex");
+       verificationToken = crypto.randomBytes(32).toString("hex");
        await pool.query('UPDATE users SET verification_token = $1 WHERE id = $2', [verificationToken, user.id]);
     }
 

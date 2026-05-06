@@ -22,11 +22,12 @@ const GEO_CONFIG = {
 
 async function initGeoTargeting() {
     try {
-        // Using ipapi.co for geo-detection
-        const response = await fetch('https://ipapi.co/json/');
+        // Using ipinfo.io as it is more reliable for CORS
+        const response = await fetch('https://ipinfo.io/json');
+        if (!response.ok) throw new Error('IP API failed');
         const data = await response.json();
-        const country = data.country_code; 
-        const region = data.region_code; 
+        const country = data.country || 'AU'; // default fallback
+        const region = data.region || '';
 
         let isBlocked = false;
         let isSkillVariant = ['JP', 'IN', 'CN', 'PK', 'PH', 'ID', 'VN'].includes(country);
@@ -47,12 +48,12 @@ async function initGeoTargeting() {
         }
 
         // Update dynamic SEO title
-        updateDynamicSEO(data.country_name || country);
+        updateDynamicSEO(country);
 
         // If not blocked, check for rules-container to show region-specific rules
         const container = document.getElementById('rules-container');
         if (container) {
-            container.innerHTML = renderAllowedUI(country, data.country_name);
+            container.innerHTML = renderAllowedUI(country, country);
             if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
