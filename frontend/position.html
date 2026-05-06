@@ -16,6 +16,31 @@
     <meta name="description"
         content="Win luxury cars, vacations, and cash with Gotta Scan Them All™. Scan billboard ads, complete your billboard game, and enter the $75,000 sweepstakes.">
     <script src="js/adSequenceManager.js" defer></script>
+    <script>
+        // Check for verification token from email redirect
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+            if (token) {
+                localStorage.setItem('GTSA_SESSION_TOKEN', token);
+                localStorage.setItem('token', token);
+                try {
+                    const payload = JSON.parse(atob(token.split('.')[1]));
+                    localStorage.setItem('GTSA_SESSION_USER', JSON.stringify(payload));
+                    localStorage.setItem('user', JSON.stringify(payload));
+                } catch(e) {}
+                window.history.replaceState({}, document.title, window.location.pathname);
+                window.dispatchEvent(new Event('auth-changed'));
+                
+                // Show a brief success message
+                setTimeout(() => {
+                    if (urlParams.get('verified') === 'true') {
+                        alert("Your email has been verified successfully!");
+                    }
+                }, 500);
+            }
+        });
+    </script>
     <title>Win Luxury Car | Gotta Scan Them All™</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js" defer></script>

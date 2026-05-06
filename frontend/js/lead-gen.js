@@ -91,10 +91,24 @@ const LeadGen = {
         btn.innerText = 'Synchronizing Entry...';
 
         try {
-            console.log('Pushing Data to Copper CRM:', this.formData);
+            console.log('Pushing Data to Backend API:', this.formData);
             
-            // Simulation of the API call we mapped earlier
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            // Determine base URL dynamically or fallback to current origin
+            const baseUrl = window.API_BASE_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://127.0.0.1:4000/api' : '/api');
+            const response = await fetch(`${baseUrl}/lead/submit-entry`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(this.formData)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to submit entry');
+            }
+
+            const data = await response.json();
+            console.log('Backend response:', data);
 
             // Success State
             document.getElementById('form-container').innerHTML = `
@@ -110,6 +124,7 @@ const LeadGen = {
                 </div>
             `;
         } catch (e) {
+            console.error(e);
             this.showError('Sync failed. Please try again.');
             btn.disabled = false;
             btn.innerText = 'Enter to Win $1,000';

@@ -111,4 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     checkAuthState();
+    
+    // Listen for storage events (when token is set in another tab or script)
+    window.addEventListener('storage', checkAuthState);
+    // Listen for a custom event we can trigger manually
+    window.addEventListener('auth-changed', checkAuthState);
 });

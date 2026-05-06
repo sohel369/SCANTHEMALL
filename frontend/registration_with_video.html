@@ -222,166 +222,97 @@
                 <div class="h-1 w-20 bg-[#FF3D00] mx-auto rounded-full"></div>
             </div>
 
-            <form action="#" id="registrationForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Data storage reference: scanthemall.com/databases/registrants -->
+            <form action="#" id="registrationForm" class="max-w-md mx-auto space-y-6">
+                <!-- STEP 1: Quick Entry -->
+                <div id="step-1" class="space-y-5 animate-in slide-in-from-right duration-500">
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-[#FF3D00] ml-1 uppercase tracking-wider">Email Address *</label>
+                        <input type="email" name="email" required class="form-input w-full px-4 py-4 rounded-xl text-lg" placeholder="you@example.com">
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-[#FF3D00] ml-1 uppercase tracking-wider">Mobile Number <span class="text-zinc-500 text-xs font-normal">(Optional – Get notified instantly if you win)</span></label>
+                        <input type="tel" name="phone" class="form-input w-full px-4 py-4 rounded-xl text-lg" placeholder="(555) 000-0000">
+                    </div>
 
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">First Name</label>
-                    <input type="text" name="first_name" required class="form-input w-full px-4 py-3 rounded-xl"
-                        placeholder="John">
+                    <div class="mt-8">
+                        <button type="button" id="btn-next" class="btn-primary w-full py-4 rounded-xl font-bold text-lg uppercase tracking-wider shadow-lg shadow-[#FF3D00]/20">
+                            Enter to Win Now
+                        </button>
+                    </div>
+                    
+                    <p class="text-xs text-zinc-500 text-center mt-4 uppercase tracking-widest font-medium">Takes 5 seconds. No password required.</p>
                 </div>
 
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Surname</label>
-                    <input type="text" name="surname" required class="form-input w-full px-4 py-3 rounded-xl"
-                        placeholder="Doe">
-                </div>
+                <!-- STEP 2: Segmentation (Hidden initially) -->
+                <div id="step-2" class="hidden space-y-5 animate-in slide-in-from-right duration-500">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-bold text-white mb-2">You're almost there!</h3>
+                        <p class="text-sm text-zinc-400">Help us tailor your rewards and prize categories.</p>
+                    </div>
 
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Email Address</label>
-                    <input type="email" name="email" required class="form-input w-full px-4 py-3 rounded-xl"
-                        placeholder="john@example.com">
-                </div>
+                    <div class="space-y-2">
+                        <label class="flex justify-between items-end ml-1">
+                            <span class="text-sm font-semibold text-zinc-400 uppercase tracking-wider">Age Range *</span>
+                            <span class="text-[10px] text-zinc-500 font-medium">Must be 18+ to enter</span>
+                        </label>
+                        <select name="ageGroup" required class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
+                            <option value="" disabled selected class="bg-[#121212] text-white">Select Age Range</option>
+                            <option value="18-24" class="bg-[#121212] text-white">18-24</option>
+                            <option value="25-34" class="bg-[#121212] text-white">25-34</option>
+                            <option value="35-44" class="bg-[#121212] text-white">35-44</option>
+                            <option value="45-54" class="bg-[#121212] text-white">45-54</option>
+                            <option value="55-64" class="bg-[#121212] text-white">55-64</option>
+                            <option value="65+" class="bg-[#121212] text-white">65+</option>
+                            <option value="under_18" class="bg-[#121212] text-white">Under 18</option>
+                        </select>
+                    </div>
 
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">User Name</label>
-                    <input type="text" name="username" required class="form-input w-full px-4 py-3 rounded-xl"
-                        placeholder="johndoe77">
-                </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-zinc-400 ml-1">Favorite Category *</label>
+                        <select name="category" required class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
+                            <option value="" disabled selected class="bg-[#121212] text-white">Select Category</option>
+                            <option value="Beauty" class="bg-[#121212] text-white">Beauty & Cosmetics</option>
+                            <option value="Automotive" class="bg-[#121212] text-white">Automotive</option>
+                            <option value="Tech" class="bg-[#121212] text-white">Tech & Electronics</option>
+                            <option value="Apparel" class="bg-[#121212] text-white">Fashion & Apparel</option>
+                            <option value="Home" class="bg-[#121212] text-white">Home & Garden</option>
+                        </select>
+                    </div>
 
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Phone Number</label>
-                    <input type="tel" name="phone" required class="form-input w-full px-4 py-3 rounded-xl"
-                        placeholder="+1 234 567 890">
-                </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-zinc-400 ml-1">Shopping Freq *</label>
+                            <select name="shoppingFreq" required class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
+                                <option value="" disabled selected class="bg-[#121212] text-white">Frequency</option>
+                                <option value="Weekly" class="bg-[#121212] text-white">Weekly</option>
+                                <option value="Monthly" class="bg-[#121212] text-white">Monthly</option>
+                                <option value="Rarely" class="bg-[#121212] text-white">Rarely</option>
+                            </select>
+                        </div>
 
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Area Code</label>
-                    <input type="text" name="area_code" required class="form-input w-full px-4 py-3 rounded-xl"
-                        placeholder="(310)">
-                </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-zinc-400 ml-1">Gender (Opt)</label>
+                            <select name="gender" class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
+                                <option value="" class="bg-[#121212] text-white">Select</option>
+                                <option value="Woman" class="bg-[#121212] text-white">Woman</option>
+                                <option value="Man" class="bg-[#121212] text-white">Man</option>
+                                <option value="Non-binary" class="bg-[#121212] text-white">Non-binary</option>
+                                <option value="Prefer not to say" class="bg-[#121212] text-white">Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Age Range *</label>
-                    <select name="age_range" required class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
-                        <option value="" disabled selected class="bg-[#121212] text-white">Select Age Range</option>
-                        <option value="18-26" class="bg-[#121212] text-white">18-26</option>
-                        <option value="27-42" class="bg-[#121212] text-white">27-42</option>
-                        <option value="43-58" class="bg-[#121212] text-white">43-58</option>
-                        <option value="59-77" class="bg-[#121212] text-white">59-77</option>
-                        <option value="78+" class="bg-[#121212] text-white">78+</option>
-                    </select>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Favorite Shopping Category *</label>
-                    <select name="category" required class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
-                        <option value="" disabled selected class="bg-[#121212] text-white">Select Category</option>
-                        <option value="Beauty" class="bg-[#121212] text-white">Beauty & Cosmetics</option>
-                        <option value="Automotive" class="bg-[#121212] text-white">Automotive</option>
-                        <option value="Tech" class="bg-[#121212] text-white">Tech & Electronics</option>
-                        <option value="Apparel" class="bg-[#121212] text-white">Fashion & Apparel</option>
-                        <option value="Home" class="bg-[#121212] text-white">Home & Garden</option>
-                    </select>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Gender Identity <span class="text-gray-500 font-normal">(Optional)</span></label>
-                    <select name="gender" class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
-                        <option value="" class="bg-[#121212] text-white">Select (Optional)</option>
-                        <option value="woman" class="bg-[#121212] text-white">Woman</option>
-                        <option value="man" class="bg-[#121212] text-white">Man</option>
-                        <option value="non_binary" class="bg-[#121212] text-white">Non-binary / Third Gender</option>
-                        <option value="self_describe" class="bg-[#121212] text-white">Prefer to self-describe</option>
-                        <option value="prefer_not" class="bg-[#121212] text-white">Prefer not to say</option>
-                    </select>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Shopping Habits *</label>
-                    <select name="shopping_habits" required class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
-                        <option value="" disabled selected class="bg-[#121212] text-white">Select Habits</option>
-                        <option value="Online Enthusiast" class="bg-[#121212] text-white">Online Enthusiast</option>
-                        <option value="In-Store Preferred" class="bg-[#121212] text-white">In-Store Preferred</option>
-                        <option value="Mixed Shopper" class="bg-[#121212] text-white">Mixed Shopper</option>
-                        <option value="Budget Focused" class="bg-[#121212] text-white">Budget Focused</option>
-                        <option value="Luxury Focused" class="bg-[#121212] text-white">Luxury Focused</option>
-                    </select>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">How often do you shop? *</label>
-                    <select name="shoppingFreq" required class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
-                        <option value="" disabled selected class="bg-[#121212] text-white">Select frequency</option>
-                        <option value="weekly" class="bg-[#121212] text-white">Weekly Shopper</option>
-                        <option value="monthly" class="bg-[#121212] text-white">Monthly Shopper</option>
-                        <option value="rarely" class="bg-[#121212] text-white">Rarely Shop Online</option>
-                        <option value="first_time" class="bg-[#121212] text-white">First Time Online Shopper</option>
-                    </select>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Country</label>
-                    <select id="country" name="country" required
-                        class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
-                        <option value="" class="bg-[#121212] text-white">Select Country</option>
-                    </select>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">State or Region</label>
-                    <select id="state" name="state" required
-                        class="form-input w-full px-4 py-3 rounded-xl appearance-none bg-transparent">
-                        <option value="" class="bg-[#121212] text-white">Select State</option>
-                    </select>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">City</label>
-                    <input type="text" id="city" name="city" required class="form-input w-full px-4 py-3 rounded-xl"
-                        placeholder="Auto-populated City">
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Postal Code</label>
-                    <input type="text" id="postal" name="postal_code" required
-                        class="form-input w-full px-4 py-3 rounded-xl" placeholder="Enter Postal Code">
-                </div>
-
-                <div class="md:col-span-2 space-y-2 mt-2">
-                    <label class="text-sm font-semibold text-zinc-400 ml-1">Password</label>
-                    <input type="password" id="password" name="password" required
-                        class="form-input w-full px-4 py-3 rounded-xl" placeholder="Create a secure password">
-                </div>
-
-                <div class="md:col-span-2 mt-4">
-                    <label class="flex items-center space-x-3 cursor-pointer">
-                        <input type="checkbox" required
-                            class="w-5 h-5 rounded border-zinc-700 bg-zinc-800 text-[#FF3D00] focus:ring-[#FF3D00]">
-                        <span class="text-sm text-zinc-400">I have read and agree to the <a
-                                href="GTSA Final Terms No Advertising.html" class="text-[#FF3D00] hover:underline">Terms
-                                and
-                                Conditions</a> and <a href="privacy.html" class="text-[#FF3D00] hover:underline">Privacy
-                                Policy</a></span>
-                    </label>
-                </div>
-
-                <div class="md:col-span-2 mt-6">
-                    <button type="submit"
-                        class="btn-primary w-full py-4 rounded-xl font-bold text-lg uppercase tracking-wider">
-                        Confirm your registration
-                    </button>
-                </div>
-
-                <div class="md:col-span-2 mt-4 text-center">
-                    <p class="text-zinc-500 text-sm mb-3">Already have an account?</p>
-                    <a href="log_in_page_advertising_placeholder.html"
-                        class="inline-flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold text-sm uppercase tracking-wider border border-zinc-700 text-white hover:border-[#FF3D00] hover:text-[#FF3D00] transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>
-                        </svg>
-                        Login to your account
-                    </a>
+                    <div class="mt-8">
+                        <button type="submit" class="btn-primary w-full py-4 rounded-xl font-bold text-lg uppercase tracking-wider">
+                            Finish & Enter Draw
+                        </button>
+                    </div>
+                    
+                    <p class="text-[10px] text-zinc-600 text-center mt-4 leading-relaxed uppercase tracking-widest font-medium">
+                        By entering, you agree to the Official Rules. <br>
+                        Your data is shared with verified brand partners.
+                    </p>
                 </div>
             </form>
 
@@ -552,7 +483,7 @@
     <script src="js/responsive.js" defer></script>
     <script type="module" src="js/auth-header.js"></script>
     <script type="module">
-        import { NodeAPI } from "./js/api-config.js";
+        import { NodeAPI, API_BASE_URL } from "./js/api-config.js";
 
         // Pre-populate form if user is logged in
         document.addEventListener('DOMContentLoaded', () => {
@@ -613,63 +544,85 @@
             }
         });
 
-        // Check if registrationForm exists and add listener
+        // Setup 2-Step logic
+        const btnNext = document.getElementById('btn-next');
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
         const regForm = document.getElementById('registrationForm');
+
+        if (btnNext && step1 && step2) {
+            btnNext.addEventListener('click', () => {
+                const email = regForm.querySelector('input[name="email"]').value;
+                if (!email) {
+                    alert('Please enter your email to continue.');
+                    return;
+                }
+                step1.classList.add('hidden');
+                step2.classList.remove('hidden');
+            });
+        }
+
         if (regForm) {
             regForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const btn = e.target.querySelector('button[type="submit"]');
                 const originalText = btn.innerText;
-                btn.innerText = "Registering...";
+                btn.innerText = "Entering...";
                 btn.disabled = true;
 
                 const formData = new FormData(e.target);
                 const data = Object.fromEntries(formData.entries());
 
                 try {
-                    // Map form data to backend API requirements
+                    // Send directly to the B2C Lead API instead of user registration
                     const payload = {
                         email: data.email,
-                        password: data.password,
-                        firstName: data.first_name,
-                        lastName: data.surname,
-                        username: data.username,
-                        mobileNumber: data.phone,
-                        areaCode: data.area_code,
-                        ageRange: data.age_range,
-                        gender: data.gender,
+                        phone: data.phone || '',
                         category: data.category,
+                        ageGroup: data.ageGroup,
                         shoppingFreq: data.shoppingFreq,
-                        shoppingHabits: data.shopping_habits,
-                        country: data.country,
-                        state: data.state,
-                        city: data.city,
-                        postalCode: data.postal_code,
-                        role: 'user'
+                        gender: data.gender || ''
                     };
 
-                    // 1. Call Node.js backend Registration API
-                    const response = await NodeAPI.register(payload);
+                    const response = await fetch(`${API_BASE_URL}/lead/submit-entry`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
 
-                    // 2. Save token and user details to localStorage using standardized keys
-                    if (response.token) {
-                        localStorage.setItem('GTSA_SESSION_TOKEN', response.token);
-                        localStorage.setItem('GTSA_SESSION_USER', JSON.stringify(response.user));
-
-                        alert("Registration successful! Welcome to GTSA.");
-                        const urlParams = new URLSearchParams(window.location.search);
-                        const redirectUrl = urlParams.get('redirect');
-                        window.location.href = redirectUrl || "index.html";
+                    if (!response.ok) {
+                        throw new Error('Failed to submit entry');
                     }
+                    
+                    const resultData = await response.json();
+                    
+                    // Auto-login the user since they just entered
+                    if (resultData.token) {
+                        localStorage.setItem('GTSA_SESSION_TOKEN', resultData.token);
+                        localStorage.setItem('token', resultData.token);
+                        localStorage.setItem('GTSA_SESSION_USER', JSON.stringify(resultData.user));
+                        localStorage.setItem('user', JSON.stringify(resultData.user));
+                        
+                        // Tell auth-header to update UI
+                        window.dispatchEvent(new Event('auth-changed'));
+                    }
+
+                    // Success State
+                    regForm.innerHTML = `
+                        <div class="text-center py-12 animate-in fade-in zoom-in duration-500">
+                            <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <span class="text-4xl">🎉</span>
+                            </div>
+                            <h3 class="text-3xl font-black text-white mb-4 uppercase italic">You're in the Draw!</h3>
+                            <p class="text-zinc-400 mb-8 font-bold uppercase tracking-widest text-xs leading-relaxed">
+                                Good luck! We've synced your entry. <br> Winners notified at <span class="text-[#FF3D00]">${data.email}</span>
+                            </p>
+                            <a href="index.html" class="inline-block bg-white text-black px-8 py-3 rounded-full font-black uppercase text-xs hover:bg-[#FF3D00] hover:text-white transition-all">Back to Game</a>
+                        </div>
+                    `;
                 } catch (error) {
-                    console.error("Signup Error:", error);
-                    // Handle duplicate user error from database
-                    if (error.message.includes("exists") || error.message.includes("taken")) {
-                        alert("Account already exists with this email or username. Please try logging in.");
-                    } else {
-                        alert("Registration failed: " + error.message);
-                    }
-                } finally {
+                    console.error("Entry Error:", error);
+                    alert("Submission failed: " + error.message);
                     btn.innerText = originalText;
                     btn.disabled = false;
                 }

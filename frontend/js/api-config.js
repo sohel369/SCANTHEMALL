@@ -32,6 +32,19 @@ export const NodeAPI = {
         return response.json();
     },
 
+    async requestMagicLink(email) {
+        const response = await fetch(`${API_BASE_URL}/auth/magic-link`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+        });
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.error || 'Failed to send magic link');
+        }
+        return response.json();
+    },
+
     async subscribe(email) {
         const response = await fetch(`${API_BASE_URL}/newsletter/subscribe`, {
             method: 'POST',

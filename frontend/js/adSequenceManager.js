@@ -8,32 +8,32 @@ class AdSequenceManager {
     stage1: {
       minVisits: 1, maxVisits: 3, name: 'Awareness',
       ads: [
-        { id: 'awareness_1', title: 'Vehicle Wrapping is Growing 18.9% Annually', subtitle: 'While social media stalls at 9.75%', cta: 'See why franchisees are switching' },
-        { id: 'awareness_2', title: 'Success Story', subtitle: 'How franchisees are scaling revenue', cta: 'Read the full story' },
-        { id: 'awareness_3', title: 'Financial Breakdown', subtitle: 'Franchisees report 3x revenue growth in year one', cta: 'Download financial breakdown' }
+        { id: 'awareness_1', title: 'Win $1000 Cash Instantly', subtitle: 'Enter our daily cash sweepstakes with zero friction.', cta: 'Enter Now' },
+        { id: 'awareness_2', title: 'Drive Away in a Luxury Car', subtitle: 'Someone in your area will win. Why not you?', cta: 'See the Car' },
+        { id: 'awareness_3', title: 'Free Daily Prize Draws', subtitle: 'No purchase necessary. Ever.', cta: 'Join the Squad' }
       ]
     },
     stage2: {
       minVisits: 4, maxVisits: 7, name: 'Consideration',
       ads: [
-        { id: 'consideration_1', title: 'Access to 500+ Qualified Leads Monthly', subtitle: 'No cold calling required', cta: 'See lead sources' },
-        { id: 'consideration_2', title: 'Reduced Costs Through Proven Systems', subtitle: 'Bulk material pricing and operational efficiency', cta: 'Compare your current costs' },
-        { id: 'consideration_3', title: 'Enhanced Credibility', subtitle: 'Join our national brand recognition', cta: 'Explore brand benefits' }
+        { id: 'consideration_1', title: 'Choose Your Favorite Category', subtitle: 'Beauty, Automotive, or Tech? Tell us what you want to win.', cta: 'Select Category' },
+        { id: 'consideration_2', title: 'Unlock Local Prizes', subtitle: 'We partner with brands right in your neighborhood.', cta: 'View Local Sponsors' },
+        { id: 'consideration_3', title: 'Boost Your Odds', subtitle: 'Complete your demographic profile to unlock multipliers.', cta: 'Complete Profile' }
       ]
     },
     stage3: {
       minVisits: 8, maxVisits: 14, name: 'Conversion',
       ads: [
-        { id: 'conversion_1', title: 'Early-Mover Advantage', subtitle: 'Limited territories available', cta: 'Claim your territory' },
-        { id: 'conversion_2', title: 'Common Questions Answered', subtitle: 'Capital, support, ROI timeline', cta: 'Schedule a consultation' },
-        { id: 'conversion_3', title: 'Ready to Grow?', subtitle: 'Join 50+ franchisees already succeeding', cta: 'Apply now' }
+        { id: 'conversion_1', title: 'Complete Your Entry Today', subtitle: 'You are one step away from finalizing your ticket.', cta: 'Complete Entry' },
+        { id: 'conversion_2', title: 'Multiply Your Entries 10x', subtitle: 'Refer friends to massively boost your chances.', cta: 'Refer a Friend' },
+        { id: 'conversion_3', title: 'Upload Receipts for Bingo', subtitle: 'Play Billboard Bingo to earn instant rewards.', cta: 'Play Bingo' }
       ]
     },
     stage4: {
       minVisits: 15, maxVisits: Infinity, name: 'Retention & VIP',
       ads: [
-        { id: 'retention_1', title: 'Complete Your Application', subtitle: 'Unlock exclusive onboarding resources', cta: 'Finish your application' },
-        { id: 'retention_2', title: 'Stay Updated', subtitle: 'Market insights and success tips', cta: 'Access resource hub' }
+        { id: 'retention_1', title: 'Last Chance to Enter', subtitle: 'The draw is closing soon. Don\'t miss out!', cta: 'Finalize Entry' },
+        { id: 'retention_2', title: 'VIP Exclusive Rewards', subtitle: 'As a frequent player, you have unlocked a bonus multiplier.', cta: 'Claim Bonus' }
       ]
     }
   };

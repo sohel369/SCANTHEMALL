@@ -21,6 +21,7 @@ import auditRoutes from './routes/audit.routes.js';
 import stripeRoutes from './routes/stripe.routes.js';
 import bonusRoutes from './routes/bonus.routes.js';
 import newsletterRoutes from './routes/newsletter.routes.js';
+import leadRoutes from './routes/lead.routes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -162,6 +163,7 @@ app.use('/api/pages', pagesRoutes);
 app.use('/api/audit', auditRoutes);
 app.use('/api/stripe', stripeRoutes);
 app.use('/api/newsletter', newsletterRoutes);
+app.use('/api/lead', leadRoutes);
 
 // Serve static frontend and panels
 const frontendPath = path.resolve(__dirname, '..', '..', 'frontend');

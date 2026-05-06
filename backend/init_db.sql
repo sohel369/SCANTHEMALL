@@ -343,3 +343,24 @@ CREATE TABLE IF NOT EXISTS newsletter_subscriptions (
 CREATE INDEX IF NOT EXISTS idx_newsletter_email ON newsletter_subscriptions(email);
 
 COMMENT ON TABLE newsletter_subscriptions IS 'Stores emails of users who subscribed to the newsletter';
+
+-- ============================================================================
+-- CASH DRAW LEADS SYSTEM (B2C Data Capture)
+-- ============================================================================
+
+CREATE TABLE IF NOT EXISTS cash_draw_leads (
+  id SERIAL PRIMARY KEY,
+  email TEXT NOT NULL,
+  phone TEXT,
+  category TEXT,
+  age_group TEXT,
+  gender TEXT,
+  shopping_freq TEXT,
+  copper_id TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_cash_draw_leads_email ON cash_draw_leads(email);
+CREATE INDEX IF NOT EXISTS idx_cash_draw_leads_category ON cash_draw_leads(category);
+
+COMMENT ON TABLE cash_draw_leads IS 'Stores leads generated from the cash draw forms including demographic data';
