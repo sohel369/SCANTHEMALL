@@ -67,13 +67,35 @@ export const submitEntry = async (req, res) => {
        setImmediate(async () => {
          const backendUrl = process.env.BACKEND_URL || 'http://127.0.0.1:4000';
          const verifyLink = `${backendUrl}/api/auth/verify?token=${verificationToken}`;
+         
+         const affiliateOffers = getAffiliateLinks(category);
+         const affiliateHtml = affiliateOffers.map(offer => `
+           <div style="margin-top: 15px; padding: 10px; border: 1px solid #eee; border-radius: 8px;">
+             <strong style="color: #FF3D00;">${offer.brand}</strong><br/>
+             <span style="font-size: 13px; color: #555;">${offer.text}</span><br/>
+             <a href="${offer.link}" style="color: #FF3D00; text-decoration: none; font-weight: bold; font-size: 12px;">Shop Now &rarr;</a>
+           </div>
+         `).join('');
+
          const html = `
-           <div style="font-family: sans-serif; padding: 20px;">
-             <h2 style="color: #FF3D00; text-transform: uppercase;">Confirm your entry</h2>
+           <div style="font-family: sans-serif; padding: 20px; max-width: 600px; margin: auto; border: 1px solid #f0f0f0; border-radius: 12px;">
+             <h2 style="color: #FF3D00; text-transform: uppercase; text-align: center;">Confirm your entry</h2>
              <p>Hi there,</p>
              <p>You're almost in! Click the link below to verify your email, confirm your sweepstakes entry, and access your dashboard:</p>
-             <a href="${verifyLink}" style="display: inline-block; padding: 12px 24px; background: #FF3D00; color: white; font-weight: bold; text-decoration: none; border-radius: 8px; margin-top: 10px;">Verify My Entry</a>
-             <p style="margin-top: 20px; font-size: 12px; color: #666;">If you didn't request this, ignore this email.</p>
+             <div style="text-align: center; margin: 30px 0;">
+               <a href="${verifyLink}" style="display: inline-block; padding: 14px 30px; background: #FF3D00; color: white; font-weight: bold; text-decoration: none; border-radius: 8px;">Verify My Entry</a>
+             </div>
+             
+             <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;" />
+             
+             <h3 style="font-size: 14px; text-transform: uppercase; color: #333; margin-bottom: 10px;">Exclusive Partner Offers for You</h3>
+             <p style="font-size: 12px; color: #777;">Based on your interest in <strong>${category}</strong>:</p>
+             ${affiliateHtml}
+             
+             <p style="margin-top: 30px; font-size: 11px; color: #999; text-align: center;">
+               If you didn't request this, ignore this email. <br/>
+               &copy; 2026 Gotta Scan Them All. Associations with these household brands improve our community trust.
+             </p>
            </div>
          `;
          await sendEmail(email, 'Confirm your entry - Gotta Scan Them All', html);
@@ -93,4 +115,42 @@ export const submitEntry = async (req, res) => {
     console.error('Submit Entry Error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+};
+
+const getAffiliateLinks = (category) => {
+  const affiliateMap = {
+    'Apparel & Accessories': [
+      { brand: 'Nike', link: 'https://impact.com', text: 'Gear up with the latest from Nike.' },
+      { brand: 'Adidas', link: 'https://impact.com', text: 'Explore iconic styles at Adidas.' }
+    ],
+    'Beauty': [
+      { brand: 'Sephora', link: 'https://impact.com', text: 'Discover beauty must-haves at Sephora.' },
+      { brand: 'Ulta', link: 'https://impact.com', text: 'Shop top beauty brands at Ulta.' }
+    ],
+    'Home & Garden': [
+      { brand: 'Walmart', link: 'https://impact.com', text: 'Everything for your home at Walmart.' },
+      { brand: 'Home Depot', link: 'https://impact.com', text: 'Start your next project at Home Depot.' }
+    ],
+    'Electronics': [
+      { brand: 'Best Buy', link: 'https://impact.com', text: 'Get the latest tech at Best Buy.' },
+      { brand: 'Microsoft', link: 'https://impact.com', text: 'Empower your work with Microsoft.' }
+    ],
+    'Automotive': [
+      { brand: 'Discount Tire', link: 'https://impact.com', text: 'Quality tires and wheels at Discount Tire.' },
+      { brand: 'AutoZone', link: 'https://impact.com', text: 'Parts and advice at AutoZone.' }
+    ],
+    'Travel': [
+      { brand: 'Uber', link: 'https://impact.com', text: 'Get where you need to go with Uber.' },
+      { brand: 'Expedia', link: 'https://impact.com', text: 'Book your next adventure on Expedia.' }
+    ],
+    'Food & Beverage': [
+      { brand: 'Walmart', link: 'https://impact.com', text: 'Grocery essentials at Walmart.' },
+      { brand: 'DoorDash', link: 'https://impact.com', text: 'Your favorite meals delivered by DoorDash.' }
+    ]
+  };
+
+  return affiliateMap[category] || [
+    { brand: 'Walmart', link: 'https://impact.com', text: 'Shop household brands at Walmart.' },
+    { brand: 'Amazon', link: 'https://impact.com', text: 'Explore deals on Amazon.' }
+  ];
 };

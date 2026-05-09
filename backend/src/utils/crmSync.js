@@ -12,42 +12,40 @@ const syncToCopper = async (formData) => {
 
 /**
  * Hybrid Sync: Sends data to Copper first, then triggers Coffe.ai
+ * বায়ারের নির্দেশনা অনুযায়ী হাইব্রিড সিঙ্ক লজিক
  */
 export const syncHybrid = async (formData) => {
-  // 1. Sync to Copper (The Data Store)
+  // ১. Copper-এ ডেটা সেভ করা (The Data Store)
   const copperResult = await syncToCopper(formData);
   
-  // 2. Trigger Coffe.ai (The AI Engager)
+  // ২. Coffe.ai ট্রিগার করা (The AI Engager)
   try {
-    const coffeApiKey = process.env.COFFE_API_KEY || 'mock-api-key';
+    const coffeApiKey = process.env.COFFE_API_KEY;
     
-    console.log('--- COFFE.AI SYNC TRIGGERED ---');
-    console.log('Payload:', {
-      email: formData.email,
-      phone: formData.phone,
-      category: formData.category || 'Default',
-      age_group: formData.ageGroup || 'Unknown',
-      shopping_freq: formData.shoppingFreq || 'Unknown',
-      campaign_id: 'cash_draw_b2c_2026'
-    });
-
-    if (coffeApiKey !== 'mock-api-key') {
-      await axios.post('https://api.coffe.ai/v1/trigger-campaign', {
+    // API Key না থাকলে আমরা মক লগ দেখাবো
+    if (!coffeApiKey) {
+      console.log('--- COFFE.AI MOCK TRIGGER (No API Key) ---');
+      console.log('Payload:', {
         email: formData.email,
         phone: formData.phone,
         category: formData.category,
         age_group: formData.ageGroup,
-        shopping_freq: formData.shoppingFreq,
         campaign_id: 'cash_draw_b2c_2026'
-      }, {
-        headers: { 'Authorization': `Bearer ${coffeApiKey}` }
       });
-      console.log('Real Coffe.ai API request sent.');
-    } else {
-      console.log('Using mock Coffe API key. Real request skipped.');
+      return copperResult;
     }
+
+    await axios.post('https://api.coffe.ai/v1/trigger-campaign', {
+      email: formData.email,
+      phone: formData.phone,
+      category: formData.category,
+      age_group: formData.ageGroup,
+      campaign_id: 'cash_draw_b2c_2026'
+    }, {
+      headers: { 'Authorization': `Bearer ${coffeApiKey}` }
+    });
     
-    console.log('Lead synced to Copper and AI engagement triggered successfully.');
+    console.log('Lead synced to Copper and Coffe.ai engagement triggered successfully.');
   } catch (error) {
     console.error('Coffe.ai trigger failed, but Copper sync succeeded:', error.message);
   }
