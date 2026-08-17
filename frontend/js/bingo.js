@@ -3,52 +3,43 @@
  */
 
 const CATEGORY_ICONS = [
-    'shopping-bag', 'wallet', 'repeat', 'check-circle', 'search',
-    'heart', 'smartphone', 'mail', 'share-2', 'shirt',
-    'sparkles', 'home', 'star', 'utensils', 'cpu',
-    'car', 'dog', 'stethoscope', 'plane', 'landmark',
-    'graduation-cap', 'building', 'tool', 'party-popper', 'frown'
+    'receipt', 'car', 'toy-brick', 'sparkles', 'users',
+    'shopping-bag', 'graduation-cap', 'calendar-heart', 'landmark', 'dumbbell',
+    'utensils', 'gamepad-2', 'star', 'stethoscope', 'home',
+    'gem', 'scale', 'tv', 'dog', 'building-2',
+    'sun', 'shield-check', 'trophy', 'smartphone', 'plane'
 ];
 
 const BILLBOARD_QUESTIONS = [
-    // 1. Lifestyle & Spending Power
-    { title: "Primary Category", question: "Which category do you spend the most on monthly?", options: ["Apparel & Accessories", "Home & Garden", "Food & Beverage", "Electronics", "Health & Wellness", "Automotive", "Travel", "I prefer not to say"] },
-    { title: "Monthly Spend", question: "How much do you typically spend on non-essential items per month?", options: ["<$100", "$100–$300", "$300–$600", "$600+", "I don't track"] },
-    { title: "Purchase Frequency", question: "How often do you make a purchase over $50?", options: ["Daily", "Weekly", "Monthly", "Rarely", "Only during sales"] },
-    
-    // 2. Decision Drivers
-    { title: "Top Factor", question: "What matters most when you try a new brand?", options: ["Price/Value", "Quality/Durability", "Brand Reputation", "Customer Reviews", "Sustainability/Ethics", "Convenience"] },
-    { title: "Discovery Channel", question: "Where do you usually discover new products?", options: ["Social Media (Instagram/TikTok)", "Search Engines (Google)", "Friend/Family Referral", "Email Newsletters", "In-Store Displays", "Influencer Content"] },
-    { title: "Loyalty Behavior", question: "Do you have a favorite loyalty program or rewards card?", options: ["Yes, I use them often", "Yes, but rarely", "No, I prefer cash discounts", "No, I don't care"] },
+    { title: "Accounting & Tax", question: "Do you use professional accounting or tax services?", options: ["Yes, Annual Tax Return", "Yes, Year-round Business", "No, Self-filed", "Planning to hire one"] },
+    { title: "Automotive Services", question: "How do you maintain your vehicle?", options: ["Dealership Service", "Local Mechanic", "DIY at Home", "No Vehicle"] },
+    { title: "Baby & Toys", question: "Do you regularly shop for baby products or toys?", options: ["Frequently (Weekly/Monthly)", "Occasionally (Gifts/Holidays)", "Rarely", "Never"] },
+    { title: "Beauty & Cosmetic", question: "Where do you buy your beauty & skincare products?", options: ["Mostly Online", "In-Store Specialty", "Department Stores", "Drugstore / Supermarket"] },
+    { title: "Childcare & Aged Care", question: "Are you currently using or planning family care services?", options: ["Childcare/Daycare", "Aged/Senior Care", "Both", "None currently"] },
 
-    // 3. Digital Engagement
-    { title: "Device Preference", question: "Which device do you use most to shop?", options: ["Mobile Phone", "Desktop/Laptop", "Tablet", "Voice Assistant"] },
-    { title: "Email Open Rate", question: "How often do you open promotional emails?", options: ["Always", "Often", "Sometimes", "Rarely", "Never"] },
-    { title: "Social Habits", question: "Which platforms do you use for product research?", options: ["Instagram", "TikTok", "Facebook", "YouTube", "Pinterest", "LinkedIn", "Reddit"] },
+    { title: "Department Stores", question: "How often do you shop at major department stores?", options: ["Weekly", "Monthly", "Seasonal/Holidays", "Rarely"] },
+    { title: "Education & Tutoring", question: "Are you or your family pursuing education/tutoring?", options: ["University/College", "K-12 Tutoring", "Professional Certifications", "No"] },
+    { title: "Events & Wedding", question: "Are you planning a special event or wedding soon?", options: ["Wedding", "Birthday/Anniversary", "Corporate Event", "No upcoming events"] },
+    { title: "Financial & Insurance", question: "What financial or insurance products are you reviewing?", options: ["Home/Auto Insurance", "Life/Health Insurance", "Investments/Mortgages", "None right now"] },
+    { title: "Fitness & Training", question: "What is your primary fitness activity?", options: ["Gym Membership", "Personal Training", "Home Workouts", "Outdoor Sports"] },
 
-    // 4. Industry-Specific Micro-Segments (Bingo Challenge)
-    { title: "Apparel Challenge", question: "Select all categories you have purchased from in the last 3 months:", options: ["Apparel", "Beauty", "Home & Garden", "Food & Beverage", "Electronics", "Auto", "Pets", "Health", "Travel", "Legal/Financial", "Education"] },
-    { title: "Beauty Habits", question: "Do you buy skincare products online or in-store?", options: ["Mostly Online", "Mostly In-Store", "Mix of both", "I rarely buy skincare"] },
-    { title: "Home & Garden", question: "Are you planning a home renovation soon?", options: ["Within 6 months", "Within a year", "No plans", "Just finished one"] },
-
+    { title: "Food & Beverage", question: "How often do you dine out or order food delivery?", options: ["Daily", "Several times a week", "Weekly", "Rarely"] },
+    { title: "Gaming & Esports", question: "Which gaming platform do you use most?", options: ["PC / Steam", "PlayStation / Xbox", "Nintendo Switch", "Mobile Gaming", "Non-gamer"] },
     { title: "FREE SPACE", question: "Claim your bonus entry for the $75,000 Grand Prize!", options: ["Claim Free Space"] },
+    { title: "Health & Medical", question: "How often do you visit a healthcare professional?", options: ["Regular Checkups", "When Needed", "Rarely", "Never"] },
+    { title: "Home & Garden", question: "Are you planning home improvement or gardening projects?", options: ["Within 3 months", "Within a year", "DIY projects", "No plans"] },
 
-    { title: "Food & Beverage", question: "How often do you order food delivery?", options: ["Daily", "Weekly", "Monthly", "Rarely"] },
-    { title: "Electronics", question: "Which electronic device do you plan to buy next?", options: ["Smartphone", "Laptop/Tablet", "Smart Home Device", "Gaming Console", "None"] },
-    { title: "Automotive", question: "What is your primary mode of transport?", options: ["Own Vehicle", "Public Transport", "Rideshare", "Bicycle/Walk"] },
-    
-    { title: "Pets Challenge", question: "Do you own any pets?", options: ["Dog", "Cat", "Other", "No Pets"] },
-    { title: "Health Challenge", question: "How often do you visit a health professional?", options: ["Regularly", "When needed", "Rarely", "Never"] },
-    { title: "Travel Challenge", question: "What is your dream vacation type?", options: ["Beach/Relax", "Adventure/Active", "City/Culture", "Cruise"] },
+    { title: "Jewelry & Luxury", question: "When do you typically purchase luxury items or jewelry?", options: ["Special Milestones", "Holidays/Anniversaries", "Regular Investment", "Rarely"] },
+    { title: "Legal & Professional", question: "Have you required legal or professional advisory services?", options: ["Business Advisory", "Personal/Family Legal", "Real Estate Conveyancing", "Not recently"] },
+    { title: "Media & Entertainment", question: "Which entertainment service do you use daily?", options: ["Streaming (Netflix/HBO)", "Live Events/Concerts", "Cinema/Theatre", "Gaming / YouTube"] },
+    { title: "Pet Care & Supplies", question: "What type of pets do you care for?", options: ["Dog(s)", "Cat(s)", "Birds/Fish/Reptiles", "No Pets"] },
+    { title: "Real Estate & Property", question: "What is your current real estate interest?", options: ["Buying First Home", "Property Investment", "Renting", "Not looking"] },
 
-    { title: "Legal/Financial", question: "Have you used legal/financial services recently?", options: ["Yes, Legal", "Yes, Financial", "Both", "Neither"] },
-    { title: "Education", question: "Are you currently pursuing any education?", options: ["Degree", "Certification", "Short Course", "No"] },
-    
-    // Corners / Diagonal content
-    { title: "Real Estate", question: "Are you looking to buy or rent property soon?", options: ["Buy", "Rent", "Sell", "Not now"] },
-    { title: "IT Support", question: "Do you use IT support for your work/home?", options: ["Yes, Managed Service", "Yes, On-call", "No, I do it myself", "No"] },
-    { title: "Wedding/Events", question: "Planning an event soon?", options: ["Wedding", "Birthday/Party", "Corporate", "No"] },
-    { title: "Frustrations", question: "What is your biggest frustration with online shopping?", options: ["Shipping Costs", "Return Policies", "Product Quality", "Slow Delivery", "Lack of Trust", "Hidden Fees"] }
+    { title: "Renewable & Solar", question: "Are you interested in solar or energy efficiency upgrades?", options: ["Already Have Solar", "Planning to Install", "Exploring Options", "Not now"] },
+    { title: "Security & Protection", question: "Do you use home or business security systems?", options: ["Smart Alarm / CCTV", "Monitored Security", "Basic Locks Only", "Planning Upgrade"] },
+    { title: "Sports & Outdoor", question: "What outdoor or sporting gear do you purchase most?", options: ["Camping/Hiking", "Team Sports", "Water Sports / Cycling", "Rarely"] },
+    { title: "Telecommunications", question: "How frequently do you upgrade your phone or internet plan?", options: ["Every Year", "Every 2-3 Years", "Only when broken", "Contract basis"] },
+    { title: "Travel & Tourism", question: "What is your next dream travel destination?", options: ["International Luxury", "Domestic Roadtrip", "Beach Resort", "Adventure Cruise"] }
 ];
 
 function initBillboard() {
