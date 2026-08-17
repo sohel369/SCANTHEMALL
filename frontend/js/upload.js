@@ -35,10 +35,36 @@ function initUpload() {
         });
     }
 
-    // Trigger file picker
+    // Trigger file picker or industry question flow
     btn.addEventListener("click", (e) => {
         e.preventDefault();
-        fileInput.click();
+
+        // Default to first category if none explicitly selected
+        if (selectedCategoryIndex === null) {
+            const firstCard = categoryGrid ? categoryGrid.querySelector('.category-card') : null;
+            if (firstCard) {
+                firstCard.click();
+            } else {
+                selectedCategoryIndex = 0;
+            }
+        }
+
+        const grid = JSON.parse(localStorage.getItem("billboard_grid") || "[]");
+        const isAnswered = grid[selectedCategoryIndex] === 1;
+
+        if (isAnswered) {
+            // Already answered! Proceed directly to file picker
+            console.log(`GTSA: Category index ${selectedCategoryIndex} already answered. Opening file upload.`);
+            fileInput.click();
+        } else {
+            // Not answered yet! Prompt the mandatory industry question first
+            console.log(`GTSA: Category index ${selectedCategoryIndex} not answered yet. Opening question modal.`);
+            if (typeof window.openBillboardQuestion === 'function') {
+                window.openBillboardQuestion(selectedCategoryIndex, true);
+            } else {
+                fileInput.click();
+            }
+        }
     });
 
     // Handle file selection

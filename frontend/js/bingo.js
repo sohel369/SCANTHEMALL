@@ -120,58 +120,95 @@ function initBillboard() {
 /**
  * Step 1: Open Question Modal
  */
-window.openBillboardQuestion = function(index) {
+window.openBillboardQuestion = function(index, triggerUploadAfter = false) {
     const grid = JSON.parse(localStorage.getItem("billboard_grid") || "[]");
-    if (grid[index] === 1) return; // Already filled
+    
+    // If this square is already answered, skip question immediately
+    if (grid[index] === 1) {
+        console.log(`Billboard Game: Square ${index} already completed. Skipping question.`);
+        if (triggerUploadAfter) {
+            const fileInput = document.getElementById('image-upload');
+            if (fileInput) fileInput.click();
+        }
+        return;
+    }
 
     const questionData = BILLBOARD_QUESTIONS[index];
-    if (!questionData) return;
+    if (!questionData) {
+        if (triggerUploadAfter) {
+            const fileInput = document.getElementById('image-upload');
+            if (fileInput) fileInput.click();
+        }
+        return;
+    }
+
+    // Remove any existing modal
+    const existingModal = document.getElementById('billboard-modal');
+    if (existingModal) existingModal.remove();
 
     const modal = document.createElement('div');
     modal.id = "billboard-modal";
-    modal.className = "fixed inset-0 z-[300] flex items-center justify-center p-6 bg-[#0f172a]/95 backdrop-blur-xl";
-    modal.classList.add('animate-fadeIn');
+    modal.className = "fixed inset-0 z-[300] flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-xl animate-fadeIn";
+
+    const escapedOptions = questionData.options.map(opt => {
+        const safeOpt = opt.replace(/'/g, "\\'");
+        return `
+            <button onclick="submitBillboardAnswer(${index}, '${safeOpt}', ${triggerUploadAfter})" class="w-full text-left bg-white/5 border border-white/10 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl hover:bg-[#FF3D00] hover:text-white hover:border-[#FF3D00] transition-all font-bold text-xs sm:text-sm text-zinc-200">
+                ${opt}
+            </button>
+        `;
+    }).join('');
 
     modal.innerHTML = `
-        <div class="bg-zinc-900 border border-white/10 p-8 rounded-[2.5rem] w-full max-w-md shadow-2xl animate-scaleIn">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-10 h-10 bg-[#e11d48] rounded-xl flex items-center justify-center">
-                    <i data-lucide="${CATEGORY_ICONS[index] || 'help-circle'}" class="w-6 h-6 text-white"></i>
+        <div class="bg-zinc-900 border border-white/15 p-6 sm:p-8 rounded-3xl sm:rounded-[2.5rem] w-full max-w-md shadow-2xl animate-scaleIn text-left relative">
+            <div class="flex items-center gap-3 mb-4 sm:mb-6">
+                <div class="w-10 h-10 bg-[#FF3D00] rounded-xl flex items-center justify-center shadow-lg shadow-[#FF3D00]/30 flex-shrink-0">
+                    <i data-lucide="${CATEGORY_ICONS[index] || 'help-circle'}" class="w-5 h-5 text-white"></i>
                 </div>
-                <h3 class="text-xl font-black uppercase tracking-tight">${questionData.title}</h3>
+                <div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#FF3D00]">Industry Question</span>
+                    <h3 class="text-lg sm:text-xl font-black uppercase tracking-tight text-white leading-tight">${questionData.title}</h3>
+                </div>
             </div>
-            <p class="text-zinc-400 mb-8 font-medium">${questionData.question}</p>
-            <div class="space-y-3">
-                ${questionData.options.map(opt => `
-                    <button onclick="submitBillboardAnswer(${index}, '${opt}')" class="w-full text-left bg-white/5 border border-white/5 p-4 rounded-2xl hover:bg-[#e11d48] hover:text-white transition-all font-bold text-sm">
-                        ${opt}
-                    </button>
-                `).join('')}
+            
+            <p class="text-zinc-300 mb-6 font-medium text-xs sm:text-sm leading-relaxed">${questionData.question}</p>
+            
+            <div class="space-y-2.5 sm:space-y-3 max-h-[50vh] overflow-y-auto pr-1">
+                ${escapedOptions}
             </div>
-            <button onclick="document.getElementById('billboard-modal').remove()" class="w-full mt-6 text-zinc-500 font-bold uppercase text-[10px] tracking-widest hover:text-white transition-colors">
-                Maybe Later
+            
+            <button onclick="document.getElementById('billboard-modal').remove()" class="w-full mt-4 sm:mt-5 text-zinc-500 font-bold uppercase text-[10px] tracking-widest hover:text-zinc-300 transition-colors py-2">
+                Cancel / Choose Another Category
             </button>
         </div>
     `;
 
     document.body.appendChild(modal);
     if (window.lucide) lucide.createIcons();
-}
+};
 
 /**
  * Step 2: Submit Answer
  */
-window.submitBillboardAnswer = function(index, answer) {
+window.submitBillboardAnswer = function(index, answer, triggerUploadAfter = false) {
     console.log(`Billboard Game: Answer for square ${index}: ${answer}`);
     
     let grid = JSON.parse(localStorage.getItem("billboard_grid") || "[]");
+    if (grid.length !== 25) grid = Array(25).fill(0);
     grid[index] = 1;
     localStorage.setItem("billboard_grid", JSON.stringify(grid));
     localStorage.setItem("billboard_last_update", index.toString());
 
+    // Save demographic shopping habit answer
+    const shoppingHabits = JSON.parse(localStorage.getItem("shopping_habits") || "{}");
+    const questionData = BILLBOARD_QUESTIONS[index];
+    if (questionData) {
+        shoppingHabits[questionData.title] = answer;
+        localStorage.setItem("shopping_habits", JSON.stringify(shoppingHabits));
+    }
+
     // Data Collection Hook: Sync with LeadGen strategy
-    if (window.LeadGen) {
-        const questionData = BILLBOARD_QUESTIONS[index];
+    if (window.LeadGen && questionData) {
         window.LeadGen.formData.category = questionData.title;
         console.log("Billboard Game: Synced category interest:", questionData.title);
     }
@@ -186,16 +223,17 @@ window.submitBillboardAnswer = function(index, answer) {
     // Sync to backend if logged in
     if (window.NodeAPI && window.NodeAPI.isAuthenticated()) {
         const completedLines = JSON.parse(localStorage.getItem("completed_lines") || "[]");
-        const shoppingHabits = JSON.parse(localStorage.getItem("shopping_habits") || "{}");
-        
-        // Update shopping habits with this answer
-        const questionData = BILLBOARD_QUESTIONS[index];
-        shoppingHabits[questionData.title] = answer;
-        localStorage.setItem("shopping_habits", JSON.stringify(shoppingHabits));
-
         window.NodeAPI.updateBillboard(grid, completedLines, shoppingHabits).catch(err => {
             console.error("GTSA Billboard: Failed to sync with backend", err);
         });
+    }
+
+    // If this answer was submitted during upload flow, automatically trigger file picker
+    if (triggerUploadAfter) {
+        setTimeout(() => {
+            const fileInput = document.getElementById('image-upload');
+            if (fileInput) fileInput.click();
+        }, 150);
     }
 };
 
@@ -328,6 +366,23 @@ window.renderBillboardGrid = function() {
     `}).join('');
     
     if (window.lucide) lucide.createIcons();
+    
+    // Sync completed state to larger 25 category cards on page
+    const categoryCards = document.querySelectorAll('.category-card');
+    categoryCards.forEach(card => {
+        const idx = parseInt(card.getAttribute('data-index'));
+        if (!isNaN(idx) && grid[idx] === 1) {
+            card.classList.add('ring-1', 'ring-emerald-500/60', 'border-emerald-500/40');
+            if (!card.querySelector('.completed-badge')) {
+                const badge = document.createElement('div');
+                badge.className = 'completed-badge absolute top-1.5 right-1.5 w-4 h-4 bg-emerald-500 text-black rounded-full flex items-center justify-center shadow-md';
+                badge.innerHTML = '<i data-lucide="check" class="w-2.5 h-2.5 stroke-[3]"></i>';
+                card.appendChild(badge);
+            }
+        }
+    });
+    if (window.lucide) lucide.createIcons();
+
     console.log("Billboard Game: Rendered.");
 }
 

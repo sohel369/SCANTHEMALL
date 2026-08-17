@@ -6,8 +6,13 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "start": "npx serve frontend -l 3000 --no-clipboard",
-    "build": "echo 'Static frontend - no build needed'"
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend dev",
+    "build": "npm --prefix backend run build",
+    "init:db": "npm --prefix backend run init-db",
+    "seed:data": "npm --prefix backend run seed-data",
+    "seed:users": "npm --prefix backend run seed-users",
+    "serve:frontend": "npx serve frontend -l 3000 --no-clipboard"
   },
   "dependencies": {
     "serve": "^14.2.1"

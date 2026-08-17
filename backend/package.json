@@ -8,7 +8,8 @@
     "start": "node src/index.js",
     "build": "echo 'Building panels...' && cd ../admin-panel && npm install && npm run build && cd ../advertiser-panel && npm install && npm run build",
     "init-db": "node scripts/init-db.js",
-    "seed-data": "node scripts/seed-data.js"
+    "seed-data": "node scripts/seed-data.js",
+    "seed-users": "node scripts/seed-users.js"
   },
   "dependencies": {
     "axios": "^1.15.2",

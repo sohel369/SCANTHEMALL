@@ -26,7 +26,21 @@ export const submitEntry = async (req, res) => {
 
     const copperId = crmResult?.copperId || null;
 
-    // 3. Save to database
+    // 3. Save to database (ensuring table and columns exist)
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS cash_draw_leads (
+        id SERIAL PRIMARY KEY,
+        email TEXT NOT NULL,
+        phone TEXT,
+        category TEXT,
+        age_group TEXT,
+        gender TEXT,
+        shopping_freq TEXT,
+        copper_id TEXT,
+        created_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
+
     const query = `
       INSERT INTO cash_draw_leads 
       (email, phone, category, age_group, gender, shopping_freq, copper_id)
@@ -38,6 +52,11 @@ export const submitEntry = async (req, res) => {
     const result = await pool.query(query, values);
 
     // 4. Auto-create or fetch user account
+    await pool.query(`
+      ALTER TABLE users ADD COLUMN IF NOT EXISTS is_verified BOOLEAN DEFAULT false;
+      ALTER TABLE users ADD COLUMN IF NOT EXISTS verification_token VARCHAR(255);
+    `);
+
     let userResult = await pool.query('SELECT * FROM users WHERE email=$1', [email]);
     let user = userResult.rows[0];
     let verificationToken = crypto.randomBytes(32).toString("hex");
@@ -53,6 +72,33 @@ export const submitEntry = async (req, res) => {
         await pool.query('UPDATE users SET verification_token = $1 WHERE id = $2', [verificationToken, user.id]);
     } else {
         verificationToken = null; // Already verified
+    }
+
+    // 5. Ensure profile exists and has demographic data
+    try {
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS user_profiles (
+          user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+          category TEXT,
+          age_range TEXT,
+          shopping_freq TEXT,
+          gender TEXT
+        );
+        ALTER TABLE user_profiles ADD COLUMN IF NOT EXISTS category TEXT;
+        ALTER TABLE user_profiles ADD COLUMN IF NOT EXISTS age_range TEXT;
+        ALTER TABLE user_profiles ADD COLUMN IF NOT EXISTS shopping_freq TEXT;
+        ALTER TABLE user_profiles ADD COLUMN IF NOT EXISTS gender TEXT;
+        
+        INSERT INTO user_profiles (user_id, category, age_range, shopping_freq, gender)
+        VALUES ($1, $2, $3, $4, $5)
+        ON CONFLICT (user_id) DO UPDATE SET
+          category = EXCLUDED.category,
+          age_range = EXCLUDED.age_range,
+          shopping_freq = EXCLUDED.shopping_freq,
+          gender = EXCLUDED.gender;
+      `, [user.id, category, ageGroup, shoppingFreq, gender || null]);
+    } catch (profErr) {
+      console.warn("User profile sync notice:", profErr.message);
     }
     
     // Generate Token

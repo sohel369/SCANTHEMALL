@@ -18,11 +18,15 @@ async function migrate() {
     `);
 
     console.log('🔄 Adding sample Australian billboard for testing...');
-    await pool.query(`
-      INSERT INTO billboards (advertiser_id, advertiser_name, postal_code, country, state, sector, active)
-      VALUES (9, 'Sydney Outdoor Media', '2000', 'AU', 'New South Wales', 'Entertainment', true)
-      ON CONFLICT DO NOTHING;
-    `);
+    const advRes = await pool.query("SELECT id FROM users WHERE role = 'advertiser' LIMIT 1");
+    const advId = advRes.rows[0]?.id || null;
+    if (advId) {
+      await pool.query(`
+        INSERT INTO billboards (advertiser_id, advertiser_name, postal_code, country, state, sector, active)
+        VALUES ($1, 'Sydney Outdoor Media', '2000', 'AU', 'New South Wales', 'Entertainment', true)
+        ON CONFLICT DO NOTHING;
+      `, [advId]);
+    }
 
     console.log('✅ Migration completed successfully!');
   } catch (err) {
