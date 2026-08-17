@@ -178,6 +178,9 @@ console.log(`- Advertiser: ${advertiserPath} (Exists: ${fs.existsSync(advertiser
 // Admin Panel
 if (fs.existsSync(adminPath)) {
   app.use('/admin', express.static(adminPath, { maxAge: '1y', etag: true }));
+  app.get('/admin', (req, res) => {
+    res.sendFile(path.join(adminPath, 'index.html'));
+  });
   app.get('/admin/*', (req, res) => {
     res.sendFile(path.join(adminPath, 'index.html'));
   });
@@ -186,6 +189,9 @@ if (fs.existsSync(adminPath)) {
 // Advertiser Panel
 if (fs.existsSync(advertiserPath)) {
   app.use('/advertiser', express.static(advertiserPath, { maxAge: '1y', etag: true }));
+  app.get('/advertiser', (req, res) => {
+    res.sendFile(path.join(advertiserPath, 'index.html'));
+  });
   app.get('/advertiser/*', (req, res) => {
     res.sendFile(path.join(advertiserPath, 'index.html'));
   });
