@@ -14606,7 +14606,7 @@
               class="relative aspect-video bg-black rounded-[2.3rem] overflow-hidden border border-white/10 shadow-2xl">
               <video id="how-it-works-video" class="w-full h-full object-cover"
                 poster="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&q=80&w=1200"
-                playsinline>
+                playsinline muted>
                 <source src="assets/how-it-works.mp4" type="video/mp4">
                 <source
                   src="https://assets.mixkit.co/videos/preview/mixkit-luxury-car-driving-through-the-city-at-night-41011-large.mp4"
@@ -14615,8 +14615,8 @@
 
               <!-- Cinema 8 Fallback Iframe (Hidden by default) -->
               <iframe id="how-it-works-yt" class="hidden absolute inset-0 w-full h-full border-0"
-                src="https://cinema8.com/video/8XrR178X"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                src="https://cinema8.com/video/8XrR178X?autoplay=0&muted=1"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                 allowfullscreen>
               </iframe>
 
@@ -15151,7 +15151,7 @@
         <div class="max-w-4xl mx-auto">
           <div
             class="aspect-video bg-zinc-900 rounded-[2rem] border border-white/10 overflow-hidden shadow-2xl shadow-[#FF3D00]/10">
-            <iframe class="w-full h-full" src="https://cinema8.com/video/8XrR178X?autoplay=0"
+            <iframe class="w-full h-full" src="https://cinema8.com/video/8XrR178X?autoplay=0&muted=1"
               title="Gotta Scan Them All Explainer - Part 1" frameborder="0"
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
               allowfullscreen></iframe>
