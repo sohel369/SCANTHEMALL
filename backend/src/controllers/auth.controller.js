@@ -328,3 +328,36 @@ export const verifyEmail = async (req, res) => {
     res.status(500).send("Verification failed");
   }
 };
+
+export const forgotPassword = async (req, res) => {
+  const { email, newPassword } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ error: 'Email address is required' });
+  }
+
+  try {
+    const userRes = await pool.query('SELECT id, email, role FROM users WHERE email = $1', [email]);
+    if (userRes.rows.length === 0) {
+      return res.status(404).json({ error: 'No account found with this email address' });
+    }
+
+    if (newPassword) {
+      const hashed = await bcrypt.hash(newPassword, 10);
+      await pool.query('UPDATE users SET password = $1 WHERE email = $2', [hashed, email]);
+      return res.json({ message: 'Password updated successfully. You can now login with your new password.' });
+    } else {
+      const tempPassword = 'Gtsa' + Math.floor(100000 + Math.random() * 900000) + '!';
+      const hashed = await bcrypt.hash(tempPassword, 10);
+      await pool.query('UPDATE users SET password = $1 WHERE email = $2', [hashed, email]);
+      return res.json({
+        message: 'Password reset successful!',
+        tempPassword,
+        note: `Your new temporary password is: ${tempPassword}. Please login and update it.`
+      });
+    }
+  } catch (err) {
+    console.error('Forgot password error:', err);
+    res.status(500).json({ error: 'Server error during password reset' });
+  }
+};

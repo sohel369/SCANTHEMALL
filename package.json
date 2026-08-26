@@ -6,13 +6,13 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "start": "npm --prefix backend start",
-    "dev": "npm --prefix backend dev",
-    "build": "npm --prefix backend run build",
+    "dev": "npx serve frontend -l 3000 --no-clipboard",
+    "start": "npx serve frontend -l 3000 --no-clipboard",
+    "serve:frontend": "npx serve frontend -l 3000 --no-clipboard",
+    "dev:backend": "npm --prefix backend run dev",
     "init:db": "npm --prefix backend run init-db",
     "seed:data": "npm --prefix backend run seed-data",
-    "seed:users": "npm --prefix backend run seed-users",
-    "serve:frontend": "npx serve frontend -l 3000 --no-clipboard"
+    "seed:users": "npm --prefix backend run seed-users"
   },
   "dependencies": {
     "serve": "^14.2.1"

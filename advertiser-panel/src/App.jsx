@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AdvertiserRoutes from "./routes/AdvertiserRoutes";
 import LoginPage from "./pages/Auth/LoginPage";
 import RegisterPage from "./pages/Auth/RegisterPage";
+import ForgotPasswordPage from "./pages/Auth/ForgotPasswordPage";
 import { useAuth } from "./hooks/useAuth";
 
 export default function App() {
@@ -31,6 +32,10 @@ export default function App() {
         <Route
           path="/register"
           element={<RegisterPage onRegistered={handleAuthSuccess} />}
+        />
+        <Route
+          path="/forgot-password"
+          element={<ForgotPasswordPage />}
         />
         <Route
           path="/advertiser/*"

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25-Category Sweepstakes Survey | Gotta Scan Them All™</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0a0c; color: #ffffff; }
+        .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(24px); border: 1px solid rgba(255, 61, 0, 0.2); }
+        .neon-glow { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.15; pointer-events: none; }
+        .option-btn { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 16px 20px; transition: all 0.2s ease; width: 100%; text-align: left; display: flex; align-items: center; justify-content: space-between; }
+        .option-btn:hover { background: rgba(255, 61, 0, 0.1); border-color: #ff3d00; transform: translateY(-2px); }
+        .btn-rose { background: linear-gradient(90deg, #ff3d00, #ffb300); color: white; font-weight: 800; border-radius: 12px; padding: 14px 24px; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.05em; }
+        .btn-rose:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(255, 61, 0, 0.4); }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 bg-[#0a0a0c] text-white relative overflow-x-hidden">
+    <!-- Ambient Glows -->
+    <div class="neon-glow bg-[#ff3d00] w-[500px] h-[500px] -top-48 -right-48"></div>
+    <div class="neon-glow bg-[#ffb300] w-[400px] h-[400px] -bottom-32 -left-32"></div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ff3d00]/10 border border-[#ff3d00]/30 text-[#ff3d00] text-xs font-black uppercase tracking-widest mb-4">
+                🏆 Official $75,000+ Luxury Draw System
+            </div>
+            <h1 class="text-3xl md:text-5xl font-black uppercase italic tracking-tight mb-3">
+                Predict Shopping Habits <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ff3d00] to-[#ffb300]">& Win Luxury Prizes</span>
+            </h1>
+            <p class="text-zinc-400 text-sm max-w-2xl mx-auto leading-relaxed">
+                Complete rapid 2–4 question preference quizzes across 25 categories (under 30s each). Each category earns verified tickets for the $50k Car, $10k Vacation, Gold & Beauty draws!
+            </p>
+
+            <!-- Global Progress Bar -->
+            <div class="glass-card max-w-2xl mx-auto rounded-2xl p-4 mt-6">
+                <div class="flex justify-between items-center text-xs font-bold mb-2">
+                    <span id="cat-indicator" class="text-zinc-300">Category <span id="current-cat-num" class="text-[#ff3d00]">1</span> of 25: <strong id="current-cat-name">Automotive Services</strong></span>
+                    <span id="total-progress-pct" class="text-[#ffb300]">0% Completed</span>
+                </div>
+                <div class="w-full bg-zinc-800/80 rounded-full h-2 overflow-hidden">
+                    <div id="progress-bar-fill" class="bg-gradient-to-r from-[#ff3d00] to-[#ffb300] h-full w-0 transition-all duration-300"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Survey Question Card (Left 2 cols) -->
+            <div class="lg:col-span-2 glass-card rounded-3xl p-6 md:p-10 flex flex-col justify-between min-h-[420px]">
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <span id="q-step-badge" class="text-[11px] font-black uppercase tracking-widest text-zinc-400 bg-white/5 px-3 py-1 rounded-lg">
+                            Question 1
+                        </span>
+                        <button id="skip-cat-btn" class="text-xs font-bold text-zinc-500 hover:text-white transition-colors">
+                            Skip Category &rarr;
+                        </button>
+                    </div>
+
+                    <div id="cat-label-tag" class="text-xs font-black uppercase tracking-wider text-[#ff3d00] mb-2">
+                        Automotive Services
+                    </div>
+
+                    <h2 id="question-text" class="text-xl md:text-2xl font-black mb-6 leading-snug">
+                        Do you currently own or lease a vehicle, or plan to acquire one soon?
+                    </h2>
+
+                    <!-- Options Container -->
+                    <div id="options-container" class="space-y-3">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <div class="text-center text-[11px] text-zinc-500 mt-6 pt-4 border-t border-white/5">
+                    ⚡ Single tap automatically saves your preferences and unlocks your draw entry.
+                </div>
+            </div>
+
+            <!-- Sidebar: Tickets & Categories Drawer (Right 1 col) -->
+            <div class="space-y-6">
+                <!-- Earned Tickets Panel -->
+                <div class="glass-card rounded-3xl p-6">
+                    <h3 class="text-xs font-black uppercase tracking-[0.2em] text-zinc-300 mb-4 flex items-center gap-2">
+                        <i data-lucide="ticket" class="w-4 h-4 text-[#ff3d00]"></i> Your Earned Draw Tickets
+                    </h3>
+                    <div id="tickets-list" class="space-y-2.5">
+                        <div class="flex justify-between items-center bg-white/5 p-3 rounded-xl border border-white/5">
+                            <span class="text-xs font-bold text-zinc-300">🚗 $50,000 Luxury Car</span>
+                            <span id="ticket-car-count" class="text-xs font-black text-white bg-[#ff3d00] px-2.5 py-0.5 rounded-full">0 Entries</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white/5 p-3 rounded-xl border border-white/5">
+                            <span class="text-xs font-bold text-zinc-300">✈️ $10,000 Vacation</span>
+                            <span id="ticket-vacation-count" class="text-xs font-black text-white bg-[#00c6ff] px-2.5 py-0.5 rounded-full">0 Entries</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white/5 p-3 rounded-xl border border-white/5">
+                            <span class="text-xs font-bold text-zinc-300">🪙 $5,000 Gold & Silver</span>
+                            <span id="ticket-gold-count" class="text-xs font-black text-white bg-[#d4af37] px-2.5 py-0.5 rounded-full">0 Entries</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white/5 p-3 rounded-xl border border-white/5">
+                            <span class="text-xs font-bold text-zinc-300">👜 $5,000 Fashion Spree</span>
+                            <span id="ticket-fashion-count" class="text-xs font-black text-white bg-[#e11d48] px-2.5 py-0.5 rounded-full">0 Entries</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white/5 p-3 rounded-xl border border-white/5">
+                            <span class="text-xs font-bold text-zinc-300">✨ $5,000 Health & Beauty</span>
+                            <span id="ticket-beauty-count" class="text-xs font-black text-white bg-[#10b981] px-2.5 py-0.5 rounded-full">0 Entries</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 25 Categories Quick List -->
+                <div class="glass-card rounded-3xl p-6">
+                    <h3 class="text-xs font-black uppercase tracking-[0.2em] text-zinc-300 mb-3 flex items-center gap-2">
+                        <i data-lucide="layers" class="w-4 h-4 text-[#ffb300]"></i> 25 Categories Overview
+                    </h3>
+                    <div id="cat-drawer-list" class="space-y-1.5 max-h-56 overflow-y-auto pr-1">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration Modal -->
+    <div id="reward-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
+        <div class="glass-card max-w-sm w-full rounded-3xl p-8 text-center border-[#ff3d00]/30 animate-in zoom-in duration-200">
+            <div class="text-5xl mb-3">🎉</div>
+            <h3 class="text-2xl font-black uppercase italic tracking-tight mb-2">Draw Entry Unlocked!</h3>
+            <p id="modal-desc-text" class="text-zinc-400 text-xs leading-relaxed mb-6">
+                You have earned +1 Entry into the <strong>$50,000 Luxury Car Draw</strong>!
+            </p>
+            <button id="modal-next-btn" class="w-full btn-rose">
+                Continue to Next Category &rarr;
+            </button>
+        </div>
+    </div>
+
+    <!-- Load rules & engine -->
+    <script>
+        const categories = [
+            {
+                id: "automotive_services",
+                name: "Automotive Services",
+                prize: "car",
+                prizeName: "$50,000 Luxury Motor Vehicle",
+                questions: [
+                    {
+                        id: "q_auto_1",
+                        text: "Do you currently own or lease a vehicle, or plan to acquire one soon?",
+                        options: [
+                            { label: "Yes – Own or Lease", value: "own", next: 1 },
+                            { label: "Planning to buy / lease soon", value: "plan", next: 1 },
+                            { label: "No vehicle / Not interested", value: "no", isExit: true },
+                            { label: "Prefer not to say", value: "pnts", isExit: true }
+                        ]
+                    },
+                    {
+                        id: "q_auto_2",
+                        text: "What service or purchase are you most likely to need in the next 6–12 months?",
+                        options: [
+                            { label: "Regular servicing / repairs / tyres", value: "service", next: 2 },
+                            { label: "Vehicle purchase or major upgrade", value: "purchase", next: 2 },
+                            { label: "None soon", value: "none", isExit: true }
+                        ]
+                    },
+                    {
+                        id: "q_auto_3",
+                        text: "Approximate budget range for your next vehicle purchase or servicing?",
+                        options: [
+                            { label: "Under $15,000", value: "low", isExit: true },
+                            { label: "$15,000 – $40,000", value: "mid", isExit: true },
+                            { label: "$40,000+ (Luxury / Premium)", value: "premium", isExit: true }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "travel_tourism",
+                name: "Travel & Tourism",
+                prize: "vacation",
+                prizeName: "$10,000 Dream Vacation",
+                questions: [
+                    {
+                        id: "q_trav_1",
+                        text: "Where is your next dream vacation or holiday trip?",
+                        options: [
+                            { label: "International Luxury Resort / Long-haul", value: "intl", next: 1 },
+                            { label: "Cruise / All-Inclusive Holiday Package", value: "cruise", next: 1 },
+                            { label: "Domestic Short Break", value: "dom", next: 1 },
+                            { label: "No travel plans this year", value: "none", isExit: true }
+                        ]
+                    },
+                    {
+                        id: "q_trav_2",
+                        text: "What is your approximate overall travel budget?",
+                        options: [
+                            { label: "Under $1,500", value: "low", isExit: true },
+                            { label: "$1,500 – $5,000", value: "mid", isExit: true },
+                            { label: "$5,000 – $15,000+ (First Class)", value: "premium", isExit: true }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "financial_insurance",
+                name: "Financial and Insurance Services",
+                prize: "gold",
+                prizeName: "$5,000 Gold & Silver Bullion",
+                questions: [
+                    {
+                        id: "q_fin_1",
+                        text: "Which financial products or advisory are you actively reviewing?",
+                        options: [
+                            { label: "Health / Life / Home Insurance", value: "insurance", next: 1 },
+                            { label: "Mortgage / Refinancing / Wealth Advisory", value: "mortgage", next: 1 },
+                            { label: "Not currently reviewing", value: "none", isExit: true }
+                        ]
+                    },
+                    {
+                        id: "q_fin_2",
+                        text: "When do you expect to make your next decision or policy review?",
+                        options: [
+                            { label: "Within 1–3 months", value: "immediate", isExit: true },
+                            { label: "3–12 months", value: "3-12m", isExit: true },
+                            { label: "Researching rates only", value: "exploring", isExit: true }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "lifestyle_boutique_apparel",
+                name: "Lifestyle, Boutique, Apparel & Accessories",
+                prize: "fashion",
+                prizeName: "$5,000 Designer Fashion Spree",
+                questions: [
+                    {
+                        id: "q_life_1",
+                        text: "What luxury fashion or boutique items interest you most?",
+                        options: [
+                            { label: "Designer Apparel, Bags & Handbags", value: "apparel", next: 1 },
+                            { label: "Watches & Fine Jewellery", value: "jewelry", next: 1 },
+                            { label: "Rarely shop for fashion", value: "none", isExit: true }
+                        ]
+                    },
+                    {
+                        id: "q_life_2",
+                        text: "Typical annual spend on designer and boutique apparel?",
+                        options: [
+                            { label: "Under $1,000", value: "low", isExit: true },
+                            { label: "$1,000 – $3,000", value: "mid", isExit: true },
+                            { label: "$3,000+ (High-End Luxury)", value: "premium", isExit: true }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "beauty_cosmetic_surgery",
+                name: "Beauty and Cosmetic Surgery",
+                prize: "beauty",
+                prizeName: "$5,000 Health & Beauty Vouchers",
+                questions: [
+                    {
+                        id: "q_beauty_1",
+                        text: "What beauty or cosmetic treatments interest you right now?",
+                        options: [
+                            { label: "Skincare & Non-invasive treatments", value: "skin", next: 1 },
+                            { label: "Injectables, Cosmetic clinics or Spa", value: "clinic", next: 1 },
+                            { label: "None / Just browsing", value: "none", isExit: true }
+                        ]
+                    },
+                    {
+                        id: "q_beauty_2",
+                        text: "Approximate budget for treatments in the next 12 months?",
+                        options: [
+                            { label: "Under $500", value: "low", isExit: true },
+                            { label: "$500 – $2,000", value: "mid", isExit: true },
+                            { label: "$2,000+ (Premium passes)", value: "premium", isExit: true }
+                        ]
+                    }
+                ]
+            },
+            { id: "accounting_tax", name: "Accounting & Tax Services", prize: "gold", prizeName: "$5,000 Gold Bullion", questions: [{ id: "q_acc_1", text: "Do you require personal or business tax returns?", options: [{ label: "Yes – Personal or Business Tax", value: "yes", isExit: true }, { label: "No current requirement", value: "no", isExit: true }] }] },
+            { id: "baby_clothes", name: "Baby Clothes, Accessories & Toys", prize: "fashion", prizeName: "$5,000 Fashion Spree", questions: [{ id: "q_baby_1", text: "Are you shopping for a young child (0–5 yrs) or gifts?", options: [{ label: "Yes – Parent or Expecting", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "childcare_aged", name: "Childcare & Aged Care Providers", prize: "gold", prizeName: "$5,000 Gold Bullion", questions: [{ id: "q_care_1", text: "Are you seeking childcare or elder care services?", options: [{ label: "Yes – Seeking provider options", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "dept_electronics", name: "Department Stores and Electronics", prize: "car", prizeName: "$50,000 Luxury Car", questions: [{ id: "q_elec_1", text: "Planning to purchase smart tech or appliances?", options: [{ label: "Yes – In next 1–6 months", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "education_tutoring", name: "Education & Tutoring", prize: "gold", prizeName: "$5,000 Gold Bullion", questions: [{ id: "q_edu_1", text: "Are you or your family looking for tutoring/courses?", options: [{ label: "Yes – School or Adult Learning", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "event_wedding", name: "Event & Wedding Services", prize: "vacation", prizeName: "$10,000 Dream Vacation", questions: [{ id: "q_ev_1", text: "Planning a wedding, party, or celebration?", options: [{ label: "Yes – In next 12–24 months", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "fitness_training", name: "Fitness & Personal Training", prize: "beauty", prizeName: "$5,000 Beauty Pass", questions: [{ id: "q_fit_1", text: "Looking for gym membership or personal coaching?", options: [{ label: "Yes – Active fitness goals", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "home_garden", name: "Home & Garden", prize: "car", prizeName: "$50,000 Luxury Car", questions: [{ id: "q_home_1", text: "Planning home renovations, décor, or landscaping?", options: [{ label: "Yes – Renovations or Styling", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "health_medical", name: "Health, Wellness & Medical", prize: "beauty", prizeName: "$5,000 Beauty Pass", questions: [{ id: "q_med_1", text: "Seeking private GP, dental, or wellness appointments?", options: [{ label: "Yes", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "it_support", name: "IT & Tech Support Services", prize: "car", prizeName: "$50,000 Luxury Car", questions: [{ id: "q_it_1", text: "Require business IT or device support?", options: [{ label: "Yes", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "legal_services", name: "Legal Services, Lawyers and Mediation", prize: "gold", prizeName: "$5,000 Gold Bullion", questions: [{ id: "q_leg_1", text: "Need legal document preparation or counsel?", options: [{ label: "Yes", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "mobile_internet", name: "Mobile Phone and Internet Services", prize: "car", prizeName: "$50,000 Luxury Car", questions: [{ id: "q_mob_1", text: "Considering upgrading 5G mobile or home fiber?", options: [{ label: "Yes", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "pets_animals", name: "Pets & Animals", prize: "beauty", prizeName: "$5,000 Beauty Pass", questions: [{ id: "q_pet_1", text: "Do you have pets or plan to adopt?", options: [{ label: "Yes – Pet owner", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "pro_training", name: "Professional Training & Certification", prize: "gold", prizeName: "$5,000 Gold Bullion", questions: [{ id: "q_pro_1", text: "Seeking professional certifications or upskilling?", options: [{ label: "Yes", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "radio_tv", name: "Radio and TV Stations", prize: "car", prizeName: "$50,000 Luxury Car", questions: [{ id: "q_rtv_1", text: "How do you consume broadcast & streaming media?", options: [{ label: "Streaming & Broadcast mix", value: "stream", isExit: true }, { label: "Rarely", value: "no", isExit: true }] }] },
+            { id: "real_estate", name: "Real Estate & Property Agents", prize: "gold", prizeName: "$5,000 Gold Bullion", questions: [{ id: "q_re_1", text: "Looking to buy, sell, or rent property?", options: [{ label: "Yes – Buying or Selling", value: "buy", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "restaurants_food", name: "Restaurants, Food & Beverage", prize: "fashion", prizeName: "$5,000 Fashion Spree", questions: [{ id: "q_food_1", text: "How often do you dine out or order premium delivery?", options: [{ label: "Weekly / Frequently", value: "weekly", isExit: true }, { label: "Rarely", value: "rarely", isExit: true }] }] },
+            { id: "storage_logistics", name: "Storage, Logistics and Removalists", prize: "gold", prizeName: "$5,000 Gold Bullion", questions: [{ id: "q_stor_1", text: "Require home removalists or self-storage?", options: [{ label: "Yes", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "trades_services", name: "Trades & Home Services", prize: "car", prizeName: "$50,000 Luxury Car", questions: [{ id: "q_trd_1", text: "Need licensed trades (Plumbing, Electrical, Roofing)?", options: [{ label: "Yes", value: "yes", isExit: true }, { label: "No", value: "no", isExit: true }] }] },
+            { id: "funeral_grief", name: "Funeral and Grief Counselling", prize: "gold", prizeName: "$5,000 Gold Bullion", questions: [{ id: "q_fun_1", text: "Exploring pre-planning or family bereavement support?", options: [{ label: "Planning ahead", value: "plan", isExit: true }, { label: "Not applicable", value: "no", isExit: true }] }] }
+        ];
+
+        let currentCatIndex = 0;
+        let currentQuestionStep = 0;
+        let completedCategories = new Set();
+        let tickets = { car: 0, vacation: 0, gold: 0, fashion: 0, beauty: 0 };
+
+        function renderCategory() {
+            const cat = categories[currentCatIndex];
+            const q = cat.questions[currentQuestionStep];
+
+            document.getElementById('current-cat-num').textContent = currentCatIndex + 1;
+            document.getElementById('current-cat-name').textContent = cat.name;
+            document.getElementById('cat-label-tag').textContent = cat.name;
+            document.getElementById('q-step-badge').textContent = `Question ${currentQuestionStep + 1} of ${cat.questions.length}`;
+            document.getElementById('question-text').textContent = q.text;
+
+            const optsContainer = document.getElementById('options-container');
+            optsContainer.innerHTML = '';
+
+            q.options.forEach((opt) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `
+                    <span class="font-bold text-sm text-zinc-200">${opt.label}</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-500"></i>
+                `;
+                btn.onclick = () => handleOptionClick(opt);
+                optsContainer.appendChild(btn);
+            });
+
+            lucide.createIcons();
+            renderDrawer();
+        }
+
+        function handleOptionClick(option) {
+            const cat = categories[currentCatIndex];
+            if (option.isExit || option.next === undefined) {
+                finishCategory();
+            } else {
+                currentQuestionStep = option.next;
+                renderCategory();
+            }
+        }
+
+        function finishCategory() {
+            const cat = categories[currentCatIndex];
+            completedCategories.add(currentCatIndex);
+            tickets[cat.prize] = (tickets[cat.prize] || 0) + 1;
+            updateTicketsDisplay();
+
+            // Show celebration modal
+            document.getElementById('modal-desc-text').innerHTML = `You have earned +1 Entry into the <strong>${cat.prizeName} Draw</strong>!`;
+            document.getElementById('reward-modal').classList.remove('hidden');
+
+            const pct = Math.round((completedCategories.size / categories.length) * 100);
+            document.getElementById('total-progress-pct').textContent = `${pct}% Completed (${completedCategories.size}/25)`;
+            document.getElementById('progress-bar-fill').style.width = `${pct}%`;
+        }
+
+        function updateTicketsDisplay() {
+            document.getElementById('ticket-car-count').textContent = `${tickets.car} Entries`;
+            document.getElementById('ticket-vacation-count').textContent = `${tickets.vacation} Entries`;
+            document.getElementById('ticket-gold-count').textContent = `${tickets.gold} Entries`;
+            document.getElementById('ticket-fashion-count').textContent = `${tickets.fashion} Entries`;
+            document.getElementById('ticket-beauty-count').textContent = `${tickets.beauty} Entries`;
+        }
+
+        function renderDrawer() {
+            const container = document.getElementById('cat-drawer-list');
+            container.innerHTML = '';
+
+            categories.forEach((cat, idx) => {
+                const isDone = completedCategories.has(idx);
+                const isCurrent = idx === currentCatIndex;
+                const div = document.createElement('button');
+                div.className = `w-full flex items-center justify-between text-xs px-3 py-2 rounded-lg transition-all ${
+                    isCurrent ? 'bg-[#ff3d00]/20 text-[#ff3d00] font-black border border-[#ff3d00]/40' : 
+                    isDone ? 'bg-white/5 text-emerald-400 font-bold border border-emerald-500/20' : 
+                    'bg-white/2 text-zinc-400 hover:text-white'
+                }`;
+                div.innerHTML = `
+                    <span class="truncate">${idx + 1}. ${cat.name}</span>
+                    <span>${isDone ? '✓' : ''}</span>
+                `;
+                div.onclick = () => {
+                    currentCatIndex = idx;
+                    currentQuestionStep = 0;
+                    renderCategory();
+                };
+                container.appendChild(div);
+            });
+        }
+
+        document.getElementById('modal-next-btn').onclick = () => {
+            document.getElementById('reward-modal').classList.add('hidden');
+            if (currentCatIndex < categories.length - 1) {
+                currentCatIndex++;
+                currentQuestionStep = 0;
+                renderCategory();
+            }
+        };
+
+        document.getElementById('skip-cat-btn').onclick = () => {
+            if (currentCatIndex < categories.length - 1) {
+                currentCatIndex++;
+                currentQuestionStep = 0;
+                renderCategory();
+            }
+        };
+
+        // Init
+        renderCategory();
+        lucide.createIcons();
+    </script>
+</body>
+</html>

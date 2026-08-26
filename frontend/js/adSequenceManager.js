@@ -26,7 +26,7 @@ class AdSequenceManager {
       ads: [
         { id: 'conversion_1', title: 'Complete Your Entry Today', subtitle: 'You are one step away from finalizing your ticket.', cta: 'Complete Entry' },
         { id: 'conversion_2', title: 'Multiply Your Entries 10x', subtitle: 'Refer friends to massively boost your chances.', cta: 'Refer a Friend' },
-        { id: 'conversion_3', title: 'Upload Receipts for Bingo', subtitle: 'Play Billboard Bingo to earn instant rewards.', cta: 'Play Bingo' }
+        { id: 'conversion_3', title: 'Upload Receipts for Billboard Game', subtitle: 'Play Billboard Game to earn instant rewards.', cta: 'Play Billboard Game' }
       ]
     },
     stage4: {

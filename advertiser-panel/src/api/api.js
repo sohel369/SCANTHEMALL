@@ -61,6 +61,14 @@ export const authAPI = {
     return response;
   },
 
+  forgotPassword: async (email, newPassword) => {
+    const response = await apiRequest('/auth/forgot-password', {
+      method: 'POST',
+      body: JSON.stringify({ email, newPassword }),
+    });
+    return response;
+  },
+
   logout: () => {
     localStorage.removeItem('token');
   },
