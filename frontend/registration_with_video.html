@@ -340,7 +340,7 @@
             <h2 class="text-3xl font-black mb-8 text-center uppercase tracking-tight">How to Enter</h2>
             <div
                 class="aspect-video w-full rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl relative group">
-                <iframe class="w-full h-full" src="https://cinema8.com/video/8XrR178X" title="Gotta Scan Them All Explainer - Part 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+                <iframe id="video-iframe" class="w-full h-full" src="https://cinema8.com/video/8XrR178X" title="Gotta Scan Them All Explainer - Part 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
             </div>
         </section>
 
@@ -721,6 +721,32 @@
                 });
             }
         });
+
+        // Auto-stop video on navigation or tab switch
+        (function() {
+            function stopVideo() {
+                const iframe = document.getElementById('video-iframe');
+                if (iframe && iframe.src) {
+                    const src = iframe.src;
+                    iframe.src = '';
+                    iframe.src = src;
+                }
+            }
+
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) stopVideo();
+            });
+
+            window.addEventListener('beforeunload', stopVideo);
+            window.addEventListener('pagehide', stopVideo);
+
+            document.addEventListener('click', function(e) {
+                const link = e.target.closest('a');
+                if (link && link.href && !link.href.startsWith('javascript:')) {
+                    stopVideo();
+                }
+            });
+        })();
     </script>
     <script type="module" src="js/auth-header.js"></script>
 </body>
