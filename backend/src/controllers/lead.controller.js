@@ -200,3 +200,32 @@ const getAffiliateLinks = (category) => {
     { brand: 'Amazon', link: 'https://impact.com', text: 'Explore deals on Amazon.' }
   ];
 };
+
+export const submitPart2Choices = async (req, res) => {
+  try {
+    const { choices, email } = req.body;
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS part2_lead_unlocks (
+        id SERIAL PRIMARY KEY,
+        email TEXT,
+        selected_options JSONB NOT NULL,
+        created_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
+
+    const result = await pool.query(
+      `INSERT INTO part2_lead_unlocks (email, selected_options) VALUES ($1, $2) RETURNING id`,
+      [email || 'anonymous', JSON.stringify(choices || [])]
+    );
+
+    res.status(201).json({
+      success: true,
+      message: 'Part 2 choices recorded successfully',
+      id: result.rows[0].id
+    });
+  } catch (error) {
+    console.error('Submit Part 2 Choices Error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
