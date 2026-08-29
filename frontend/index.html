@@ -14353,35 +14353,34 @@
       </div>
     </div>
 
-    <!-- MOBILE MENU OVERLAY (Visibility managed by responsive.js) -->
-    <div id="mobile-menu" class="fixed inset-0 z-[110] bg-black/95 backdrop-blur-2xl md:hidden">
-      <div class="flex flex-col h-full p-8">
-        <div class="flex justify-between items-center mb-12">
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 z-[110] bg-black/95 backdrop-blur-2xl md:hidden hidden">
+      <div class="flex flex-col h-full p-6 sm:p-8 overflow-y-auto">
+        <div class="flex justify-between items-center mb-8">
           <div class="flex items-center space-x-2">
             <div class="w-10 h-10 bg-[#FF3D00] rounded-lg flex items-center justify-center">
               <i data-lucide="camera" class="text-white w-6 h-6"></i>
             </div>
-            <span class="text-2xl font-black tracking-tighter text-white uppercase">SCAN<span
+            <span class="text-xl font-extrabold tracking-tighter text-white uppercase">SCAN<span
                 class="text-[#FF3D00]">THEM</span>ALL</span>
           </div>
-          <button id="mobile-menu-close" class="text-white p-2">
+          <button id="mobile-menu-close" class="text-white p-2 hover:text-[#FF3D00] transition-colors">
             <i data-lucide="x" class="w-8 h-8"></i>
           </button>
         </div>
-        <nav class="flex flex-col space-y-6">
-          <a href="index.html" class="text-2xl font-black uppercase text-white hover:text-[#FF3D00]">Home</a>
+        <nav class="flex flex-col space-y-5 pb-8">
+          <a href="index.html" class="text-xl font-bold uppercase text-white hover:text-[#FF3D00] transition-colors">Home</a>
           <a href="GTSA_FInal_Welcome_Page_(About_US).html"
-            class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">About</a>
-          <a href="prize.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Prizes</a>
-          <a href="position.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">My
-            Position</a>
-          <hr class="border-white/10 my-4">
+            class="text-xl font-bold uppercase text-zinc-400 hover:text-[#FF3D00] transition-colors">About Us</a>
+          <a href="prize.html" class="text-xl font-bold uppercase text-zinc-400 hover:text-[#FF3D00] transition-colors">Prizes</a>
+          <a href="position.html" class="text-xl font-bold uppercase text-zinc-400 hover:text-[#FF3D00] transition-colors">My Position</a>
+          <hr class="border-white/10 my-2">
           <a href="log_in_page_advertising_placeholder.html"
-            class="auth-login text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Login</a>
+            class="auth-login text-xl font-bold uppercase text-zinc-400 hover:text-[#FF3D00] transition-colors">Login</a>
           <a href="registration_with_video.html"
-            class="auth-signup text-2xl font-black uppercase text-white border border-white/20 p-4 rounded-2xl text-center mt-4">Sign Up</a>
+            class="auth-signup text-base font-extrabold uppercase text-white border border-white/20 p-3.5 rounded-2xl text-center hover:bg-white/10 transition-all">Sign Up</a>
           <a href="/advertiser"
-            class="bg-[#FF3D00] text-black text-center py-4 rounded-2xl font-black uppercase mt-4">Advertise with Us</a>
+            class="bg-[#FF3D00] text-white text-center py-3.5 rounded-2xl font-extrabold uppercase text-base shadow-lg shadow-[#FF3D00]/30 hover:bg-orange-600 transition-all">Advertise with Us</a>
         </nav>
       </div>
     </div>
