@@ -1,6 +1,8 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
     <link rel="canonical" href="https://scanthemall.com/">
     <!-- Regional SEO Preparation -->
     <!-- <link rel="alternate" hreflang="en-us" href="https://scanthemall.com/us/"> -->
@@ -1183,35 +1185,6 @@
         }
     </style>
     <style>
-        . {
-            outline: 2px solid #4F46E5 !important;
-            /* Indigo-600 for selected */
-            outline-offset: 2px !important;
-            box-shadow: 0 0 0 2px #4F46E5;
-            /* Optional: adds more visual weight */
-        }
-
-        * {}
-
-        *:hover {
-            outline: 1px dashed #6366F1 !important;
-            /* Indigo-500 for hover */
-            outline-offset: 1px !important;
-        }
-
-        /* Ensure body takes up full height for selection to work properly */
-        /* and for visual consistency if the content is short */
-        body {
-            min-height: 100vh;
-            margin: 0;
-            /* Reset default margin */
-        }
-
-        html {
-            height: 100%;
-        }
-    </style>
-    <style>
         *,
         ::before,
         ::after {
@@ -2201,49 +2174,25 @@
             }
         }
     </style>
-    <style>
-        . {
-            outline: 2px solid #4F46E5 !important;
-            /* Indigo-600 for selected */
-            outline-offset: 2px !important;
-            box-shadow: 0 0 0 2px #4F46E5;
-            /* Optional: adds more visual weight */
-        }
-
-        * {}
-
-        *:hover {
-            outline: 1px dashed #6366F1 !important;
-            /* Indigo-500 for hover */
-            outline-offset: 1px !important;
-        }
-
-        /* Ensure body takes up full height for selection to work properly */
-        /* and for visual consistency if the content is short */
-        body {
-            min-height: 100vh;
-            margin: 0;
-            /* Reset default margin */
-        }
-
-        html {
-            height: 100%;
-        }
-    </style>
 </head>
 
 <body class="antialiased">
 
-    <!-- Task 4: Leaderboard Header Ad -->
-    <div class="w-full bg-black py-2 border-b border-zinc-900">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
-            <div class="ad-placeholder h-[90px] w-full max-w-[728px] text-[10px]">Leaderboard (Header)</div>
-            <div class="md:hidden ad-placeholder h-[50px] w-full mt-2 text-[10px]">Mobile Leaderboard</div>
+    <!-- Task 1: Fixed Responsive Header with Ad Banner inside -->
+    <header class="sticky-header sticky top-0 z-50 w-full glass-header" id="position-header">
+        <!-- Leaderboard Ad Banner -->
+        <div class="w-full py-2 border-b border-white/5 bg-black">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="ad-placeholder h-[90px] w-full max-w-[728px] mx-auto rounded-xl overflow-hidden relative group border border-white/10 shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=728&q=60&fm=webp" alt="Porsche Motorsport" class="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity" decoding="async">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/40"></div>
+                    <div class="absolute bottom-2 left-4 right-4 flex items-center justify-between pointer-events-none">
+                        <span class="text-xs font-black uppercase text-white tracking-widest">Porsche Motorsport Official</span>
+                        <span class="px-2 py-0.5 bg-[#FF3D00] rounded text-[8px] text-white uppercase font-black tracking-widest">Official Sponsor</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <!-- Task 1: Sticky Header -->
-    <header class="glass-header sticky top-0 z-50 w-full">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center">
@@ -2275,12 +2224,14 @@
                         Position</a>
                 </nav>
 
-                <div class="hidden md:flex items-center space-x-6">
-                    <!-- Auth Buttons -->
-                    <div id="auth-buttons" class="flex items-center space-x-4">
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    <div id="auth-buttons" class="hidden lg:flex items-center space-x-4">
                         <a href="registration_with_video.html" id="auth-btn"
                             class="auth-login auth-signup text-sm font-semibold text-white px-4 py-2 rounded-full border border-zinc-700 hover:bg-zinc-800 transition-all">Register
                             or Sign-In</a>
+                        <a href="/advertiser" id="AdvertiseWithUs"
+                            class="btn-primary text-xs font-black uppercase px-6 py-2.5 rounded-full shadow-lg tracking-widest">Advertise
+                            with Us</a>
                     </div>
 
                     <!-- User Profile Section -->
@@ -2317,10 +2268,16 @@
                             </a>
                         </div>
                     </div>
+
+                    <!-- Mobile Hamburger Menu Button (Bars Icon) -->
+                    <button id="mobile-menu-toggle" class="lg:hidden text-white hover:text-[#FF3D00] p-2 flex items-center justify-center transition-colors focus:outline-none" aria-label="Open Navigation Menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" x2="20" y1="6"></line>
+                            <line x1="4" x2="20" y1="12"></line>
+                            <line x1="4" x2="20" y1="18"></line>
+                        </svg>
+                    </button>
                 </div>
-                <a href="/advertiser" id="AdvertiseWithUs"
-                    class="btn-primary text-xs font-black uppercase px-6 py-2.5 rounded-full shadow-lg tracking-widest">Advertise
-                    with Us</a>
             </div>
         </div>
 
@@ -2351,11 +2308,11 @@
         </div>
     </header>
 
-    <div class="max-w-[1440px] mx-auto px-4 flex flex-col lg:flex-row gap-8 py-8">
+    <div id="position-content-wrapper" class="max-w-[1440px] mx-auto px-4 flex flex-col lg:flex-row gap-8 pt-20 md:pt-28 pb-8">
 
         <main class="flex-1">
             <!-- Hero / Position Summary -->
-            <section class="text-center mb-16 relative">
+            <section class="text-center mb-16 relative mt-12 md:mt-20 pt-6">
                 <div
                     class="absolute -top-12 left-1/2 -translate-x-1/2 w-px h-12 bg-gradient-to-b from-[#FF3D00] to-transparent">
                 </div>
@@ -2945,49 +2902,29 @@
                 </div>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/5">
-                <div class="flex space-x-6 mb-4 md:mb-0">
+            <div class="footer-bottom-container mt-12 pt-8 border-t border-white/10 flex flex-col lg:flex-row justify-between items-center gap-6">
+                <p class="text-xs text-zinc-500 uppercase tracking-widest text-center lg:text-left">
+                    © 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED.
+                </p>
+                <div class="social-icons-row flex items-center justify-center space-x-6 text-zinc-500">
                     <!-- Facebook -->
-                    <a href="#" class="text-zinc-500 hover:text-white transition-colors">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                        </svg>
+                    <a href="#" class="hover:text-[#FF3D00] transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                     </a>
                     <!-- Instagram -->
-                    <a href="#" class="text-zinc-500 hover:text-white transition-colors">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.51"></line>
-                        </svg>
+                    <a href="#" class="hover:text-[#FF3D00] transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                     </a>
                     <!-- X -->
-                    <a href="#" class="text-zinc-500 hover:text-white transition-colors">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                            <path
-                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
-                            </path>
-                        </svg>
-                    </a>
-                    <!-- YouTube -->
-                    <a href="#" class="text-zinc-500 hover:text-white transition-colors">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-                        </svg>
+                    <a href="#" class="hover:text-[#FF3D00] transition-colors">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     </a>
                 </div>
-                <p class="text-[10px] text-gray-600 uppercase tracking-widest">© 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED.
-                </p>
-                <div
-                    class="w-full md:w-auto flex justify-between items-center opacity-20 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-                    <img src="https://logo.clearbit.com/visa.com" alt="Visa" class="h-4">
-                    <img src="https://www.shutterstock.com/image-vector/paypal-multinational-financial-technology-payment-260nw-2276341185.jpg"
-                        alt="PayPal" class="h-4">
+                <div class="payment-cards-row flex items-center justify-center lg:justify-end space-x-3 opacity-60">
+                    <span class="text-[10px] font-bold tracking-widest text-zinc-400 uppercase">Secured by</span>
+                    <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] font-black text-zinc-300">VISA</span>
+                    <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] font-black text-zinc-300">MASTERCARD</span>
+                    <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] font-black text-[#0079C1]">PayPal</span>
                 </div>
             </div>
         </div>
@@ -3361,6 +3298,8 @@
             close.onclick = () => menu.classList.add('hidden');
         }
     </script>
+    <script src="js/ads.js"></script>
+    <script src="js/responsive.js" defer></script>
     <script type="module" src="js/auth-header.js"></script>
 </body>
 

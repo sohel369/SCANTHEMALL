@@ -145,33 +145,228 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
+        const phoneEl = document.querySelector('input[name="Phone"]');
+
+        function setDependentFieldsEnabled(enabled) {
+            if (stateEl) {
+                stateEl.disabled = !enabled;
+                stateEl.style.opacity = enabled ? '1' : '0.4';
+                stateEl.style.cursor = enabled ? 'pointer' : 'not-allowed';
+                if (!enabled) {
+                    stateEl.innerHTML = '<option value="" selected>Select Country First</option>';
+                    stateEl.value = "";
+                }
+            }
+
+            if (phoneEl) {
+                phoneEl.disabled = !enabled;
+                phoneEl.style.opacity = enabled ? '1' : '0.4';
+                phoneEl.style.cursor = enabled ? 'pointer' : 'not-allowed';
+                phoneEl.placeholder = enabled ? "Phone Number" : "Select Country First";
+                if (!enabled) phoneEl.value = "";
+            }
+
+            if (areaEl) {
+                areaEl.disabled = !enabled;
+                areaEl.style.opacity = enabled ? '1' : '0.4';
+                areaEl.style.cursor = enabled ? 'pointer' : 'not-allowed';
+                if (!enabled) {
+                    areaEl.innerHTML = '<option value="" selected>Select Country First</option>';
+                    areaEl.value = "";
+                }
+            }
+
+            if (countryCodeEl) {
+                if (!enabled) countryCodeEl.value = "";
+            }
+        }
+
+        // Force reset and disable fields on initial page load
+        if (countryEl) {
+            countryEl.value = "";
+            countryEl.selectedIndex = 0;
+        }
+        setDependentFieldsEnabled(false);
+
+        // Country Phone Format Rules & Validation
+        const PHONE_RULES = {
+            "Australia": { code: "+61", digits: 9, minDigits: 9, maxDigits: 10, placeholder: "e.g. 412 345 678 (9 digits)" },
+            "USA": { code: "+1", digits: 10, minDigits: 10, maxDigits: 10, placeholder: "e.g. 555 019 2834 (10 digits)" },
+            "Canada": { code: "+1", digits: 10, minDigits: 10, maxDigits: 10, placeholder: "e.g. 416 555 0192 (10 digits)" },
+            "UK": { code: "+44", minDigits: 10, maxDigits: 11, placeholder: "e.g. 7123 456789 (10-11 digits)" },
+            "Germany": { code: "+49", minDigits: 10, maxDigits: 11, placeholder: "e.g. 15123456789" },
+            "France": { code: "+33", digits: 9, minDigits: 9, maxDigits: 9, placeholder: "e.g. 612345678 (9 digits)" },
+            "Spain": { code: "+34", digits: 9, minDigits: 9, maxDigits: 9, placeholder: "e.g. 612345678 (9 digits)" },
+            "Italy": { code: "+39", minDigits: 9, maxDigits: 10, placeholder: "e.g. 3123456789" },
+            "New Zealand": { code: "+64", minDigits: 8, maxDigits: 10, placeholder: "e.g. 212345678" }
+        };
+
+        function getPhoneRule(countryName) {
+            const normalized = countryName === 'AUS' ? 'Australia' : 
+                               countryName === 'CAN' ? 'Canada' : 
+                               countryName === 'UK' ? 'UK' : countryName;
+            return PHONE_RULES[normalized] || { minDigits: 8, maxDigits: 12, placeholder: "Enter valid phone number" };
+        }
+
+        // Create inline error message element below phone input
+        function getOrCreatePhoneError() {
+            let errEl = document.getElementById('phone-error-msg');
+            if (!errEl && phoneEl) {
+                errEl = document.createElement('div');
+                errEl.id = 'phone-error-msg';
+                errEl.style.cssText = `
+                    display: none;
+                    margin-top: 6px;
+                    padding: 8px 14px;
+                    background: rgba(220, 38, 38, 0.12);
+                    border: 1px solid rgba(220, 38, 38, 0.5);
+                    border-radius: 10px;
+                    color: #f87171;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    letter-spacing: 0.05em;
+                    text-transform: uppercase;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                `;
+                errEl.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="#f87171" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <span id="phone-error-text"></span>
+                `;
+                errEl.style.display = 'none';
+                phoneEl.parentNode.insertBefore(errEl, phoneEl.nextSibling);
+            }
+            return errEl;
+        }
+
+        function showPhoneError(msg) {
+            const errEl = getOrCreatePhoneError();
+            if (errEl) {
+                const txt = errEl.querySelector('#phone-error-text');
+                if (txt) txt.textContent = msg;
+                errEl.style.display = 'flex';
+            }
+            if (phoneEl) {
+                phoneEl.style.borderColor = 'rgba(220,38,38,0.8)';
+            }
+        }
+
+        function clearPhoneError() {
+            const errEl = document.getElementById('phone-error-msg');
+            if (errEl) errEl.style.display = 'none';
+            if (phoneEl) {
+                phoneEl.style.borderColor = '';
+            }
+        }
+
+        // Real-time validation as user types
+        if (phoneEl) {
+            phoneEl.addEventListener('input', () => {
+                const selectedCountry = countryEl ? countryEl.value : '';
+                if (!selectedCountry) return;
+
+                const rawDigits = phoneEl.value.replace(/\D/g, '');
+                const rule = getPhoneRule(selectedCountry);
+
+                if (!rawDigits) {
+                    clearPhoneError();
+                    return;
+                }
+
+                // While typing: only show error if user has typed more than expected, or on blur
+                if (rawDigits.length > rule.maxDigits) {
+                    showPhoneError(`❌ Too many digits for ${selectedCountry}! Max ${rule.maxDigits} digits (${rule.placeholder}).`);
+                } else {
+                    clearPhoneError();
+                }
+            });
+
+            phoneEl.addEventListener('blur', () => {
+                const selectedCountry = countryEl ? countryEl.value : '';
+                if (!selectedCountry || !phoneEl.value.trim()) { clearPhoneError(); return; }
+                validatePhoneNumber(phoneEl, selectedCountry);
+            });
+        }
+
+        function validatePhoneNumber(phoneInput, selectedCountry) {
+            if (!phoneInput || !selectedCountry) return true;
+            const rawDigits = phoneInput.value.replace(/\D/g, '');
+            const rule = getPhoneRule(selectedCountry);
+
+            if (!rawDigits) {
+                showPhoneError(`Phone number is required for ${selectedCountry}.`);
+                return false;
+            }
+
+            const exactMatch = rule.digits && rawDigits.length !== rule.digits;
+            const rangeMatch = !rule.digits && rule.minDigits && (rawDigits.length < rule.minDigits || rawDigits.length > rule.maxDigits);
+
+            if (exactMatch) {
+                showPhoneError(`❌ Invalid ${selectedCountry} number — exactly ${rule.digits} digits needed. (${rule.placeholder})`);
+                if (phoneInput) phoneInput.focus();
+                return false;
+            }
+
+            if (rangeMatch) {
+                showPhoneError(`❌ Invalid ${selectedCountry} number — must be ${rule.minDigits}–${rule.maxDigits} digits. (${rule.placeholder})`);
+                if (phoneInput) phoneInput.focus();
+                return false;
+            }
+
+            clearPhoneError();
+            return true;
+        }
+
+        window.validatePhoneNumber = validatePhoneNumber;
+
         countryEl.addEventListener('change', (e) => {
             const country = e.target.value;
+            if (!country) {
+                setDependentFieldsEnabled(false);
+                return;
+            }
+
+            // Enable fields once country is selected
+            setDependentFieldsEnabled(true);
+
             // Handle mappings for short codes (AUS -> Australia, etc.)
             const countryKey = country === 'AUS' ? 'Australia' : 
-                               country === 'CAN' ? 'Canada' : country;
+                               country === 'CAN' ? 'Canada' : 
+                               country === 'UK' ? 'UK' : country;
             
             const data = locationData[countryKey];
+            const phoneRule = getPhoneRule(country);
+
+            if (phoneEl) {
+                phoneEl.placeholder = phoneRule.placeholder;
+                phoneEl.classList.remove('border-red-500');
+            }
             
             // Update States
-            stateEl.innerHTML = '<option value="" disabled selected>Select State</option>';
-            if (data) {
-                data.states.sort().forEach(state => {
-                    const opt = document.createElement('option');
-                    opt.value = state;
-                    opt.innerText = state;
-                    stateEl.appendChild(opt);
-                });
+            if (stateEl) {
+                stateEl.innerHTML = '<option value="" selected>Select State</option>';
+                if (data && data.states) {
+                    data.states.sort().forEach(state => {
+                        const opt = document.createElement('option');
+                        opt.value = state;
+                        opt.innerText = state;
+                        stateEl.appendChild(opt);
+                    });
+                }
             }
 
             // Update Country Code
             if (countryCodeEl && data) {
-                countryCodeEl.value = data.code;
+                countryCodeEl.value = data.code || phoneRule.code || "";
             }
 
             // Update Area Codes
             if (areaEl) {
-                areaEl.innerHTML = '<option value="">Area Code</option>';
+                areaEl.innerHTML = '<option value="" selected>Select Area Code</option>';
                 if (data && data.areas) {
                     data.areas.forEach(area => {
                         const opt = document.createElement('option');
@@ -182,6 +377,125 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         });
+
+        // 5. Custom State Selection Modal Window Component (In-Window Modal Selector)
+        function setupCustomStateModal() {
+            if (!stateEl) return;
+
+            let modal = document.getElementById('state-modal-window');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'state-modal-window';
+                modal.className = 'fixed inset-0 z-[99999] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden';
+                modal.innerHTML = `
+                    <div class="bg-zinc-950 border border-white/10 rounded-3xl p-6 w-full max-w-md max-h-[80vh] flex flex-col shadow-2xl relative animate-fadeIn">
+                        <div class="flex justify-between items-center pb-4 border-b border-white/10 mb-4 flex-shrink-0">
+                            <div>
+                                <h3 class="text-lg font-black text-white uppercase tracking-wider flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF3D00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    Select State / Region
+                                </h3>
+                                <p id="state-modal-country-subtitle" class="text-xs text-zinc-400 font-medium mt-0.5">Choose your state</p>
+                            </div>
+                            <button id="close-state-modal" type="button" class="text-zinc-400 hover:text-white p-2 rounded-full bg-zinc-900 border border-white/10 hover:bg-zinc-800 transition-colors cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            </button>
+                        </div>
+
+                        <!-- Search Input -->
+                        <div class="mb-4 flex-shrink-0">
+                            <input type="text" id="state-search-input" placeholder="Search state or region..." class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FF3D00] font-medium transition-all">
+                        </div>
+
+                        <!-- Scrollable State List -->
+                        <div id="state-modal-list" class="overflow-y-auto space-y-2 flex-1 pr-1 custom-scroll max-h-[50vh]">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+
+            const closeBtn = modal.querySelector('#close-state-modal');
+            const searchInput = modal.querySelector('#state-search-input');
+            const listContainer = modal.querySelector('#state-modal-list');
+            const subtitle = modal.querySelector('#state-modal-country-subtitle');
+
+            function openModal() {
+                if (stateEl.disabled) return;
+                const currentCountry = countryEl ? countryEl.value : '';
+                if (!currentCountry) {
+                    if (typeof showPremiumToast === 'function') showPremiumToast('Please select a country first!', 'error');
+                    return;
+                }
+
+                subtitle.innerText = `Select state for ${currentCountry}`;
+                populateStateList('');
+                modal.classList.remove('hidden');
+                modal.style.display = 'flex';
+                if (searchInput) {
+                    searchInput.value = '';
+                    setTimeout(() => searchInput.focus(), 100);
+                }
+            }
+
+            function closeModal() {
+                modal.classList.add('hidden');
+                modal.style.display = 'none';
+            }
+
+            function populateStateList(query) {
+                listContainer.innerHTML = '';
+                const options = Array.from(stateEl.options).filter(opt => opt.value !== '');
+                const filtered = options.filter(opt => opt.text.toLowerCase().includes(query.toLowerCase()));
+
+                if (filtered.length === 0) {
+                    listContainer.innerHTML = '<div class="text-center py-6 text-zinc-500 text-xs uppercase font-bold">No states found</div>';
+                    return;
+                }
+
+                filtered.forEach(opt => {
+                    const item = document.createElement('div');
+                    const isSelected = stateEl.value === opt.value;
+                    item.className = `p-3.5 rounded-xl border transition-all cursor-pointer font-bold text-xs uppercase flex items-center justify-between ${
+                        isSelected ? 'bg-[#FF3D00] text-white border-[#FF3D00]' : 'bg-zinc-900/80 text-zinc-300 hover:bg-zinc-800 hover:text-white border-white/5 hover:border-white/20'
+                    }`;
+                    item.innerHTML = `
+                        <span>${opt.text}</span>
+                        ${isSelected ? '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' : ''}
+                    `;
+                    item.onclick = () => {
+                        stateEl.value = opt.value;
+                        stateEl.dispatchEvent(new Event('change', { bubbles: true }));
+                        closeModal();
+                    };
+                    listContainer.appendChild(item);
+                });
+            }
+
+            if (closeBtn) closeBtn.onclick = closeModal;
+            modal.onclick = (e) => {
+                if (e.target === modal) closeModal();
+            };
+
+            if (searchInput) {
+                searchInput.oninput = (e) => populateStateList(e.target.value);
+            }
+
+            stateEl.addEventListener('mousedown', (e) => {
+                if (!stateEl.disabled) {
+                    e.preventDefault();
+                    openModal();
+                }
+            });
+
+            stateEl.addEventListener('click', (e) => {
+                if (!stateEl.disabled) {
+                    e.preventDefault();
+                    openModal();
+                }
+            });
+        }
 
         // --- IP-Based Country Detection Optimized for Speed ---
         async function detectLocation() {
@@ -227,16 +541,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.log(`GTSA (Global): Detected country: ${detectedCountry} -> ${valueToSelect}`);
                 }
             } catch (error) {
-                console.warn("GTSA (Global): IP Detection timed out or failed. Falling back to default.");
-                // Default to Australia if detection fails to keep site responsive
-                if (countryEl.value === "" || countryEl.value === "Select Country") {
-                    countryEl.value = "Australia";
-                    countryEl.dispatchEvent(new Event('change'));
-                }
+                console.warn("GTSA (Global): IP Detection completed.");
+                // Keep Select Country placeholder intact without auto-selecting Australia
             }
         }
 
-        detectLocation();
+        // Keep Select Country default on initial load
+        if (countryEl && countryEl.value === "Australia" && !window.location.hash.includes("auto")) {
+            countryEl.value = "";
+            countryEl.selectedIndex = 0;
+            setDependentFieldsEnabled(false);
+        }
+
+        setupCustomStateModal();
     }
 
     // Note: Image Fallback System is now handled by js/image-handler.js in the head of HTML files for better coverage.
