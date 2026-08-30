@@ -99,13 +99,19 @@
                 window.history.pushState({ url }, newDoc.title, url);
             }
 
-            // 3. Close mobile menu if open
+            // 3. Close mobile menu if open & reset body overflow
+            document.body.classList.remove('menu-open');
+            document.body.style.removeProperty('overflow');
+            if (typeof window.toggleGtsaMobileMenu === 'function') {
+                window.toggleGtsaMobileMenu(false);
+            }
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenu) {
+                mobileMenu.classList.remove('active', 'show-menu');
                 mobileMenu.classList.add('hidden');
-                mobileMenu.style.display = 'none';
-                mobileMenu.style.opacity = '0';
-                mobileMenu.style.pointerEvents = 'none';
+                mobileMenu.style.setProperty('display', 'none', 'important');
+                mobileMenu.style.setProperty('opacity', '0', 'important');
+                mobileMenu.style.setProperty('pointer-events', 'none', 'important');
             }
 
             // 4. Smoothly replace body content

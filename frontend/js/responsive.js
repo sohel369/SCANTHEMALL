@@ -531,10 +531,9 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
 
     function setupMobileMenu() {
         const mobileMenu = document.getElementById('mobile-menu');
-        const toggleBtns = document.querySelectorAll('#mobile-menu-toggle, #mobile-menu-btn, .mobile-menu-toggle, [onclick*="toggleGtsaMobileMenu"]');
-
         if (!mobileMenu) return;
 
+        const toggleBtns = document.querySelectorAll('#mobile-menu-toggle, #mobile-menu-btn, .mobile-menu-toggle, button[aria-label="Toggle Navigation"]');
         toggleBtns.forEach(btn => {
             btn.style.cursor = 'pointer';
             btn.onclick = (e) => {
@@ -551,12 +550,6 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
                 e.stopPropagation();
                 window.toggleGtsaMobileMenu(false);
             };
-        });
-
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target.closest('a')) {
-                window.toggleGtsaMobileMenu(false);
-            }
         });
 
         // Ensure lucide icons are rendered
