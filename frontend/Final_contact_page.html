@@ -102,6 +102,95 @@
                 height: 1.25rem !important;
             }
         }
+    
+        /* Active Sunburst Flare Link - Global (Header & Footer) */
+        .nav-active-link,
+        .footer-active-link {
+            position: relative !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            color: #ffffff !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.04em !important;
+            padding: 0.35rem 0.85rem 0.45rem 0.85rem !important;
+            border-radius: 0.6rem !important;
+            background: linear-gradient(0deg, rgba(255, 61, 0, 0.32) 0%, rgba(255, 145, 0, 0.16) 45%, rgba(255, 61, 0, 0.03) 80%, transparent 100%) !important;
+            border: 1px solid rgba(255, 61, 0, 0.55) !important;
+            border-bottom: 2px solid #FF3D00 !important;
+            box-shadow: 0 4px 18px rgba(255, 61, 0, 0.35), 0 -8px 22px rgba(255, 145, 0, 0.2), inset 0 -8px 16px rgba(255, 80, 0, 0.3) !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 12px rgba(255, 61, 0, 0.6) !important;
+            transform: translateY(-1px) !important;
+            transition: all 0.3s ease;
+            z-index: 1 !important;
+        }
+
+        /* Rising Sun Flare Ray effect emanating upwards from bottom */
+        .nav-active-link::before,
+        .footer-active-link::before {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -2px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 130% !important;
+            height: 120% !important;
+            background: radial-gradient(ellipse at 50% 100%, rgba(255, 180, 0, 0.55) 0%, rgba(255, 61, 0, 0.35) 30%, rgba(255, 61, 0, 0.1) 65%, transparent 100%) !important;
+            filter: blur(5px) !important;
+            pointer-events: none !important;
+            z-index: -1 !important;
+            animation: sunGlowRise 3s ease-in-out infinite alternate !important;
+        }
+
+        /* Sun Core Underline with intense golden-orange laser wave */
+        .nav-active-link::after,
+        .footer-active-link::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -2px !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 3px !important;
+            border-radius: 9999px !important;
+            background: linear-gradient(90deg, #FF3D00 0%, #FFF8E1 45%, #FF9100 55%, #FF3D00 100%) !important;
+            background-size: 200% 100% !important;
+            box-shadow: 0 0 10px #FF3D00, 0 -3px 14px #FF9100, 0 -8px 24px rgba(255, 145, 0, 0.7) !important;
+            animation: sunRayWave 2.2s linear infinite !important;
+            z-index: 2 !important;
+        }
+
+        @keyframes sunGlowRise {
+            0% {
+                height: 85%;
+                opacity: 0.7;
+                filter: blur(4px);
+                transform: translateX(-50%) scaleX(0.9);
+            }
+            50% {
+                height: 135%;
+                opacity: 1;
+                filter: blur(6px);
+                transform: translateX(-50%) scaleX(1.15);
+            }
+            100% {
+                height: 85%;
+                opacity: 0.7;
+                filter: blur(4px);
+                transform: translateX(-50%) scaleX(0.9);
+            }
+        }
+
+        @keyframes sunRayWave {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
     </style>
 </head>
 
@@ -130,15 +219,17 @@
                     </a>
                 </div>
 
-                <nav class="hidden md:flex space-x-8">
+                <nav class="hidden md:flex space-x-8 items-center">
                     <a href="index.html"
-                        class="text-sm font-medium text-white hover:text-[#FF3D00] transition-colors">Home</a>
+                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors border-b-2 border-transparent pb-1">Home</a>
                     <a href="GTSA_FInal_Welcome_Page_(About_US).html" id="AboutUs"
-                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">About us</a>
+                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors border-b-2 border-transparent pb-1">About us</a>
                     <a href="prize.html" id="Prizes"
-                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">Prizes</a>
+                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors border-b-2 border-transparent pb-1">Prizes</a>
                     <a href="position.html" id="MyPosition"
-                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">My Position</a>
+                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors border-b-2 border-transparent pb-1">My Position</a>
+                    <a href="Final_contact_page.html" id="ContactNav"
+                        class="text-sm font-bold text-white hover:text-[#FF3D00] transition-colors border-b-2 border-[#FF3D00] pb-1">Contact</a>
                 </nav>
 
                 <div class="hidden md:flex items-center space-x-6">
@@ -213,13 +304,15 @@
                     </button>
                 </div>
                 <nav class="flex flex-col space-y-6">
-                    <a href="index.html" class="text-2xl font-black uppercase text-white hover:text-[#FF3D00]">Home</a>
+                    <a href="index.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Home</a>
                     <a href="GTSA_FInal_Welcome_Page_(About_US).html"
                         class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">About</a>
                     <a href="prize.html"
                         class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Prizes</a>
                     <a href="position.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">My
                         Position</a>
+                    <a href="Final_contact_page.html"
+                        class="text-2xl font-black uppercase text-[#FF3D00] border-l-4 border-[#FF3D00] pl-3">Contact</a>
                     <hr class="border-white/10 my-4">
                     <a href="registration_with_video.html"
                         class="auth-signup text-2xl font-black uppercase text-white border border-white/20 p-4 rounded-2xl text-center">Register
@@ -486,99 +579,45 @@
     <!-- FOOTER -->
     <footer class="bg-black border-t border-white/5 pt-20 pb-12 section-container">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-20 text-center sm:text-left">
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-16 footer-nav-grid">
                 <!-- Brand -->
-                <div
-                    class="col-span-1 flex flex-row sm:flex-col justify-between sm:justify-start items-center sm:items-start w-full gap-4 sm:gap-0">
-                    <a href="index.html"
-                        class="text-xl sm:text-3xl font-black mb-0 sm:mb-6 uppercase tracking-tighter leading-none block">
-                        GOTTA SCAN<br><span class="text-[#FF3D00]">THEM ALL</span>
-                    </a>
-                    <!-- Social Icons -->
-                    <div
-                        class="flex flex-row flex-nowrap justify-end sm:justify-start space-x-2 sm:space-x-4 w-auto sm:w-full">
-                        <a href="https://www.facebook.com/profile.php?id=61588463875468"
-                            class="shrink-0 w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-[#FF3D00] transition-all group share-facebook">
-                            <svg class="w-5 h-5 text-white group-hover:scale-110 transition-transform"
-                                fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/scanthemall"
-                            class="shrink-0 w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-[#FF3D00] transition-all group">
-                            <svg class="w-5 h-5 text-white group-hover:scale-110 transition-transform" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                viewBox="0 0 24 24">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                        <a href="https://www.youtube.com/@GottaScanThemAll"
-                            class="shrink-0 w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-[#FF3D00] transition-all group">
-                            <svg class="w-5 h-5 text-white group-hover:scale-110 transition-transform"
-                                fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                            </svg>
-                        </a>
-                        <a href="https://x.com/gotascanthemall"
-                            class="shrink-0 w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-[#FF3D00] transition-all group share-x">
-                            <svg class="w-5 h-5 text-white group-hover:scale-110 transition-transform"
-                                fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
-                            </svg>
-                        </a>
-                    </div>
+                <div class="col-span-2 md:col-span-1 text-left">
+                    <a href="index.html" class="text-2xl font-black mb-4 block uppercase tracking-tighter">GOTTA SCAN<br><span class="text-[#FF3D00]">THEM ALL</span></a>
+                    <p class="text-sm text-gray-500 max-w-sm">The world's first multi-category scan-based sweepstakes platform.</p>
                 </div>
-
-                <!-- Category: About US -->
-                <div>
-                    <h4 class="text-white font-bold mb-8 uppercase text-xs tracking-[0.2em]">About US</h4>
-                    <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-500">
-                        <li><a href="mission.html" class="hover:text-[#FF3D00] transition-colors">Our mission</a></li>
-                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html"
-                                class="hover:text-[#FF3D00] transition-colors">Why scan them all</a></li>
-                        <li><a href="calculator.html" class="hover:text-[#FF3D00] transition-colors">Prize
-                                Calculator</a></li>
-                        <li><a href="https://rule7media.com/franchise"
-                                class="hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
+                
+                <!-- Category 1: About US (Left on Mobile) -->
+                <div class="col-span-1 text-left">
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About US</h4>
+                    <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
+                        <li><a href="mission.html" class="footer-link hover:text-[#FF3D00] transition-colors">Our Mission</a></li>
+                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan them All ?</a></li>
+                        <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
                     </ul>
                 </div>
 
-                <!-- Category: Policy -->
-                <div>
-                    <h4 class="text-white font-bold mb-8 uppercase text-xs tracking-[0.2em]">Policy</h4>
-                    <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-500">
-                        <li><a href="GTSA Final Terms No Advertising.html"
-                                class="hover:text-[#FF3D00] transition-colors">Terms of use</a></li>
-                        <li><a href="privacy.html" class="hover:text-[#FF3D00] transition-colors">Privacy Policy</a>
-                        </li>
+                <!-- Category 2: Policy (Right on Mobile) -->
+                <div class="col-span-1 text-left">
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-policy">Policy</h4>
+                    <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
+                        <li><a href="GTSA Final Terms No Advertising.html" class="hover:text-[#FF3D00] transition-colors">Terms of Use</a></li>
+                        <li><a href="privacy.html" class="hover:text-[#FF3D00] transition-colors">Privacy Policy</a></li>
                         <li><a href="index.html#faq" class="hover:text-[#FF3D00] transition-colors">FAQs</a></li>
-                        <li><a href="GTSA Final Sweepstake Rules.html"
-                                class="hover:text-[#FF3D00] transition-colors">Sweepstake Rules</a></li>
+                        <li><a href="GTSA Final Sweepstake Rules.html" class="hover:text-[#FF3D00] transition-colors">Sweepstake Rules</a></li>
                     </ul>
                 </div>
 
-                <!-- Category: Support -->
-                <div>
-                    <h4 class="text-white font-bold mb-8 uppercase text-xs tracking-[0.2em]">Support</h4>
-                    <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-500">
-                        <li><a href="blog.html" class="hover:text-[#FF3D00] transition-colors">Blog</a></li>
-                        <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite
-                                Friends</a></li>
-                        <li><a href="instagram_upload_page.html"
-                                class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
-                        <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social
-                                Blast</a></li>
-                        <li><a href="Final_contact_page.html" class="hover:text-[#FF3D00] transition-colors">Contact
-                                us</a></li>
-                        <li><a href="/advertiser"
-                                class="hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
-                        <li><a href="https://rule7media.com/affiliate"
-                                class="hover:text-[#FF3D00] transition-colors">Affiliate Program</a></li>
+                <!-- Category 3: Support (Below on Mobile, Left-aligned) -->
+                <div class="col-span-2 md:col-span-1 text-left pt-4 md:pt-0 border-t border-white/5 md:border-t-0">
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-support">Support</h4>
+                    <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
+                        <li><a href="blog.html" class="footer-link hover:text-[#FF3D00] transition-colors">Blog</a></li>
+                        <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite Friends</a></li>
+                        <li><a href="instagram_upload_page.html" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
+                        <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
+                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact us</a></li>
+                        <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
+                        <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
                     </ul>
                 </div>
             </div>
@@ -594,11 +633,11 @@
             <div
                 class="flex flex-col md:flex-row items-center justify-between pt-10 border-t border-white/5 text-[9px] text-zinc-600 uppercase tracking-[0.3em] font-black gap-6">
                 <p class="text-center md:text-left">© 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED.</p>
-                <div class="flex gap-8 items-center justify-center">
-                    <img src="https://logo.clearbit.com/visa.com"
-                        alt="Visa" class="payment-logo">
-                    <img src="https://www.shutterstock.com/image-vector/paypal-multinational-financial-technology-payment-260nw-2276341185.jpg"
-                        alt="PayPal" class="payment-logo">
+                <div class="payment-cards-row flex flex-wrap items-center justify-center md:justify-end gap-2 sm:gap-2.5 mt-4 md:mt-0">
+                    <span class="text-[10px] font-bold tracking-widest text-zinc-400 uppercase mr-1">Secured by</span>
+                    <span class="px-2.5 py-1 bg-zinc-900 border border-white/20 rounded-md text-[10px] sm:text-[11px] font-extrabold tracking-wider text-zinc-200 shadow-sm">VISA</span>
+                    <span class="px-2.5 py-1 bg-zinc-900 border border-white/20 rounded-md text-[10px] sm:text-[11px] font-extrabold tracking-wider text-zinc-200 shadow-sm">MASTERCARD</span>
+                    <span class="px-2.5 py-1 bg-zinc-900 border border-white/20 rounded-md text-[10px] sm:text-[11px] font-extrabold tracking-wider text-[#009cde] shadow-sm">PayPal</span>
                 </div>
             </div>
         </div>

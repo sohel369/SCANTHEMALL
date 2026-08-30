@@ -110,8 +110,61 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    // Dynamic Active Tab Highlighting
+    const highlightActiveTab = () => {
+        try {
+            const rawPath = window.location.pathname.toLowerCase();
+            const pageName = rawPath.split('/').pop() || 'index.html';
+            
+            const desktopLinks = document.querySelectorAll('header nav a');
+            desktopLinks.forEach(link => {
+                const href = (link.getAttribute('href') || '').toLowerCase().split('?')[0].split('#')[0];
+                if (!href || href.startsWith('http') || href.startsWith('/advertiser') || href.startsWith('/admin')) return;
+
+                const isMatch = (href === pageName) || 
+                                (pageName === 'index.html' && (href === './' || href === '/' || href === 'index.html')) ||
+                                (pageName.includes('welcome_page') && href.includes('welcome_page')) ||
+                                (pageName.includes('contact') && href.includes('contact')) ||
+                                (pageName.includes('position') && href.includes('position')) ||
+                                (pageName.includes('prize') && href.includes('prize'));
+
+                if (isMatch) {
+                    link.classList.remove('text-zinc-400', 'border-transparent');
+                    link.classList.add('text-white', 'font-bold', 'border-b-2', 'border-[#FF3D00]', 'pb-1');
+                }
+            });
+
+            const mobileLinks = document.querySelectorAll('#mobile-menu nav a');
+            mobileLinks.forEach(link => {
+                const href = (link.getAttribute('href') || '').toLowerCase().split('?')[0].split('#')[0];
+                if (!href || href.startsWith('http') || href.startsWith('/advertiser') || href.startsWith('/admin') || link.classList.contains('auth-signup') || link.classList.contains('auth-login')) return;
+
+                const isMatch = (href === pageName) || 
+                                (pageName === 'index.html' && (href === './' || href === '/' || href === 'index.html')) ||
+                                (pageName.includes('welcome_page') && href.includes('welcome_page')) ||
+                                (pageName.includes('contact') && href.includes('contact')) ||
+                                (pageName.includes('position') && href.includes('position')) ||
+                                (pageName.includes('prize') && href.includes('prize'));
+
+                if (isMatch) {
+                    link.classList.remove('text-zinc-400', 'text-zinc-300', 'text-white');
+                    link.classList.add('text-[#FF3D00]', 'border-l-4', 'border-[#FF3D00]', 'pl-3');
+                }
+            });
+        } catch (e) {
+            console.debug('Active tab error:', e);
+        }
+    };
+
+    highlightActiveTab();
     checkAuthState();
     
+    // Listen for SPA seamless navigation
+    window.addEventListener('gtsa:page-changed', () => {
+        highlightActiveTab();
+        checkAuthState();
+    });
+
     // Listen for storage events (when token is set in another tab or script)
     window.addEventListener('storage', checkAuthState);
     // Listen for a custom event we can trigger manually

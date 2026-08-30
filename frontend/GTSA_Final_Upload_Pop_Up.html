@@ -48,6 +48,95 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             animation: shimmer 2s infinite;
         }
+    
+        /* Active Sunburst Flare Link - Global (Header & Footer) */
+        .nav-active-link,
+        .footer-active-link {
+            position: relative !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            color: #ffffff !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.04em !important;
+            padding: 0.35rem 0.85rem 0.45rem 0.85rem !important;
+            border-radius: 0.6rem !important;
+            background: linear-gradient(0deg, rgba(255, 61, 0, 0.32) 0%, rgba(255, 145, 0, 0.16) 45%, rgba(255, 61, 0, 0.03) 80%, transparent 100%) !important;
+            border: 1px solid rgba(255, 61, 0, 0.55) !important;
+            border-bottom: 2px solid #FF3D00 !important;
+            box-shadow: 0 4px 18px rgba(255, 61, 0, 0.35), 0 -8px 22px rgba(255, 145, 0, 0.2), inset 0 -8px 16px rgba(255, 80, 0, 0.3) !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 12px rgba(255, 61, 0, 0.6) !important;
+            transform: translateY(-1px) !important;
+            transition: all 0.3s ease;
+            z-index: 1 !important;
+        }
+
+        /* Rising Sun Flare Ray effect emanating upwards from bottom */
+        .nav-active-link::before,
+        .footer-active-link::before {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -2px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 130% !important;
+            height: 120% !important;
+            background: radial-gradient(ellipse at 50% 100%, rgba(255, 180, 0, 0.55) 0%, rgba(255, 61, 0, 0.35) 30%, rgba(255, 61, 0, 0.1) 65%, transparent 100%) !important;
+            filter: blur(5px) !important;
+            pointer-events: none !important;
+            z-index: -1 !important;
+            animation: sunGlowRise 3s ease-in-out infinite alternate !important;
+        }
+
+        /* Sun Core Underline with intense golden-orange laser wave */
+        .nav-active-link::after,
+        .footer-active-link::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -2px !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 3px !important;
+            border-radius: 9999px !important;
+            background: linear-gradient(90deg, #FF3D00 0%, #FFF8E1 45%, #FF9100 55%, #FF3D00 100%) !important;
+            background-size: 200% 100% !important;
+            box-shadow: 0 0 10px #FF3D00, 0 -3px 14px #FF9100, 0 -8px 24px rgba(255, 145, 0, 0.7) !important;
+            animation: sunRayWave 2.2s linear infinite !important;
+            z-index: 2 !important;
+        }
+
+        @keyframes sunGlowRise {
+            0% {
+                height: 85%;
+                opacity: 0.7;
+                filter: blur(4px);
+                transform: translateX(-50%) scaleX(0.9);
+            }
+            50% {
+                height: 135%;
+                opacity: 1;
+                filter: blur(6px);
+                transform: translateX(-50%) scaleX(1.15);
+            }
+            100% {
+                height: 85%;
+                opacity: 0.7;
+                filter: blur(4px);
+                transform: translateX(-50%) scaleX(0.9);
+            }
+        }
+
+        @keyframes sunRayWave {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
     </style>
 </head>
 <!-- Page Wrapper with Ads -->

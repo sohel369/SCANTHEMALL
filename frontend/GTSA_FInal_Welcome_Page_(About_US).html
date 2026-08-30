@@ -22,6 +22,95 @@
             opacity: 0 !important;
             visibility: hidden !important;
         }
+    
+        /* Active Sunburst Flare Link - Global (Header & Footer) */
+        .nav-active-link,
+        .footer-active-link {
+            position: relative !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            color: #ffffff !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.04em !important;
+            padding: 0.35rem 0.85rem 0.45rem 0.85rem !important;
+            border-radius: 0.6rem !important;
+            background: linear-gradient(0deg, rgba(255, 61, 0, 0.32) 0%, rgba(255, 145, 0, 0.16) 45%, rgba(255, 61, 0, 0.03) 80%, transparent 100%) !important;
+            border: 1px solid rgba(255, 61, 0, 0.55) !important;
+            border-bottom: 2px solid #FF3D00 !important;
+            box-shadow: 0 4px 18px rgba(255, 61, 0, 0.35), 0 -8px 22px rgba(255, 145, 0, 0.2), inset 0 -8px 16px rgba(255, 80, 0, 0.3) !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 12px rgba(255, 61, 0, 0.6) !important;
+            transform: translateY(-1px) !important;
+            transition: all 0.3s ease;
+            z-index: 1 !important;
+        }
+
+        /* Rising Sun Flare Ray effect emanating upwards from bottom */
+        .nav-active-link::before,
+        .footer-active-link::before {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -2px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 130% !important;
+            height: 120% !important;
+            background: radial-gradient(ellipse at 50% 100%, rgba(255, 180, 0, 0.55) 0%, rgba(255, 61, 0, 0.35) 30%, rgba(255, 61, 0, 0.1) 65%, transparent 100%) !important;
+            filter: blur(5px) !important;
+            pointer-events: none !important;
+            z-index: -1 !important;
+            animation: sunGlowRise 3s ease-in-out infinite alternate !important;
+        }
+
+        /* Sun Core Underline with intense golden-orange laser wave */
+        .nav-active-link::after,
+        .footer-active-link::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -2px !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 3px !important;
+            border-radius: 9999px !important;
+            background: linear-gradient(90deg, #FF3D00 0%, #FFF8E1 45%, #FF9100 55%, #FF3D00 100%) !important;
+            background-size: 200% 100% !important;
+            box-shadow: 0 0 10px #FF3D00, 0 -3px 14px #FF9100, 0 -8px 24px rgba(255, 145, 0, 0.7) !important;
+            animation: sunRayWave 2.2s linear infinite !important;
+            z-index: 2 !important;
+        }
+
+        @keyframes sunGlowRise {
+            0% {
+                height: 85%;
+                opacity: 0.7;
+                filter: blur(4px);
+                transform: translateX(-50%) scaleX(0.9);
+            }
+            50% {
+                height: 135%;
+                opacity: 1;
+                filter: blur(6px);
+                transform: translateX(-50%) scaleX(1.15);
+            }
+            100% {
+                height: 85%;
+                opacity: 0.7;
+                filter: blur(4px);
+                transform: translateX(-50%) scaleX(0.9);
+            }
+        }
+
+        @keyframes sunRayWave {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
     </style>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
@@ -53,27 +142,43 @@
         }
 
         .form-input {
-            background: #121215 !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            background-color: #000000 !important;
+            border: 1px solid #27272a !important;
+            border-radius: 0.875rem !important;
+            padding: 0.875rem 1.125rem !important;
             color: #ffffff !important;
-            transition: all 0.3s ease;
-            padding: 0.875rem 1.25rem;
-            border-radius: 0.75rem;
-            width: 100%;
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.875rem !important;
+            line-height: 1.25rem !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            transition: all 0.2s ease-in-out !important;
+            outline: none !important;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4) !important;
         }
 
         .form-input option {
-            background-color: #18181b !important;
+            background-color: #121215 !important;
             color: #ffffff !important;
             padding: 0.5rem;
         }
 
         .form-input:focus {
             border-color: #FF3D00 !important;
-            background: #18181c !important;
-            outline: none;
+            background-color: #09090b !important;
+            box-shadow: 0 0 0 3px rgba(255, 61, 0, 0.25) !important;
+            outline: none !important;
+        }
+
+        .form-input::placeholder {
+            color: #71717a !important;
+            font-weight: 500;
+        }
+
+        .form-input:disabled {
+            opacity: 0.45 !important;
+            background-color: #0c0c0e !important;
+            cursor: not-allowed !important;
+            border-color: #1f1f23 !important;
         }
 
         .btn-primary {
@@ -90,6 +195,15 @@
         /* Dynamic offset for sticky header (ad banner + nav bar) */
         main {
             padding-top: var(--header-height, 170px);
+        }
+
+        .social-icons-row,
+        footer .social-icons-row {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            justify-content: center !important;
+            align-items: center !important;
         }
     </style>
     <script>
@@ -130,15 +244,17 @@
                     </a>
                 </div>
 
-                <nav class="hidden md:flex space-x-8">
+                <nav class="hidden md:flex space-x-8 items-center">
                     <a href="index.html"
-                        class="text-sm font-medium text-white hover:text-[#FF3D00] transition-colors">Home</a>
+                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors border-b-2 border-transparent pb-1">Home</a>
                     <a href="GTSA_FInal_Welcome_Page_(About_US).html" id="AboutUs"
-                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">About us</a>
+                        class="text-sm font-bold text-white hover:text-[#FF3D00] transition-colors border-b-2 border-[#FF3D00] pb-1">About us</a>
                     <a href="prize.html" id="Prizes"
-                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">Prizes</a>
+                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors border-b-2 border-transparent pb-1">Prizes</a>
                     <a href="position.html" id="MyPosition"
-                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">My Position</a>
+                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors border-b-2 border-transparent pb-1">My Position</a>
+                    <a href="Final_contact_page.html" id="ContactNav"
+                        class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors border-b-2 border-transparent pb-1">Contact</a>
                 </nav>
 
                 <div class="hidden md:flex items-center space-x-6">
@@ -212,13 +328,15 @@
                     </button>
                 </div>
                 <nav class="flex flex-col space-y-6">
-                    <a href="index.html" class="text-2xl font-black uppercase text-white hover:text-[#FF3D00]">Home</a>
+                    <a href="index.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Home</a>
                     <a href="GTSA_FInal_Welcome_Page_(About_US).html"
-                        class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">About</a>
+                        class="text-2xl font-black uppercase text-[#FF3D00] border-l-4 border-[#FF3D00] pl-3">About</a>
                     <a href="prize.html"
                         class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Prizes</a>
                     <a href="position.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">My
                         Position</a>
+                    <a href="Final_contact_page.html"
+                        class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Contact</a>
                     <hr class="border-white/10 my-4">
                     <a href="registration_with_video.html"
                         class="auth-signup text-2xl font-black uppercase text-white border border-white/20 p-4 rounded-2xl text-center">Register
@@ -526,65 +644,85 @@
 
 
             <!-- TASK 5: FORMS FOR CASH DRAW & REFERRALS -->
-            <div class="max-w-7xl mx-auto px-6 mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 md:mt-24 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
                 <!-- Register Cash Draw Form -->
-                <section class="bg-zinc-900/50 p-8 md:p-10 rounded-[2.5rem] border border-zinc-800">
-                    <div class="text-center mb-10">
-                        <h2 class="text-3xl font-black mb-2 uppercase">Register Free for $1000 Cash Draw</h2>
-                        <p class="text-zinc-500 text-sm">Winners will be notified by Email or SMS Message</p>
+                <section class="bg-zinc-900/60 p-6 sm:p-8 md:p-10 lg:p-12 rounded-3xl md:rounded-[2.5rem] border border-zinc-800 shadow-2xl flex flex-col justify-between">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-2 uppercase tracking-tighter text-white">Register Free for <span class="text-[#FF3D00]">$1000 Cash Draw</span></h2>
+                        <p class="text-zinc-400 text-xs sm:text-sm font-medium tracking-wide">Winners will be notified by Email or SMS Message</p>
                     </div>
-                    <form id="cashdraw-form" action="#" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <input type="text" name="FirstName" placeholder="First Name" class="form-input" required>
-                        <input type="text" name="LastName" placeholder="Last Name" class="form-input" required>
-                        <input type="email" name="Email" placeholder="Email" class="form-input col-span-full" required>
-
-                        <select id="country" name="Country" class="form-input" required>
-                            <option value="" selected>Select Country</option>
-                            <option value="Australia">Australia</option>
-                            <option value="UK">United Kingdom</option>
-                            <option value="USA">USA</option>
-                            <option value="Canada">Canada</option>
-                            <option value="Germany">Germany</option>
-                            <option value="France">France</option>
-                            <option value="Spain">Spain</option>
-                            <option value="Italy">Italy</option>
-                            <option value="New Zealand">New Zealand</option>
-                        </select>
-
-                        <select id="state" name="State" class="form-input opacity-40 cursor-not-allowed" disabled required>
-                            <option value="" selected>Select Country First</option>
-                        </select>
-
-                        <div class="flex flex-row gap-2 col-span-full md:col-span-1">
-                            <input type="text" id="country-code" name="CountryCode" placeholder="Code"
-                                class="form-input w-20 text-center font-bold opacity-40 cursor-not-allowed" readonly disabled>
-                            <input type="tel" name="Phone" placeholder="Select Country First" class="form-input flex-1 opacity-40 cursor-not-allowed"
-                                disabled required>
+                    <form id="cashdraw-form" action="#" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+                        <div class="space-y-1.5">
+                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">First Name</label>
+                            <input type="text" name="FirstName" placeholder="Enter first name" class="form-input" required>
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">Last Name</label>
+                            <input type="text" name="LastName" placeholder="Enter last name" class="form-input" required>
+                        </div>
+                        <div class="col-span-full space-y-1.5">
+                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">Email Address</label>
+                            <input type="email" name="Email" placeholder="yourname@example.com" class="form-input" required>
                         </div>
 
-                        <select id="area-code" name="AreaCode" class="form-input opacity-40 cursor-not-allowed" disabled required>
-                            <option value="" selected>Select Country First</option>
-                        </select>
+                        <div class="space-y-1.5">
+                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">Country</label>
+                            <select id="country" name="Country" class="form-input" required>
+                                <option value="" selected>Select Country</option>
+                                <option value="Australia">Australia</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="USA">USA</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Germany">Germany</option>
+                                <option value="France">France</option>
+                                <option value="Spain">Spain</option>
+                                <option value="Italy">Italy</option>
+                                <option value="New Zealand">New Zealand</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">State / Region</label>
+                            <select id="state" name="State" class="form-input opacity-40 cursor-not-allowed" disabled required>
+                                <option value="" selected>Select Country First</option>
+                            </select>
+                        </div>
+
+                        <div class="col-span-full md:col-span-1 space-y-1.5">
+                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">Phone Number</label>
+                            <div class="flex flex-row gap-2">
+                                <input type="text" id="country-code" name="CountryCode" placeholder="Code"
+                                    class="form-input w-20 sm:w-24 text-center font-bold opacity-40 cursor-not-allowed" readonly disabled>
+                                <input type="tel" name="Phone" placeholder="Select Country First" class="form-input flex-1 opacity-40 cursor-not-allowed"
+                                    disabled required>
+                            </div>
+                        </div>
+
+                        <div class="col-span-full md:col-span-1 space-y-1.5">
+                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">Area Code / Postcode</label>
+                            <select id="area-code" name="AreaCode" class="form-input opacity-40 cursor-not-allowed" disabled required>
+                                <option value="" selected>Select Country First</option>
+                            </select>
+                        </div>
 
                         <input type="hidden" name="Database" value="Cash Draws">
                         <input type="hidden" name="DateOfEntry" value="2024-05-20">
 
                         <button type="submit"
-                            class="btn-primary col-span-full py-4 rounded-xl font-bold uppercase tracking-widest shadow-2xl">Enter
+                            class="btn-primary col-span-full py-4 sm:py-4.5 rounded-2xl font-black uppercase tracking-widest text-xs sm:text-sm shadow-xl shadow-[#FF3D00]/25 transition-all hover:scale-[1.01] active:scale-[0.99] mt-2">Enter
                             Cash Draw</button>
                     </form>
                 </section>
 
                 <!-- Message to Community Section -->
                 <section
-                    class="p-8 md:p-10 rounded-[2.5rem] bg-zinc-900/30 border border-zinc-800/50 relative overflow-hidden h-full flex flex-col justify-center">
-                    <div class="absolute -top-10 -right-10 opacity-[0.03]">
+                    class="p-6 sm:p-8 md:p-10 lg:p-12 rounded-3xl md:rounded-[2.5rem] bg-gradient-to-br from-zinc-900/80 to-zinc-950/90 border border-zinc-800 shadow-2xl relative overflow-hidden flex flex-col justify-center">
+                    <div class="absolute -top-10 -right-10 opacity-[0.03] pointer-events-none">
                         <i data-lucide="shield-check" class="w-64 h-64"></i>
                     </div>
                     <div class="relative z-10">
-                        <h2 class="text-2xl font-black mb-6 text-[#FF3D00] uppercase tracking-tighter">A Message to Our
-                            Community</h2>
-                        <p class="text-zinc-400 leading-relaxed text-base italic font-medium">
+                        <h2 class="text-2xl sm:text-3xl font-black mb-6 text-[#FF3D00] uppercase tracking-tight italic">A Message to Our Community</h2>
+                        <p class="text-zinc-400 leading-relaxed text-sm sm:text-base italic font-medium">
                             “Your participation in uploading images not only gives you a chance to earn valuable
                             sweepstake entries, but it also demonstrates your support for our advertising partners who
                             make these prizes possible. By engaging with and reciprocally supporting our advertisers,
@@ -615,104 +753,48 @@
         <!-- TASK 2: REPLICATED FOOTER -->
         <footer class="bg-black border-t border-white/5 pt-20 pb-12">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-                    <!-- Brand -->
-                    <div class="col-span-1">
-                        <a href="index.html" class="text-2xl font-black mb-6 block uppercase tracking-tighter">GOTTA
-                            SCAN<br><span class="text-[#FF3D00]">THEM ALL</span></a>
-                        <div class="flex flex-row items-center justify-center md:justify-start gap-4 flex-nowrap social-icons-row pt-2">
-                            <a href="https://www.facebook.com/profile.php?id=61588463875468"
-                                class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors share-facebook">
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                </svg>
-                            </a>
-                            <a href="https://www.instagram.com/scanthemall"
-                                class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors share-instagram">
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.51"></line>
-                                </svg>
-                            </a>
-                            <a href="https://www.youtube.com/@GottaScanThemAll"
-                                class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors">
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                                    <path
-                                        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-                                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-                                </svg>
-                            </a>
-                            <a href="https://www.tiktok.com/@gottaScanThemAll"
-                                class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors">
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="text-white">
-                                    <path
-                                        d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47-.13 3.44-.04 6.88-.13 10.32-.05 1.58-.51 3.19-1.52 4.41-1.07 1.4-2.7 2.27-4.47 2.48-1.54.21-3.21.05-4.49-.69-1.3-.74-2.12-2.11-2.48-3.55-.42-1.63-.3-3.41.35-4.9.61-1.4 1.73-2.61 3.14-3.19.46-.19.93-.32 1.41-.41V12.7c-2.31.28-4.22 2.24-4.25 4.54-.03 2.1 1.42 4.02 3.39 4.67.58.19 1.19.26 1.8.2.98-.09 1.94-.52 2.62-1.25.75-.78 1.14-1.85 1.15-2.92.05-3.39.02-6.78.03-10.16-.01-.01-.01-.02 0-.03-.02-2.11-1.55-4.12-3.66-4.64-.17-.04-.33-.09-.5-.11.02-1-.02-1.99-.02-2.98.01 0 .01 0 .01-.01z">
-                                    </path>
-                                </svg>
-                            </a>
-                            <a href="https://x.com/gotascanthemall"
-                                class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF3D00] transition-colors share-x">
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="text-white">
-                                    <path
-                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
-                                    </path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Category 1: About US -->
-                    <div>
-                        <h4 class="text-white font-black mb-6 uppercase text-xs tracking-widest" id="footer-about">About
-                            US</h4>
-                        <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-500">
-                            <li><a href="mission.html" class="footer-link">Our mission</a></li>
-                            <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link">Why scan them
-                                    all</a></li>
-                            <li><a href="/advertiser" class="footer-link">Franchise
-                                    Opportunities</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Category 2: Policy -->
-                    <div>
-                        <h4 class="text-white font-black mb-6 uppercase text-xs tracking-widest" id="footer-policy">
-                            Policy</h4>
-                        <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-500">
-                            <li><a href="GTSA Final Terms No Advertising.html"
-                                    class="hover:text-white transition-colors">Terms of use</a></li>
-                            <li><a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-                            </li>
-                            <li><a href="index.html#faq" class="hover:text-white transition-colors">FAQs</a></li>
-                            <li><a href="GTSA Final Sweepstake Rules.html"
-                                    class="hover:text-[#FF3D00] transition-colors">Sweepstake Rules</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Category 3: Support -->
-                    <div>
-                        <h4 class="text-white font-black mb-6 uppercase text-xs tracking-widest" id="footer-support">
-                            Support</h4>
-                        <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-500">
-                            <li><a href="blog.html" class="footer-link">Blog</a></li>
-                            <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite
-                                    Friends</a></li>
-                            <li><a href="instagram_upload_page.html"
-                                    class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
-                            <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social
-                                    Blast</a></li>
-                            <li><a href="Final_contact_page.html" class="footer-link">Contact us</a></li>
-                            <li><a href="/advertiser" class="footer-link">Advertise With
-                                    Us</a></li>
-                            <li><a href="/advertiser" class="footer-link">Affiliate
-                                    Program</a></li>
-                        </ul>
-                    </div>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-16 footer-nav-grid">
+                <!-- Brand -->
+                <div class="col-span-2 md:col-span-1 text-left">
+                    <a href="index.html" class="text-2xl font-black mb-4 block uppercase tracking-tighter">GOTTA SCAN<br><span class="text-[#FF3D00]">THEM ALL</span></a>
+                    <p class="text-sm text-gray-500 max-w-sm">The world's first multi-category scan-based sweepstakes platform.</p>
                 </div>
+                
+                <!-- Category 1: About US (Left on Mobile) -->
+                <div class="col-span-1 text-left">
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About US</h4>
+                    <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
+                        <li><a href="mission.html" class="footer-link hover:text-[#FF3D00] transition-colors">Our Mission</a></li>
+                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan them All ?</a></li>
+                        <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
+                    </ul>
+                </div>
+
+                <!-- Category 2: Policy (Right on Mobile) -->
+                <div class="col-span-1 text-left">
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-policy">Policy</h4>
+                    <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
+                        <li><a href="GTSA Final Terms No Advertising.html" class="hover:text-[#FF3D00] transition-colors">Terms of Use</a></li>
+                        <li><a href="privacy.html" class="hover:text-[#FF3D00] transition-colors">Privacy Policy</a></li>
+                        <li><a href="index.html#faq" class="hover:text-[#FF3D00] transition-colors">FAQs</a></li>
+                        <li><a href="GTSA Final Sweepstake Rules.html" class="hover:text-[#FF3D00] transition-colors">Sweepstake Rules</a></li>
+                    </ul>
+                </div>
+
+                <!-- Category 3: Support (Below on Mobile, Left-aligned) -->
+                <div class="col-span-2 md:col-span-1 text-left pt-4 md:pt-0 border-t border-white/5 md:border-t-0">
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-support">Support</h4>
+                    <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
+                        <li><a href="blog.html" class="footer-link hover:text-[#FF3D00] transition-colors">Blog</a></li>
+                        <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite Friends</a></li>
+                        <li><a href="instagram_upload_page.html" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
+                        <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
+                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact us</a></li>
+                        <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
+                        <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
+                    </ul>
+                </div>
+            </div>
 
                 <!-- Footer Bottom -->
                 <div class="pt-10 border-t border-white/5 footer-bottom-container flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-left w-full">

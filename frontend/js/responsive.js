@@ -1,12 +1,18 @@
-/**
- * responsive.js - Universal Responsive Fixes for GTSA
- * This script injects responsive CSS and builds a premium mobile menu.
- */
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("GTSA: Responsive Module Initializing");
+// Load Seamless SPA Router if not already included
+if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
+    window._spaRouterLoaded = true;
+    const spaScript = document.createElement('script');
+    spaScript.src = 'js/spa-router.js';
+    spaScript.defer = true;
+    document.head.appendChild(spaScript);
+}
 
-    // 1. Inject Universal Responsive CSS
+// 1. Inject Universal Responsive & Neon Wave CSS Immediately
+(function injectGlobalStyles() {
+    if (typeof document === 'undefined') return;
+    if (document.getElementById('gtsa-responsive-styles')) return;
     const style = document.createElement('style');
+    style.id = 'gtsa-responsive-styles';
     style.innerHTML = `
         /* Mobile Menu Styles - 100vh Height Fullscreen Opaque Popup */
         #mobile-menu {
@@ -116,7 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
             display: block !important;
         }
 
-        footer .footer-bottom-container .social-icons-row {
+        footer .social-icons-row,
+        .social-icons-row {
             display: flex !important;
             flex-direction: row !important;
             flex-wrap: nowrap !important;
@@ -134,6 +141,94 @@ document.addEventListener("DOMContentLoaded", () => {
             align-items: center !important;
             gap: 1.25rem !important;
             width: auto !important;
+        }
+
+        /* Active Sunburst Flare Link - Global (Header & Footer on Desktop, Tablet & Mobile) */
+        .nav-active-link,
+        .footer-active-link {
+            position: relative !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            color: #ffffff !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.04em !important;
+            padding: 0.35rem 0.85rem 0.45rem 0.85rem !important;
+            border-radius: 0.6rem !important;
+            background: linear-gradient(0deg, rgba(255, 61, 0, 0.32) 0%, rgba(255, 145, 0, 0.16) 45%, rgba(255, 61, 0, 0.03) 80%, transparent 100%) !important;
+            border: 1px solid rgba(255, 61, 0, 0.55) !important;
+            border-bottom: 2px solid #FF3D00 !important;
+            box-shadow: 0 4px 18px rgba(255, 61, 0, 0.35), 0 -8px 22px rgba(255, 145, 0, 0.2), inset 0 -8px 16px rgba(255, 80, 0, 0.3) !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 12px rgba(255, 61, 0, 0.6) !important;
+            transform: translateY(-1px) !important;
+            transition: all 0.3s ease;
+            z-index: 1 !important;
+        }
+
+        /* Rising Sun Flare Ray effect emanating upwards from bottom */
+        .nav-active-link::before,
+        .footer-active-link::before {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -2px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 130% !important;
+            height: 120% !important;
+            background: radial-gradient(ellipse at 50% 100%, rgba(255, 180, 0, 0.55) 0%, rgba(255, 61, 0, 0.35) 30%, rgba(255, 61, 0, 0.1) 65%, transparent 100%) !important;
+            filter: blur(5px) !important;
+            pointer-events: none !important;
+            z-index: -1 !important;
+            animation: sunGlowRise 3s ease-in-out infinite alternate !important;
+        }
+
+        /* Sun Core Underline with intense golden-orange laser wave */
+        .nav-active-link::after,
+        .footer-active-link::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -2px !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 3px !important;
+            border-radius: 9999px !important;
+            background: linear-gradient(90deg, #FF3D00 0%, #FFF8E1 45%, #FF9100 55%, #FF3D00 100%) !important;
+            background-size: 200% 100% !important;
+            box-shadow: 0 0 10px #FF3D00, 0 -3px 14px #FF9100, 0 -8px 24px rgba(255, 145, 0, 0.7) !important;
+            animation: sunRayWave 2.2s linear infinite !important;
+            z-index: 2 !important;
+        }
+
+        @keyframes sunGlowRise {
+            0% {
+                height: 85%;
+                opacity: 0.7;
+                filter: blur(4px);
+                transform: translateX(-50%) scaleX(0.9);
+            }
+            50% {
+                height: 135%;
+                opacity: 1;
+                filter: blur(6px);
+                transform: translateX(-50%) scaleX(1.15);
+            }
+            100% {
+                height: 85%;
+                opacity: 0.7;
+                filter: blur(4px);
+                transform: translateX(-50%) scaleX(0.9);
+            }
+        }
+
+        @keyframes sunRayWave {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* Generic Mobile Overrides */
@@ -156,16 +251,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 line-height: 1.5 !important;
             }
 
-            footer .footer-bottom-container .social-icons-row {
+            footer .social-icons-row,
+            .social-icons-row {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
                 justify-content: center !important;
+                align-items: center !important;
                 width: 100% !important;
-                gap: 1.25rem !important;
+                gap: 1rem !important;
             }
 
             footer .footer-bottom-container .payment-cards-row {
                 justify-content: center !important;
+                flex-wrap: wrap !important;
                 width: 100% !important;
-                gap: 1.25rem !important;
+                gap: 0.5rem 0.75rem !important;
             }
             header .hidden.md\\:flex, 
             header .hidden.lg\\:flex,
@@ -180,7 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             /* Container & Grid Fixes */
-            .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
+            .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl:not(form) {
                 width: 100% !important;
                 padding-left: 1.25rem !important;
                 padding-right: 1.25rem !important;
@@ -198,26 +299,30 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             /* Flex stacking */
-            .flex-row, .md\\:flex-row, .lg\\:flex-row {
+            .flex-row:not(.social-icons-row):not(.payment-cards-row), 
+            .md\\:flex-row:not(.social-icons-row):not(.payment-cards-row), 
+            .lg\\:flex-row:not(.social-icons-row):not(.payment-cards-row) {
                 flex-direction: column !important;
+            }
+
+            .social-icons-row,
+            footer .social-icons-row,
+            footer .col-span-1 .social-icons-row,
+            footer .footer-bottom-container .social-icons-row {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                justify-content: center !important;
+                align-items: center !important;
             }
 
             .items-center {
                 /* align-items: stretch !important; */
             }
 
-            .text-left, .lg\\:text-left, .md\\:text-left {
-                text-align: center !important;
-            }
-
-            .justify-start, .lg\\:justify-start, .md\\:justify-start {
-                justify-content: center !important;
-            }
-
-            /* Typography Adjustments */
-            h1 { font-size: 2.5rem !important; line-height: 1.1 !important; margin-bottom: 1.5rem !important; }
-            h2 { font-size: 2rem !important; }
-            p { font-size: 1rem !important; }
+            /* Typography Adjustments - only apply to unclassed headings */
+            h1:not([class*="text-"]) { font-size: 2.25rem !important; line-height: 1.1 !important; margin-bottom: 1.5rem !important; }
+            h2:not([class*="text-"]) { font-size: 1.75rem !important; }
 
             /* Spacing */
             .py-20, .py-32, .pt-20, .pb-32 {
@@ -225,11 +330,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 padding-bottom: 3rem !important;
             }
 
-            /* Footer Fixes */
-            footer .grid {
-                grid-template-columns: 1fr !important;
-                text-align: center !important;
-                gap: 3rem !important;
+            /* Footer Fixes: Left aligned on mobile, 2-column for About Us & Policy, full width for Brand & Support */
+            footer,
+            footer .footer-nav-grid,
+            footer .footer-nav-grid div,
+            footer .footer-nav-grid h4,
+            footer .footer-nav-grid ul,
+            footer .footer-nav-grid li,
+            footer .footer-nav-grid p,
+            footer .footer-nav-grid a {
+                text-align: left !important;
+            }
+
+            footer .footer-nav-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 2rem 1.5rem !important;
+                text-align: left !important;
+            }
+            
+            footer .footer-nav-grid > .col-span-2 {
+                grid-column: span 2 / span 2 !important;
+                text-align: left !important;
+            }
+
+            @media (min-width: 768px) {
+                footer .footer-nav-grid {
+                    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+                    gap: 3rem !important;
+                }
+                footer .footer-nav-grid > .col-span-2 {
+                    grid-column: span 1 / span 1 !important;
+                    text-align: left !important;
+                }
             }
             
             footer .footer-flex {
@@ -267,8 +400,94 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     `;
     document.head.appendChild(style);
+})();
 
-    // 2. Build Mobile Menu Dynamically & Bind Events
+    // 2. Define global highlightActiveNavAndFooterLinks (Header & Footer)
+    window.highlightActiveNavAndFooterLinks = function() {
+        try {
+            const fullPath = window.location.pathname;
+            const currentFile = decodeURIComponent(fullPath.substring(fullPath.lastIndexOf('/') + 1).toLowerCase()) || 'index.html';
+            const currentHash = window.location.hash.toLowerCase();
+
+            // A. Highlight Header & Mobile Menu links
+            const headerLinks = document.querySelectorAll('header nav a, header a.nav-link, #mobile-menu a, .desktop-nav a, nav.hidden a');
+            headerLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (!href) return;
+
+                link.classList.remove('nav-active-link');
+
+                const cleanHref = href.trim();
+                const targetFile = decodeURIComponent(cleanHref.split('#')[0].split('?')[0].substring(cleanHref.lastIndexOf('/') + 1).toLowerCase()) || 'index.html';
+
+                let isActive = false;
+                if (targetFile === currentFile) {
+                    isActive = true;
+                } else if ((currentFile === '' || currentFile === 'index.html') && (targetFile === 'index.html' || targetFile === '')) {
+                    isActive = true;
+                } else if (currentFile.includes('about') && targetFile.includes('about')) {
+                    isActive = true;
+                } else if (currentFile.includes('contact') && targetFile.includes('contact')) {
+                    isActive = true;
+                }
+
+                if (isActive) {
+                    link.classList.add('nav-active-link');
+                }
+            });
+
+            // B. Highlight Footer links
+            const footerLinks = document.querySelectorAll('footer a, .footer-nav-grid a, footer .footer-link');
+            footerLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (!href) return;
+
+                link.classList.remove('footer-active-link');
+
+                let cleanHref = href.trim();
+                let targetFile = '';
+                let targetHash = '';
+
+                if (cleanHref.includes('#')) {
+                    const parts = cleanHref.split('#');
+                    targetFile = parts[0];
+                    targetHash = '#' + parts[1].toLowerCase();
+                } else {
+                    targetFile = cleanHref;
+                }
+
+                targetFile = decodeURIComponent(targetFile.substring(targetFile.lastIndexOf('/') + 1).toLowerCase());
+                if (!targetFile && targetHash) {
+                    targetFile = currentFile;
+                }
+
+                let isActive = false;
+
+                if (targetHash && currentHash) {
+                    if (currentHash === targetHash && (targetFile === currentFile || !targetFile)) {
+                        isActive = true;
+                    }
+                } else if (!targetHash && !currentHash) {
+                    if (targetFile && targetFile === currentFile) {
+                        isActive = true;
+                    } else if ((currentFile === '' || currentFile === 'index.html') && (targetFile === 'index.html' || targetFile === '')) {
+                        isActive = true;
+                    }
+                } else if (!currentHash && targetFile && targetFile === currentFile && !targetHash) {
+                    isActive = true;
+                }
+
+                if (isActive) {
+                    link.classList.add('footer-active-link');
+                }
+            });
+        } catch (e) {
+            console.error("Nav/Footer highlight error:", e);
+        }
+    };
+    window.highlightActiveFooterLinks = window.highlightActiveNavAndFooterLinks;
+
+    // 3. Build Mobile Menu Dynamically & Bind Events
     function setupMobileMenu() {
         const header = document.querySelector('header');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -276,7 +495,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!mobileMenu) return;
 
-        // Toggle Button Click Handler
         function toggleMenu(show) {
             const isCurrentlyActive = mobileMenu.classList.contains('active') || mobileMenu.classList.contains('show-menu') || (!mobileMenu.classList.contains('hidden') && mobileMenu.style.display !== 'none');
             const shouldActivate = show !== undefined ? show : !isCurrentlyActive;
@@ -314,7 +532,6 @@ document.addEventListener("DOMContentLoaded", () => {
             };
         });
 
-        // Close menu on nav link click
         mobileMenu.addEventListener('click', (e) => {
             if (e.target.closest('a')) {
                 toggleMenu(false);
@@ -322,10 +539,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    setupMobileMenu();
-
-    // 3. Smart Scroll-up Header (Show header instantly when scrolling UP from bottom)
-    (function setupScrollHeader() {
+    // 4. Smart Scroll-up Header
+    function setupScrollHeader() {
         let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
         const header = document.querySelector('header');
         if (!header) return;
@@ -355,42 +570,69 @@ document.addEventListener("DOMContentLoaded", () => {
             const diff = currentScrollY - lastScrollY;
 
             if (diff > 5) {
-                // Scrolling DOWN (towards bottom) -> Hide Header
                 header.style.setProperty('transform', 'translateY(-100%)', 'important');
             } else if (diff < -5) {
-                // Scrolling UP (from bottom towards top) -> Show Header
                 header.style.setProperty('transform', 'translateY(0)', 'important');
             }
 
             lastScrollY = currentScrollY;
         }, { passive: true });
-    })();
+    }
 
-    // 4. Dynamic Header Offset Compensation (Prevents header from overlapping content on all devices)
+    // 5. Dynamic Header Offset Compensation (Single container only, no double padding)
     function adjustHeaderOffset() {
         const header = document.querySelector('header');
         if (!header) return;
         const h = header.offsetHeight;
         document.documentElement.style.setProperty('--header-height', h + 'px');
         
-        const contentWrappers = document.querySelectorAll('main, #prize-main-wrapper, #position-content-wrapper');
-        contentWrappers.forEach(el => {
-            const currentPaddingTop = parseInt(window.getComputedStyle(el).paddingTop, 10) || 0;
-            if (currentPaddingTop < h) {
-                el.style.setProperty('padding-top', (h + 16) + 'px', 'important');
+        const primaryWrapper = document.getElementById('position-content-wrapper')
+            || document.getElementById('prize-main-wrapper')
+            || document.querySelector('body > main')
+            || document.querySelector('main');
+            
+        if (primaryWrapper) {
+            if (primaryWrapper.id === 'position-content-wrapper' || primaryWrapper.id === 'prize-main-wrapper') {
+                const nestedMain = primaryWrapper.querySelector('main');
+                if (nestedMain) nestedMain.style.setProperty('padding-top', '0px', 'important');
             }
-        });
+            primaryWrapper.style.setProperty('padding-top', (h + 8) + 'px', 'important');
+        }
     }
 
-    adjustHeaderOffset();
-    window.addEventListener('resize', adjustHeaderOffset);
-    window.addEventListener('load', adjustHeaderOffset);
+    function initAll() {
+        setupMobileMenu();
+        setupScrollHeader();
+        adjustHeaderOffset();
+        window.highlightActiveFooterLinks();
+    }
 
-    // 5. Viewport & Scaling Safeguards
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAll);
+    } else {
+        initAll();
+    }
+
+    window.addEventListener('load', () => {
+        adjustHeaderOffset();
+        window.highlightActiveFooterLinks();
+    });
+    window.addEventListener('resize', adjustHeaderOffset);
+    window.addEventListener('gtsa:page-changed', () => {
+        initAll();
+    });
+    window.addEventListener('popstate', () => {
+        window.highlightActiveFooterLinks();
+    });
+
+    // Run highlight checks repeatedly during initial load
+    setTimeout(window.highlightActiveFooterLinks, 100);
+    setTimeout(window.highlightActiveFooterLinks, 500);
+
+    // 6. Viewport & Scaling Safeguards
     if (!document.querySelector('meta[name="viewport"]')) {
         const meta = document.createElement('meta');
         meta.name = "viewport";
         meta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
         document.head.appendChild(meta);
     }
-});

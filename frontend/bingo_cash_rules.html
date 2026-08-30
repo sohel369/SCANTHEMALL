@@ -13,6 +13,95 @@
         body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; }
         .gradient-text { background: linear-gradient(90deg, #FF3D00, #FFB300); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); }
+    
+        /* Active Sunburst Flare Link - Global (Header & Footer) */
+        .nav-active-link,
+        .footer-active-link {
+            position: relative !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            color: #ffffff !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.04em !important;
+            padding: 0.35rem 0.85rem 0.45rem 0.85rem !important;
+            border-radius: 0.6rem !important;
+            background: linear-gradient(0deg, rgba(255, 61, 0, 0.32) 0%, rgba(255, 145, 0, 0.16) 45%, rgba(255, 61, 0, 0.03) 80%, transparent 100%) !important;
+            border: 1px solid rgba(255, 61, 0, 0.55) !important;
+            border-bottom: 2px solid #FF3D00 !important;
+            box-shadow: 0 4px 18px rgba(255, 61, 0, 0.35), 0 -8px 22px rgba(255, 145, 0, 0.2), inset 0 -8px 16px rgba(255, 80, 0, 0.3) !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 12px rgba(255, 61, 0, 0.6) !important;
+            transform: translateY(-1px) !important;
+            transition: all 0.3s ease;
+            z-index: 1 !important;
+        }
+
+        /* Rising Sun Flare Ray effect emanating upwards from bottom */
+        .nav-active-link::before,
+        .footer-active-link::before {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -2px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 130% !important;
+            height: 120% !important;
+            background: radial-gradient(ellipse at 50% 100%, rgba(255, 180, 0, 0.55) 0%, rgba(255, 61, 0, 0.35) 30%, rgba(255, 61, 0, 0.1) 65%, transparent 100%) !important;
+            filter: blur(5px) !important;
+            pointer-events: none !important;
+            z-index: -1 !important;
+            animation: sunGlowRise 3s ease-in-out infinite alternate !important;
+        }
+
+        /* Sun Core Underline with intense golden-orange laser wave */
+        .nav-active-link::after,
+        .footer-active-link::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -2px !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 3px !important;
+            border-radius: 9999px !important;
+            background: linear-gradient(90deg, #FF3D00 0%, #FFF8E1 45%, #FF9100 55%, #FF3D00 100%) !important;
+            background-size: 200% 100% !important;
+            box-shadow: 0 0 10px #FF3D00, 0 -3px 14px #FF9100, 0 -8px 24px rgba(255, 145, 0, 0.7) !important;
+            animation: sunRayWave 2.2s linear infinite !important;
+            z-index: 2 !important;
+        }
+
+        @keyframes sunGlowRise {
+            0% {
+                height: 85%;
+                opacity: 0.7;
+                filter: blur(4px);
+                transform: translateX(-50%) scaleX(0.9);
+            }
+            50% {
+                height: 135%;
+                opacity: 1;
+                filter: blur(6px);
+                transform: translateX(-50%) scaleX(1.15);
+            }
+            100% {
+                height: 85%;
+                opacity: 0.7;
+                filter: blur(4px);
+                transform: translateX(-50%) scaleX(0.9);
+            }
+        }
+
+        @keyframes sunRayWave {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
     </style>
 </head>
     <!-- Standardized Header -->
@@ -149,24 +238,27 @@
     <!-- Standardized Footer -->
     <footer class="bg-black border-t border-white/5 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
-                <div class="col-span-2 md:col-span-1">
-                    <div class="text-2xl font-black mb-4 uppercase tracking-tighter">GOTTA SCAN<br><span class="text-[#FF3D00]">THEM ALL</span></div>
-                    <p class="text-sm text-gray-500">The world's first multi-category scan-based sweepstakes platform.</p>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-16 footer-nav-grid">
+                <!-- Brand -->
+                <div class="col-span-2 md:col-span-1 text-left">
+                    <a href="index.html" class="text-2xl font-black mb-4 block uppercase tracking-tighter">GOTTA SCAN<br><span class="text-[#FF3D00]">THEM ALL</span></a>
+                    <p class="text-sm text-gray-500 max-w-sm">The world's first multi-category scan-based sweepstakes platform.</p>
                 </div>
                 
-                <div>
-                    <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">About US</h4>
-                    <ul class="space-y-4 text-sm text-gray-500">
-                        <li><a href="mission.html" class="hover:text-[#FF3D00] transition-colors">Our Mission</a></li>
-                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="hover:text-[#FF3D00] transition-colors">Why Scan them All ?</a></li>
-                        <li><a href="https://rule7media.com/franchise" class="hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
+                <!-- Category 1: About US (Left on Mobile) -->
+                <div class="col-span-1 text-left">
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About US</h4>
+                    <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
+                        <li><a href="mission.html" class="footer-link hover:text-[#FF3D00] transition-colors">Our Mission</a></li>
+                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan them All ?</a></li>
+                        <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
                     </ul>
                 </div>
 
-                <div>
-                    <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Policy</h4>
-                    <ul class="space-y-4 text-sm text-gray-500">
+                <!-- Category 2: Policy (Right on Mobile) -->
+                <div class="col-span-1 text-left">
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-policy">Policy</h4>
+                    <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
                         <li><a href="GTSA Final Terms No Advertising.html" class="hover:text-[#FF3D00] transition-colors">Terms of Use</a></li>
                         <li><a href="privacy.html" class="hover:text-[#FF3D00] transition-colors">Privacy Policy</a></li>
                         <li><a href="index.html#faq" class="hover:text-[#FF3D00] transition-colors">FAQs</a></li>
@@ -174,25 +266,28 @@
                     </ul>
                 </div>
 
-                <div>
-                    <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Support</h4>
-                    <ul class="space-y-4 text-sm text-gray-500">
-                        <li><a href="blog.html" class="hover:text-[#FF3D00] transition-colors">Blog</a></li>
+                <!-- Category 3: Support (Below on Mobile, Left-aligned) -->
+                <div class="col-span-2 md:col-span-1 text-left pt-4 md:pt-0 border-t border-white/5 md:border-t-0">
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-support">Support</h4>
+                    <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
+                        <li><a href="blog.html" class="footer-link hover:text-[#FF3D00] transition-colors">Blog</a></li>
                         <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite Friends</a></li>
                         <li><a href="instagram_upload_page.html" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
                         <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
-                        <li><a href="Final_contact_page.html" class="hover:text-[#FF3D00] transition-colors">Contact us</a></li>
-                        <li><a href="/advertiser" class="hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
-                        <li><a href="https://rule7media.com/affiliate" class="hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
+                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact us</a></li>
+                        <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
+                        <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/5 text-[10px] text-gray-600 uppercase tracking-widest">
                 <p>© 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED.</p>
-                <div class="w-full md:w-auto flex justify-between items-center opacity-20 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-                    <img src="https://logo.clearbit.com/visa.com" alt="Visa" class="h-4">
-                    <img src="https://www.shutterstock.com/image-vector/paypal-multinational-financial-technology-payment-260nw-2276341185.jpg" alt="PayPal" class="h-4">
+                <div class="payment-cards-row flex flex-wrap items-center justify-center md:justify-end gap-2 sm:gap-2.5 mt-4 md:mt-0">
+                    <span class="text-[10px] font-bold tracking-widest text-zinc-400 uppercase mr-1">Secured by</span>
+                    <span class="px-2.5 py-1 bg-zinc-900 border border-white/20 rounded-md text-[10px] sm:text-[11px] font-extrabold tracking-wider text-zinc-200 shadow-sm">VISA</span>
+                    <span class="px-2.5 py-1 bg-zinc-900 border border-white/20 rounded-md text-[10px] sm:text-[11px] font-extrabold tracking-wider text-zinc-200 shadow-sm">MASTERCARD</span>
+                    <span class="px-2.5 py-1 bg-zinc-900 border border-white/20 rounded-md text-[10px] sm:text-[11px] font-extrabold tracking-wider text-[#009cde] shadow-sm">PayPal</span>
                 </div>
             </div>
         </div>
