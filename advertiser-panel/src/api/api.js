@@ -32,6 +32,12 @@ const apiRequest = async (endpoint, options = {}) => {
   if (!response.ok) {
     const error = await response.json().catch(() => ({ error: 'Request failed' }));
     console.error('API Error:', error);
+    if (response.status === 401 || (error.error && typeof error.error === 'string' && error.error.toLowerCase().includes('token expired'))) {
+      localStorage.removeItem('token');
+      if (!window.location.pathname.includes('/login')) {
+        window.location.href = '/advertiser/login';
+      }
+    }
     throw new Error(error.error || `HTTP error! status: ${response.status}`);
   }
 
@@ -118,6 +124,12 @@ export const billboardsAPI = {
     return apiRequest(`/advertiser/billboards/${id}`, {
       method: 'PUT',
       body: JSON.stringify(billboardData),
+    });
+  },
+
+  deleteBillboard: async (id) => {
+    return apiRequest(`/advertiser/billboards/${id}`, {
+      method: 'DELETE',
     });
   },
 };

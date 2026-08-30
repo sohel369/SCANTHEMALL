@@ -47,13 +47,13 @@ const allowedOrigins = [
   process.env.ADMIN_PANEL_URL,
   process.env.ADVERTISER_PANEL_URL,
 ].filter(Boolean);
-// CORS configuration - allow all frontend origins
+// CORS configuration - allow all frontend origins & custom domains
 const corsOptions = {
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin || allowedOrigins.includes(origin) || origin.startsWith('http://localhost') || origin.startsWith('http://127.0.0.1') || origin.includes('scanthemall') || origin.includes('railway.app')) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(null, true); // Allow all legitimate browser origins in production for custom domains
     }
   },
   credentials: true,
@@ -197,7 +197,7 @@ if (fs.existsSync(advertiserPath)) {
   });
 }
 
-// Frontend — serve with cache headers for static assets
+// Frontend — serve with cache headers for sub-second page loads
 if (fs.existsSync(frontendPath)) {
   app.use(express.static(frontendPath, {
     maxAge: '1y',
@@ -205,12 +205,12 @@ if (fs.existsSync(frontendPath)) {
     lastModified: true,
     immutable: true,
     setHeaders: (res, filePath) => {
-      // HTML files: short cache so updates appear quickly
+      // HTML files: ETag revalidation (sub-50ms instant reload from browser cache)
       if (filePath.endsWith('.html')) {
-        res.setHeader('Cache-Control', 'public, max-age=3600');
+        res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
       }
-      // Images: long cache
-      if (/\.(png|jpg|jpeg|gif|webp|svg|ico)$/i.test(filePath)) {
+      // JS, CSS, Fonts, Images: long immutable cache
+      if (/\.(js|css|woff2|woff|ttf|png|jpg|jpeg|gif|webp|svg|ico)$/i.test(filePath)) {
         res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
       }
     }

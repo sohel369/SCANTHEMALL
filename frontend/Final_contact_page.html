@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <script src="js/geo-rules.js" defer></script>
     <script src="js/image-handler.js"></script>
     <meta charset="UTF-8">
@@ -24,8 +28,8 @@
         }
 
         .glass-header {
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(12px);
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 61, 0, 0.2);
         }
 
@@ -195,22 +199,13 @@
 </head>
 
 <body class="antialiased">
-    <!-- Top Banner Ad -->
-    <div class="w-full bg-black py-2 border-b border-zinc-800">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="ad-placeholder h-[90px] w-full max-w-[728px] mx-auto text-[10px]">
-                Leaderboard Advertisement
-            </div>
-        </div>
-    </div>
 
-
-    <!-- Header -->
+    <!-- Standardized Responsive Header (Always on Top) -->
     <header class="glass-header sticky top-0 z-50 w-full transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" id="Home" class="flex items-center space-x-2">
+                    <a href="index.html" id="Home" class="flex items-center space-x-2 cursor-pointer">
                         <div class="w-10 h-10 bg-[#FF3D00] rounded-lg flex items-center justify-center">
                             <i data-lucide="camera" class="text-white w-6 h-6"></i>
                         </div>
@@ -229,7 +224,7 @@
                     <a href="position.html" id="MyPosition"
                         class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors border-b-2 border-transparent pb-1">My Position</a>
                     <a href="Final_contact_page.html" id="ContactNav"
-                        class="text-sm font-bold text-white hover:text-[#FF3D00] transition-colors border-b-2 border-[#FF3D00] pb-1">Contact</a>
+                        class="text-sm font-bold text-white hover:text-[#FF3D00] transition-colors border-b-2 border-transparent pb-1">Contact</a>
                 </nav>
 
                 <div class="hidden md:flex items-center space-x-6">
@@ -247,28 +242,24 @@
                     <div class="user-profile hidden relative group py-4 items-center">
                         <button class="flex items-center space-x-3 focus:outline-none">
                             <div class="text-right hidden lg:block">
-                                <p
-                                    class="text-xs font-bold text-white uppercase tracking-widest user-name tracking-tighter">
-                                    Alex Thompson</p>
-                                <p class="text-[10px] text-[#FF3D00] font-black uppercase">Pro Member</p>
+                                <p class="text-xs font-bold text-white uppercase tracking-wider user-name">...</p>
+                                <p class="text-[10px] text-[#FF3D00] font-black uppercase user-role">...</p>
                             </div>
                             <div class="w-10 h-10 rounded-full border-2 border-[#FF3D00] p-0.5 overflow-hidden">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="Avatar"
-                                    class="w-full h-full rounded-full bg-zinc-800">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    alt="Avatar" class="user-avatar w-full h-full rounded-full bg-zinc-800 object-cover">
                             </div>
-                            <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500"></i>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-400"></i>
                         </button>
-
-                        <!-- Dropdown -->
                         <div
                             class="absolute right-0 top-full mt-1 w-48 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl profile-dropdown py-2 z-[60] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                             <a href="registration_with_video.html"
                                 class="flex items-center px-4 py-3 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors">
-                                <i data-lucide="user" class="w-4 h-4 mr-3"></i> My Profile
+                                <i data-lucide="user" class="w-4 h-4 mr-3 text-[#FF3D00]"></i> My Profile
                             </a>
                             <a href="registration_with_video.html"
                                 class="flex items-center px-4 py-3 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors">
-                                <i data-lucide="settings" class="w-4 h-4 mr-3"></i> Account Settings
+                                <i data-lucide="settings" class="w-4 h-4 mr-3 text-[#FF3D00]"></i> Account Settings
                             </a>
                             <div class="border-t border-zinc-800 my-1"></div>
                             <a href="#"
@@ -324,6 +315,15 @@
             </div>
         </div>
     </header>
+
+    <!-- Top Leaderboard Advertisement Banner (Directly Below Header) -->
+    <div id="contact-top-ad-wrapper" class="w-full bg-black py-2.5 sm:py-3.5 border-b border-zinc-800/80 relative z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="ad-placeholder h-[60px] sm:h-[90px] w-full max-w-[728px] mx-auto text-[10px] sm:text-xs text-center px-2">
+                Leaderboard Advertisement (Header - 728x90)
+            </div>
+        </div>
+    </div>
 
     <main>
         <!-- Contact Hero -->
@@ -588,10 +588,10 @@
                 
                 <!-- Category 1: About US (Left on Mobile) -->
                 <div class="col-span-1 text-left">
-                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About US</h4>
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About Us</h4>
                     <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
                         <li><a href="mission.html" class="footer-link hover:text-[#FF3D00] transition-colors">Our Mission</a></li>
-                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan them All ?</a></li>
+                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan Them All?</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
                     </ul>
                 </div>
@@ -615,7 +615,7 @@
                         <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite Friends</a></li>
                         <li><a href="instagram_upload_page.html" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
                         <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
-                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact us</a></li>
+                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact Us</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
                     </ul>

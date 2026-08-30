@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link rel="dns-prefetch" href="https://images.unsplash.com">
     <link rel="canonical" href="https://scanthemall.com/">
@@ -2363,7 +2367,7 @@
                     <a href="prize.html" id="Prizes"
                         class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">Prizes</a>
                     <a href="position.html" id="MyPosition"
-                        class="text-sm font-bold text-white hover:text-[#FF3D00] transition-colors border-b-2 border-[#FF3D00] pb-1">My Position</a>
+                        class="text-sm font-bold text-white hover:text-[#FF3D00] transition-colors border-b-2 border-transparent pb-1">My Position</a>
                     <a href="Final_contact_page.html" id="ContactNav"
                         class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">Contact</a>
                 </nav>
@@ -2800,72 +2804,173 @@
             <!-- Section Divider -->
             <div class="max-w-7xl mx-auto px-4 lg:px-8 mb-20 md:mb-24">
                 <div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-            </div>            <!-- Task 3: Free Cash Draw Form -->
-            <section class="max-w-3xl mx-auto px-4 sm:px-6 mb-24 md:mb-32">
-                <div class="bg-zinc-900/80 p-6 sm:p-10 md:p-14 rounded-3xl md:rounded-[2.5rem] border border-zinc-800 shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-[#FF3D00]/10 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+            </div>            <!-- Task 3: Luxury Free Cash Draw Form -->
+            <section class="max-w-4xl mx-auto px-4 sm:px-6 mb-24 md:mb-32">
+                <div class="relative rounded-3xl sm:rounded-[3rem] p-6 sm:p-10 md:p-14 bg-gradient-to-b from-[#0F172A]/95 via-[#0B1120]/95 to-black/95 border border-orange-500/30 shadow-[0_25px_80px_-15px_rgba(255,61,0,0.25)] backdrop-blur-2xl overflow-hidden group">
+                    
+                    <!-- Ambient Glow Effects -->
+                    <div class="absolute -top-24 -right-24 w-80 h-80 bg-gradient-to-br from-[#FF3D00]/25 via-amber-500/10 to-transparent blur-[90px] rounded-full pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-gradient-to-tr from-[#FF3D00]/20 via-rose-500/10 to-transparent blur-[90px] rounded-full pointer-events-none"></div>
+                    
+                    <!-- Top VIP Pill Badge -->
+                    <div class="text-center mb-4 relative z-10">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-orange-500/15 via-[#FF3D00]/20 to-amber-500/15 border border-orange-500/40 text-[#FF3D00] text-[10px] sm:text-[11px] font-black uppercase tracking-[0.25em] shadow-lg shadow-orange-500/10 animate-pulse">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
+                            <span>Official Cash Draw Registration</span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            <span class="text-emerald-400">100% Free Entry</span>
+                        </div>
+                    </div>
 
+                    <!-- Header -->
                     <div class="text-center mb-8 sm:mb-12 relative z-10 px-2">
-                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-3 uppercase italic tracking-tighter text-white">Enter the <span class="text-[#FF3D00]">$1,000</span> Draw</h2>
-                        <p class="text-zinc-400 text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase">Winners will be notified by Email or SMS Message</p>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-3 uppercase italic tracking-tight text-white">
+                            Enter The <span class="gradient-text">$1,000</span> Cash Draw
+                        </h2>
+                        <p class="text-zinc-400 text-xs sm:text-sm font-semibold tracking-wider max-w-lg mx-auto">
+                            Guaranteed cash prize draw. Instant confirmation number issued immediately upon submission.
+                        </p>
                     </div>
 
                     <form id="cashDrawForm" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 relative z-10 w-full">
-                        <div class="space-y-1.5">
-                            <label class="block text-[11px] font-bold text-zinc-400 uppercase tracking-widest px-0.5">First Name</label>
-                            <input type="text" name="FirstName" placeholder="John" title="Enter your first name" class="form-input" required="">
-                        </div>
-                        <div class="space-y-1.5">
-                            <label class="block text-[11px] font-bold text-zinc-400 uppercase tracking-widest px-0.5">Last Name</label>
-                            <input type="text" name="LastName" placeholder="Doe" title="Enter your last name" class="form-input" required="">
-                        </div>
-                        <div class="space-y-1.5 col-span-full">
-                            <label class="block text-[11px] font-bold text-zinc-400 uppercase tracking-widest px-0.5">Email Address</label>
-                            <input type="email" name="Email" placeholder="john.doe@example.com" title="Enter your email address" class="form-input" required="">
-                        </div>
-
-                        <div class="space-y-1.5">
-                            <label class="block text-[11px] font-bold text-zinc-400 uppercase tracking-widest px-0.5">Country</label>
-                            <select name="Country" class="form-input" title="Select your country" required="">
-                                <option value="">Select Country</option>
-                                <option value="Australia">Australia</option>
-                                <option value="United Kingdom">United Kingdom</option>
-                                <option value="USA">USA</option>
-                                <option value="Canada">Canada</option>
-                                <option value="France">France</option>
-                                <option value="Italy">Italy</option>
-                                <option value="Germany">Germany</option>
-                                <option value="Spain">Spain</option>
-                            </select>
+                        <!-- First Name -->
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-1.5 text-[11px] sm:text-xs font-black text-zinc-300 uppercase tracking-widest px-1">
+                                <i data-lucide="user" class="w-3.5 h-3.5 text-[#FF3D00]"></i>
+                                <span>First Name</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                name="FirstName" 
+                                placeholder="e.g. John" 
+                                title="Enter your first name" 
+                                class="w-full h-12 sm:h-14 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-black/60 border border-zinc-700/80 hover:border-orange-500/40 focus:border-[#FF3D00] focus:ring-2 focus:ring-[#FF3D00]/25 text-white text-sm sm:text-base font-medium outline-none transition-all placeholder:text-zinc-500 shadow-inner" 
+                                required
+                            >
                         </div>
 
-                        <div class="space-y-1.5">
-                            <label class="block text-[11px] font-bold text-zinc-400 uppercase tracking-widest px-0.5">State / Region</label>
-                            <input type="text" name="State" placeholder="e.g. California" title="Enter your state, province or region" class="form-input" required="">
+                        <!-- Last Name -->
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-1.5 text-[11px] sm:text-xs font-black text-zinc-300 uppercase tracking-widest px-1">
+                                <i data-lucide="user-check" class="w-3.5 h-3.5 text-[#FF3D00]"></i>
+                                <span>Last Name</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                name="LastName" 
+                                placeholder="e.g. Doe" 
+                                title="Enter your last name" 
+                                class="w-full h-12 sm:h-14 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-black/60 border border-zinc-700/80 hover:border-orange-500/40 focus:border-[#FF3D00] focus:ring-2 focus:ring-[#FF3D00]/25 text-white text-sm sm:text-base font-medium outline-none transition-all placeholder:text-zinc-500 shadow-inner" 
+                                required
+                            >
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="space-y-2 col-span-full">
+                            <label class="flex items-center gap-1.5 text-[11px] sm:text-xs font-black text-zinc-300 uppercase tracking-widest px-1">
+                                <i data-lucide="mail" class="w-3.5 h-3.5 text-[#FF3D00]"></i>
+                                <span>Email Address</span>
+                                <span class="text-[10px] text-zinc-500 font-normal lowercase">(Used for winner notification)</span>
+                            </label>
+                            <input 
+                                type="email" 
+                                name="Email" 
+                                placeholder="john.doe@example.com" 
+                                title="Enter your email address" 
+                                class="w-full h-12 sm:h-14 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-black/60 border border-zinc-700/80 hover:border-orange-500/40 focus:border-[#FF3D00] focus:ring-2 focus:ring-[#FF3D00]/25 text-white text-sm sm:text-base font-medium outline-none transition-all placeholder:text-zinc-500 shadow-inner" 
+                                required
+                            >
+                        </div>
+
+                        <!-- Country Select -->
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-1.5 text-[11px] sm:text-xs font-black text-zinc-300 uppercase tracking-widest px-1">
+                                <i data-lucide="globe" class="w-3.5 h-3.5 text-[#FF3D00]"></i>
+                                <span>Country</span>
+                            </label>
+                            <div class="relative">
+                                <select 
+                                    name="Country" 
+                                    class="w-full h-12 sm:h-14 px-4 sm:px-5 py-3 sm:py-3.5 pr-11 rounded-xl sm:rounded-2xl bg-black/60 border border-zinc-700/80 hover:border-orange-500/40 focus:border-[#FF3D00] focus:ring-2 focus:ring-[#FF3D00]/25 text-zinc-200 text-sm sm:text-base font-medium outline-none transition-all appearance-none cursor-pointer shadow-inner" 
+                                    title="Select your country" 
+                                    required
+                                >
+                                    <option value="">-- Select Country --</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="USA">United States</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="France">France</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Spain">Spain</option>
+                                    <option value="Global">Other Country (Global)</option>
+                                </select>
+                                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-400">
+                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- State / Region -->
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-1.5 text-[11px] sm:text-xs font-black text-zinc-300 uppercase tracking-widest px-1">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#FF3D00]"></i>
+                                <span>State / Region</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                name="State" 
+                                placeholder="e.g. California, London, NSW" 
+                                title="Enter your state, province or region" 
+                                class="w-full h-12 sm:h-14 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-black/60 border border-zinc-700/80 hover:border-orange-500/40 focus:border-[#FF3D00] focus:ring-2 focus:ring-[#FF3D00]/25 text-white text-sm sm:text-base font-medium outline-none transition-all placeholder:text-zinc-500 shadow-inner" 
+                                required
+                            >
                         </div>
 
                         <input type="hidden" name="Database" value="Cash Draws">
-                        <input type="hidden" name="DateOfEntry" value="2024-05-20">
+                        <input type="hidden" name="DateOfEntry" value="2026-08-30">
 
-                        <button type="submit" class="btn-primary col-span-full py-4 sm:py-5 px-6 rounded-xl sm:rounded-2xl font-black uppercase text-xs sm:text-sm tracking-wider sm:tracking-[0.25em] md:tracking-[0.35em] text-white shadow-[0_20px_50px_-10px_rgba(255,61,0,0.4)] transition-all hover:scale-[1.01] active:scale-95 group mt-3 sm:mt-4 flex items-center justify-center cursor-pointer">
-                            <span class="inline-flex items-center gap-3">
-                                Confirm Registration
-                                <i data-lucide="chevron-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        <!-- Premium Glowing Action CTA -->
+                        <div class="col-span-full pt-2">
+                            <button 
+                                type="submit" 
+                                class="w-full h-14 sm:h-16 rounded-2xl font-black uppercase text-xs sm:text-sm tracking-wider sm:tracking-[0.2em] text-white flex items-center justify-center gap-3 transition-all duration-300 shadow-[0_15px_40px_-5px_rgba(255,61,0,0.5)] hover:shadow-[0_20px_50px_rgba(255,61,0,0.65)] hover:scale-[1.01] active:scale-98 cursor-pointer relative overflow-hidden group/btn"
+                                style="background: linear-gradient(135deg, #FF3D00 0%, #FF6D00 50%, #FF9100 100%);"
+                            >
+                                <span class="relative z-10 flex items-center gap-2 sm:gap-3">
+                                    <i data-lucide="shield-check" class="w-5 h-5 text-amber-200"></i>
+                                    <span>Confirm & Enter $1,000 Cash Draw</span>
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-amber-200 group-hover/btn:rotate-45 transition-transform duration-300"></i>
+                                </span>
+                                <!-- Light shimmer ray -->
+                                <div class="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none"></div>
+                            </button>
+                        </div>
+
+                        <!-- Trust Footer -->
+                        <div class="col-span-full text-center pt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] text-zinc-400 font-bold uppercase tracking-wider">
+                            <span class="flex items-center gap-1 text-emerald-400">
+                                <i data-lucide="lock" class="w-3 h-3"></i> 256-Bit SSL Encrypted
                             </span>
-                        </button>
-
-                        <div class="col-span-full text-center pt-4 sm:pt-6">
-                            <p class="text-[10px] sm:text-[11px] text-zinc-500 uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold">
-                                Secure Data Encryption Enabled
-                                <a href="privacy.html" class="text-[#FF3D00]/80 hover:text-[#FF3D00] ml-2 transition-colors">Privacy Policy</a>
-                            </p>
+                            <span>•</span>
+                            <span class="flex items-center gap-1 text-zinc-300">
+                                <i data-lucide="check-circle" class="w-3 h-3 text-[#FF3D00]"></i> Instant Draw Number
+                            </span>
+                            <span>•</span>
+                            <a href="privacy.html" class="text-orange-400 hover:text-white transition-colors underline underline-offset-4">
+                                Privacy Policy
+                            </a>
                         </div>
                     </form>
 
-                    <div class="mt-8 text-center relative z-10 border-t border-white/5 pt-6">
-                        <p class="text-[11px] text-zinc-400 uppercase tracking-widest font-bold">
+                    <!-- Rules Footnote Link -->
+                    <div class="mt-8 text-center relative z-10 border-t border-white/10 pt-6">
+                        <p class="text-[11px] sm:text-xs text-zinc-400 uppercase tracking-wider font-semibold">
                             How does the Billboard Cash Draw work?
-                            <a href="bingo_cash_rules.html" class="text-[#FF3D00] hover:text-white transition-colors border-b border-[#FF3D00]/40 pb-0.5 ml-1 font-extrabold">Learn More &rarr;</a>
+                            <a href="bingo_cash_rules.html" class="text-[#FF3D00] hover:text-white transition-colors border-b border-[#FF3D00]/40 pb-0.5 ml-1.5 font-black">
+                                Official Rules & FAQ →
+                            </a>
                         </p>
                     </div>
                 </div>
@@ -2974,10 +3079,10 @@
                 
                 <!-- Category 1: About US (Left on Mobile) -->
                 <div class="col-span-1 text-left">
-                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About US</h4>
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About Us</h4>
                     <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
                         <li><a href="mission.html" class="footer-link hover:text-[#FF3D00] transition-colors">Our Mission</a></li>
-                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan them All ?</a></li>
+                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan Them All?</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
                     </ul>
                 </div>
@@ -3001,7 +3106,7 @@
                         <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite Friends</a></li>
                         <li><a href="instagram_upload_page.html" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
                         <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
-                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact us</a></li>
+                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact Us</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
                     </ul>

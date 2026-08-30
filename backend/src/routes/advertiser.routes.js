@@ -8,6 +8,7 @@ import {
   getBillboards,
   createBillboard,
   updateBillboard,
+  deleteBillboard,
   getAnalytics,
   getInvoices,
   getAccount,
@@ -34,6 +35,7 @@ router.delete('/campaigns/:id', deleteCampaign);
 router.get('/billboards', getBillboards);
 router.post('/billboards', createBillboard);
 router.put('/billboards/:id', updateBillboard);
+router.delete('/billboards/:id', deleteBillboard);
 
 // Media Uploads
 router.post('/media/upload', ...uploadAdvertiserMedia);

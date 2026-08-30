@@ -1,6 +1,10 @@
-﻿<html lang="en">
+<html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <script src="js/geo-rules.js" defer></script>
     <script src="js/image-handler.js"></script>
     <meta charset="UTF-8">
@@ -93,6 +97,11 @@
                 opacity: 1;
                 transform: scale(1);
             }
+        }
+
+        .premium-gradient {
+            background: linear-gradient(135deg, rgba(255, 61, 0, 0.15) 0%, rgba(24, 24, 27, 0.95) 100%);
+            border: 1px solid rgba(255, 61, 0, 0.35);
         }
 
         .ad-placeholder {
@@ -5124,16 +5133,7 @@
 
 <body class="antialiased">
 
-    <!-- Leaderboard Header (RETAINED) -->
-    <div class="w-full bg-black py-2 border-b border-zinc-800">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="ad-placeholder h-[90px] w-full max-w-[728px] mx-auto text-xs">
-                Leaderboard Advertisement (Header)
-            </div>
-        </div>
-    </div>
-
-    <!-- Standardized Header -->
+    <!-- Standardized Header (On Top) -->
     <header class="glass-header sticky top-0 z-50 w-full transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -5146,11 +5146,12 @@
                     </a>
                 </div>
 
-                <nav class="hidden lg:flex space-x-8">
-                    <a href="index.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">Home</a>
-                    <a href="GTSA_FInal_Welcome_Page_(About_US).html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">About us</a>
-                    <a href="prize.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">Prizes</a>
-                    <a href="position.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">My Position</a>
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="index.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">Home</a>
+                    <a href="GTSA_FInal_Welcome_Page_(About_US).html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">About us</a>
+                    <a href="prize.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">Prizes</a>
+                    <a href="position.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">My Position</a>
+                    <a href="Final_contact_page.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">Contact</a>
                 </nav>
 
                 <div class="hidden md:flex items-center space-x-6">
@@ -5211,6 +5212,7 @@
                     <a href="GTSA_FInal_Welcome_Page_(About_US).html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">About</a>
                     <a href="prize.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Prizes</a>
                     <a href="position.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">My Position</a>
+                    <a href="Final_contact_page.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Contact</a>
                     <hr class="border-white/10 my-4">
                     <a href="registration_with_video.html" class="auth-signup text-2xl font-black uppercase text-white border border-white/20 p-4 rounded-2xl text-center">Register or Sign-In</a>
                     <a href="/advertiser" class="bg-[#FF3D00] text-black text-center py-4 rounded-2xl font-black uppercase mt-4">Advertise with Us</a>
@@ -5218,6 +5220,15 @@
             </div>
         </div>
     </header>
+
+    <!-- Leaderboard Header (Below Header) -->
+    <div id="blog-top-ad-wrapper" class="w-full bg-black py-3 border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="ad-placeholder h-[90px] w-full max-w-[728px] mx-auto text-xs">
+                Leaderboard Advertisement (Header)
+            </div>
+        </div>
+    </div>
 
     <!-- BLOG NAVIGATION & SEARCH SYSTEM -->
     <div class="bg-zinc-900/50 border-b border-white/5 py-4">
@@ -5267,59 +5278,59 @@
             </div>
         </aside>
 
-        <div class="flex-1 min-w-0 max-w-7xl mx-auto px-4 py-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="flex-1 min-w-0 max-w-7xl mx-auto px-4 py-10 lg:py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
 
-                <!-- Sidebar: Language & Archive -->
-                <aside class="lg:col-span-3 space-y-10 order-2 lg:order-1">
+                <!-- Sidebar: Language & Archive (Wider on desktop lg:col-span-4, Prominent at top on mobile) -->
+                <div id="blog-sidebar-widget" class="lg:col-span-4 space-y-6 lg:space-y-8 order-1 lg:order-1 bg-zinc-900/80 lg:bg-transparent p-6 lg:p-0 rounded-3xl lg:rounded-none border border-zinc-800 lg:border-none shadow-2xl lg:shadow-none">
 
                     <!-- Language Switcher -->
                     <div>
                         <h3
-                            class="text-sm font-black uppercase tracking-widest mb-6 border-b border-[#FF3D00] pb-2 inline-block">
+                            class="text-sm font-black uppercase tracking-widest mb-3 lg:mb-5 text-white border-b-2 border-[#FF3D00] pb-1.5 inline-block">
                             Select Language</h3>
-                        <div class="space-y-2">
+                        <div class="grid grid-cols-2 lg:grid-cols-1 gap-2.5">
                             <button onclick="switchLanguage('en')"
-                                class="sidebar-link w-full text-left p-3 rounded-r-lg text-zinc-400 flex items-center justify-between group">
-                                <span class="flex items-center"><img src="https://flagcdn.com/us.svg"
-                                        class="flag-icon mr-3"> English</span>
+                                class="sidebar-link w-full text-left p-3 rounded-xl text-white font-semibold flex items-center justify-between group bg-zinc-800/90 lg:bg-white/5 border border-zinc-700/60 hover:border-[#FF3D00] transition-all">
+                                <span class="flex items-center text-xs sm:text-sm"><img src="https://flagcdn.com/us.svg"
+                                        class="flag-icon mr-2.5"> English</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true"
-                                    class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100">
+                                    class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100 hidden sm:block text-[#FF3D00]">
                                     <path d="m9 18 6-6-6-6"></path>
                                 </svg>
                             </button>
                             <button onclick="switchLanguage('es')"
-                                class="sidebar-link w-full text-left p-3 rounded-r-lg text-zinc-400 flex items-center justify-between group">
-                                <span class="flex items-center"><img src="https://flagcdn.com/mx.svg"
-                                        class="flag-icon mr-3"> Español</span>
+                                class="sidebar-link w-full text-left p-3 rounded-xl text-white font-semibold flex items-center justify-between group bg-zinc-800/90 lg:bg-white/5 border border-zinc-700/60 hover:border-[#FF3D00] transition-all">
+                                <span class="flex items-center text-xs sm:text-sm"><img src="https://flagcdn.com/mx.svg"
+                                        class="flag-icon mr-2.5"> Español</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true"
-                                    class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100">
+                                    class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100 hidden sm:block text-[#FF3D00]">
                                     <path d="m9 18 6-6-6-6"></path>
                                 </svg>
                             </button>
                             <button onclick="switchLanguage('zh')"
-                                class="sidebar-link w-full text-left p-3 rounded-r-lg text-zinc-400 flex items-center justify-between group">
-                                <span class="flex items-center"><img src="https://flagcdn.com/cn.svg"
-                                        class="flag-icon mr-3"> 中文 (Chinese)</span>
+                                class="sidebar-link w-full text-left p-3 rounded-xl text-white font-semibold flex items-center justify-between group bg-zinc-800/90 lg:bg-white/5 border border-zinc-700/60 hover:border-[#FF3D00] transition-all">
+                                <span class="flex items-center text-xs sm:text-sm"><img src="https://flagcdn.com/cn.svg"
+                                        class="flag-icon mr-2.5"> 中文 (Chinese)</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true"
-                                    class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100">
+                                    class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100 hidden sm:block text-[#FF3D00]">
                                     <path d="m9 18 6-6-6-6"></path>
                                 </svg>
                             </button>
                             <button onclick="switchLanguage('pt')"
-                                class="sidebar-link w-full text-left p-3 rounded-r-lg text-zinc-400 flex items-center justify-between group">
-                                <span class="flex items-center"><img src="https://flagcdn.com/br.svg"
-                                        class="flag-icon mr-3"> Português</span>
+                                class="sidebar-link w-full text-left p-3 rounded-xl text-white font-semibold flex items-center justify-between group bg-zinc-800/90 lg:bg-white/5 border border-zinc-700/60 hover:border-[#FF3D00] transition-all">
+                                <span class="flex items-center text-xs sm:text-sm"><img src="https://flagcdn.com/br.svg"
+                                        class="flag-icon mr-2.5"> Português</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true"
-                                    class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100">
+                                    class="lucide lucide-chevron-right w-4 h-4 opacity-0 group-hover:opacity-100 hidden sm:block text-[#FF3D00]">
                                     <path d="m9 18 6-6-6-6"></path>
                                 </svg>
                             </button>
@@ -5329,37 +5340,21 @@
                     <!-- Monthly Archive -->
                     <div>
                         <h3
-                            class="text-sm font-black uppercase tracking-widest mb-6 border-b border-zinc-700 pb-2 inline-block">
+                            class="text-sm font-black uppercase tracking-widest mb-3 lg:mb-5 text-white border-b-2 border-zinc-700 pb-1.5 inline-block">
                             Monthly Archive</h3>
-                        <div class="grid grid-cols-1 gap-1">
+                        <div class="grid grid-cols-2 lg:grid-cols-1 gap-2">
                             <a href="#"
-                                class="sidebar-link text-sm text-zinc-500 p-2 block ">February
-                                2026</a>
-                            <a href="#" class="sidebar-link text-sm text-zinc-500 p-2 block">January 2026</a>
-                            <a href="#" class="sidebar-link text-sm text-zinc-500 p-2 block">December 2025</a>
-                            <a href="#" class="sidebar-link text-sm text-zinc-500 p-2 block">November 2025</a>
+                                class="sidebar-link text-xs sm:text-sm text-zinc-300 font-medium p-2.5 block bg-zinc-800/70 lg:bg-white/5 border border-zinc-700/50 hover:text-white hover:border-[#FF3D00] rounded-xl transition-all">February 2026</a>
+                            <a href="#" class="sidebar-link text-xs sm:text-sm text-zinc-300 font-medium p-2.5 block bg-zinc-800/70 lg:bg-white/5 border border-zinc-700/50 hover:text-white hover:border-[#FF3D00] rounded-xl transition-all">January 2026</a>
+                            <a href="#" class="sidebar-link text-xs sm:text-sm text-zinc-300 font-medium p-2.5 block bg-zinc-800/70 lg:bg-white/5 border border-zinc-700/50 hover:text-white hover:border-[#FF3D00] rounded-xl transition-all">December 2025</a>
+                            <a href="#" class="sidebar-link text-xs sm:text-sm text-zinc-300 font-medium p-2.5 block bg-zinc-800/70 lg:bg-white/5 border border-zinc-700/50 hover:text-white hover:border-[#FF3D00] rounded-xl transition-all">November 2025</a>
                         </div>
                     </div>
-
-                    <!-- Industry Updates CTA -->
-                    <div class="premium-gradient p-6 rounded-2xl shadow-lg">
-                        <h4 class="font-bold text-white mb-2">Never miss an update</h4>
-                        <p class="text-xs text-white/80 mb-4">Get the latest sweepstakes news and partner spotlights
-                            delivered to your inbox.</p>
-                        <form onsubmit="handleSubscribe(event, 'sidebar')" class="flex flex-col gap-3 w-full">
-                            <input type="email" id="sidebar-email" placeholder="Email address" required
-                                class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-[#FF3D00] transition-colors">
-                            <button type="submit"
-                                class="w-full text-center bg-white text-[#FF3D00] py-3 rounded-lg font-bold text-sm hover:bg-zinc-100 transition-colors shadow-md">
-                                Subscribe
-                            </button>
-                        </form>
-                    </div>
-                </aside>
+                </div>
 
 
                 <!-- Blog Feed -->
-                <main class="lg:col-span-9 order-1 lg:order-2">
+                <main class="lg:col-span-8 order-2 lg:order-2">
                     <header class="mb-12">
                         <h2 id="main-headline"
                             class="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter italic">Latest <span
@@ -5461,6 +5456,24 @@
                         </article>
                     </div>
                 </main>
+
+                <!-- Full-Width Horizontal Newsletter Banner (Exactly matching requested red box on Desktop) -->
+                <div class="col-span-1 lg:col-span-12 order-3 mt-4 lg:mt-6">
+                    <div class="premium-gradient p-6 sm:p-8 rounded-3xl shadow-2xl border border-[#FF3D00]/40 flex flex-col lg:flex-row items-center justify-between gap-6">
+                        <div class="text-left max-w-xl">
+                            <h4 class="font-black text-white text-xl sm:text-2xl uppercase tracking-tight">Never miss an update</h4>
+                            <p class="text-xs sm:text-sm text-zinc-300 mt-1.5 leading-relaxed">Get the latest sweepstakes news and partner spotlights delivered to your inbox.</p>
+                        </div>
+                        <form onsubmit="handleSubscribe(event, 'fullwidth')" class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto lg:min-w-[440px]">
+                            <input type="email" id="fullwidth-email" placeholder="Email address" required
+                                class="flex-1 bg-black/80 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#FF3D00] transition-colors">
+                            <button type="submit"
+                                class="bg-[#FF3D00] text-white px-8 py-3 rounded-xl font-bold text-sm hover:bg-orange-600 transition-colors shadow-lg shadow-[#FF3D00]/30 uppercase tracking-wider whitespace-nowrap">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -5546,10 +5559,10 @@
                 
                 <!-- Category 1: About US (Left on Mobile) -->
                 <div class="col-span-1 text-left">
-                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About US</h4>
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About Us</h4>
                     <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
                         <li><a href="mission.html" class="footer-link hover:text-[#FF3D00] transition-colors">Our Mission</a></li>
-                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan them All ?</a></li>
+                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan Them All?</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
                     </ul>
                 </div>
@@ -5573,7 +5586,7 @@
                         <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite Friends</a></li>
                         <li><a href="instagram_upload_page.html" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
                         <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
-                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact us</a></li>
+                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact Us</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
                     </ul>
@@ -5738,60 +5751,7 @@
         };
     </script>
 
-    <!-- LOGIC INTEGRATION -->
-    <!-- Standardized Footer -->
-    <footer class="bg-black border-t border-white/5 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
-                <div class="col-span-2 md:col-span-1">
-                    <div class="text-2xl font-black mb-4 uppercase tracking-tighter">GOTTA SCAN<br><span class="text-[#FF3D00]">THEM ALL</span></div>
-                    <p class="text-sm text-gray-500">The world's first multi-category scan-based sweepstakes platform.</p>
-                </div>
-                
-                <div>
-                    <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">About US</h4>
-                    <ul class="space-y-4 text-sm text-gray-500">
-                        <li><a href="mission.html" class="hover:text-[#FF3D00] transition-colors">Our Mission</a></li>
-                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="hover:text-[#FF3D00] transition-colors">Why Scan them All ?</a></li>
-                        <li><a href="https://rule7media.com/franchise" class="hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Policy</h4>
-                    <ul class="space-y-4 text-sm text-gray-500">
-                        <li><a href="GTSA Final Terms No Advertising.html" class="hover:text-[#FF3D00] transition-colors">Terms of Use</a></li>
-                        <li><a href="privacy.html" class="hover:text-[#FF3D00] transition-colors">Privacy Policy</a></li>
-                        <li><a href="index.html#faq" class="hover:text-[#FF3D00] transition-colors">FAQs</a></li>
-                        <li><a href="GTSA Final Sweepstake Rules.html" class="hover:text-[#FF3D00] transition-colors">Sweepstake Rules</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Support</h4>
-                    <ul class="space-y-4 text-sm text-gray-500">
-                        <li><a href="blog.html" class="hover:text-[#FF3D00] transition-colors font-bold text-white">Blog</a></li>
-                        <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite Friends</a></li>
-                        <li><a href="instagram_upload_page.html" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
-                        <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
-                        <li><a href="Final_contact_page.html" class="hover:text-[#FF3D00] transition-colors">Contact us</a></li>
-                        <li><a href="/advertiser" class="hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
-                        <li><a href="https://rule7media.com/affiliate" class="hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/5 text-[10px] text-gray-600 uppercase tracking-widest">
-                <p>© 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED.</p>
-                <div class="payment-cards-row flex flex-wrap items-center justify-center md:justify-end gap-2 sm:gap-2.5 mt-4 md:mt-0">
-                    <span class="text-[10px] font-bold tracking-widest text-zinc-400 uppercase mr-1">Secured by</span>
-                    <span class="px-2.5 py-1 bg-zinc-900 border border-white/20 rounded-md text-[10px] sm:text-[11px] font-extrabold tracking-wider text-zinc-200 shadow-sm">VISA</span>
-                    <span class="px-2.5 py-1 bg-zinc-900 border border-white/20 rounded-md text-[10px] sm:text-[11px] font-extrabold tracking-wider text-zinc-200 shadow-sm">MASTERCARD</span>
-                    <span class="px-2.5 py-1 bg-zinc-900 border border-white/20 rounded-md text-[10px] sm:text-[11px] font-extrabold tracking-wider text-[#009cde] shadow-sm">PayPal</span>
-                </div>
-            </div>
-        </div>
-    </footer>
+    
 
     <script src="js/ads.js"></script>
     <script src="js/app.js"></script>

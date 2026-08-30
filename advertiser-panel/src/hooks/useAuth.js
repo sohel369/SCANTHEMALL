@@ -4,8 +4,14 @@ const parseToken = (token) => {
   if (!token) return null;
   try {
     const payload = JSON.parse(atob(token.split(".")[1]));
+    // Check if token has expired
+    if (payload.exp && Date.now() >= payload.exp * 1000) {
+      localStorage.removeItem("token");
+      return null;
+    }
     return { id: payload.id, email: payload.email, role: payload.role, profile: payload.profile };
   } catch {
+    localStorage.removeItem("token");
     return null;
   }
 };

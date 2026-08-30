@@ -370,8 +370,8 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
                 gap: 2rem !important;
             }
 
-            /* Hide skyscrapers or sidebar elements on mobile */
-            aside, .skyscraper, [class*="skyscraper"], .ad-sidebar {
+            /* Hide skyscrapers or ad elements on mobile */
+            .skyscraper, [class*="skyscraper"], .ad-sidebar, .ad-skyscraper {
                 display: none !important;
             }
 
@@ -418,17 +418,33 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
                 link.classList.remove('nav-active-link');
 
                 const cleanHref = href.trim();
-                const targetFile = decodeURIComponent(cleanHref.split('#')[0].split('?')[0].substring(cleanHref.lastIndexOf('/') + 1).toLowerCase()) || 'index.html';
+                let targetFile = cleanHref.split('#')[0].split('?')[0];
+                targetFile = decodeURIComponent(targetFile.substring(targetFile.lastIndexOf('/') + 1).toLowerCase());
+                if (!targetFile) targetFile = 'index.html';
+                
+                let targetHash = cleanHref.includes('#') ? '#' + cleanHref.split('#')[1].toLowerCase() : '';
 
                 let isActive = false;
-                if (targetFile === currentFile) {
-                    isActive = true;
-                } else if ((currentFile === '' || currentFile === 'index.html') && (targetFile === 'index.html' || targetFile === '')) {
-                    isActive = true;
-                } else if (currentFile.includes('about') && targetFile.includes('about')) {
-                    isActive = true;
-                } else if (currentFile.includes('contact') && targetFile.includes('contact')) {
-                    isActive = true;
+                
+                // If there's an active hash in the URL (like #faq)
+                if (currentHash && currentHash !== '#' && currentHash !== '#home') {
+                    if (targetHash === currentHash && (targetFile === currentFile || !targetFile)) {
+                        isActive = true;
+                    }
+                    // When on a specific hash section like #faq, do NOT highlight Home unless Home specifically links to #faq
+                } else {
+                    // No hash or at the top of the page
+                    if (!targetHash || targetHash === '#' || targetHash === '#home') {
+                        if (targetFile === currentFile) {
+                            isActive = true;
+                        } else if ((currentFile === '' || currentFile === 'index.html') && (targetFile === 'index.html' || targetFile === '')) {
+                            isActive = true;
+                        } else if (currentFile.includes('about') && targetFile.includes('about')) {
+                            isActive = true;
+                        } else if (currentFile.includes('contact') && targetFile.includes('contact')) {
+                            isActive = true;
+                        }
+                    }
                 }
 
                 if (isActive) {
@@ -488,38 +504,43 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
     window.highlightActiveFooterLinks = window.highlightActiveNavAndFooterLinks;
 
     // 3. Build Mobile Menu Dynamically & Bind Events
-    function setupMobileMenu() {
-        const header = document.querySelector('header');
+    window.toggleGtsaMobileMenu = function(show) {
         const mobileMenu = document.getElementById('mobile-menu');
-        const toggleBtns = document.querySelectorAll('#mobile-menu-toggle, #mobile-menu-btn, .mobile-menu-toggle');
+        if (!mobileMenu) return;
+        const isCurrentlyActive = mobileMenu.classList.contains('active') || mobileMenu.classList.contains('show-menu') || (!mobileMenu.classList.contains('hidden') && mobileMenu.style.display !== 'none' && mobileMenu.style.opacity !== '0');
+        const shouldActivate = show !== undefined ? show : !isCurrentlyActive;
+        
+        if (shouldActivate) {
+            mobileMenu.classList.add('active', 'show-menu');
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.style.setProperty('display', 'flex', 'important');
+            mobileMenu.style.setProperty('opacity', '1', 'important');
+            mobileMenu.style.setProperty('pointer-events', 'auto', 'important');
+            document.body.classList.add('menu-open');
+            document.body.style.setProperty('overflow', 'hidden', 'important');
+        } else {
+            mobileMenu.classList.remove('active', 'show-menu');
+            mobileMenu.classList.add('hidden');
+            mobileMenu.style.setProperty('display', 'none', 'important');
+            mobileMenu.style.setProperty('opacity', '0', 'important');
+            mobileMenu.style.setProperty('pointer-events', 'none', 'important');
+            document.body.classList.remove('menu-open');
+            document.body.style.removeProperty('overflow');
+        }
+    };
+
+    function setupMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const toggleBtns = document.querySelectorAll('#mobile-menu-toggle, #mobile-menu-btn, .mobile-menu-toggle, [onclick*="toggleGtsaMobileMenu"]');
 
         if (!mobileMenu) return;
-
-        function toggleMenu(show) {
-            const isCurrentlyActive = mobileMenu.classList.contains('active') || mobileMenu.classList.contains('show-menu') || (!mobileMenu.classList.contains('hidden') && mobileMenu.style.display !== 'none');
-            const shouldActivate = show !== undefined ? show : !isCurrentlyActive;
-            
-            if (shouldActivate) {
-                mobileMenu.classList.add('active', 'show-menu');
-                mobileMenu.classList.remove('hidden');
-                mobileMenu.style.setProperty('display', 'flex', 'important');
-                document.body.classList.add('menu-open');
-                document.body.style.setProperty('overflow', 'hidden', 'important');
-            } else {
-                mobileMenu.classList.remove('active', 'show-menu');
-                mobileMenu.classList.add('hidden');
-                mobileMenu.style.setProperty('display', 'none', 'important');
-                document.body.classList.remove('menu-open');
-                document.body.style.removeProperty('overflow');
-            }
-        }
 
         toggleBtns.forEach(btn => {
             btn.style.cursor = 'pointer';
             btn.onclick = (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                toggleMenu();
+                window.toggleGtsaMobileMenu();
             };
         });
 
@@ -528,15 +549,20 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
             btn.onclick = (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                toggleMenu(false);
+                window.toggleGtsaMobileMenu(false);
             };
         });
 
         mobileMenu.addEventListener('click', (e) => {
             if (e.target.closest('a')) {
-                toggleMenu(false);
+                window.toggleGtsaMobileMenu(false);
             }
         });
+
+        // Ensure lucide icons are rendered
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
     }
 
     // 4. Smart Scroll-up Header
@@ -586,7 +612,10 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
         const h = header.offsetHeight;
         document.documentElement.style.setProperty('--header-height', h + 'px');
         
-        const primaryWrapper = document.getElementById('position-content-wrapper')
+        const primaryWrapper = document.getElementById('blog-top-ad-wrapper')
+            || document.getElementById('instagram-top-ad-wrapper')
+            || document.getElementById('contact-top-ad-wrapper')
+            || document.getElementById('position-content-wrapper')
             || document.getElementById('prize-main-wrapper')
             || document.querySelector('body > main')
             || document.querySelector('main');
@@ -600,9 +629,21 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
         }
     }
 
+    function setupAdvertiserLinks() {
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            if (window.location.port === '5500' || window.location.port === '3000') {
+                document.querySelectorAll('a[href="/advertiser"], a[href="advertiser"], a[href="advertiser/"]').forEach(a => {
+                    a.setAttribute('href', 'http://localhost:5173/');
+                    a.setAttribute('target', '_blank');
+                });
+            }
+        }
+    }
+
     function initAll() {
         setupMobileMenu();
         setupScrollHeader();
+        setupAdvertiserLinks();
         adjustHeaderOffset();
         window.highlightActiveFooterLinks();
     }
@@ -622,6 +663,9 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
         initAll();
     });
     window.addEventListener('popstate', () => {
+        window.highlightActiveFooterLinks();
+    });
+    window.addEventListener('hashchange', () => {
         window.highlightActiveFooterLinks();
     });
 

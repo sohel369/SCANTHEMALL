@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Advertiser Panel...</title>
+    <script>
+        // Check if running on local development (Live Server port 5500 or 3000)
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            window.location.replace('http://localhost:5173/');
+        } else {
+            window.location.replace('/advertiser');
+        }
+    </script>
+</head>
+<body style="background:#0a0a0a; color:#ffffff; font-family:sans-serif; display:flex; justify-content:center; align-items:center; height:100vh; margin:0; text-align:center;">
+    <div>
+        <h2 style="color:#FF3D00; margin-bottom:12px;">Opening Advertiser Panel...</h2>
+        <p style="color:#888;">If you are not redirected in 2 seconds, <a href="http://localhost:5173/" style="color:#FFB300; font-weight:bold;">Click here to open Advertiser Panel (http://localhost:5173)</a>.</p>
+    </div>
+</body>
+</html>

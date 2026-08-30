@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="description"
@@ -68,7 +72,7 @@
 
         .category-card {
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             background: rgba(255, 255, 255, 0.03);
             display: flex;
             flex-direction: column;
@@ -83,6 +87,21 @@
             border-color: #FF3D00;
             background: rgba(255, 61, 0, 0.08);
             box-shadow: 0 10px 25px -8px rgba(255, 61, 0, 0.35);
+        }
+
+        /* Strictly enforce 2 boxes per line on mobile / responsive screens for Select a Category */
+        @media (max-width: 767px) {
+            #category-grid,
+            #social-multiplier-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 0.75rem !important;
+            }
+            .category-card,
+            .social-card {
+                padding: 1.15rem 0.75rem !important;
+                min-height: 105px !important;
+            }
         }
 
         .ad-placeholder {
@@ -288,19 +307,9 @@
 
     </style>
 </head>
+<body class="antialiased">
 
-<body>
-
-    <!-- Leaderboard Header Advertisement Banner -->
-    <div class="w-full bg-black py-2 border-b border-zinc-800">
-        <div class="max-w-7xl mx-auto px-3 sm:px-4">
-            <div class="ad-placeholder h-[60px] sm:h-[90px] w-full max-w-[728px] mx-auto text-[10px] sm:text-xs text-center px-2">
-                Leaderboard Advertisement (Header - 728x90)
-            </div>
-        </div>
-    </div>
-
-    <!-- Standardized Responsive Header -->
+    <!-- Standardized Responsive Header (Always on Top) -->
     <header class="glass-header sticky top-0 z-50 w-full transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 sm:h-20">
@@ -316,10 +325,11 @@
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex items-center space-x-8">
-                    <a href="index.html" class="text-sm font-semibold text-zinc-300 hover:text-[#FF3D00] transition-colors">Home</a>
-                    <a href="GTSA_FInal_Welcome_Page_(About_US).html" class="text-sm font-semibold text-zinc-300 hover:text-[#FF3D00] transition-colors">About Us</a>
-                    <a href="prize.html" class="text-sm font-semibold text-zinc-300 hover:text-[#FF3D00] transition-colors">Prizes</a>
-                    <a href="position.html" class="text-sm font-semibold text-zinc-300 hover:text-[#FF3D00] transition-colors">My Position</a>
+                    <a href="index.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">Home</a>
+                    <a href="GTSA_FInal_Welcome_Page_(About_US).html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">About us</a>
+                    <a href="prize.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">Prizes</a>
+                    <a href="position.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">My Position</a>
+                    <a href="Final_contact_page.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">Contact</a>
                 </nav>
 
                 <!-- Desktop / Tablet Auth & CTA -->
@@ -396,6 +406,10 @@
                             <span>My Position</span>
                             <i data-lucide="chevron-right" class="w-4 h-4 opacity-40"></i>
                         </a>
+                        <a href="Final_contact_page.html" class="text-lg font-bold uppercase text-zinc-300 hover:text-[#FF3D00] py-2 border-b border-zinc-800/80 transition-colors flex items-center justify-between">
+                            <span>Contact</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 opacity-40"></i>
+                        </a>
                     </nav>
                 </div>
                 <div class="mt-8 pt-6 border-t border-zinc-800 flex flex-col gap-3">
@@ -405,6 +419,15 @@
             </div>
         </div>
     </header>
+
+    <!-- Leaderboard Header Advertisement Banner (Directly Below Header) -->
+    <div id="instagram-top-ad-wrapper" class="w-full bg-black py-2.5 sm:py-3.5 border-b border-zinc-800/80 relative z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="ad-placeholder h-[60px] sm:h-[90px] w-full max-w-[728px] mx-auto text-[10px] sm:text-xs text-center px-2">
+                Leaderboard Advertisement (Header - 728x90)
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content Layout Wrapper -->
     <div class="layout-wrapper pt-4 sm:pt-8 pb-16 sm:pb-20">
@@ -442,7 +465,7 @@
                     <p class="text-xs text-zinc-400 mt-1">Choose matching advertiser category for your upload</p>
                 </div>
 
-                <div id="category-grid" class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 sm:gap-3 md:gap-3.5">
+                <div id="category-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-3.5 md:gap-4">
                     <!-- 0: Accounting & Tax -->
                     <div class="category-card rounded-xl sm:rounded-2xl p-2.5 sm:p-3 md:p-4 text-center group cursor-pointer aspect-square" data-index="0">
                         <div class="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-2 bg-zinc-800/80 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-[#FF3D00] transition-colors">
@@ -696,7 +719,7 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-2.5 sm:gap-3.5 lg:gap-4 max-w-6xl mx-auto">
+                <div id="social-multiplier-grid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4 max-w-6xl mx-auto">
                     <!-- Facebook -->
                     <a href="instagram_upload_page.html?platform=facebook"
                         class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10 hover:-translate-y-2 transition-all p-3 sm:p-4">
@@ -886,10 +909,10 @@
                 
                 <!-- Category 1: About US (Left on Mobile) -->
                 <div class="col-span-1 text-left">
-                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About US</h4>
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About Us</h4>
                     <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
                         <li><a href="mission.html" class="footer-link hover:text-[#FF3D00] transition-colors">Our Mission</a></li>
-                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan them All ?</a></li>
+                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan Them All?</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
                     </ul>
                 </div>
@@ -913,17 +936,20 @@
                         <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite Friends</a></li>
                         <li><a href="instagram_upload_page.html" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
                         <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
-                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact us</a></li>
+                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact Us</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center justify-between pt-6 sm:pt-8 border-t border-white/5 text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest gap-4 text-center sm:text-left">
+            <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/5 text-[10px] text-gray-600 uppercase tracking-widest">
                 <p>© 2026 RULE 7 MEDIA. ALL RIGHTS RESERVED.</p>
-                <div class="flex items-center gap-4 opacity-50 hover:opacity-100 transition-opacity">
-                    <span class="text-[9px] tracking-wider text-gray-400">VERIFIED SECURE PLATFORM</span>
+                <div class="payment-cards-row flex flex-wrap items-center justify-center md:justify-end gap-2 sm:gap-2.5 mt-4 md:mt-0">
+                    <span class="text-[10px] font-bold tracking-widest text-zinc-400 uppercase mr-1">Secured by</span>
+                    <span class="px-2.5 py-1 bg-zinc-900 border border-white/20 rounded-md text-[10px] sm:text-[11px] font-extrabold tracking-wider text-zinc-200 shadow-sm">VISA</span>
+                    <span class="px-2.5 py-1 bg-zinc-900 border border-white/20 rounded-md text-[10px] sm:text-[11px] font-extrabold tracking-wider text-zinc-200 shadow-sm">MASTERCARD</span>
+                    <span class="px-2.5 py-1 bg-zinc-900 border border-white/20 rounded-md text-[10px] sm:text-[11px] font-extrabold tracking-wider text-[#009cde] shadow-sm">PayPal</span>
                 </div>
             </div>
         </div>

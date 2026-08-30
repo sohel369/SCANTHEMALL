@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <script src="js/geo-rules.js" defer></script>
     <script src="js/image-handler.js"></script>
     <meta charset="UTF-8">
@@ -117,7 +121,7 @@
 </head>
 <body class="antialiased">
 
-    <!-- Standardized Header -->
+        <!-- Standardized Header -->
     <header class="glass-header sticky top-0 z-50 w-full transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -130,11 +134,12 @@
                     </a>
                 </div>
 
-                <nav class="hidden lg:flex space-x-8">
-                    <a href="index.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">Home</a>
-                    <a href="GTSA_FInal_Welcome_Page_(About_US).html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">About us</a>
-                    <a href="prize.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">Prizes</a>
-                    <a href="position.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors">My Position</a>
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="index.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">Home</a>
+                    <a href="GTSA_FInal_Welcome_Page_(About_US).html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">About us</a>
+                    <a href="prize.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">Prizes</a>
+                    <a href="position.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">My Position</a>
+                    <a href="Final_contact_page.html" class="text-sm font-medium text-zinc-400 hover:text-[#FF3D00] transition-colors pb-1 border-b-2 border-transparent">Contact</a>
                 </nav>
 
                 <div class="hidden md:flex items-center space-x-6">
@@ -195,6 +200,7 @@
                     <a href="GTSA_FInal_Welcome_Page_(About_US).html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">About</a>
                     <a href="prize.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Prizes</a>
                     <a href="position.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">My Position</a>
+                    <a href="Final_contact_page.html" class="text-2xl font-black uppercase text-zinc-400 hover:text-[#FF3D00]">Contact</a>
                     <hr class="border-white/10 my-4">
                     <a href="registration_with_video.html" class="auth-signup text-2xl font-black uppercase text-white border border-white/20 p-4 rounded-2xl text-center">Register or Sign-In</a>
                     <a href="/advertiser" class="bg-[#FF3D00] text-black text-center py-4 rounded-2xl font-black uppercase mt-4">Advertise with Us</a>
@@ -289,59 +295,75 @@
             </div>
         </section>
 
-        <!-- B. Referral Form & C. Social Share -->
-        <section id="invite-form" class="py-20 px-4">
-            <div class="max-w-4xl mx-auto bg-white/[0.02] border border-white/5 p-8 md:p-12 rounded-[3rem]">
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div>
-                        <h2 class="text-3xl font-black mb-6">Send Invites</h2>
+        <!-- B. Referral Form & C. Social Share (Balanced Symmetrical Padding) -->
+        <section id="invite-form" class="py-16 sm:py-20 px-4">
+            <div class="max-w-5xl mx-auto bg-zinc-900/40 border border-white/10 p-6 sm:p-10 md:p-12 rounded-3xl sm:rounded-[3rem] shadow-2xl backdrop-blur-xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+                    
+                    <!-- Left Column: Send Invites -->
+                    <div class="space-y-6">
+                        <header>
+                            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-2 uppercase italic tracking-tight text-white">Send Invites</h2>
+                            <p class="text-zinc-400 font-bold uppercase text-[10px] sm:text-xs tracking-widest">Recruit the squad, Multiply the winnings</p>
+                        </header>
                         <form class="space-y-4">
                             <div>
-                                <label class="text-[10px] font-black uppercase tracking-widest text-zinc-500 block mb-2">Friend's Email</label>
-                                <input type="email" placeholder="squadmember@email.com" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:border-[#FF3D00] outline-none">
+                                <label class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-zinc-400 block mb-2 px-1">Friend's Email</label>
+                                <input type="email" placeholder="squadmember@email.com" class="w-full bg-black/60 border border-zinc-700/80 rounded-2xl px-4 py-3.5 text-xs sm:text-sm font-semibold text-white focus:border-[#FF3D00] focus:ring-2 focus:ring-[#FF3D00]/20 outline-none transition-all">
                             </div>
                             <div>
-                                <label class="text-[10px] font-black uppercase tracking-widest text-zinc-500 block mb-2">Their Country (Optional)</label>
-                                <select class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:border-[#FF3D00] outline-none">
-                                    <option>United Kingdom</option>
-                                    <option>United States</option>
-                                    <option>Australia</option>
+                                <label class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-zinc-400 block mb-2 px-1">Their Country (Optional)</label>
+                                <select class="w-full bg-black/60 border border-zinc-700/80 rounded-2xl px-4 py-3.5 text-xs sm:text-sm font-semibold text-zinc-300 focus:border-[#FF3D00] focus:ring-2 focus:ring-[#FF3D00]/20 outline-none transition-all appearance-none">
+                                    <option value="">Select Country</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="US">United States</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="CA">Canada</option>
                                 </select>
                             </div>
-                            <button type="button" class="w-full bg-[#FF3D00] py-4 rounded-xl font-bold uppercase tracking-widest flex items-center justify-center gap-3">
-                                Send Invites & Earn Entries <i data-lucide="send" class="w-4 h-4"></i>
+                            <button type="button" class="w-full bg-[#FF3D00] hover:bg-orange-600 active:scale-95 py-4 rounded-2xl font-black uppercase tracking-wider text-xs sm:text-sm text-white flex items-center justify-center gap-2.5 shadow-lg shadow-[#FF3D00]/30 transition-all cursor-pointer">
+                                <span>Send Invites & Earn Entries</span>
+                                <i data-lucide="send" class="w-4 h-4"></i>
                             </button>
-                            <p class="text-[10px] text-zinc-600 text-center mt-4 uppercase tracking-tighter">
+                            <p class="text-[10px] sm:text-xs text-zinc-500 bg-black/40 p-3.5 rounded-xl border border-white/5 text-center font-semibold leading-relaxed">
                                 Emails used only for sweepstake participation and verification. Max 25 entries.
                             </p>
                         </form>
                     </div>
 
-                    <div class="border-l border-white/5 md:pl-12">
-                        <h2 class="text-3xl font-black mb-6">Blast Socials</h2>
-                        <p class="text-sm text-zinc-400 mb-8">Each share could move you up the leaderboard!</p>
-                        <div class="grid grid-cols-3 gap-4">
+                    <!-- Right Column: Blast Socials -->
+                    <div class="space-y-6 md:border-l md:border-white/10 md:pl-10 pt-6 md:pt-0 border-t md:border-t-0 border-white/10">
+                        <header>
+                            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-2 uppercase italic tracking-tight text-white">Blast Socials</h2>
+                            <p class="text-zinc-400 font-bold uppercase text-[10px] sm:text-xs tracking-widest">Each share could move you up the leaderboard!</p>
+                        </header>
+                        <div class="grid grid-cols-3 gap-3 sm:gap-4">
                             <!-- Facebook -->
-                            <button class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-[#1877F2]/10 hover:bg-[#1877F2]/20 transition-all group share-facebook">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#1877F2] transition-colors"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                                <span class="text-[9px] font-bold transition-opacity">FB</span>
+                            <button class="flex flex-col items-center justify-center gap-2 p-4 sm:p-5 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10 transition-all group share-facebook cursor-pointer">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-400 group-hover:text-[#1877F2] transition-colors"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                <span class="text-[10px] font-black uppercase text-zinc-400 group-hover:text-white transition-colors">Facebook</span>
                             </button>
                             <!-- X -->
-                            <button class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 hover:bg-white/10 transition-all group share-x">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" class="text-white transition-colors"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                                <span class="text-[9px] font-bold transition-opacity">X</span>
+                            <button class="flex flex-col items-center justify-center gap-2 p-4 sm:p-5 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-white/50 hover:bg-white/10 transition-all group share-x cursor-pointer">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" class="text-zinc-400 group-hover:text-white transition-colors"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                <span class="text-[10px] font-black uppercase text-zinc-400 group-hover:text-white transition-colors">Twitter</span>
                             </button>
                             <!-- WhatsApp -->
-                            <button class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-[#25D366]/10 hover:bg-[#25D366]/20 transition-all group share-whatsapp">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#25D366] transition-colors"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9l3.8-3.8z"></path></svg>
-                                <span class="text-[9px] font-bold transition-opacity">WA</span>
+                            <button class="flex flex-col items-center justify-center gap-2 p-4 sm:p-5 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all group share-whatsapp cursor-pointer">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-400 group-hover:text-[#25D366] transition-colors"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9l3.8-3.8z"></path></svg>
+                                <span class="text-[10px] font-black uppercase text-zinc-400 group-hover:text-white transition-colors">WhatsApp</span>
                             </button>
                         </div>
-                        <div class="mt-8">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-zinc-500 block mb-2">Copy Referral Link</label>
-                            <div class="flex bg-zinc-900 rounded-xl p-1 border border-zinc-800">
-                                <input type="text" value="index.html?ref=user77" readonly class="bg-transparent border-none text-xs px-3 outline-none flex-1">
-                                <button class="bg-zinc-800 px-4 py-2 rounded-lg text-xs font-bold hover:bg-zinc-700 transition-all">Copy</button>
+                        
+                        <!-- Copy Referral Link Widget -->
+                        <div class="pt-4 border-t border-white/10">
+                            <label class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-zinc-400 block mb-2 px-1">Your Referral Link</label>
+                            <div class="flex flex-col sm:flex-row gap-2.5">
+                                <input type="text" id="blastRefLink" value="https://scanthemall.com/ref/user77" readonly class="flex-1 bg-black/80 border border-zinc-700/80 rounded-2xl px-4 py-3 text-xs sm:text-sm font-mono text-orange-300 font-semibold focus:outline-none focus:border-[#FF3D00] select-all">
+                                <button onclick="copyBlastRef()" id="blastCopyBtn" class="px-6 py-3 bg-[#FF3D00] hover:bg-orange-600 text-white rounded-2xl text-xs sm:text-sm font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 flex-shrink-0 cursor-pointer">
+                                    <i data-lucide="copy" class="w-4 h-4" id="blastCopyIcon"></i>
+                                    <span id="blastCopyText">Copy</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -349,50 +371,41 @@
             </div>
         </section>
 
-        <!-- Gamification: Global Leaderboard -->
-        <section id="leaderboard" class="py-20 px-4 bg-zinc-900/30">
+        <!-- Gamification: Global & Regional Leaderboard -->
+        <section id="leaderboard" class="py-16 sm:py-20 px-4 bg-zinc-900/30 relative">
             <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-black mb-4">The Global Squad <span class="text-[#FF3D00]">Leaderboard</span></h2>
-                    <div class="inline-flex bg-zinc-900 p-1 rounded-full border border-zinc-800">
-                        <button class="px-6 py-2 rounded-full bg-[#FF3D00] text-xs font-bold uppercase tracking-widest">Global</button>
-                        <button class="px-6 py-2 rounded-full hover:bg-zinc-800 text-xs font-bold uppercase tracking-widest text-zinc-500">Regional</button>
+                <div class="text-center mb-8 sm:mb-12">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4 uppercase tracking-tight">The Global Squad <span class="gradient-text">Leaderboard</span></h2>
+                    <div class="inline-flex bg-zinc-900 p-1.5 rounded-full border border-zinc-800 shadow-xl" id="leaderboard-tab-wrapper">
+                        <button id="tab-global-btn" onclick="switchLeaderboardTab('global')" class="px-6 sm:px-8 py-2 sm:py-2.5 rounded-full bg-[#FF3D00] text-white text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300 shadow-md">
+                            Global
+                        </button>
+                        <button id="tab-regional-btn" onclick="switchLeaderboardTab('regional')" class="px-6 sm:px-8 py-2 sm:py-2.5 rounded-full text-zinc-400 hover:text-white text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300">
+                            Regional
+                        </button>
                     </div>
                 </div>
 
-                <div class="referral-card rounded-[2rem] overflow-hidden">
-                    <table class="w-full text-left">
-                        <thead class="bg-zinc-800/50 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
+                <!-- Mobile Swipe Indicator -->
+                <div class="md:hidden flex items-center justify-end space-x-2 text-[11px] font-bold text-orange-400 mb-2.5 px-2">
+                    <span class="uppercase tracking-wider">Swipe to view full stats</span>
+                    <i data-lucide="arrow-right-left" class="w-3.5 h-3.5 text-[#FF3D00] animate-pulse"></i>
+                </div>
+
+                <!-- Table Container with Horizontal Scroll Support -->
+                <div class="referral-card rounded-2xl sm:rounded-[2rem] overflow-x-auto border border-white/10 shadow-2xl">
+                    <table class="w-full text-left min-w-[560px]">
+                        <thead class="bg-zinc-800/60 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-zinc-400 border-b border-white/5">
                             <tr>
-                                <th class="px-6 py-4">Rank</th>
-                                <th class="px-6 py-4">SQUAD Name</th>
-                                <th class="px-6 py-4">Confirmed</th>
-                                <th class="px-6 py-4">Bonus Entries</th>
-                                <th class="px-6 py-4">Country</th>
+                                <th class="px-6 py-4 sm:py-5">Rank</th>
+                                <th class="px-6 py-4 sm:py-5">SQUAD Name</th>
+                                <th class="px-6 py-4 sm:py-5">Confirmed</th>
+                                <th class="px-6 py-4 sm:py-5">Bonus Entries</th>
+                                <th class="px-6 py-4 sm:py-5 text-right" id="country-col-header">Country</th>
                             </tr>
                         </thead>
-                        <tbody class="text-sm">
-                            <tr class="leaderboard-row border-b border-white/5">
-                                <td class="px-6 py-5 font-black text-[#FF3D00]">01</td>
-                                <td class="px-6 py-5 flex items-center gap-3"><span class="w-8 h-8 rounded bg-amber-500/10 flex items-center justify-center">🏆</span> J. Martinez</td>
-                                <td class="px-6 py-5 font-bold">142</td>
-                                <td class="px-6 py-5 text-zinc-400">25 (Max)</td>
-                                <td class="px-6 py-5 uppercase text-[10px] font-bold tracking-widest">🇪🇸 Spain</td>
-                            </tr>
-                            <tr class="leaderboard-row border-b border-white/5">
-                                <td class="px-6 py-5 font-black">02</td>
-                                <td class="px-6 py-5 flex items-center gap-3"><span class="w-8 h-8 rounded bg-zinc-500/10 flex items-center justify-center">🥈</span> T. Wilson</td>
-                                <td class="px-6 py-5 font-bold">118</td>
-                                <td class="px-6 py-5 text-zinc-400">25 (Max)</td>
-                                <td class="px-6 py-5 uppercase text-[10px] font-bold tracking-widest">🇺🇸 USA</td>
-                            </tr>
-                            <tr class="leaderboard-row">
-                                <td class="px-6 py-5 font-black">03</td>
-                                <td class="px-6 py-5 flex items-center gap-3"><span class="w-8 h-8 rounded bg-orange-900/10 flex items-center justify-center">🥉</span> A. Chen</td>
-                                <td class="px-6 py-5 font-bold">94</td>
-                                <td class="px-6 py-5 text-zinc-400">25 (Max)</td>
-                                <td class="px-6 py-5 uppercase text-[10px] font-bold tracking-widest">🇸🇬 Singapore</td>
-                            </tr>
+                        <tbody id="leaderboard-tbody" class="text-xs sm:text-sm divide-y divide-white/5">
+                            <!-- Populated dynamically via switchLeaderboardTab -->
                         </tbody>
                     </table>
                 </div>
@@ -426,10 +439,10 @@
                 
                 <!-- Category 1: About US (Left on Mobile) -->
                 <div class="col-span-1 text-left">
-                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About US</h4>
+                    <h4 class="text-white font-bold mb-5 uppercase text-xs sm:text-sm tracking-widest" id="footer-about">About Us</h4>
                     <ul class="space-y-3.5 text-xs sm:text-sm text-gray-500 font-medium">
                         <li><a href="mission.html" class="footer-link hover:text-[#FF3D00] transition-colors">Our Mission</a></li>
-                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan them All ?</a></li>
+                        <li><a href="GTSA_FInal_Welcome_Page_(About_US).html" class="footer-link hover:text-[#FF3D00] transition-colors">Why Scan Them All?</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Franchise Opportunities</a></li>
                     </ul>
                 </div>
@@ -453,7 +466,7 @@
                         <li><a href="final_invite.html" class="hover:text-[#FF3D00] transition-colors">Invite Friends</a></li>
                         <li><a href="instagram_upload_page.html" class="hover:text-[#FF3D00] transition-colors">Instagram Upload</a></li>
                         <li><a href="invite_blast_social.html" class="hover:text-[#FF3D00] transition-colors">Social Blast</a></li>
-                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact us</a></li>
+                        <li><a href="Final_contact_page.html" class="footer-link hover:text-[#FF3D00] transition-colors">Contact Us</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Advertise With Us</a></li>
                         <li><a href="/advertiser" class="footer-link hover:text-[#FF3D00] transition-colors">Affiliate program</a></li>
                     </ul>
@@ -500,6 +513,103 @@
         if (typeof initAds === 'function') {
             initAds();
         }
+    
+        // Leaderboard Tab Data & Switcher
+        const globalLeaderboardData = [
+            { rank: '01', medal: '🏆', name: 'J. Martinez', confirmed: '142', bonus: '25 (Max)', location: '🇪🇸 Spain', rankClass: 'text-[#FF3D00]' },
+            { rank: '02', medal: '🥈', name: 'T. Wilson', confirmed: '118', bonus: '25 (Max)', location: '🇺🇸 USA', rankClass: 'text-zinc-300' },
+            { rank: '03', medal: '🥉', name: 'A. Chen', confirmed: '94', bonus: '25 (Max)', location: '🇸🇬 Singapore', rankClass: 'text-orange-700' },
+            { rank: '04', medal: '🎖️', name: 'S. Anderson', confirmed: '86', bonus: '25 (Max)', location: '🇬🇧 UK', rankClass: 'text-zinc-400' },
+            { rank: '05', medal: '🎖️', name: 'L. Dubois', confirmed: '79', bonus: '25 (Max)', location: '🇫🇷 France', rankClass: 'text-zinc-400' }
+        ];
+
+        const regionalLeaderboardData = [
+            { rank: '01', medal: '🏆', name: 'D. Miller', confirmed: '88', bonus: '25 (Max)', location: '🇦🇺 Sydney (NSW)', rankClass: 'text-[#FF3D00]' },
+            { rank: '02', medal: '🥈', name: 'R. Taylor', confirmed: '74', bonus: '25 (Max)', location: '🇦🇺 Melbourne (VIC)', rankClass: 'text-zinc-300' },
+            { rank: '03', medal: '🥉', name: 'K. Evans', confirmed: '61', bonus: '25 (Max)', location: '🇦🇺 Brisbane (QLD)', rankClass: 'text-orange-700' },
+            { rank: '04', medal: '🎖️', name: 'M. Clark', confirmed: '55', bonus: '25 (Max)', location: '🇦🇺 Perth (WA)', rankClass: 'text-zinc-400' },
+            { rank: '05', medal: '🎖️', name: 'J. Robinson', confirmed: '48', bonus: '25 (Max)', location: '🇦🇺 Adelaide (SA)', rankClass: 'text-zinc-400' }
+        ];
+
+        function switchLeaderboardTab(tab) {
+            const globalBtn = document.getElementById('tab-global-btn');
+            const regionalBtn = document.getElementById('tab-regional-btn');
+            const tbody = document.getElementById('leaderboard-tbody');
+            const colHeader = document.getElementById('country-col-header');
+            
+            if (!tbody) return;
+
+            if (tab === 'global') {
+                if (globalBtn) {
+                    globalBtn.className = 'px-6 sm:px-8 py-2 sm:py-2.5 rounded-full bg-[#FF3D00] text-white text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300 shadow-md';
+                }
+                if (regionalBtn) {
+                    regionalBtn.className = 'px-6 sm:px-8 py-2 sm:py-2.5 rounded-full text-zinc-400 hover:text-white text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300';
+                }
+                if (colHeader) colHeader.innerText = 'Country';
+                renderLeaderboardRows(globalLeaderboardData);
+            } else {
+                if (regionalBtn) {
+                    regionalBtn.className = 'px-6 sm:px-8 py-2 sm:py-2.5 rounded-full bg-[#FF3D00] text-white text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300 shadow-md';
+                }
+                if (globalBtn) {
+                    globalBtn.className = 'px-6 sm:px-8 py-2 sm:py-2.5 rounded-full text-zinc-400 hover:text-white text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300';
+                }
+                if (colHeader) colHeader.innerText = 'Region / City';
+                renderLeaderboardRows(regionalLeaderboardData);
+            }
+        }
+
+        function renderLeaderboardRows(data) {
+            const tbody = document.getElementById('leaderboard-tbody');
+            if (!tbody) return;
+            tbody.innerHTML = data.map(item => `
+                <tr class="leaderboard-row group hover:bg-orange-500/5 transition-colors">
+                    <td class="px-6 py-4 sm:py-5 font-black ${item.rankClass} text-lg sm:text-xl italic">${item.rank}</td>
+                    <td class="px-6 py-4 sm:py-5 flex items-center gap-3 font-bold text-white">
+                        <span class="w-8 h-8 rounded-lg bg-zinc-800/80 border border-white/5 flex items-center justify-center text-sm shadow-inner">${item.medal}</span>
+                        <span>${item.name}</span>
+                    </td>
+                    <td class="px-6 py-4 sm:py-5 font-bold text-zinc-200">${item.confirmed}</td>
+                    <td class="px-6 py-4 sm:py-5 text-orange-400 font-semibold">${item.bonus}</td>
+                    <td class="px-6 py-4 sm:py-5 text-right uppercase text-[11px] sm:text-xs font-bold tracking-wider text-zinc-300">${item.location}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Copy Referral Link Feedback
+        function copyBlastRef() {
+            const input = document.getElementById('blastRefLink');
+            const btnText = document.getElementById('blastCopyText');
+            const btnIcon = document.getElementById('blastCopyIcon');
+            if (input) {
+                input.select();
+                input.setSelectionRange(0, 99999);
+                navigator.clipboard.writeText(input.value);
+                if (btnText) btnText.innerText = "COPIED!";
+                if (btnIcon && window.lucide) {
+                    btnIcon.setAttribute('data-lucide', 'check');
+                    lucide.createIcons();
+                }
+                setTimeout(() => {
+                    if (btnText) btnText.innerText = "Copy";
+                    if (btnIcon && window.lucide) {
+                        btnIcon.setAttribute('data-lucide', 'copy');
+                        lucide.createIcons();
+                    }
+                }, 2500);
+
+                if (window.showPremiumToast) {
+                    window.showPremiumToast("Referral Link Copied!", "success");
+                }
+            }
+        }
+
+        // Initialize default tab on load
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLeaderboardTab('global');
+        });
+
     </script>
 </body>
 </html>

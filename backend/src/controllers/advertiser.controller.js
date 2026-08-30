@@ -106,6 +106,18 @@ export const updateBillboard = async (req, res) => {
   }
 };
 
+export const deleteBillboard = async (req, res) => {
+  const { id } = req.params;
+  const advertiserId = req.user.id;
+  try {
+    await pool.query('DELETE FROM billboards WHERE id=$1 AND advertiser_id=$2', [id, advertiserId]);
+    res.json({ message: 'Billboard deleted' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to delete billboard' });
+  }
+};
+
 // Analytics
 export const getAnalytics = async (req, res) => {
   const advertiserId = req.user.id;
