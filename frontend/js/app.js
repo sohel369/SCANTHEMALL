@@ -986,14 +986,20 @@ document.addEventListener("DOMContentLoaded", () => {
         el.addEventListener('click', (e) => { e.preventDefault(); window.shareToPlatform('whatsapp'); });
     });
 
-    // Simple Header Scroll
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (header) {
-            header.style.background = (window.scrollY > 50) ? 'rgba(10, 10, 10, 0.95)' : 'rgba(10, 10, 10, 0.8)';
-            header.style.padding = (window.scrollY > 50) ? '0.5rem 2rem' : '0 2rem';
-        }
-    });
+    // Frosted Glass Header Scroll Blur Handler
+    const updateHeaderBlur = () => {
+        const headers = document.querySelectorAll('header, .glass-nav, .glass-header, .sticky-header');
+        const isScrolled = window.scrollY > 20;
+        headers.forEach(header => {
+            if (isScrolled) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    };
+    window.addEventListener('scroll', updateHeaderBlur, { passive: true });
+    updateHeaderBlur();
 
     // Note: Responsive scaling is now handled via CSS in responsive.js
 });

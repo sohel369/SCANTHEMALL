@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
     <link rel="dns-prefetch" href="https://unpkg.com">
-    <script src="js/responsive.js" defer></script>
+    <script src="js/responsive.js?v=3.0" defer></script>
     <script src="js/geo-rules.js" defer></script>
     <script src="js/image-handler.js"></script>
     <meta charset="UTF-8">
@@ -135,9 +135,19 @@
         }
 
         .glass-nav {
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(9, 9, 11, 0.72) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+            backdrop-filter: blur(20px) saturate(180%) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .glass-nav.scrolled {
+            background: rgba(5, 5, 5, 0.85) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+            backdrop-filter: blur(24px) saturate(200%) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7) !important;
         }
 
         .social-card {
@@ -228,7 +238,7 @@
     <!-- TASK 1: MODERN STICKY HEADER -->
     <header class="glass-header sticky top-0 z-50 w-full transition-all">
         <!-- Top Banner Ad -->
-        <div class="w-full bg-black py-2 border-b border-zinc-800">
+        <div class="w-full bg-black/40 py-2 border-b border-white/10 backdrop-blur-md">
             <div class="max-w-7xl mx-auto px-4 text-center">
                 <div class="ad-placeholder h-[90px] w-full max-w-[728px] mx-auto text-[10px] flex items-center justify-center">
                     Leaderboard Advertisement
@@ -874,7 +884,7 @@ class="social-card group relative flex flex-col items-center justify-center aspe
 
         <script src="js/ads.js"></script>
         <script src="js/api.js"></script>
-        <script src="js/app.js?v=9.0"></script>
+        <script src="js/app.js?v=11.0"></script>
         <script type="module" src="js/auth-header.js"></script>
         <script>
         lucide.createIcons();

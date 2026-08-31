@@ -14,6 +14,30 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
     const style = document.createElement('style');
     style.id = 'gtsa-responsive-styles';
     style.innerHTML = `
+        /* Universal Frosted Glass Header Blur on All Pages */
+        header, .glass-nav, .glass-header, .sticky-header, nav.glass-nav {
+            background-color: rgba(9, 9, 11, 0.72) !important;
+            background: rgba(9, 9, 11, 0.72) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+            backdrop-filter: blur(20px) saturate(180%) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        header.scrolled, .glass-nav.scrolled, .glass-header.scrolled, .sticky-header.scrolled {
+            background-color: rgba(5, 5, 5, 0.85) !important;
+            background: rgba(5, 5, 5, 0.85) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+            backdrop-filter: blur(24px) saturate(200%) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7) !important;
+        }
+
+        header .bg-black, .glass-nav .bg-black, .glass-header .bg-black {
+            background-color: rgba(0, 0, 0, 0.4) !important;
+            background: rgba(0, 0, 0, 0.4) !important;
+        }
+
         /* Mobile Menu Styles - 100vh Height Fullscreen Opaque Popup */
         #mobile-menu {
             display: none;
@@ -574,6 +598,12 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
 
         window.addEventListener('scroll', () => {
             const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
 
             if (document.body.classList.contains('menu-open')) {
                 header.style.setProperty('transform', 'translateY(0)', 'important');
