@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
     <link rel="dns-prefetch" href="https://unpkg.com">
-    <script src="js/responsive.js?v=3.0" defer></script>
+    <script src="js/responsive.js?v=5.0" defer></script>
     <script src="js/geo-rules.js" defer></script>
     <script src="js/image-handler.js"></script>
     <meta charset="UTF-8">
@@ -154,19 +154,35 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
+        /* Ultra-Premium Luxury Form Styling */
+        .premium-form-card {
+            background: linear-gradient(180deg, rgba(20, 20, 24, 0.85) 0%, rgba(9, 9, 11, 0.98) 100%) !important;
+            backdrop-filter: blur(24px) saturate(190%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.9), 0 0 50px -10px rgba(255, 61, 0, 0.15) !important;
+            position: relative;
+            overflow: hidden;
+        }
+
         .form-input {
-            background-color: #000000 !important;
-            border: 1px solid #27272a !important;
-            border-radius: 0.875rem !important;
-            padding: 0.875rem 1.125rem !important;
+            background-color: rgba(10, 10, 14, 0.9) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 1rem !important;
+            padding: 0.95rem 1.25rem !important;
             color: #ffffff !important;
             font-size: 0.875rem !important;
             line-height: 1.25rem !important;
             width: 100%;
             box-sizing: border-box !important;
-            transition: all 0.2s ease-in-out !important;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
             outline: none !important;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+        }
+
+        .form-input:hover:not(:disabled) {
+            border-color: rgba(255, 61, 0, 0.45) !important;
+            background-color: rgba(16, 16, 20, 0.95) !important;
         }
 
         .form-input option {
@@ -177,21 +193,54 @@
 
         .form-input:focus {
             border-color: #FF3D00 !important;
-            background-color: #09090b !important;
-            box-shadow: 0 0 0 3px rgba(255, 61, 0, 0.25) !important;
+            background-color: #0b0b0e !important;
+            box-shadow: 0 0 0 3px rgba(255, 61, 0, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
             outline: none !important;
         }
 
         .form-input::placeholder {
             color: #71717a !important;
             font-weight: 500;
+            font-size: 0.85rem;
         }
 
         .form-input:disabled {
             opacity: 0.45 !important;
-            background-color: #0c0c0e !important;
+            background-color: rgba(12, 12, 15, 0.5) !important;
             cursor: not-allowed !important;
-            border-color: #1f1f23 !important;
+            border-color: rgba(255, 255, 255, 0.06) !important;
+        }
+
+        .form-label {
+            font-size: 11px !important;
+            font-weight: 800 !important;
+            color: #d4d4d8 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.12em !important;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .btn-cashdraw-submit {
+            background: linear-gradient(135deg, #FF3D00 0%, #FF6D00 50%, #FF9100 100%) !important;
+            box-shadow: 0 12px 30px -5px rgba(255, 61, 0, 0.45), 0 4px 12px rgba(255, 61, 0, 0.3) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            color: #ffffff !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cashdraw-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px -5px rgba(255, 61, 0, 0.65), 0 6px 20px rgba(255, 61, 0, 0.4) !important;
+            filter: brightness(1.08);
+        }
+
+        .btn-cashdraw-submit:active {
+            transform: translateY(0);
+            box-shadow: 0 8px 20px -5px rgba(255, 61, 0, 0.35) !important;
         }
 
         .btn-primary {
@@ -659,27 +708,47 @@ class="social-card group relative flex flex-col items-center justify-center aspe
             <!-- TASK 5: FORMS FOR CASH DRAW & REFERRALS -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 md:mt-24 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
                 <!-- Register Cash Draw Form -->
-                <section class="bg-zinc-900/60 p-6 sm:p-8 md:p-10 lg:p-12 rounded-3xl md:rounded-[2.5rem] border border-zinc-800 shadow-2xl flex flex-col justify-between">
-                    <div class="text-center mb-8">
-                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-2 uppercase tracking-tighter text-white">Register Free for <span class="text-[#FF3D00]">$1000 Cash Draw</span></h2>
-                        <p class="text-zinc-400 text-xs sm:text-sm font-medium tracking-wide">Winners will be notified by Email or SMS Message</p>
+                <section class="premium-form-card p-6 sm:p-8 md:p-10 lg:p-12 rounded-3xl md:rounded-[2.5rem] flex flex-col justify-between relative">
+                    <!-- Top Ambient Backlight Glow -->
+                    <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-36 bg-[#FF3D00]/15 blur-[70px] pointer-events-none rounded-full"></div>
+
+                    <div class="text-center mb-8 relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF3D00]/10 border border-[#FF3D00]/25 text-[#FF3D00] text-[10px] font-black uppercase tracking-[0.2em] mb-3 shadow-inner">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> OFFICIAL CASH DRAW ENTRY
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-2 uppercase tracking-tighter text-white">
+                            Register Free for <span class="bg-gradient-to-r from-[#FF3D00] via-[#FF6D00] to-[#FFAB00] bg-clip-text text-transparent drop-shadow-sm">$1,000 Cash Draw</span>
+                        </h2>
+                        <p class="text-zinc-400 text-xs sm:text-sm font-medium tracking-wide flex items-center justify-center gap-1.5">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                            Verified 100% Free Entry • Winners Notified by Email or SMS
+                        </p>
                     </div>
-                    <form id="cashdraw-form" action="#" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-                        <div class="space-y-1.5">
-                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">First Name</label>
+
+                    <form id="cashdraw-form" action="#" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 relative z-10">
+                        <div class="space-y-1">
+                            <label class="form-label">
+                                <i data-lucide="user" class="w-3.5 h-3.5 text-[#FF3D00]"></i> First Name
+                            </label>
                             <input type="text" name="FirstName" placeholder="Enter first name" class="form-input" required>
                         </div>
-                        <div class="space-y-1.5">
-                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">Last Name</label>
+                        <div class="space-y-1">
+                            <label class="form-label">
+                                <i data-lucide="user" class="w-3.5 h-3.5 text-[#FF3D00]"></i> Last Name
+                            </label>
                             <input type="text" name="LastName" placeholder="Enter last name" class="form-input" required>
                         </div>
-                        <div class="col-span-full space-y-1.5">
-                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">Email Address</label>
+                        <div class="col-span-full space-y-1">
+                            <label class="form-label">
+                                <i data-lucide="mail" class="w-3.5 h-3.5 text-[#FF3D00]"></i> Email Address
+                            </label>
                             <input type="email" name="Email" placeholder="yourname@example.com" class="form-input" required>
                         </div>
 
-                        <div class="space-y-1.5">
-                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">Country</label>
+                        <div class="space-y-1">
+                            <label class="form-label">
+                                <i data-lucide="globe" class="w-3.5 h-3.5 text-[#FF3D00]"></i> Country
+                            </label>
                             <select id="country" name="Country" class="form-input" required>
                                 <option value="" selected>Select Country</option>
                                 <option value="Australia">Australia</option>
@@ -694,15 +763,19 @@ class="social-card group relative flex flex-col items-center justify-center aspe
                             </select>
                         </div>
 
-                        <div class="space-y-1.5">
-                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">State / Region</label>
+                        <div class="space-y-1">
+                            <label class="form-label">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#FF3D00]"></i> State / Region
+                            </label>
                             <select id="state" name="State" class="form-input opacity-40 cursor-not-allowed" disabled required>
                                 <option value="" selected>Select Country First</option>
                             </select>
                         </div>
 
-                        <div class="col-span-full md:col-span-1 space-y-1.5">
-                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">Phone Number</label>
+                        <div class="col-span-full md:col-span-1 space-y-1">
+                            <label class="form-label">
+                                <i data-lucide="phone" class="w-3.5 h-3.5 text-[#FF3D00]"></i> Phone Number
+                            </label>
                             <div class="flex flex-row gap-2.5 items-center w-full">
                                 <input type="text" id="country-code" name="CountryCode" placeholder="Code"
                                     class="form-input text-center font-bold opacity-40 cursor-not-allowed shrink-0"
@@ -715,8 +788,10 @@ class="social-card group relative flex flex-col items-center justify-center aspe
                             </div>
                         </div>
 
-                        <div class="col-span-full md:col-span-1 space-y-1.5 min-w-0 max-w-full overflow-hidden">
-                            <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">Area Code / Postcode</label>
+                        <div class="col-span-full md:col-span-1 space-y-1 min-w-0 max-w-full overflow-hidden">
+                            <label class="form-label">
+                                <i data-lucide="hash" class="w-3.5 h-3.5 text-[#FF3D00]"></i> Area Code / Postcode
+                            </label>
                             <select id="area-code" name="AreaCode" class="form-input opacity-40 cursor-not-allowed w-full max-w-full truncate text-ellipsis" disabled required>
                                 <option value="" selected>Select Country First</option>
                             </select>
@@ -726,8 +801,27 @@ class="social-card group relative flex flex-col items-center justify-center aspe
                         <input type="hidden" name="DateOfEntry" value="2024-05-20">
 
                         <button type="submit"
-                            class="btn-primary col-span-full py-4 sm:py-4.5 rounded-2xl font-black uppercase tracking-widest text-xs sm:text-sm shadow-xl shadow-[#FF3D00]/25 transition-all hover:scale-[1.01] active:scale-[0.99] mt-2">Enter
-                            Cash Draw</button>
+                            class="btn-cashdraw-submit col-span-full py-4 sm:py-4.5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs sm:text-sm shadow-xl transition-all hover:scale-[1.01] active:scale-[0.99] mt-3 flex items-center justify-center gap-2.5 cursor-pointer">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
+                            ENTER CASH DRAW FREE
+                        </button>
+
+                        <div class="col-span-full flex flex-wrap items-center justify-center gap-3 sm:gap-6 pt-2 text-[10px] sm:text-[10.5px] font-bold text-zinc-500 tracking-wider uppercase">
+                            <span class="flex items-center gap-1.5 text-zinc-400">
+                                <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                256-Bit SSL Encrypted
+                            </span>
+                            <span class="text-zinc-700 hidden sm:inline">•</span>
+                            <span class="flex items-center gap-1.5 text-zinc-400">
+                                <i data-lucide="shield" class="w-3.5 h-3.5 text-[#FF3D00]"></i>
+                                Privacy Protected
+                            </span>
+                            <span class="text-zinc-700 hidden sm:inline">•</span>
+                            <span class="flex items-center gap-1.5 text-zinc-400">
+                                <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+                                Instant Entry
+                            </span>
+                        </div>
                     </form>
                 </section>
 
@@ -884,7 +978,7 @@ class="social-card group relative flex flex-col items-center justify-center aspe
 
         <script src="js/ads.js"></script>
         <script src="js/api.js"></script>
-        <script src="js/app.js?v=11.0"></script>
+        <script src="js/app.js?v=12.0"></script>
         <script type="module" src="js/auth-header.js"></script>
         <script>
         lucide.createIcons();
