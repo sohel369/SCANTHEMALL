@@ -705,9 +705,9 @@ class="social-card group relative flex flex-col items-center justify-center aspe
                             </div>
                         </div>
 
-                        <div class="col-span-full md:col-span-1 space-y-1.5">
+                        <div class="col-span-full md:col-span-1 space-y-1.5 min-w-0 max-w-full overflow-hidden">
                             <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">Area Code / Postcode</label>
-                            <select id="area-code" name="AreaCode" class="form-input opacity-40 cursor-not-allowed" disabled required>
+                            <select id="area-code" name="AreaCode" class="form-input opacity-40 cursor-not-allowed w-full max-w-full truncate text-ellipsis" disabled required>
                                 <option value="" selected>Select Country First</option>
                             </select>
                         </div>
@@ -874,7 +874,7 @@ class="social-card group relative flex flex-col items-center justify-center aspe
 
         <script src="js/ads.js"></script>
         <script src="js/api.js"></script>
-        <script src="js/app.js"></script>
+        <script src="js/app.js?v=9.0"></script>
         <script type="module" src="js/auth-header.js"></script>
         <script>
         lucide.createIcons();
@@ -960,6 +960,3 @@ class="social-card group relative flex flex-col items-center justify-center aspe
 </body>
 
 </html>
-
-
-

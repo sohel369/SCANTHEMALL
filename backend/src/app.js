@@ -205,12 +205,12 @@ if (fs.existsSync(frontendPath)) {
     lastModified: true,
     immutable: true,
     setHeaders: (res, filePath) => {
-      // HTML files: ETag revalidation (sub-50ms instant reload from browser cache)
-      if (filePath.endsWith('.html')) {
+      // HTML, JS and CSS files: no-cache revalidation for instant updates
+      if (/\.(html|js|css)$/i.test(filePath)) {
         res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
       }
-      // JS, CSS, Fonts, Images: long immutable cache
-      if (/\.(js|css|woff2|woff|ttf|png|jpg|jpeg|gif|webp|svg|ico)$/i.test(filePath)) {
+      // Static media/fonts: immutable cache
+      if (/\.(woff2|woff|ttf|png|jpg|jpeg|gif|webp|svg|ico)$/i.test(filePath)) {
         res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
       }
     }
