@@ -238,7 +238,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <span id="phone-error-text"></span>
                 `;
                 errEl.style.display = 'none';
-                phoneEl.parentNode.insertBefore(errEl, phoneEl.nextSibling);
+                const container = phoneEl.closest('.space-y-1\\.5') || phoneEl.parentNode.parentNode || phoneEl.parentNode;
+                container.appendChild(errEl);
             }
             return errEl;
         }

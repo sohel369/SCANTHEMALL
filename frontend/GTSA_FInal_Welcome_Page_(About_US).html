@@ -114,7 +114,6 @@
                 background-position: 0% 50%;
             }
         }
-
     </style>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
@@ -153,7 +152,7 @@
             color: #ffffff !important;
             font-size: 0.875rem !important;
             line-height: 1.25rem !important;
-            width: 100% !important;
+            width: 100%;
             box-sizing: border-box !important;
             transition: all 0.2s ease-in-out !important;
             outline: none !important;
@@ -623,7 +622,7 @@
 
                 <!-- Scan Them All ™ -->
                 <a href="GTSA_Final_Upload_Pop_Up.html?platform=scanthemall"
-                    class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] premium-gradient hover:-translate-y-4 shadow-xl">
+class="social-card group relative flex flex-col items-center justify-center aspect-square rounded-[2.5rem] premium-gradient hover:-translate-y-4 shadow-xl">
                     <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round" class="relative z-10 text-white">
                         <rect width="5" height="5" x="3" y="3" rx="1" />
@@ -694,10 +693,14 @@
 
                         <div class="col-span-full md:col-span-1 space-y-1.5">
                             <label class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-widest block ml-1">Phone Number</label>
-                            <div class="flex flex-row gap-2">
+                            <div class="flex flex-row gap-2.5 items-center w-full">
                                 <input type="text" id="country-code" name="CountryCode" placeholder="Code"
-                                    class="form-input w-20 sm:w-24 text-center font-bold opacity-40 cursor-not-allowed" readonly disabled>
-                                <input type="tel" name="Phone" placeholder="Select Country First" class="form-input flex-1 opacity-40 cursor-not-allowed"
+                                    class="form-input text-center font-bold opacity-40 cursor-not-allowed shrink-0"
+                                    style="width: 4.75rem !important; min-width: 4.75rem !important; max-width: 4.75rem !important; flex: 0 0 4.75rem !important; padding-left: 0.5rem !important; padding-right: 0.5rem !important;"
+                                    readonly disabled>
+                                <input type="tel" name="Phone" placeholder="Select Country First"
+                                    class="form-input opacity-40 cursor-not-allowed"
+                                    style="flex: 1 1 auto !important; min-width: 0 !important; width: 100% !important;"
                                     disabled required>
                             </div>
                         </div>
@@ -753,6 +756,7 @@
                     every friend who joins you earn 10 bonus entries </a>
             </p>
         </div>
+    </section>
 
         <!-- TASK 2: REPLICATED FOOTER -->
         <footer class="bg-black border-t border-white/5 pt-20 pb-12">
