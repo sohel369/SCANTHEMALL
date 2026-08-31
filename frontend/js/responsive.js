@@ -311,15 +311,23 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
                 padding-right: 1.25rem !important;
             }
 
-            .grid-cols-2, .grid-cols-3, .grid-cols-4, .lg\\:grid-cols-2, .md\\:grid-cols-2 {
+            .grid-cols-2:not(#category-grid):not(.mobile-grid-2):not(#social-multiplier-grid),
+            .grid-cols-3:not(#category-grid):not(.mobile-grid-2):not(#social-multiplier-grid),
+            .grid-cols-4:not(#category-grid):not(.mobile-grid-2):not(#social-multiplier-grid),
+            .lg\\:grid-cols-2:not(#category-grid):not(.mobile-grid-2),
+            .md\\:grid-cols-2:not(#category-grid):not(.mobile-grid-2) {
                 grid-template-columns: 1fr !important;
                 gap: 2rem !important;
             }
 
-            /* Special case: 2 columns for smaller cards if requested */
-            .mobile-grid-2 {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 1rem !important;
+            /* Category Grid & 2-column mobile cards */
+            #category-grid,
+            .category-grid,
+            .mobile-grid-2,
+            #social-multiplier-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 0.75rem !important;
             }
 
             /* Flex stacking */
