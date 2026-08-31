@@ -38,6 +38,24 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
             background: rgba(0, 0, 0, 0.4) !important;
         }
 
+        /* Universal Overflow-X Guard */
+        html {
+            overflow-x: hidden !important;
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+
+        body {
+            overflow-x: hidden !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            position: relative !important;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box !important;
+        }
+
         /* Mobile Menu Styles - 100vh Height Fullscreen Opaque Popup */
         #mobile-menu {
             display: none;
@@ -46,8 +64,9 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
             left: 0 !important;
             right: 0 !important;
             bottom: 0 !important;
-            width: 100vw !important;
-            min-width: 100vw !important;
+            width: 100% !important;
+            min-width: 100% !important;
+            max-width: 100% !important;
             height: 100vh !important;
             min-height: 100vh !important;
             max-height: 100vh !important;
@@ -415,8 +434,23 @@ if (typeof window !== 'undefined' && !window._spaRouterLoaded) {
 
         /* Prevent full site horizontal overflow / extra width */
         html, body {
-            max-width: 100vw !important;
+            max-width: 100% !important;
+            width: 100% !important;
             overflow-x: hidden !important;
+            position: relative !important;
+        }
+
+        /* Prevent containers and elements from breaking viewport width */
+        main, section, header, footer, article, nav,
+        .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl,
+        .ad-placeholder, [class*="ad-placeholder"] {
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        table, pre, code {
+            max-width: 100% !important;
+            overflow-x: auto !important;
         }
 
         header {
